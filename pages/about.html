@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — M2Log</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="M2Logについて — チームと理念">
+<meta property="og:description" content="映像とマーケティングを両方わかるチーム。担当者として関わることを大切にしています。">
+<meta property="og:image" content="https://m2log.vercel.app/assets/ogp.jpg">
+<meta property="og:url" content="https://m2log.vercel.app/pages/about.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="映像とマーケティングを両方わかるチーム。担当者として関わることを大切にしています。">
+<link rel="icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XVNJRPJJVC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XVNJRPJJVC');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Zen+Kaku+Gothic+New:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/base.css">
+<style>
+
+/* ── Mission ── */
+#mission { background: var(--cr); }
+.mission-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+.mission-headline {
+  font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 400;
+  color: var(--ink); line-height: 1.3; letter-spacing: 0.01em;
+  margin-bottom: 1.6rem;
+}
+.mission-headline .accent { color: var(--or); display: block; }
+.mission-body { font-size: 0.85rem; color: var(--ink); opacity: 0.68; line-height: 2.4; margin-bottom: 1.6rem; }
+.mission-pills { display: flex; flex-direction: column; gap: 1px; margin-top: 2rem; }
+.mission-pill {
+  padding: 1.4rem 1.6rem; background: var(--wh);
+  border-left: 3px solid transparent; transition: border-color 0.25s, background 0.25s;
+}
+.mission-pill:hover { border-left-color: var(--or); background: var(--cr2); }
+.mission-pill-t { font-size: 0.9rem; font-weight: 500; color: var(--ink); margin-bottom: 0.4rem; }
+.mission-pill-b { font-size: 0.78rem; color: var(--ink-m); line-height: 2; }
+
+/* ── Team text ── */
+#team-text { background: var(--cr2); border-top: 1px solid var(--border); }
+.team-text-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+.team-text-col { padding: 3.5rem 3rem; }
+.team-text-col:first-child { border-right: 1px solid var(--border); }
+.team-text-t { font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.8rem; line-height: 1.5; }
+.team-text-b { font-size: 0.82rem; color: var(--ink); opacity: 0.68; line-height: 2.2; }
+
+/* ── Scene photos grid ── */
+#scene-grid { background: var(--wh); border-top: 1px solid var(--border); }
+.scene-photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin-top: 2.5rem; border-radius: 6px; overflow: hidden; }
+.scene-photo { aspect-ratio: 4/3; overflow: hidden; position: relative; }
+.scene-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); filter: brightness(0.88); }
+.scene-photo:hover img { transform: scale(1.04); filter: brightness(1); }
+.scene-photo-label {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 0.6rem 0.8rem;
+  background: linear-gradient(to top, rgba(9,15,34,0.7), transparent);
+  font-family: var(--eng); font-size: 0.54rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: rgba(245,240,232,0.8);
+}
+
+/* ── Company info ── */
+#company-info { background: var(--cr); border-top: 1px solid var(--border); }
+.info-table { width: 100%; margin-top: 2.5rem; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; border-collapse: collapse; }
+.info-table tr { border-bottom: 1px solid var(--border); }
+.info-table tr:last-child { border-bottom: none; }
+.info-table th {
+  width: 180px; padding: 1.2rem 1.6rem; background: var(--cr2);
+  font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-s); font-weight: 400;
+  text-align: left; vertical-align: top; border-right: 1px solid var(--border);
+}
+.info-table td { padding: 1.2rem 1.6rem; font-size: 0.84rem; color: var(--ink); line-height: 1.9; }
+
+/* ── CTA ── */
+#about-cta { background: var(--nv2); padding: 7rem 6vw; text-align: center; }
+.about-cta-t { font-size: clamp(1.5rem, 2.8vw, 2.2rem); color: var(--tl); font-weight: 400; line-height: 1.45; margin-bottom: 0.9rem; }
+.about-cta-b { font-size: 0.84rem; color: var(--tm); margin-bottom: 2.2rem; }
+.about-cta-acts { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+@media (max-width: 960px) {
+  .mission-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .team-text-grid { grid-template-columns: 1fr; }
+  .team-text-col:first-child { border-right: none; border-bottom: 1px solid var(--border); }
+  .scene-photos { grid-template-columns: 1fr 1fr; }
+  .info-table th { width: 120px; }
+}
+@media (max-width: 640px) {
+  .scene-photos { grid-template-columns: 1fr; }
+  .team-text-col { padding: 2.5rem 5vw; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-in">
+    <a href="../index.html" class="nav-logo subpage">
+      M2<span class="logo-accent">Log</span>
+      <span class="nav-home-hint">← Home</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="plans.html">Plans</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-hamburger" id="navHam"><span></span><span></span><span></span></div>
+    <a href="contact.html" class="nav-cta">無料相談</a>
+  </div>
+  <nav class="nav-mobile" id="navMobile">
+    <a href="services.html">Services</a>
+    <a href="plans.html">Plans</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</nav>
+
+<div class="breadcrumb">
+  <a href="../index.html">Home</a>
+  <span class="breadcrumb-sep">›</span>
+  <span class="breadcrumb-current">About</span>
+</div>
+
+<div class="page-hero">
+  <p class="page-eyebrow">Who We Are</p>
+  <h1 class="page-h">About</h1>
+  <p class="page-lead">チームの一員として映像をつくる。それがM2Logのやり方です。</p>
+</div>
+
+<!-- Mission -->
+<section id="mission">
+  <div class="s-in">
+    <div class="mission-layout">
+      <div class="reveal">
+        <span class="s-eye">Mission</span>
+        <h2 class="mission-headline">
+          映像をつくる前に、
+          <span class="accent">チームに入る。</span>
+        </h2>
+        <p class="mission-body">
+          外注は、納品したら終わり。でも、映像もSNSもつくった後が本番です。<br><br>
+          M2Logは担当者として会議に出て、一緒に考えて、映像をつくります。クライアントの社内リソースを補いながら、目的から設計し、届けるところまで伴走する。<br><br>
+          「チームが増えたみたい」と言ってもらえることが、私たちにとっての最高の評価です。
+        </p>
+      </div>
+      <div class="mission-pills reveal reveal-d2">
+        <div class="mission-pill">
+          <p class="mission-pill-t">担当者として、動く。</p>
+          <p class="mission-pill-b">会議に出て、一緒に考えて、映像をつくる。発注先ではなく、チームの一員として関わります。</p>
+        </div>
+        <div class="mission-pill">
+          <p class="mission-pill-t">つくって終わりにしない。</p>
+          <p class="mission-pill-b">納品で終わりではなく、届けるところまで伴走します。だから意図がズレず、成果につながります。</p>
+        </div>
+        <div class="mission-pill">
+          <p class="mission-pill-t">マーケ視点で、企画する。</p>
+          <p class="mission-pill-b">映像を撮る前に、目的・ターゲット・届け方を一緒に設計します。手段ではなく、成果から逆算します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Team text -->
+<section id="team-text">
+  <div class="team-text-grid">
+    <div class="team-text-col reveal">
+      <span class="s-eye">少数精鋭</span>
+      <h3 class="team-text-t">誰が動いているか、<br>わかるチームでいたい。</h3>
+      <p class="team-text-b">担当者が変わらない。顔の見えるチームだから、クライアントの文脈を深く理解したまま動き続けられます。誰が考えて、誰がつくっているか——それがわかる関係を、大切にしています。</p>
+    </div>
+    <div class="team-text-col reveal reveal-d2">
+      <span class="s-eye">内製一貫</span>
+      <h3 class="team-text-t">企画から編集まで、<br>すべて同じチームで。</h3>
+      <p class="team-text-b">企画・脚本・撮影・編集・運用まで、外部委託を挟まずに対応。意図が正確に映像に反映され、修正も速い。だから、「なんか違う」が起きません。</p>
+    </div>
+  </div>
+</section>
+
+<!-- Member Cards -->
+<section id="members" style="background:var(--wh);border-top:1px solid var(--border);padding:6rem 6vw">
+  <span class="s-eye reveal">Members</span>
+  <h2 class="s-title reveal">チームを<span class="accent">紹介します。</span></h2>
+
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1.5rem;margin-top:3rem" class="member-grid">
+
+    <div class="reveal" style="text-align:center">
+      <div style="aspect-ratio:1;overflow:hidden;border-radius:12px;margin-bottom:1rem;background:var(--cr2)">
+        <img src="../assets/img/members/member_ceo.jpg" alt="CEO" style="width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform 0.5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+      <p style="font-size:0.6rem;font-family:var(--eng);letter-spacing:0.14em;text-transform:uppercase;color:var(--or);margin-bottom:0.3rem">CEO / Creative Director</p>
+    </div>
+
+    <div class="reveal reveal-d1" style="text-align:center">
+      <div style="aspect-ratio:1;overflow:hidden;border-radius:12px;margin-bottom:1rem;background:var(--cr2)">
+        <img src="../assets/img/members/member_camera.jpg" alt="カメラマン" style="width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform 0.5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+      <p style="font-size:0.6rem;font-family:var(--eng);letter-spacing:0.14em;text-transform:uppercase;color:var(--or);margin-bottom:0.3rem">Cameraman</p>
+    </div>
+
+    <div class="reveal reveal-d2" style="text-align:center">
+      <div style="aspect-ratio:1;overflow:hidden;border-radius:12px;margin-bottom:1rem;background:var(--cr2)">
+        <img src="../assets/img/members/member_producer.jpg" alt="制作進行" style="width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform 0.5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+      <p style="font-size:0.6rem;font-family:var(--eng);letter-spacing:0.14em;text-transform:uppercase;color:var(--or);margin-bottom:0.3rem">Producer</p>
+    </div>
+
+    <div class="reveal reveal-d3" style="text-align:center">
+      <div style="aspect-ratio:1;overflow:hidden;border-radius:12px;margin-bottom:1rem;background:var(--cr2)">
+        <img src="../assets/img/members/member_editor.jpg" alt="エディター" style="width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform 0.5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+      <p style="font-size:0.6rem;font-family:var(--eng);letter-spacing:0.14em;text-transform:uppercase;color:var(--or);margin-bottom:0.3rem">Editor / Designer</p>
+    </div>
+
+    <div class="reveal reveal-d4" style="text-align:center">
+      <div style="aspect-ratio:1;overflow:hidden;border-radius:12px;margin-bottom:1rem;background:var(--cr2)">
+        <img src="../assets/img/members/member_director.jpg" alt="ディレクター" style="width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform 0.5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+      <p style="font-size:0.6rem;font-family:var(--eng);letter-spacing:0.14em;text-transform:uppercase;color:var(--or);margin-bottom:0.3rem">Editor / Creative Director</p>
+    </div>
+
+  </div>
+
+  <style>
+  @media (max-width: 960px) { .member-grid { grid-template-columns: repeat(3,1fr) !important; } }
+  @media (max-width: 640px) { .member-grid { grid-template-columns: repeat(2,1fr) !important; gap: 1rem !important; } }
+  </style>
+</section>
+
+
+<!-- Scene gallery - horizontal scroll -->
+<section id="scene-grid" style="background:var(--wh);border-top:1px solid var(--border);padding:5rem 0 5rem 6vw">
+  <div style="padding-right:6vw;margin-bottom:2.5rem" class="reveal">
+    <span class="s-eye">制作現場</span>
+    <h2 class="s-title">現場の<span class="accent">空気感</span>。</h2>
+  </div>
+  <div class="scene-scroll-wrap">
+    <div class="scene-scroll-track">
+      <div class="scene-scroll-item">
+        <img src="../assets/img/scene9.jpg" alt="撮影現場">
+        <p class="scene-scroll-label">On Set</p>
+      </div>
+      <div class="scene-scroll-item">
+        <img src="../assets/img/scene7.jpg" alt="現場">
+        <p class="scene-scroll-label">On Location</p>
+      </div>
+      <div class="scene-scroll-item">
+        <img src="../assets/img/studio1.jpg" alt="スタジオ撮影">
+        <p class="scene-scroll-label">Studio Shoot</p>
+      </div>
+      <div class="scene-scroll-item">
+        <img src="../assets/img/scene_meeting.jpg" alt="打ち合わせ">
+        <p class="scene-scroll-label">Planning</p>
+      </div>
+      <div class="scene-scroll-item">
+        <img src="../assets/img/scene8.jpg" alt="撮影">
+        <p class="scene-scroll-label">Short Drama</p>
+      </div>
+      <div class="scene-scroll-item">
+        <img src="../assets/img/scene6.jpg" alt="クライアント現場">
+        <p class="scene-scroll-label">Client Work</p>
+      </div>
+      <div class="scene-scroll-item">
+        <img src="../assets/img/scene3.jpg" alt="TikTok撮影">
+        <p class="scene-scroll-label">TikTok Shoot</p>
+      </div>
+      <div class="scene-scroll-item">
+        <img src="../assets/img/prob.jpg" alt="制作現場">
+        <p class="scene-scroll-label">Production</p>
+      </div>
+    </div>
+  </div>
+  <style>
+  .scene-scroll-wrap { overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -ms-overflow-style: none; padding-bottom: 1rem; }
+  .scene-scroll-wrap::-webkit-scrollbar { display: none; }
+  .scene-scroll-track { display: flex; flex-wrap: nowrap; gap: 1rem; width: max-content; padding-right: 6vw; }
+  .scene-scroll-item { position: relative; overflow: hidden; border-radius: 8px; width: 340px; height: 260px; flex-shrink: 0; }
+  .scene-scroll-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+  .scene-scroll-item:hover img { transform: scale(1.04); }
+  .scene-scroll-label { position: absolute; bottom: 0; left: 0; right: 0; padding: 0.6rem 0.9rem; background: linear-gradient(to top, rgba(9,15,34,0.7), transparent); font-family: var(--eng); font-size: 0.54rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(245,240,232,0.85); }
+  @media (max-width: 640px) { .scene-scroll-item { width: 260px; height: 200px; } }
+  </style>
+</section>
+
+<!-- Company info -->
+<section id="company-info">
+  <div class="s-in">
+    <span class="s-eye reveal">Company</span>
+    <h2 class="s-title reveal">会社<span class="accent">概要</span></h2>
+    <table class="info-table reveal">
+      <tr><th>会社名</th><td>株式会社M2Log</td></tr>
+      <tr><th>設立</th><td>2024年10月</td></tr>
+      <tr><th>所在地</th><td>東京都江東区</td></tr>
+      <tr><th>事業内容</th><td>映像制作・SNSアカウント運用代行・映像マーケティング支援</td></tr>
+      <tr><th>対応媒体</th><td>TikTok / Instagram / YouTube / Web広告</td></tr>
+      <tr><th>主要実績</th><td>上場企業・メディア・スタートアップなど、業種を問わず幅広く対応</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="about-cta">
+  <p class="about-cta-t reveal">チームの一員として、<br>入らせてください。</p>
+  <p class="about-cta-b reveal">まず話すだけでいい。どんな状態からでも構いません。</p>
+  <div class="about-cta-acts reveal">
+    <a href="contact.html" class="btn-p">無料相談する</a>
+    <a href="services.html" class="btn-g-dark">支援内容を見る</a>
+  </div>
+</section>
+
+<nav class="page-nav-strip">
+  <a href="services.html">Services</a>
+  <a href="plans.html">Plans</a>
+  <a href="about.html" class="active">About</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<footer>
+  <a href="../index.html" class="f-logo f-logo-text">M2<span class="logo-accent">Log</span></a>
+  <ul class="f-nav">
+    <li><a href="services.html">Services</a></li>
+    <li><a href="plans.html">Plans</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <p class="f-copy">© 2025 M2Log Inc. All rights reserved.</p>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

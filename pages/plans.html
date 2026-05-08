@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plans — M2Log</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="M2LogのPlans — 3つの始め方">
+<meta property="og:description" content="まるごと代行・内製化支援・相談から。状況に合ったスタートを選べます。">
+<meta property="og:image" content="https://m2log.vercel.app/assets/ogp.jpg">
+<meta property="og:url" content="https://m2log.vercel.app/pages/plans.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="まるごと代行・内製化支援・相談から。状況に合ったスタートを選べます。">
+<link rel="icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XVNJRPJJVC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XVNJRPJJVC');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Zen+Kaku+Gothic+New:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/base.css">
+<style>
+
+/* ── A/B 比較セクション ── */
+#plan-ab { background: var(--cr); }
+.ab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-top: 3rem; box-shadow: 0 4px 32px rgba(0,0,0,0.06); }
+.ab-col { display: flex; flex-direction: column; }
+.ab-col-a { background: var(--wh); }
+.ab-col-b { background: var(--nv2); }
+
+.ab-head { padding: 2.2rem 2.4rem; border-bottom: 1px solid var(--border); }
+.ab-col-b .ab-head { border-bottom-color: var(--bl); }
+.ab-badge { display: inline-block; font-family: var(--eng); font-size: 0.52rem; letter-spacing: 0.14em; text-transform: uppercase; background: var(--or); color: var(--wh); padding: 0.22rem 0.7rem; border-radius: 3px; margin-bottom: 0.8rem; }
+.ab-title { font-size: 1.15rem; font-weight: 500; color: var(--ink); line-height: 1.4; margin-bottom: 0.4rem; }
+.ab-col-b .ab-title { color: var(--cr); }
+.ab-sub { font-size: 0.75rem; color: var(--ink-m); }
+.ab-col-b .ab-sub { color: var(--tm); }
+
+.ab-body { padding: 2rem 2.4rem; flex: 1; }
+.ab-desc { font-size: 0.83rem; color: var(--ink); opacity: 0.68; line-height: 2.2; margin-bottom: 1.8rem; }
+.ab-col-b .ab-desc { color: var(--cr); opacity: 0.7; }
+
+.ab-items-label { font-family: var(--eng); font-size: 0.54rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-s); margin-bottom: 0.9rem; display: block; }
+.ab-col-b .ab-items-label { color: var(--tm); }
+.ab-items { display: flex; flex-direction: column; gap: 0.65rem; }
+.ab-item { display: flex; align-items: flex-start; gap: 0.7rem; font-size: 0.82rem; color: var(--ink); opacity: 0.75; line-height: 1.7; }
+.ab-col-b .ab-item { color: var(--cr); opacity: 0.8; }
+.ab-item::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--or); flex-shrink: 0; margin-top: 0.62em; }
+
+.ab-foot { padding: 1.8rem 2.4rem; border-top: 1px solid var(--border); }
+.ab-col-b .ab-foot { border-top-color: var(--bl); }
+
+/* ── 違いを一目で ── */
+#diff { background: var(--cr2); border-top: 1px solid var(--border); }
+.diff-table { width: 100%; border-collapse: collapse; margin-top: 2.5rem; }
+.diff-table th, .diff-table td { padding: 1rem 1.4rem; text-align: left; font-size: 0.82rem; border-bottom: 1px solid var(--border); vertical-align: middle; }
+.diff-table thead tr { background: var(--nv2); }
+.diff-table thead th { font-family: var(--eng); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--tm); font-weight: 400; }
+.diff-table thead th:first-child { color: var(--tm); }
+.diff-table tbody tr:hover { background: rgba(26,47,110,0.03); }
+.diff-table tbody td:first-child { font-size: 0.78rem; color: var(--ink-s); }
+.diff-table tbody td:not(:first-child) { color: var(--ink); font-weight: 400; }
+.check { color: var(--or); font-size: 1rem; }
+.dash { color: var(--ink-s); opacity: 0.3; }
+
+/* ── B フェーズ詳細 ── */
+#phase-detail { background: var(--nv2); }
+.phase-list { display: flex; flex-direction: column; gap: 1px; background: var(--bl); border: 1px solid var(--bl); border-radius: 8px; overflow: hidden; margin-top: 2.5rem; }
+.phase-item { background: rgba(255,255,255,0.03); display: grid; grid-template-columns: 90px 1fr; transition: background 0.2s; }
+.phase-item:hover { background: rgba(255,255,255,0.06); }
+.phase-left { background: rgba(26,47,110,0.5); border-right: 1px solid var(--bl); padding: 1.8rem 1.2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.phase-n { font-family: var(--dp); font-size: 1.8rem; font-weight: 900; color: var(--cr); line-height: 1; }
+.phase-tag { font-family: var(--eng); font-size: 0.46rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--or); margin-top: 0.3rem; }
+.phase-right { padding: 1.8rem 2rem; }
+.phase-period { font-family: var(--eng); font-size: 0.6rem; letter-spacing: 0.1em; color: var(--tm); opacity: 0.7; margin-bottom: 0.3rem; }
+.phase-title { font-size: 0.95rem; font-weight: 500; color: var(--cr); margin-bottom: 0.45rem; }
+.phase-body { font-size: 0.79rem; color: var(--cr); opacity: 0.6; line-height: 2; }
+
+/* ── Plan C ── */
+#plan-c { background: var(--cr2); border-top: 1px solid var(--border); }
+.plan-c-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-top: 2.5rem; }
+.plan-c-card { background: var(--wh); padding: 2.4rem 2.2rem; }
+.plan-c-badge { display: inline-block; font-family: var(--eng); font-size: 0.52rem; letter-spacing: 0.14em; text-transform: uppercase; background: var(--or); color: var(--wh); padding: 0.22rem 0.7rem; border-radius: 3px; margin-bottom: 0.8rem; }
+.plan-c-t { font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.7rem; line-height: 1.5; }
+.plan-c-b { font-size: 0.81rem; color: var(--ink); opacity: 0.65; line-height: 2.1; }
+
+/* ── FAQ ── */
+#faq { background: var(--wh); border-top: 1px solid var(--border); }
+.faq-list { margin-top: 2rem; }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-item:first-child { border-top: 1px solid var(--border); }
+.faq-q { width: 100%; background: none; border: none; padding: 1.4rem 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; gap: 1.5rem; transition: padding-left 0.2s; }
+.faq-q:hover { padding-left: 4px; }
+.faq-q-text { font-size: 0.88rem; font-weight: 400; color: var(--ink); line-height: 1.65; font-family: var(--sans); }
+.faq-icon { font-size: 1rem; color: var(--or); flex-shrink: 0; transition: transform 0.3s; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-a { overflow: hidden; max-height: 0; transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1); }
+.faq-a-inner { padding: 0 0 1.4rem; font-size: 0.81rem; color: var(--ink); opacity: 0.65; line-height: 2.2; }
+.faq-item.open .faq-a { max-height: 300px; }
+
+/* ── CTA ── */
+#plans-cta { background: var(--nv2); padding: 7rem 6vw; text-align: center; }
+.plans-cta-t { font-size: clamp(1.5rem, 2.8vw, 2.2rem); color: var(--tl); font-weight: 400; margin-bottom: 0.8rem; line-height: 1.45; }
+.plans-cta-b { font-size: 0.84rem; color: var(--tm); margin-bottom: 2.2rem; }
+.plans-cta-acts { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+@media (max-width: 960px) {
+  .ab-grid { grid-template-columns: 1fr; }
+  .diff-table { font-size: 0.76rem; }
+  .diff-table th, .diff-table td { padding: 0.8rem 1rem; }
+  .phase-item { grid-template-columns: 72px 1fr; }
+  .plan-c-inner { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .diff-table { display: none; } /* SP では非表示、ab-gridで十分 */
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-in">
+    <a href="../index.html" class="nav-logo subpage">
+      M2<span class="logo-accent">Log</span>
+      <span class="nav-home-hint">← Home</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="plans.html" class="active">Plans</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-hamburger" id="navHam"><span></span><span></span><span></span></div>
+    <a href="contact.html" class="nav-cta">相談する</a>
+  </div>
+  <nav class="nav-mobile" id="navMobile">
+    <a href="services.html">Services</a>
+    <a href="plans.html">Plans</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</nav>
+
+<div class="breadcrumb">
+  <a href="../index.html">Home</a>
+  <span class="breadcrumb-sep">›</span>
+  <span class="breadcrumb-current">Plans</span>
+</div>
+
+<div class="page-hero">
+  <p class="page-eyebrow">How to Start</p>
+  <h1 class="page-h">Plans</h1>
+  <p class="page-lead">どこから始めればいいかわからなくても大丈夫。まず話すだけでいい。</p>
+</div>
+
+<!-- A/B 比較 -->
+<section id="plan-ab">
+  <div class="s-in">
+    <span class="s-eye reveal">2つのプラン</span>
+    <h2 class="s-title reveal">「任せる」か、<br><span class="accent">「自走できる体制をつくる」</span>か。</h2>
+    <p class="s-lead reveal">どちらも担当者として入り、継続的に動きます。違いは、ゴールの設定です。</p>
+
+    <div class="ab-grid">
+
+      <!-- Plan A -->
+      <div class="ab-col ab-col-a reveal">
+        <div class="ab-head">
+          <span class="ab-badge">Plan A — 運用代行</span>
+          <h2 class="ab-title">映像・SNS運用を、<br>まるごと任せたい</h2>
+          <p class="ab-sub">6ヶ月〜 / 月5本〜のコンテンツ制作</p>
+        </div>
+        <div class="ab-body">
+          <p class="ab-desc">
+            社内にリソースがなくても、すぐにスタートできます。企画・撮影・編集・投稿・分析まで、M2Logが担当者として一貫して動きます。<br><br>
+            毎月の投稿本数・予算に合わせてカスタマイズ可能。継続することで、アカウントの土台が育っていきます。
+          </p>
+          <span class="ab-items-label">含まれるもの</span>
+          <div class="ab-items">
+            <div class="ab-item">コンセプト・KPI設計</div>
+            <div class="ab-item">月5本〜のコンテンツ制作</div>
+            <div class="ab-item">企画・撮影・編集・投稿</div>
+            <div class="ab-item">コメント運用サポート</div>
+            <div class="ab-item">月次レポート・改善提案</div>
+            <div class="ab-item">担当者として会議に参加</div>
+            <div class="ab-item">広告運用支援（オプション）</div>
+          </div>
+        </div>
+        <div class="ab-foot">
+          <a href="contact.html" class="btn-nv" style="display:block;text-align:center">相談する</a>
+        </div>
+      </div>
+
+      <!-- Plan B -->
+      <div class="ab-col ab-col-b reveal reveal-d2">
+        <div class="ab-head">
+          <span class="ab-badge">Plan B — 内製化支援</span>
+          <h2 class="ab-title">1年かけて、<br>自走できる体制をつくりたい</h2>
+          <p class="ab-sub">12ヶ月 / 月4本のコンテンツ制作</p>
+        </div>
+        <div class="ab-body">
+          <p class="ab-desc">
+            最初はM2Logがフル担当。徐々に社内チームへノウハウを移転し、最終的に外注なしで自走できる体制を構築します。<br><br>
+            月額が段階的に下がる逓減型設計。長期的なコスト削減と、社内のSNS・映像力向上を同時に実現します。
+          </p>
+          <span class="ab-items-label">含まれるもの</span>
+          <div class="ab-items">
+            <div class="ab-item">Aのすべて（フル運用フェーズ）</div>
+            <div class="ab-item">4フェーズの段階的移行設計</div>
+            <div class="ab-item">社内チームへのノウハウ移転</div>
+            <div class="ab-item">実践の場での撮影・編集指導</div>
+            <div class="ab-item">月額が段階的に下がる設計</div>
+            <div class="ab-item">最終的に内製化で自走</div>
+            <div class="ab-item">広告運用支援（オプション）</div>
+          </div>
+        </div>
+        <div class="ab-foot" style="border-top-color:var(--bl)">
+          <a href="contact.html" class="btn-p" style="display:block;text-align:center">相談する</a>
+          <p style="font-size:0.72rem;color:var(--tm);text-align:center;margin-top:0.7rem">↓ 詳しいフェーズ設計は下に</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- A vs B 比較表 -->
+<section id="diff">
+  <div class="s-in">
+    <span class="s-eye reveal">A と B の違い</span>
+    <h2 class="s-title reveal">どちらを選べばいいか、<br><span class="accent">一目でわかる。</span></h2>
+    <table class="diff-table reveal">
+      <thead>
+        <tr>
+          <th></th>
+          <th>A — 運用代行</th>
+          <th>B — 内製化支援</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>支援の形</td><td>M2Logが担当者として継続的に動く</td><td>段階的に社内チームへ移行する</td></tr>
+        <tr><td>期間</td><td>6ヶ月〜（継続）</td><td>12ヶ月（固定）</td></tr>
+        <tr><td>月のコンテンツ数</td><td>月5本〜</td><td>月4本（移行しながら）</td></tr>
+        <tr><td>社内の関与</td><td>専門知識・社内情報を共有し企画に反映</td><td>後半から本格的に移行</td></tr>
+        <tr><td>ノウハウ移転</td><td>運用を通じて知識も共有</td><td><span class="check">✓</span> 移転がゴール</td></tr>
+        <tr><td>月額の変化</td><td>固定</td><td>段階的に下がる</td></tr>
+        <tr><td>会議・MTT参加</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>広告運用支援</td><td><span class="check">✓</span>（オプション）</td><td><span class="check">✓</span>（オプション）</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Plan B フェーズ詳細 -->
+<section id="phase-detail">
+  <div class="s-in">
+    <span class="s-eye" style="color:var(--or)" class="reveal">Plan B — フェーズ詳細</span>
+    <h2 class="s-title on-dark reveal">1年間で、<br>自走できる<span class="accent">チームをつくる。</span></h2>
+    <p class="s-lead on-dark reveal">月額が段階的に下がる逓減型設計。フェーズごとに役割が変わっていきます。</p>
+
+    <div class="phase-list">
+      <div class="phase-item reveal">
+        <div class="phase-left"><p class="phase-n">01</p><p class="phase-tag">Phase 1</p></div>
+        <div class="phase-right">
+          <p class="phase-period">Month 1〜3</p>
+          <h3 class="phase-title">戦略設計 × フル運用</h3>
+          <p class="phase-body">アカウントのコンセプト設計からスタート。M2Logが制作・運用をすべて担当し、土台をつくります。</p>
+        </div>
+      </div>
+      <div class="phase-item reveal">
+        <div class="phase-left"><p class="phase-n">02</p><p class="phase-tag">Phase 2</p></div>
+        <div class="phase-right">
+          <p class="phase-period">Month 4〜6</p>
+          <h3 class="phase-title">並走 × ノウハウ移転</h3>
+          <p class="phase-body">社内担当者と一緒に制作・運用。企画・撮影の考え方を実践の中で伝えます。</p>
+        </div>
+      </div>
+      <div class="phase-item reveal">
+        <div class="phase-left"><p class="phase-n">03</p><p class="phase-tag">Phase 3</p></div>
+        <div class="phase-right">
+          <p class="phase-period">Month 7〜9</p>
+          <h3 class="phase-title">社内主導 × サポート</h3>
+          <p class="phase-body">社内チームが主体となり、M2Logがレビュー・改善提案で補佐。自走力を高めます。</p>
+        </div>
+      </div>
+      <div class="phase-item reveal">
+        <div class="phase-left"><p class="phase-n">04</p><p class="phase-tag">Phase 4</p></div>
+        <div class="phase-right">
+          <p class="phase-period">Month 10〜12</p>
+          <h3 class="phase-title">完全内製化 × 引き継ぎ</h3>
+          <p class="phase-body">社内で完結できる体制が整った状態で、最後の仕上げと引き継ぎを行います。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Plan C -->
+<section id="plan-c">
+  <div class="s-in">
+    <span class="s-eye reveal">Plan C — まずは相談から</span>
+    <h2 class="s-title reveal">まず話すだけで、<br><span class="accent">整理できることがある。</span></h2>
+    <div class="plan-c-inner">
+      <div class="plan-c-card reveal">
+        <span class="plan-c-badge">Free</span>
+        <h3 class="plan-c-t">無料相談</h3>
+        <p class="plan-c-b">SNSや映像活用について、現状の課題を整理するための相談です。提案・営業ではなく、まず聞くことから始めます。Zoom・対面どちらでも対応可能。</p>
+        <div style="margin-top:1.5rem"><a href="contact.html" class="btn-nv">申し込む</a></div>
+      </div>
+      <div class="plan-c-card reveal reveal-d1" style="background:var(--cr2)">
+        <span class="plan-c-badge">Paid</span>
+        <h3 class="plan-c-t">SNS戦略ワークショップ</h3>
+        <p class="plan-c-b">半日〜1日のワークショップ形式で、自社のSNS戦略を設計します。コンセプト・KPI・投稿方針まで、その場で具体化します。継続契約は不要です。</p>
+        <div style="margin-top:1.5rem"><a href="contact.html" class="btn-nv">申し込む</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="s-in">
+    <span class="s-eye reveal">FAQ</span>
+    <h2 class="s-title reveal">よくある<span class="accent">質問</span></h2>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">具体的な案が何もないのですが、ゼロから相談できますか？</span>
+          <span class="faq-icon">＋</span>
+        </button>
+        <div class="faq-a"><p class="faq-a-inner">可能です。まずは「何を達成したいか（採用・認知・売上など）」と「今ある素材・体制」を伺い、企画の方向性から一緒に整理します。ラフなメモ1枚でも、想いだけでも大丈夫です。</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">代理店経由での発注や、パートナーとしても依頼できますか？</span>
+          <span class="faq-icon">＋</span>
+        </button>
+        <div class="faq-a"><p class="faq-a-inner">可能です。代理店さまの進行フローに合わせ、窓口一本で対応します。守秘・体制面（資料整備、提案同席など）もご相談ください。</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">他の映像制作会社・SNS運用会社との違いは？</span>
+          <span class="faq-icon">＋</span>
+        </button>
+        <div class="faq-a"><p class="faq-a-inner">大きく2つあります。1つは「映像制作」と「SNS運用」を一つのチームで対応できること。もう1つは、担当者として会議に出て、一緒に考え続けること。つくって納品するだけでなく、届くまで動き続けます。</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">実績をもっと見せてもらえますか？</span>
+          <span class="faq-icon">＋</span>
+        </button>
+        <div class="faq-a"><p class="faq-a-inner">公開できるものは一部のため、目的・業種・表現トーンが近い事例を中心にご案内します。お問い合わせ時に「作りたい方向性」を添えていただけるとスムーズです。</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">金額感が分かりません。どれくらいの予算で依頼できますか？</span>
+          <span class="faq-icon">＋</span>
+        </button>
+        <div class="faq-a"><p class="faq-a-inner">金額はご依頼の内容・本数・期間によって変わるため、一概にはお伝えできません。相談時に「この予算で何ができるか」を率直にお伝えします。お見積りは無償です。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="plans-cta">
+  <p class="plans-cta-t reveal">どこから始めればいいか、<br>一緒に整理します。</p>
+  <p class="plans-cta-b reveal">まず話すだけでいい。どんな状態からでも構いません。</p>
+  <div class="plans-cta-acts reveal">
+    <a href="contact.html" class="btn-p">相談する</a>
+    <a href="services.html" class="btn-g-dark">支援内容を見る</a>
+  </div>
+</section>
+
+<nav class="page-nav-strip">
+  <a href="services.html">Services</a>
+  <a href="plans.html" class="active">Plans</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<footer>
+  <a href="../index.html" class="f-logo f-logo-text">M2<span class="logo-accent">Log</span></a>
+  <ul class="f-nav">
+    <li><a href="services.html">Services</a></li>
+    <li><a href="plans.html">Plans</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <p class="f-copy">© 2025 M2Log Inc. All rights reserved.</p>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script>
+function toggleFaq(btn){
+  var item = btn.parentElement;
+  var icon = btn.querySelector('.faq-icon');
+  item.classList.toggle('open');
+  icon.textContent = item.classList.contains('open') ? '－' : '＋';
+}
+</script>
+</body>
+</html>

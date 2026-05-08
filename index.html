@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M2Log — 映像をつくる前に、チームに入る。</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="M2Log — 映像をつくる前に、チームに入る。">
+<meta property="og:description" content="つくって終わりではなく、届けるところまで伴走する映像マーケティングパートナー。SNS運用、ショートドラマ、採用映像、WebCM。">
+<meta property="og:image" content="https://m2log.vercel.app/assets/ogp.jpg">
+<meta property="og:url" content="https://m2log.vercel.app">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XVNJRPJJVC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XVNJRPJJVC');
+</script>
+<meta name="description" content="つくって終わりではなく、届けるところまで伴走する映像マーケティングパートナー。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Zen+Kaku+Gothic+New:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
+<style>
+
+/* ── HERO ── */
+#hero {
+  position: relative; height: 100svh; min-height: 640px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  overflow: hidden; background: var(--nv2);
+}
+
+.hero-ov {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, var(--nv2) 0%, rgba(9,15,34,0.15) 60%, transparent 100%);
+}
+.hero-c { position: relative; z-index: 2; padding: 0 6vw 10vh; }
+.hero-label {
+  font-family: var(--eng); font-size: 0.58rem; letter-spacing: 0.32em;
+  text-transform: uppercase; color: var(--or);
+  display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.8rem;
+  opacity: 0; animation: fup 0.9s var(--ease) 0.2s forwards;
+}
+.hero-label::before { content: ''; width: 1.4rem; height: 1px; background: var(--or); display: block; }
+.hero-h { margin-bottom: 1.4rem; }
+.hero-h .l1 {
+  display: block;
+  font-family: var(--dp); font-weight: 900; letter-spacing: -0.02em; line-height: 1.05;
+  font-size: clamp(2.4rem, 6vw, 5.5rem); color: var(--cr);
+  opacity: 0; animation: fup 1s var(--ease) 0.35s forwards;
+}
+.hero-h .l2 {
+  display: block;
+  font-family: var(--dp); font-weight: 900; letter-spacing: -0.02em; line-height: 1.05;
+  font-size: clamp(2.4rem, 6vw, 5.5rem); color: var(--or);
+  opacity: 0; animation: fup 1s var(--ease) 0.5s forwards;
+}
+.hero-mission {
+  font-size: clamp(0.95rem, 1.8vw, 1.3rem);
+  font-weight: 300; letter-spacing: 0.1em;
+  color: rgba(245,240,232,0.65); margin-bottom: 1.2rem;
+  opacity: 0; animation: fup 1s var(--ease) 0.62s forwards;
+}
+.hero-body {
+  font-size: 0.84rem; color: var(--tm); line-height: 2.1; max-width: 400px;
+  margin-bottom: 2.2rem;
+  opacity: 0; animation: fup 1s var(--ease) 0.65s forwards;
+}
+.hero-acts {
+  display: flex; gap: 0.9rem; flex-wrap: wrap;
+  opacity: 0; animation: fup 1s var(--ease) 0.78s forwards;
+}
+.hero-scroll {
+  position: absolute; right: 5vw; bottom: 2.5rem; z-index: 3;
+  font-family: var(--eng); font-size: 0.5rem; letter-spacing: 0.24em;
+  text-transform: uppercase; color: var(--tm);
+  writing-mode: vertical-rl; display: flex; align-items: center; gap: 0.8rem;
+  opacity: 0; animation: fin 1s 1.1s forwards;
+}
+.hero-scroll::after { content: ''; width: 1px; height: 3rem; background: var(--tm); }
+@keyframes fup { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+@keyframes fin  { to{opacity:1} }
+
+/* ── PROBLEMS ── */
+#problems { background: var(--cr); border-top: 1px solid var(--border); }
+.prob-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 6rem; align-items: start; }
+.prob-sticky { position: sticky; top: 7rem; }
+.prob-photo { border-radius: 6px; overflow: hidden; aspect-ratio: 3/4; position: relative; }
+.prob-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+.prob-photo::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: var(--or); }
+.prob-right {}
+.prob-cards { margin-top: 2.2rem; }
+.prob-card { padding: 1.5rem 0; border-bottom: 1px solid var(--border); cursor: default; transition: padding-left 0.25s var(--ease); }
+.prob-card:first-child { border-top: 1px solid var(--border); }
+.prob-card:hover { padding-left: 6px; }
+.prob-n { font-family: var(--eng); font-size: 0.6rem; letter-spacing: 0.1em; color: var(--or); margin-bottom: 0.4rem; }
+.prob-t { font-size: 0.95rem; font-weight: 500; color: var(--ink); line-height: 1.55; margin-bottom: 0.45rem; }
+.prob-b { font-size: 0.8rem; color: var(--ink-m); line-height: 2; }
+
+/* ── TEAM ── (全幅写真＋オーバーレイ) */
+#team { position: relative; overflow: hidden; border-top: 1px solid var(--border); }
+.team-inner { position: relative; min-height: 560px; display: flex; align-items: flex-end; }
+.team-photo-side { position: absolute; inset: 0; }
+.team-photo-side img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; filter: brightness(0.55); }
+.team-photo-side::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(9,15,34,0.75) 0%, rgba(9,15,34,0.3) 55%, transparent 100%); }
+.team-text-side { position: relative; z-index: 2; padding: 5rem 6vw; max-width: 600px; }
+.team-quote {
+  font-size: clamp(1rem, 1.6vw, 1.4rem); font-weight: 400;
+  color: var(--cr); line-height: 1.65; margin-bottom: 1.6rem;
+  padding-left: 1.2rem; border-left: 3px solid var(--or);
+}
+.team-quote em { font-style: normal; color: var(--or); }
+.team-body { font-size: 0.83rem; color: rgba(245,240,232,0.75); line-height: 2.2; margin-bottom: 2rem; }
+.team-members { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.5rem; }
+.team-member-chip {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.75rem; color: rgba(245,240,232,0.8); padding: 0.35rem 0.8rem;
+  border: 1px solid rgba(245,240,232,0.25); border-radius: 20px;
+  background: rgba(255,255,255,0.08);
+}
+.team-member-chip::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--or); flex-shrink: 0; }
+
+/* ── SERVICES overview ── */
+#services { background: var(--wh); border-top: 1px solid var(--border); }
+.svc-list { margin-top: 2.8rem; display: flex; flex-direction: column; }
+.svc-row {
+  display: grid; grid-template-columns: 48px 1fr auto;
+  align-items: center; gap: 1.5rem;
+  padding: 1.8rem 0; border-bottom: 1px solid var(--border);
+  text-decoration: none; transition: padding-left 0.25s var(--ease), background 0.2s;
+  border-radius: 4px;
+}
+.svc-row:first-child { border-top: 1px solid var(--border); }
+.svc-row:hover { padding-left: 8px; background: var(--cr2); }
+.svc-row-num { font-family: var(--eng); font-size: 0.65rem; letter-spacing: 0.1em; color: var(--or); }
+.svc-row-content {}
+.svc-row-en { font-family: var(--eng); font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-s); margin-bottom: 0.3rem; }
+.svc-row-t { font-size: 1rem; font-weight: 500; color: var(--ink); }
+.svc-row-b { font-size: 0.8rem; color: var(--ink-m); margin-top: 0.3rem; line-height: 1.8; }
+.svc-row-arrow { font-size: 1.1rem; color: var(--ink-s); transition: transform 0.2s, color 0.2s; padding-right: 0.5rem; }
+.svc-row:hover .svc-row-arrow { transform: translateX(4px); color: var(--or); }
+.svc-note { margin-top: 2rem; padding: 1.4rem 1.8rem; background: var(--cr2); border-radius: 4px; font-size: 0.82rem; color: var(--ink-m); line-height: 2; border-left: 3px solid var(--or); }
+.svc-note strong { color: var(--ink); font-weight: 500; }
+
+/* ── CLIENTS ── */
+#clients { background: var(--cr2); border-top: 1px solid var(--border); }
+.cl-inner { padding: 3rem 0; }
+.cl-eye { font-family: var(--eng); font-size: 0.56rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--ink-s); text-align: center; margin-bottom: 1.4rem; }
+.cl-scroll { overflow: hidden; position: relative; }
+.cl-scroll::before, .cl-scroll::after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 1; pointer-events: none; }
+.cl-scroll::before { left: 0; background: linear-gradient(to right, var(--cr2), transparent); }
+.cl-scroll::after  { right: 0; background: linear-gradient(to left,  var(--cr2), transparent); }
+.cl-track { display: flex; animation: ticker 34s linear infinite; width: max-content; }
+.cl-pill { font-family: var(--sans); font-size: 0.75rem; font-weight: 300; color: var(--ink-m); padding: 0.42rem 1.1rem; border: 1px solid var(--border-m); border-radius: 4px; white-space: nowrap; margin: 0 0.35rem; flex-shrink: 0; transition: all 0.2s; background: var(--wh); }
+
+/* ── CTA ── */
+#cta-main { background: var(--nv2); padding: 8rem 6vw; }
+.cta-main-inner { display: grid; grid-template-columns: 1fr auto; gap: 4rem; align-items: center; }
+.cta-label { font-family: var(--eng); font-size: 0.56rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--or); margin-bottom: 1rem; display: block; }
+.cta-t { font-size: clamp(1.4rem, 2.2vw, 2rem); font-weight: 400; color: var(--tl); line-height: 1.55; max-width: 440px; }
+.cta-b { font-size: 0.83rem; color: var(--tm); margin-top: 0.9rem; line-height: 2; }
+.cta-acts { display: flex; flex-direction: column; gap: 0.8rem; min-width: 180px; }
+
+@media (max-width: 960px) {
+  .prob-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .prob-sticky { position: static; }
+  .prob-photo { aspect-ratio: 16/9; }
+  .team-inner { min-height: 480px; }
+  .team-text-side { padding: 3.5rem 5vw; max-width: 100%; }
+  .svc-row { grid-template-columns: 40px 1fr auto; gap: 1rem; }
+  .cta-main-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .cta-acts { flex-direction: row; flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav dark-nav" id="nav">
+  <div class="nav-in">
+    <a href="index.html" class="nav-logo" title="ホームへ戻る">M2<span>Log</span></a>
+    <ul class="nav-links">
+      <li><a href="pages/services.html">Services</a></li>
+      <li><a href="pages/plans.html">Plans</a></li>
+      <li><a href="pages/about.html">About</a></li>
+      <li><a href="pages/contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-hamburger" id="navHam"><span></span><span></span><span></span></div>
+    <a href="pages/contact.html" class="nav-cta">無料相談</a>
+  </div>
+  <nav class="nav-mobile" id="navMobile">
+    <a href="pages/services.html">Services</a>
+    <a href="pages/plans.html">Plans</a>
+    <a href="pages/about.html">About</a>
+    <a href="pages/contact.html">Contact</a>
+  </nav>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-slide" style="background-image:url('assets/img/hero_bg.jpg');filter:brightness(0.32) saturate(0.8)"></div>
+  <div class="hero-slide" style="background-image:url('assets/img/svc01.jpg');filter:brightness(0.28) saturate(0.85)"></div>
+  <div class="hero-slide" style="background-image:url('assets/img/studio1.jpg');filter:brightness(0.28) saturate(0.85)"></div>
+  <div class="hero-ov"></div>
+  <div class="hero-c">
+    <p class="hero-label">Video Marketing Partner</p>
+    <div class="hero-h">
+      <span class="l1">Create.</span>
+      <span class="l2">Deliver.</span>
+    </div>
+    <p class="hero-mission">つくる、その先へ。</p>
+    <p class="hero-body">
+      採用、ブランディング、WebCM、ショートドラマ、SNS運用まで。<br>
+      映像をただつくるだけでなく、<br>
+      誰にどう届き、どう広がるかまで設計する<br>
+      映像マーケティングパートナーです。
+    </p>
+    <div class="hero-acts">
+      <a href="pages/contact.html" class="btn-p">無料相談する</a>
+      <a href="pages/services.html" class="btn-g-dark">支援内容を見る</a>
+    </div>
+  </div>
+  <span class="hero-scroll">scroll</span>
+</section>
+
+<!-- PROBLEMS -->
+<section id="problems">
+  <div class="s-in">
+    <div class="prob-layout">
+      <div class="prob-sticky reveal">
+        <div class="prob-photo">
+          <img src="assets/img/prob.jpg" alt="M2Log制作現場">
+        </div>
+      </div>
+      <div>
+        <span class="s-eye reveal">こんな課題、ありませんか</span>
+        <h2 class="s-title reveal"><span class="accent">「つくって終わり」</span>に、<br>なっていませんか。</h2>
+        <p class="s-lead reveal">外注は納品したら終わり。でも映像もSNSも、つくった後が本番です。</p>
+        <div class="prob-cards">
+          <div class="prob-card reveal reveal-d1">
+            <p class="prob-n">01</p>
+            <h3 class="prob-t">映像をつくったが、<span class="accent">誰にも届かなかった</span></h3>
+            <p class="prob-b">コストをかけてつくったのに再生されない。届けるところまで、一緒に考える人がいませんでした。</p>
+          </div>
+          <div class="prob-card reveal reveal-d2">
+            <p class="prob-n">02</p>
+            <h3 class="prob-t">SNS・広報担当が<span class="accent">疲弊している</span></h3>
+            <p class="prob-b">ネタ出し、撮影、編集、分析——本業と兼務では回らない。体制がないまま続けても、消耗するだけです。</p>
+          </div>
+          <div class="prob-card reveal reveal-d3">
+            <p class="prob-n">03</p>
+            <h3 class="prob-t">頼んだら<span class="accent">「なんか違う」</span>ができた</h3>
+            <p class="prob-b">意図が伝わっていなかった。つくる前の設計を一緒にやる人がいなかったことが原因です。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="team-inner">
+    <div class="team-photo-side reveal">
+      <picture>
+        <source media="(max-width: 640px)" srcset="assets/img/team_sp.jpg">
+        <img src="assets/img/team_pc.jpg" alt="M2Logチーム" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+      </picture>
+    </div>
+    <div class="team-text-side reveal reveal-d2">
+      <span class="s-eye" style="color:var(--or)">Who We Are</span>
+      <blockquote class="team-quote">
+        「チームが増えたみたい」と<br>言ってもらえることが、<em>一番うれしい。</em>
+      </blockquote>
+      <p class="team-body">
+        担当者として会議に出て、向こうの担当者の代わりに考える。発注先ではなく、チームの一員として関わることをすべてのクライアントで大切にしています。<br><br>
+        マーケ視点を持った企画立案、クライアントのリソースを補う動き方、制作クオリティ——その全部が、M2Logが選ばれる理由です。
+      </p>
+      <div class="team-members">
+        <span class="team-member-chip">ディレクター</span>
+        <span class="team-member-chip">カメラマン</span>
+        <span class="team-member-chip">エディター</span>
+        <span class="team-member-chip">マーケター</span>
+        <span class="team-member-chip">プランナー</span>
+      </div>
+      <div style="margin-top:2rem">
+        <a href="pages/about.html#members" class="btn-nv">チームを見る</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="s-in">
+    <span class="s-eye reveal">What We Do</span>
+    <h2 class="s-title reveal">できること、<span class="accent">3つ。</span></h2>
+
+    <div class="svc-list">
+      <a href="pages/services.html" class="svc-row reveal">
+        <p class="svc-row-num">01</p>
+        <div class="svc-row-content">
+          <p class="svc-row-en">SNS Management</p>
+          <p class="svc-row-t">TikTokアカウント運用代行</p>
+          <p class="svc-row-b">目的に向けて届けることを重視しながら、担当者として伴走します。</p>
+        </div>
+        <span class="svc-row-arrow">→</span>
+      </a>
+      <a href="pages/services.html" class="svc-row reveal reveal-d1">
+        <p class="svc-row-num">02</p>
+        <div class="svc-row-content">
+          <p class="svc-row-en">Short Video / Drama</p>
+          <p class="svc-row-t">ショート動画・ショートドラマ制作</p>
+          <p class="svc-row-b">最後まで見てしまうコンテンツを、視聴導線から設計します。</p>
+        </div>
+        <span class="svc-row-arrow">→</span>
+      </a>
+      <a href="pages/services.html" class="svc-row reveal reveal-d2">
+        <p class="svc-row-num">03</p>
+        <div class="svc-row-content">
+          <p class="svc-row-en">Video Marketing</p>
+          <p class="svc-row-t">映像マーケティング支援</p>
+          <p class="svc-row-b">SNS・Web広告・採用・ブランディングまで、使い方から設計します。</p>
+        </div>
+        <span class="svc-row-arrow">→</span>
+      </a>
+    </div>
+
+    <p class="svc-note reveal">
+      すべて<strong>内製（企画・脚本・撮影・編集）</strong>で対応。外部委託を挟まないから、意図がズレず、修正も速い。
+    </p>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section id="clients">
+  <div class="cl-inner">
+    <p class="cl-eye">制作実績・お取引先</p>
+    <div class="cl-scroll">
+      <div class="cl-track">
+        <span class="cl-pill">セガサミーホールディングス</span><span class="cl-pill">PHONE APPLI</span><span class="cl-pill">日テレジータス</span><span class="cl-pill">西武プリンスホテル</span><span class="cl-pill">トイザらス</span><span class="cl-pill">ドン・キホーテ</span><span class="cl-pill">テレビ愛知</span><span class="cl-pill">RINX</span><span class="cl-pill">サミー</span><span class="cl-pill">セガフェイブ</span><span class="cl-pill">福島鰹</span><span class="cl-pill">奥ジャパン</span><span class="cl-pill">WAKAMATSU</span>
+        <span class="cl-pill">セガサミーホールディングス</span><span class="cl-pill">PHONE APPLI</span><span class="cl-pill">日テレジータス</span><span class="cl-pill">西武プリンスホテル</span><span class="cl-pill">トイザらス</span><span class="cl-pill">ドン・キホーテ</span><span class="cl-pill">テレビ愛知</span><span class="cl-pill">RINX</span><span class="cl-pill">サミー</span><span class="cl-pill">セガフェイブ</span><span class="cl-pill">福島鰹</span><span class="cl-pill">奥ジャパン</span><span class="cl-pill">WAKAMATSU</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta-main">
+  <div class="cta-main-inner">
+    <div class="reveal">
+      <span class="cta-label">Next Step</span>
+      <p class="cta-t">まず話すだけで、<br>整理できることがある。</p>
+      <p class="cta-b">何から手をつければいいかわからない状態でも大丈夫です。<br>課題の整理からでも、歓迎します。</p>
+    </div>
+    <div class="cta-acts reveal reveal-d2">
+      <a href="pages/contact.html" class="btn-p">無料相談する</a>
+      <a href="pages/plans.html" class="btn-g-dark">プランを見る</a>
+    </div>
+  </div>
+</section>
+
+<nav class="page-nav-strip">
+  <a href="pages/services.html">Services</a>
+  <a href="pages/plans.html">Plans</a>
+  <a href="pages/about.html">About</a>
+  <a href="pages/contact.html">Contact</a>
+</nav>
+
+<footer>
+  <a href="index.html" class="f-logo f-logo-text">M2<span class="logo-accent">Log</span></a>
+  <ul class="f-nav">
+    <li><a href="pages/services.html">Services</a></li>
+    <li><a href="pages/plans.html">Plans</a></li>
+    <li><a href="pages/about.html">About</a></li>
+    <li><a href="pages/contact.html">Contact</a></li>
+  </ul>
+  <p class="f-copy">© 2025 M2Log Inc. All rights reserved.</p>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script>
+(function(){
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function(){
+    nav.classList.toggle('dark-nav', window.scrollY < window.innerHeight * 0.85);
+  });
+})();
+</script>
+</body>
+</html>

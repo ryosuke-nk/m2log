@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — M2Log</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="M2LogのServices — SNS運用・ショートドラマ・映像マーケティング支援">
+<meta property="og:description" content="担当者として動く映像マーケティングチーム。SNS運用代行、ショートドラマ制作、映像マーケティング支援。">
+<meta property="og:image" content="https://m2log.vercel.app/assets/ogp.jpg">
+<meta property="og:url" content="https://m2log.vercel.app/pages/services.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="担当者として動く映像マーケティングチーム。SNS運用代行、ショートドラマ制作、映像マーケティング支援。">
+<link rel="icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XVNJRPJJVC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XVNJRPJJVC');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Zen+Kaku+Gothic+New:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/base.css">
+<style>
+
+/* ── サービスブロック ── */
+.svc-block { padding: 0; border-top: 1px solid var(--border); }
+.svc-block-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: 520px;
+}
+.svc-block:nth-child(even) .svc-block-inner { direction: rtl; }
+.svc-block:nth-child(even) .svc-block-inner > * { direction: ltr; }
+
+/* 写真側 */
+.svc-photo { position: relative; overflow: hidden; }
+.svc-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 0.8s var(--ease); }
+.svc-block:hover .svc-photo img { transform: scale(1.03); }
+.svc-photo-num {
+  position: absolute; top: 1.5rem; left: 1.5rem;
+  font-family: var(--dp); font-size: 4rem; font-weight: 900;
+  color: rgba(255,255,255,0.12); line-height: 1; pointer-events: none;
+}
+.svc-block:nth-child(even) .svc-photo-num { left: auto; right: 1.5rem; }
+
+/* テキスト側 */
+.svc-text {
+  padding: 4rem 3.5rem; display: flex; flex-direction: column;
+  justify-content: center; background: var(--wh);
+}
+.svc-block:nth-child(even) .svc-text { background: var(--cr2); }
+.svc-text-en { font-family: var(--eng); font-size: 0.58rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--or); margin-bottom: 0.7rem; }
+.svc-text-t { font-size: clamp(1.4rem, 2.2vw, 1.9rem); font-weight: 400; color: var(--ink); line-height: 1.4; margin-bottom: 1.1rem; }
+.svc-text-b { font-size: 0.84rem; color: var(--ink); opacity: 0.68; line-height: 2.3; margin-bottom: 2rem; }
+.svc-tags-wrap { margin-bottom: 1.8rem; }
+.svc-tags-label { font-family: var(--eng); font-size: 0.54rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-s); margin-bottom: 0.7rem; display: block; }
+.svc-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.svc-tag { font-size: 0.72rem; color: var(--ink-m); padding: 0.25rem 0.7rem; border: 1px solid var(--border-m); border-radius: 3px; background: var(--cr); }
+.svc-block:nth-child(even) .svc-tag { background: var(--wh); }
+
+/* ── 一貫制作バナー ── */
+#inhouse-banner { background: var(--nv); padding: 2.5rem 6vw; border-top: 1px solid var(--bl); }
+.inhouse-inner { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+.inhouse-icon { width: 40px; height: 40px; background: rgba(244,121,32,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.inhouse-icon svg { width: 20px; height: 20px; color: var(--or); }
+.inhouse-text {}
+.inhouse-t { font-size: 0.9rem; font-weight: 400; color: var(--cr); margin-bottom: 0.2rem; }
+.inhouse-b { font-size: 0.78rem; color: var(--tm); line-height: 1.8; }
+
+/* ── Flow ── */
+#flow { background: var(--cr); border-top: 1px solid var(--border); }
+.flow-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; margin-top: 2.5rem; }
+.flow-step { padding: 2.4rem 2rem; position: relative; }
+.flow-step:not(:last-child) { border-right: 1px solid var(--border); }
+.flow-step:nth-child(odd) { background: var(--wh); }
+.flow-step:nth-child(even) { background: var(--cr2); }
+.flow-step-n { font-family: var(--dp); font-size: 3rem; font-weight: 900; color: var(--or); opacity: 0.1; line-height: 1; margin-bottom: 0.5rem; }
+.flow-step-t { font-size: 0.95rem; font-weight: 500; color: var(--ink); margin-bottom: 0.7rem; }
+.flow-step-b { font-size: 0.8rem; color: var(--ink); opacity: 0.65; line-height: 2.1; }
+.flow-arrow {
+  position: absolute; right: -12px; top: 50%; transform: translateY(-50%);
+  width: 24px; height: 24px; background: var(--or); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; z-index: 1;
+  font-size: 0.7rem; color: white;
+}
+.flow-step:last-child .flow-arrow { display: none; }
+
+/* ── CTA ── */
+#svc-cta { background: var(--nv2); padding: 7rem 6vw; text-align: center; }
+.svc-cta-t { font-size: clamp(1.5rem, 2.8vw, 2.2rem); color: var(--tl); font-weight: 400; margin-bottom: 0.8rem; line-height: 1.45; }
+.svc-cta-b { font-size: 0.84rem; color: var(--tm); margin-bottom: 2.2rem; }
+.svc-cta-acts { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+@media (max-width: 960px) {
+  [style*="grid-template-columns:repeat(2,1fr)"] { grid-template-columns: 1fr !important; }
+  .svc-block-inner { grid-template-columns: 1fr; min-height: auto; }
+  .svc-block:nth-child(even) .svc-block-inner { direction: ltr; }
+  .svc-photo { min-height: 280px; }
+  .svc-text { padding: 3rem 5vw; }
+  .flow-steps { grid-template-columns: 1fr; }
+  .flow-step:not(:last-child) { border-right: none; border-bottom: 1px solid var(--border); }
+  .flow-arrow { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-in">
+    <a href="../index.html" class="nav-logo subpage">
+      M2<span class="logo-accent">Log</span>
+      <span class="nav-home-hint">← Home</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="plans.html">Plans</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-hamburger" id="navHam"><span></span><span></span><span></span></div>
+    <a href="contact.html" class="nav-cta">無料相談</a>
+  </div>
+  <nav class="nav-mobile" id="navMobile">
+    <a href="services.html">Services</a>
+    <a href="plans.html">Plans</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</nav>
+
+<div class="breadcrumb">
+  <a href="../index.html">Home</a>
+  <span class="breadcrumb-sep">›</span>
+  <span class="breadcrumb-current">Services</span>
+</div>
+
+<div class="page-hero">
+  <p class="page-eyebrow">What We Do</p>
+  <h1 class="page-h">Services</h1>
+  <p class="page-lead">外注ではなく、担当者として動く。だから意図がズレない。だから、届く。</p>
+</div>
+
+<!-- よくある課題 -->
+<section style="background:var(--cr2);border-top:1px solid var(--border);padding:5rem 6vw">
+  <div style="max-width:960px;margin:0 auto">
+    <span class="s-eye reveal">こんなお悩み、ありませんか</span>
+    <h2 class="s-title reveal" style="margin-bottom:3rem">M2Logが<span class="accent">解決</span>します。</h2>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden">
+
+      <div class="reveal" style="background:var(--wh);padding:2rem 2.2rem;display:flex;gap:1.2rem;align-items:flex-start">
+        <div style="width:40px;height:40px;background:rgba(244,121,32,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F47920" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div>
+          <p style="font-size:0.92rem;font-weight:500;color:var(--ink);margin-bottom:0.5rem;line-height:1.5">SNS担当がいない、<br>または疲弊している</p>
+          <p style="font-size:0.78rem;color:var(--ink);opacity:0.6;line-height:2">本業と兼務では回らない。M2Logが担当者として入り、社内リソースを補います。</p>
+        </div>
+      </div>
+
+      <div class="reveal reveal-d1" style="background:var(--cr);padding:2rem 2.2rem;display:flex;gap:1.2rem;align-items:flex-start">
+        <div style="width:40px;height:40px;background:rgba(244,121,32,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F47920" stroke-width="1.8" stroke-linecap="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+        </div>
+        <div>
+          <p style="font-size:0.92rem;font-weight:500;color:var(--ink);margin-bottom:0.5rem;line-height:1.5">映像をつくったが、<br>誰にも届かなかった</p>
+          <p style="font-size:0.78rem;color:var(--ink);opacity:0.6;line-height:2">つくって終わりの外注では起きがちな問題。届けるところまで、一緒に動きます。</p>
+        </div>
+      </div>
+
+      <div class="reveal" style="background:var(--cr);padding:2rem 2.2rem;display:flex;gap:1.2rem;align-items:flex-start">
+        <div style="width:40px;height:40px;background:rgba(244,121,32,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F47920" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div>
+          <p style="font-size:0.92rem;font-weight:500;color:var(--ink);margin-bottom:0.5rem;line-height:1.5">頼んだら<br>「なんか違う」ができた</p>
+          <p style="font-size:0.78rem;color:var(--ink);opacity:0.6;line-height:2">意図が伝わらないのは、つくる前の設計に入る人がいなかったから。</p>
+        </div>
+      </div>
+
+      <div class="reveal reveal-d1" style="background:var(--wh);padding:2rem 2.2rem;display:flex;gap:1.2rem;align-items:flex-start">
+        <div style="width:40px;height:40px;background:rgba(244,121,32,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F47920" stroke-width="1.8" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div>
+          <p style="font-size:0.92rem;font-weight:500;color:var(--ink);margin-bottom:0.5rem;line-height:1.5">SNSを始めたが、<br>何を改善すればいいかわからない</p>
+          <p style="font-size:0.78rem;color:var(--ink);opacity:0.6;line-height:2">数字を見ながら仮説・検証を繰り返す。データと肌感覚の両方で改善します。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- 01 SNS -->
+<div class="svc-block">
+  <div class="svc-block-inner">
+    <div class="svc-photo reveal">
+      <img src="../assets/img/svc02.jpg" alt="SNSアカウント運用">
+      <p class="svc-photo-num">01</p>
+    </div>
+    <div class="svc-text reveal reveal-d1">
+      <p class="svc-text-en">SNS Management</p>
+      <h2 class="svc-text-t">TikTokアカウント<br>運用代行</h2>
+      <p class="svc-text-b">
+        バズを生み出すことも大切ですが、それがゴールではありません。ブランドの文脈の中で、届け続けること——再生数だけでなく、誰にどう届いたかを見ながら投稿・分析・改善を繰り返します。SNS担当者として、継続的に伴走します。
+      </p>
+      <div class="svc-tags-wrap">
+        <span class="svc-tags-label">対応内容</span>
+        <div class="svc-tags">
+          <span class="svc-tag">コンセプト設計</span>
+          <span class="svc-tag">投稿企画立案</span>
+          <span class="svc-tag">撮影・ディレクション</span>
+          <span class="svc-tag">編集・テロップ設計</span>
+          <span class="svc-tag">投稿・コメント運用</span>
+          <span class="svc-tag">月次レポート・改善</span>
+          <span class="svc-tag">KPI設計</span>
+          <span class="svc-tag">TikTok広告支援</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02 ショート動画 -->
+<div class="svc-block">
+  <div class="svc-block-inner">
+    <div class="svc-photo reveal">
+      <img src="../assets/img/svc01.jpg" alt="ショート動画制作">
+      <p class="svc-photo-num">02</p>
+    </div>
+    <div class="svc-text reveal reveal-d1">
+      <p class="svc-text-en">Short Video / Drama</p>
+      <h2 class="svc-text-t">ショート動画・<br>ショートドラマ制作</h2>
+      <p class="svc-text-b">
+        縦型の視聴導線を踏まえ、最後まで見てしまうコンテンツを設計します。面白さだけでなく、視聴維持・共感・行動喚起まで見据えた企画が強み。ブランドの魅力を、今の時代の文法で届けます。
+      </p>
+      <div class="svc-tags-wrap">
+        <span class="svc-tags-label">対応内容</span>
+        <div class="svc-tags">
+          <span class="svc-tag">縦型ショート動画</span>
+          <span class="svc-tag">ショートドラマ</span>
+          <span class="svc-tag">SNSキャンペーン動画</span>
+          <span class="svc-tag">商品・サービス紹介</span>
+          <span class="svc-tag">インタビュー動画</span>
+          <span class="svc-tag">タレント・インフルエンサー起用</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03 映像マーケ -->
+<div class="svc-block">
+  <div class="svc-block-inner">
+    <div class="svc-photo reveal">
+      <img src="../assets/img/svc03_new.jpg" alt="映像マーケティング支援">
+      <p class="svc-photo-num">03</p>
+    </div>
+    <div class="svc-text reveal reveal-d1">
+      <p class="svc-text-en">Video Marketing</p>
+      <h2 class="svc-text-t">映像マーケティング<br>支援</h2>
+      <p class="svc-text-b">
+        SNSだけでなく、Web広告・採用・ブランディングまで。「この映像をどう使うか」から一緒に考えます。目的に合わせた映像の使い方を設計し、つくって終わりにしない活用を提案します。
+      </p>
+      <div class="svc-tags-wrap">
+        <span class="svc-tags-label">対応内容</span>
+        <div class="svc-tags">
+          <span class="svc-tag">SNS広告クリエイティブ</span>
+          <span class="svc-tag">Web広告動画制作</span>
+          <span class="svc-tag">採用動画</span>
+          <span class="svc-tag">採用向けSNS施策</span>
+          <span class="svc-tag">ブランドムービー</span>
+          <span class="svc-tag">HP・LP掲載用動画</span>
+          <span class="svc-tag">キャンペーン設計</span>
+          <span class="svc-tag">キャスティング・PR</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 一貫制作バナー -->
+<div id="inhouse-banner">
+  <div class="inhouse-inner">
+    <div class="inhouse-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <div class="inhouse-text">
+      <p class="inhouse-t">すべて内製。企画・脚本・撮影・編集を同じチームが担当します。</p>
+      <p class="inhouse-b">外部委託を挟まないから、意図がズレない。修正も速い。「なんか違う」が起きません。</p>
+    </div>
+  </div>
+</div>
+
+<!-- Flow -->
+<section id="flow">
+  <div class="s-in">
+    <span class="s-eye reveal">How We Work</span>
+    <h2 class="s-title reveal">企画から改善まで、<br>一貫して<span class="accent">伴走</span>します。</h2>
+    <div class="flow-steps">
+      <div class="flow-step reveal">
+        <p class="flow-step-n">01</p>
+        <h3 class="flow-step-t">戦略 / 企画</h3>
+        <p class="flow-step-b">何を届けたいのか、誰に届けたいのか——整理するところから始めます。目的・ターゲット・媒体特性を踏まえ、勝ち筋を設計します。</p>
+        <div class="flow-arrow">›</div>
+      </div>
+      <div class="flow-step reveal reveal-d1">
+        <p class="flow-step-n">02</p>
+        <h3 class="flow-step-t">制作 / 運用</h3>
+        <p class="flow-step-b">設計した方針をもとに、企画・撮影・編集・投稿まで一気通貫で実行。媒体ごとの見られ方も踏まえ、伝わる形に落とし込みます。</p>
+        <div class="flow-arrow">›</div>
+      </div>
+      <div class="flow-step reveal reveal-d2">
+        <p class="flow-step-n">03</p>
+        <h3 class="flow-step-t">分析 / 改善</h3>
+        <p class="flow-step-b">結果を振り返り、次にどう伸ばすかまで設計します。数字だけでなく、視聴者の反応や文脈も踏まえて改善提案を行います。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="svc-cta">
+  <p class="svc-cta-t reveal">まず、話すだけでいい。</p>
+  <p class="svc-cta-b reveal">何から手をつければいいかわからない状態でも大丈夫です。</p>
+  <div class="svc-cta-acts reveal">
+    <a href="contact.html" class="btn-p">無料相談する</a>
+    <a href="plans.html" class="btn-g-dark">プランを見る</a>
+  </div>
+</section>
+
+<nav class="page-nav-strip">
+  <a href="services.html" class="active">Services</a>
+  <a href="plans.html">Plans</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<footer>
+  <a href="../index.html" class="f-logo f-logo-text">M2<span class="logo-accent">Log</span></a>
+  <ul class="f-nav">
+    <li><a href="services.html">Services</a></li>
+    <li><a href="plans.html">Plans</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <p class="f-copy">© 2025 M2Log Inc. All rights reserved.</p>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

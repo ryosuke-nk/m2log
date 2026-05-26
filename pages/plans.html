@@ -31,18 +31,8 @@
 .ab-col { display: flex; flex-direction: column; }
 .ab-col-a { background: var(--cr2); border-top: 4px solid var(--border-m); }
 .ab-col-b { background: var(--nv2); border-top: 4px solid var(--or); border-left: 2px solid var(--or); border-right: 2px solid var(--or); border-bottom: 2px solid var(--or); position: relative; overflow: hidden; }
-.ab-col-b::before {
-  content: 'B'; position: absolute; right: -0.5rem; top: -1rem;
-  font-family: var(--dp); font-size: 9rem; font-weight: 900;
-  color: rgba(255,255,255,0.05); line-height: 1; pointer-events: none;
-  letter-spacing: -0.04em;
-}
-.ab-col-a::before {
-  content: 'A'; position: absolute; right: -0.5rem; top: -1rem;
-  font-family: var(--dp); font-size: 9rem; font-weight: 900;
-  color: rgba(17,24,39,0.05); line-height: 1; pointer-events: none;
-  letter-spacing: -0.04em;
-}
+.ab-col-b::before { display: none; }
+.ab-col-a::before { display: none; }
 .ab-col { position: relative; }
 
 .ab-head { padding: 2.5rem 2.8rem 2rem; border-bottom: 1px solid var(--border); }

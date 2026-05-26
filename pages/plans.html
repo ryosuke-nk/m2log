@@ -29,42 +29,45 @@
   box-shadow: 0 8px 48px rgba(0,0,0,0.10);
 }
 .ab-col { display: flex; flex-direction: column; }
-.ab-col-a { background: var(--wh); border-top: 4px solid var(--or); }
+.ab-col-a { background: var(--cr2); border-top: 4px solid rgba(0,0,0,0.15); }
 .ab-col-b { background: var(--nv2); border-top: 4px solid var(--or); position: relative; overflow: hidden; }
 .ab-col-b::before {
   content: 'B'; position: absolute; right: -0.5rem; top: -1rem;
   font-family: var(--dp); font-size: 9rem; font-weight: 900;
-  color: rgba(255,255,255,0.035); line-height: 1; pointer-events: none;
+  color: rgba(255,255,255,0.05); line-height: 1; pointer-events: none;
   letter-spacing: -0.04em;
 }
 .ab-col-a::before {
   content: 'A'; position: absolute; right: -0.5rem; top: -1rem;
   font-family: var(--dp); font-size: 9rem; font-weight: 900;
-  color: rgba(17,24,39,0.035); line-height: 1; pointer-events: none;
+  color: rgba(17,24,39,0.05); line-height: 1; pointer-events: none;
   letter-spacing: -0.04em;
 }
 .ab-col { position: relative; }
 
 .ab-head { padding: 2.5rem 2.8rem 2rem; border-bottom: 1px solid var(--border); }
-.ab-col-b .ab-head { border-bottom-color: var(--bl); }
+.ab-col-b .ab-head { border-bottom-color: rgba(255,255,255,0.1); }
 .ab-badge {
   display: inline-block; font-family: var(--eng); font-size: 0.52rem;
-  letter-spacing: 0.18em; text-transform: uppercase; background: var(--or);
-  color: var(--wh); padding: 0.25rem 0.8rem; border-radius: 3px; margin-bottom: 1.2rem;
-  font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-m); padding: 0.25rem 0.8rem; border-radius: 3px; margin-bottom: 1.2rem;
+  font-weight: 500; border: 1px solid var(--border-m); background: transparent;
+}
+.ab-col-b .ab-badge {
+  background: var(--or); color: var(--wh); border-color: var(--or);
 }
 .ab-title {
   font-family: var(--dp); font-size: clamp(1.35rem, 2.2vw, 1.75rem);
   font-weight: 800; color: var(--ink); line-height: 1.25;
   letter-spacing: -0.02em; margin-bottom: 0.6rem;
 }
-.ab-col-b .ab-title { color: var(--cr); }
+.ab-col-b .ab-title { color: #ffffff; }
 .ab-sub { font-size: 0.75rem; color: var(--ink-m); font-family: var(--eng); letter-spacing: 0.04em; }
-.ab-col-b .ab-sub { color: var(--tm); }
+.ab-col-b .ab-sub { color: rgba(255,255,255,0.55); }
 
 .ab-body { padding: 2.2rem 2.8rem; flex: 1; }
-.ab-desc { font-size: 0.83rem; color: var(--ink); opacity: 0.68; line-height: 2.3; margin-bottom: 2rem; }
-.ab-col-b .ab-desc { color: var(--cr); opacity: 0.7; }
+.ab-desc { font-size: 0.83rem; color: var(--ink); opacity: 0.75; line-height: 2.3; margin-bottom: 2rem; }
+.ab-col-b .ab-desc { color: rgba(255,255,255,0.75); opacity: 1; }
 
 .ab-items-label {
   font-family: var(--eng); font-size: 0.52rem; letter-spacing: 0.22em;
@@ -74,16 +77,16 @@
 .ab-items { display: flex; flex-direction: column; gap: 0.7rem; }
 .ab-item {
   display: flex; align-items: flex-start; gap: 0.8rem;
-  font-size: 0.82rem; color: var(--ink); opacity: 0.75; line-height: 1.7;
+  font-size: 0.82rem; color: var(--ink); opacity: 0.85; line-height: 1.7;
 }
-.ab-col-b .ab-item { color: var(--cr); opacity: 0.85; }
+.ab-col-b .ab-item { color: rgba(255,255,255,0.9); opacity: 1; }
 .ab-item::before {
   content: ''; width: 5px; height: 5px; border-radius: 50%;
   background: var(--or); flex-shrink: 0; margin-top: 0.6em;
 }
 
 .ab-foot { padding: 2rem 2.8rem; border-top: 1px solid var(--border); }
-.ab-col-b .ab-foot { border-top-color: var(--bl); }
+.ab-col-b .ab-foot { border-top-color: rgba(255,255,255,0.1); }
 
 /* ── 違いを一目で ── */
 #diff { background: var(--cr2); border-top: 1px solid var(--border); }

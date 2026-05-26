@@ -30,8 +30,8 @@
 .svc-block:nth-child(even) .svc-block-inner > * { direction: ltr; }
 
 /* 写真側 */
-.svc-photo { position: relative; overflow: hidden; }
-.svc-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 0.8s var(--ease); }
+.svc-photo { position: relative; overflow: hidden; min-height: 480px; }
+.svc-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 0.8s var(--ease); position: absolute; inset: 0; }
 .svc-block:hover .svc-photo img { transform: scale(1.03); }
 .svc-photo-num {
   position: absolute; top: 1.5rem; left: 1.5rem;
@@ -190,7 +190,7 @@
 
 
 <!-- 01 SNS -->
-<div class="svc-block">
+<div class="svc-block" id="sns">
   <div class="svc-block-inner">
     <div class="svc-photo reveal">
       <img src="../assets/img/svc02.jpg" alt="SNSアカウント運用">
@@ -220,7 +220,7 @@
 </div>
 
 <!-- 02 ショート動画 -->
-<div class="svc-block">
+<div class="svc-block" id="drama">
   <div class="svc-block-inner">
     <div class="svc-photo reveal">
       <img src="../assets/img/svc01.jpg" alt="ショート動画制作">
@@ -248,7 +248,7 @@
 </div>
 
 <!-- 03 映像マーケ -->
-<div class="svc-block">
+<div class="svc-block" id="video">
   <div class="svc-block-inner">
     <div class="svc-photo reveal">
       <img src="../assets/img/img_scene5.jpg" alt="映像マーケティング支援">

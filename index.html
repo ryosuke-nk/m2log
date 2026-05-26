@@ -125,25 +125,48 @@
 
 /* ── SERVICES overview ── */
 #services { background: var(--wh); border-top: 1px solid var(--border); }
-.svc-list { margin-top: 2.8rem; display: flex; flex-direction: column; }
-.svc-row {
-  display: grid; grid-template-columns: 48px 1fr auto;
-  align-items: center; gap: 1.5rem;
-  padding: 1.8rem 0; border-bottom: 1px solid var(--border);
-  text-decoration: none; transition: padding-left 0.25s var(--ease), background 0.2s;
-  border-radius: 4px;
+.svc-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem; margin-top: 2.8rem;
 }
-.svc-row:first-child { border-top: 1px solid var(--border); }
-.svc-row:hover { padding-left: 8px; background: var(--cr2); }
-.svc-row-num { font-family: var(--eng); font-size: 0.65rem; letter-spacing: 0.1em; color: var(--or); }
-.svc-row-content {}
-.svc-row-en { font-family: var(--eng); font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-s); margin-bottom: 0.3rem; }
-.svc-row-t { font-size: 1rem; font-weight: 500; color: var(--ink); }
-.svc-row-b { font-size: 0.8rem; color: var(--ink-m); margin-top: 0.3rem; line-height: 1.8; }
-.svc-row-arrow { font-size: 1.1rem; color: var(--ink-s); transition: transform 0.2s, color 0.2s; padding-right: 0.5rem; }
-.svc-row:hover .svc-row-arrow { transform: translateX(4px); color: var(--or); }
+.svc-card {
+  display: flex; flex-direction: column;
+  text-decoration: none; border: 1px solid var(--border);
+  border-radius: 8px; overflow: hidden;
+  background: var(--wh);
+  transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease);
+}
+.svc-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(0,0,0,0.09); }
+.svc-card-img { aspect-ratio: 3/2; overflow: hidden; position: relative; background: var(--cr2); }
+.svc-card-img img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center;
+  transition: transform 0.55s var(--ease); filter: brightness(0.88);
+}
+.svc-card:hover .svc-card-img img { transform: scale(1.05); filter: brightness(1); }
+.svc-card-body { padding: 1.5rem 1.6rem; flex: 1; display: flex; flex-direction: column; }
+.svc-card-num {
+  font-family: var(--eng); font-size: 0.56rem; letter-spacing: 0.14em;
+  color: var(--or); margin-bottom: 0.6rem;
+}
+.svc-card-en {
+  font-family: var(--eng); font-size: 0.54rem; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--ink-s); margin-bottom: 0.35rem;
+}
+.svc-card-t { font-size: 0.96rem; font-weight: 500; color: var(--ink); line-height: 1.45; margin-bottom: 0.5rem; }
+.svc-card-b { font-size: 0.78rem; color: var(--ink-m); line-height: 1.9; flex: 1; }
+.svc-card-foot {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--border);
+}
+.svc-card-link {
+  font-family: var(--eng); font-size: 0.56rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-s);
+}
+.svc-card-arrow { font-size: 1rem; color: var(--ink-s); transition: transform 0.2s, color 0.2s; }
+.svc-card:hover .svc-card-arrow { transform: translateX(4px); color: var(--or); }
 .svc-note { margin-top: 2rem; padding: 1.4rem 1.8rem; background: var(--cr2); border-radius: 4px; font-size: 0.82rem; color: var(--ink-m); line-height: 2; border-left: 3px solid var(--or); }
 .svc-note strong { color: var(--ink); font-weight: 500; }
+@media (max-width: 880px) { .svc-cards { grid-template-columns: 1fr; } }
 
 /* ── CLIENTS ── */
 #clients { background: var(--cr2); border-top: 1px solid var(--border); }
@@ -297,34 +320,56 @@
     <span class="s-eye reveal">What We Do</span>
     <h2 class="s-title reveal">できること、<span class="accent">3つ。</span></h2>
 
-    <div class="svc-list">
-      <a href="pages/services.html" class="svc-row reveal">
-        <p class="svc-row-num">01</p>
-        <div class="svc-row-content">
-          <p class="svc-row-en">SNS Management</p>
-          <p class="svc-row-t">TikTokアカウント運用代行</p>
-          <p class="svc-row-b">目的に向けて届けることを重視しながら、担当者として伴走します。</p>
+    <div class="svc-cards">
+
+      <a href="pages/services.html" class="svc-card reveal">
+        <div class="svc-card-img">
+          <img src="assets/img/img_scene3.jpg" alt="SNS運用代行 - TikTok撮影現場">
         </div>
-        <span class="svc-row-arrow">→</span>
-      </a>
-      <a href="pages/services.html" class="svc-row reveal reveal-d1">
-        <p class="svc-row-num">02</p>
-        <div class="svc-row-content">
-          <p class="svc-row-en">Short Video / Drama</p>
-          <p class="svc-row-t">ショート動画・ショートドラマ制作</p>
-          <p class="svc-row-b">最後まで見てしまうコンテンツを、視聴導線から設計します。</p>
+        <div class="svc-card-body">
+          <p class="svc-card-num">01</p>
+          <p class="svc-card-en">SNS Management</p>
+          <p class="svc-card-t">TikTokアカウント運用代行</p>
+          <p class="svc-card-b">目的に向けて届けることを重視しながら、担当者として伴走します。</p>
+          <div class="svc-card-foot">
+            <span class="svc-card-link">View Details</span>
+            <span class="svc-card-arrow">→</span>
+          </div>
         </div>
-        <span class="svc-row-arrow">→</span>
       </a>
-      <a href="pages/services.html" class="svc-row reveal reveal-d2">
-        <p class="svc-row-num">03</p>
-        <div class="svc-row-content">
-          <p class="svc-row-en">Video Marketing</p>
-          <p class="svc-row-t">映像マーケティング支援</p>
-          <p class="svc-row-b">SNS・Web広告・採用・ブランディングまで、使い方から設計します。</p>
+
+      <a href="pages/services.html" class="svc-card reveal reveal-d1">
+        <div class="svc-card-img">
+          <img src="assets/img/IMG_3228.JPG" alt="ショートドラマ制作現場">
         </div>
-        <span class="svc-row-arrow">→</span>
+        <div class="svc-card-body">
+          <p class="svc-card-num">02</p>
+          <p class="svc-card-en">Short Video / Drama</p>
+          <p class="svc-card-t">ショート動画・ショートドラマ制作</p>
+          <p class="svc-card-b">最後まで見てしまうコンテンツを、視聴導線から設計します。</p>
+          <div class="svc-card-foot">
+            <span class="svc-card-link">View Details</span>
+            <span class="svc-card-arrow">→</span>
+          </div>
+        </div>
       </a>
+
+      <a href="pages/services.html" class="svc-card reveal reveal-d2">
+        <div class="svc-card-img">
+          <img src="assets/img/IMG_1950.JPG" alt="映像マーケティング支援">
+        </div>
+        <div class="svc-card-body">
+          <p class="svc-card-num">03</p>
+          <p class="svc-card-en">Video Marketing</p>
+          <p class="svc-card-t">映像マーケティング支援</p>
+          <p class="svc-card-b">SNS・Web広告・採用・ブランディングまで、使い方から設計します。</p>
+          <div class="svc-card-foot">
+            <span class="svc-card-link">View Details</span>
+            <span class="svc-card-arrow">→</span>
+          </div>
+        </div>
+      </a>
+
     </div>
 
     <p class="svc-note reveal">

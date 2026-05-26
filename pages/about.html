@@ -30,13 +30,20 @@
 }
 .mission-headline .accent { color: var(--or); display: block; }
 .mission-body { font-size: 0.85rem; color: var(--ink); opacity: 0.68; line-height: 2.4; margin-bottom: 1.6rem; }
-.mission-pills { display: flex; flex-direction: column; gap: 1px; margin-top: 2rem; }
+.mission-pills { display: flex; flex-direction: column; gap: 2px; margin-top: 2.4rem; }
 .mission-pill {
-  padding: 1.4rem 1.6rem; background: var(--wh);
-  border-left: 3px solid transparent; transition: border-color 0.25s, background 0.25s;
+  padding: 1.6rem 1.8rem; background: var(--wh);
+  border-left: 4px solid transparent;
+  transition: border-color 0.25s, background 0.25s, transform 0.2s;
+  display: grid; grid-template-columns: 2rem 1fr; gap: 1.2rem; align-items: start;
 }
-.mission-pill:hover { border-left-color: var(--or); background: var(--cr2); }
-.mission-pill-t { font-size: 0.9rem; font-weight: 500; color: var(--ink); margin-bottom: 0.4rem; }
+.mission-pill:hover { border-left-color: var(--or); background: var(--cr2); transform: translateX(3px); }
+.mission-pill-num {
+  font-family: var(--eng); font-size: 0.58rem; letter-spacing: 0.1em;
+  color: var(--or); font-weight: 600; padding-top: 0.25rem;
+}
+.mission-pill-content {}
+.mission-pill-t { font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: 0.45rem; letter-spacing: 0.01em; }
 .mission-pill-b { font-size: 0.78rem; color: var(--ink-m); line-height: 2; }
 
 /* ── Team text ── */
@@ -148,16 +155,25 @@
       </div>
       <div class="mission-pills reveal reveal-d2">
         <div class="mission-pill">
-          <p class="mission-pill-t">担当者として、動く。</p>
-          <p class="mission-pill-b">会議に出て、一緒に考えて、映像をつくる。発注先ではなく、チームの一員として関わります。</p>
+          <p class="mission-pill-num">01</p>
+          <div class="mission-pill-content">
+            <p class="mission-pill-t">担当者として、動く。</p>
+            <p class="mission-pill-b">会議に出て、一緒に考えて、映像をつくる。発注先ではなく、チームの一員として関わります。</p>
+          </div>
         </div>
         <div class="mission-pill">
-          <p class="mission-pill-t">つくって終わりにしない。</p>
-          <p class="mission-pill-b">納品で終わりではなく、届けるところまで伴走します。だから意図がズレず、成果につながります。</p>
+          <p class="mission-pill-num">02</p>
+          <div class="mission-pill-content">
+            <p class="mission-pill-t">つくって終わりにしない。</p>
+            <p class="mission-pill-b">納品で終わりではなく、届けるところまで伴走します。だから意図がズレず、成果につながります。</p>
+          </div>
         </div>
         <div class="mission-pill">
-          <p class="mission-pill-t">マーケ視点で、企画する。</p>
-          <p class="mission-pill-b">映像を撮る前に、目的・ターゲット・届け方を一緒に設計します。手段ではなく、成果から逆算します。</p>
+          <p class="mission-pill-num">03</p>
+          <div class="mission-pill-content">
+            <p class="mission-pill-t">マーケ視点で、企画する。</p>
+            <p class="mission-pill-b">映像を撮る前に、目的・ターゲット・届け方を一緒に設計します。手段ではなく、成果から逆算します。</p>
+          </div>
         </div>
       </div>
     </div>

@@ -29,8 +29,8 @@
   box-shadow: 0 8px 48px rgba(0,0,0,0.10);
 }
 .ab-col { display: flex; flex-direction: column; }
-.ab-col-a { background: var(--cr2); border-top: 4px solid rgba(0,0,0,0.15); }
-.ab-col-b { background: var(--nv2); border-top: 4px solid var(--or); position: relative; overflow: hidden; }
+.ab-col-a { background: var(--cr2); border-top: 4px solid rgba(0,0,0,0.15); outline: 2px solid var(--border-m); outline-offset: -2px; }
+.ab-col-b { background: var(--nv2); border-top: 4px solid var(--or); position: relative; overflow: hidden; outline: 2px solid var(--or); outline-offset: -2px; }
 .ab-col-b::before {
   content: 'B'; position: absolute; right: -0.5rem; top: -1rem;
   font-family: var(--dp); font-size: 9rem; font-weight: 900;

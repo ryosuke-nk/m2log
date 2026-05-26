@@ -65,15 +65,34 @@
 .inhouse-b { font-size: 0.78rem; color: var(--tm); line-height: 1.8; }
 
 /* ── Flow ── */
-#flow { background: var(--cr); border-top: 1px solid var(--border); }
-.flow-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; margin-top: 2.5rem; }
-.flow-step { padding: 2.4rem 2rem; position: relative; }
-.flow-step:not(:last-child) { border-right: 1px solid var(--border); }
-.flow-step:nth-child(odd) { background: var(--wh); }
-.flow-step:nth-child(even) { background: var(--cr2); }
-.flow-step-n { font-family: var(--dp); font-size: 3rem; font-weight: 900; color: var(--or); opacity: 0.1; line-height: 1; margin-bottom: 0.5rem; }
-.flow-step-t { font-size: 0.95rem; font-weight: 500; color: var(--ink); margin-bottom: 0.7rem; }
-.flow-step-b { font-size: 0.8rem; color: var(--ink); opacity: 0.65; line-height: 2.1; }
+#flow { background: var(--nv2); border-top: 1px solid var(--bl); }
+#flow .s-eye { color: var(--or); }
+#flow .s-title { color: var(--cr); }
+#flow .s-title .accent { color: var(--or); }
+.flow-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; border: 1px solid var(--bl); border-radius: 8px; overflow: hidden; margin-top: 2.5rem; }
+.flow-step { padding: 2.8rem 2.4rem; position: relative; }
+.flow-step:not(:last-child) { border-right: 1px solid var(--bl); }
+.flow-step:nth-child(odd) { background: rgba(255,255,255,0.04); }
+.flow-step:nth-child(even) { background: rgba(255,255,255,0.02); }
+.flow-step-n {
+  font-family: var(--dp); font-size: 3.5rem; font-weight: 900;
+  color: var(--or); opacity: 0.35; line-height: 1; margin-bottom: 1rem;
+  letter-spacing: -0.03em;
+}
+.flow-step-t { font-size: 1rem; font-weight: 500; color: #ffffff; margin-bottom: 0.8rem; letter-spacing: 0.02em; }
+.flow-step-b { font-size: 0.8rem; color: rgba(245,240,232,0.6); line-height: 2.2; }
+.flow-arrow {
+  position: absolute; right: -14px; top: 50%; transform: translateY(-50%);
+  width: 28px; height: 28px; background: var(--or); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; color: #fff; z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.flow-step:last-child .flow-arrow { display: none; }
+@media (max-width: 880px) {
+  .flow-steps { grid-template-columns: 1fr; }
+  .flow-step:not(:last-child) { border-right: none; border-bottom: 1px solid var(--bl); }
+  .flow-arrow { display: none; }
+}
 .flow-arrow {
   position: absolute; right: -12px; top: 50%; transform: translateY(-50%);
   width: 24px; height: 24px; background: var(--or); border-radius: 50%;
@@ -251,7 +270,7 @@
 <div class="svc-block" id="video">
   <div class="svc-block-inner">
     <div class="svc-photo reveal">
-      <img src="../assets/img/img_scene5.jpg" alt="映像マーケティング支援">
+      <img src="../assets/img/img_scene5.jpg" alt="映像マーケティング支援" style="object-position: center 20%;">
       <p class="svc-photo-num">03</p>
     </div>
     <div class="svc-text reveal reveal-d1">

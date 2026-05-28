@@ -182,6 +182,27 @@
 }
 @media (max-width: 640px) {
   .diff-table { display: none; }
+  .diff-cards { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1.8rem; }
+  .diff-card {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+  }
+  .diff-card-label {
+    grid-column: 1 / -1; background: var(--nv2);
+    font-family: var(--eng); font-size: 0.5rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--tm);
+    padding: 0.5rem 0.9rem;
+  }
+  .diff-card-a { background: var(--cr2); padding: 0.7rem 0.9rem; }
+  .diff-card-b { background: var(--nv2); padding: 0.7rem 0.9rem; }
+  .diff-card-plan {
+    font-family: var(--eng); font-size: 0.45rem; letter-spacing: 0.14em;
+    text-transform: uppercase; margin-bottom: 0.25rem;
+  }
+  .diff-card-a .diff-card-plan { color: var(--or); }
+  .diff-card-b .diff-card-plan { color: var(--or); }
+  .diff-card-val { font-size: 0.8rem; color: var(--ink); font-weight: 500; }
+  .diff-card-b .diff-card-val { color: #ffffff; }
 }
 </style>
 </head>
@@ -358,6 +379,35 @@
         <tr><td>広告運用支援</td><td><span class="check">✓</span>（オプション）</td><td><span class="check">✓</span>（オプション）</td></tr>
       </tbody>
     </table>
+
+    <!-- スマホ用比較カード -->
+    <div class="diff-cards">
+      <div class="diff-card">
+        <div class="diff-card-label">支援の形</div>
+        <div class="diff-card-a"><p class="diff-card-plan">PLAN A</p><p class="diff-card-val">M2Logが担当者として継続的に動く</p></div>
+        <div class="diff-card-b"><p class="diff-card-plan">PLAN B</p><p class="diff-card-val">段階的に社内チームへ移行する</p></div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-card-label">期間</div>
+        <div class="diff-card-a"><p class="diff-card-plan">PLAN A</p><p class="diff-card-val">6ヶ月〜（継続）</p></div>
+        <div class="diff-card-b"><p class="diff-card-plan">PLAN B</p><p class="diff-card-val">12ヶ月（固定）</p></div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-card-label">月のコンテンツ数</div>
+        <div class="diff-card-a"><p class="diff-card-plan">PLAN A</p><p class="diff-card-val">月5本〜</p></div>
+        <div class="diff-card-b"><p class="diff-card-plan">PLAN B</p><p class="diff-card-val">月4本（移行しながら）</p></div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-card-label">ノウハウ移転</div>
+        <div class="diff-card-a"><p class="diff-card-plan">PLAN A</p><p class="diff-card-val">運用を通じて知識も共有</p></div>
+        <div class="diff-card-b"><p class="diff-card-plan">PLAN B</p><p class="diff-card-val">移転がゴール</p></div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-card-label">月額の変化</div>
+        <div class="diff-card-a"><p class="diff-card-plan">PLAN A</p><p class="diff-card-val">固定</p></div>
+        <div class="diff-card-b"><p class="diff-card-plan">PLAN B</p><p class="diff-card-val">段階的に下がる</p></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -434,7 +484,7 @@
   <p class="plans-cta-b reveal">まず話すだけでいい。どんな状態からでも構いません。</p>
   <div class="plans-cta-acts reveal">
     <a href="contact.html" class="btn-p">相談する</a>
-    <a href="services.html" class="btn-g-dark">支援内容を見る</a>
+    <a href="about.html" class="btn-g-dark">チームを見る</a>
   </div>
 </section>
 

@@ -286,3 +286,19 @@ footer {
   html, body, a, button { cursor: auto; }
   #custom-cursor { display: none !important; }
 }
+
+/* ── MOBILE OVERRIDE (640px以下) ── */
+@media (max-width: 640px) {
+  body { font-size: 0.9rem; line-height: 1.75; }
+  .s-in { padding: 3.5rem 5vw !important; }
+  .page-hero { padding: 7rem 5vw 3.5rem !important; }
+  .nav-in { padding: 0 4vw; height: 58px; }
+  .nav-cta { padding: 0.4rem 0.85rem; font-size: 0.6rem; }
+  .s-title { font-size: clamp(1.5rem, 5.5vw, 2rem) !important; line-height: 1.2 !important; }
+  .s-lead { font-size: 0.84rem !important; line-height: 1.75 !important; margin-top: 0.8rem !important; }
+  .page-h { font-size: clamp(1.8rem, 7vw, 2.6rem) !important; line-height: 1.1 !important; }
+  .page-lead { font-size: 0.82rem !important; line-height: 1.7 !important; }
+  .btn-p, .btn-nv, .btn-g, .btn-g-dark { padding: 0.78rem 1.3rem !important; font-size: 0.65rem !important; }
+  .scene-scroll-item { width: 220px !important; height: 165px !important; }
+  .s-eye { font-size: 0.5rem !important; letter-spacing: 0.2em !important; margin-bottom: 0.7rem !important; }
+}

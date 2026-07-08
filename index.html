@@ -6,25 +6,26 @@
 <title>M2Log — 映像をつくる前に、チームに入る。</title>
 <meta property="og:type" content="website">
 <meta property="og:title" content="M2Log — 映像をつくる前に、チームに入る。">
-<meta property="og:description" content="つくって終わりではなく、届けるところまで伴走する映像マーケティングパートナー。SNS運用、ショートドラマ、採用映像、WebCM。">
-<meta property="og:image" content="https://m2log.vercel.app/assets/ogp.jpg">
-<meta property="og:url" content="https://m2log.vercel.app">
+<meta property="og:description" content="映像をつくる前に、チームに入る。SNS運用・ショート動画・映像制作を担当者として伴走する映像マーケティングパートナー、株式会社M2Log。第13回BOVA協賛企業賞受賞。">
+<meta property="og:image" content="https://m2log-v2.vercel.app/assets/ogp.jpg">
+<meta property="og:url" content="https://m2log-v2.vercel.app">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://m2log-v2.vercel.app/">
 <link rel="icon" href="assets/favicon.ico">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVNJRPJJVC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XVNJRPJJVC');
-</script>
-<meta name="description" content="つくって終わりではなく、届けるところまで伴走する映像マーケティングパートナー。">
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XVNJRPJJVC');</script>
+<meta name="description" content="映像をつくる前に、チームに入る。SNS運用・ショート動画・映像制作を担当者として伴走する映像マーケティングパートナー、株式会社M2Log。第13回BOVA協賛企業賞受賞。">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/img/hero_bg.jpg" fetchpriority="high">
 <link rel="stylesheet" href="assets/css/base.css">
 <style>
+
+/* ══ v2 情報ダイエット版 ══
+   方針: 1セクション1メッセージ / 読ませない・見せる / 本文は短く大きく */
 
 /* ── HERO ── */
 #hero {
@@ -32,50 +33,51 @@
   display: flex; flex-direction: column; justify-content: flex-end;
   overflow: hidden; background: var(--nv2);
 }
-
 .hero-ov {
   position: absolute; inset: 0;
   background: linear-gradient(to top, var(--nv2) 0%, rgba(9,15,34,0.15) 60%, transparent 100%);
 }
+.hero-video {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; opacity: 0; transition: opacity 1.4s ease;
+  filter: brightness(0.4) saturate(0.85);
+}
+.hero-video.on { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .hero-video { display: none; } }
 .hero-c { position: relative; z-index: 2; padding: 0 6vw 10vh; }
 .hero-label {
-  font-family: var(--eng); font-size: 0.58rem; letter-spacing: 0.32em;
+  font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.32em;
   text-transform: uppercase; color: var(--or);
   display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.8rem;
   opacity: 0; animation: fup 0.9s var(--ease) 0.2s forwards;
 }
 .hero-label::before { content: ''; width: 1.4rem; height: 1px; background: var(--or); display: block; }
 .hero-h { margin-bottom: 1.4rem; }
-.hero-h .l1 {
+.hero-h .l1, .hero-h .l2 {
   display: block;
   font-family: var(--dp); font-weight: 800; letter-spacing: -0.03em; line-height: 1.0;
-  font-size: clamp(2.8rem, 7vw, 6.5rem); color: var(--cr);
-  opacity: 0; animation: fup 1s var(--ease) 0.35s forwards;
+  font-size: clamp(2.8rem, 7vw, 6.5rem);
 }
-.hero-h .l2 {
-  display: block;
-  font-family: var(--dp); font-weight: 800; letter-spacing: -0.03em; line-height: 1.0;
-  font-size: clamp(2.8rem, 7vw, 6.5rem); color: var(--or);
-  opacity: 0; animation: fup 1s var(--ease) 0.5s forwards;
-}
+.hero-h .l1 { color: var(--tl); opacity: 0; animation: fup 1s var(--ease) 0.35s forwards; }
+.hero-h .l2 { color: var(--or); opacity: 0; animation: fup 1s var(--ease) 0.5s forwards; }
 .hero-mission {
   font-size: clamp(1.05rem, 1.8vw, 1.4rem);
   font-weight: 300; letter-spacing: 0.1em;
-  color: rgba(245,240,232,0.8); margin-bottom: 1.2rem;
+  color: rgba(245,240,232,0.85); margin-bottom: 1.1rem;
   opacity: 0; animation: fup 1s var(--ease) 0.62s forwards;
 }
 .hero-body {
-  font-size: 0.92rem; color: var(--tm); line-height: 2.2; max-width: 420px;
+  font-size: 0.95rem; color: rgba(245,240,232,0.78); line-height: 2; max-width: 500px;
   margin-bottom: 2.2rem;
-  opacity: 0; animation: fup 1s var(--ease) 0.65s forwards;
+  opacity: 0; animation: fup 1s var(--ease) 0.68s forwards;
 }
 .hero-acts {
   display: flex; gap: 0.9rem; flex-wrap: wrap;
-  opacity: 0; animation: fup 1s var(--ease) 0.78s forwards;
+  opacity: 0; animation: fup 1s var(--ease) 0.8s forwards;
 }
 .hero-scroll {
   position: absolute; right: 5vw; bottom: 2.5rem; z-index: 3;
-  font-family: var(--eng); font-size: 0.5rem; letter-spacing: 0.24em;
+  font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.24em;
   text-transform: uppercase; color: var(--tm);
   writing-mode: vertical-rl; display: flex; align-items: center; gap: 0.8rem;
   opacity: 0; animation: fin 1s 1.1s forwards;
@@ -84,142 +86,293 @@
 @keyframes fup { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
 @keyframes fin  { to{opacity:1} }
 
-/* ── PROBLEMS ── */
-#problems { background: var(--cr); border-top: 1px solid var(--border); }
-.prob-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 6rem; align-items: start; }
-.prob-sticky { position: sticky; top: 7rem; }
-.prob-photo { border-radius: 6px; overflow: hidden; aspect-ratio: 3/4; position: relative; }
-.prob-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
-.prob-photo::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: var(--or); }
-.prob-right {}
-.prob-cards { margin-top: 2.2rem; }
-.prob-card { padding: 1.5rem 0; border-bottom: 1px solid var(--border); cursor: default; transition: padding-left 0.25s var(--ease); }
-.prob-card:first-child { border-top: 1px solid var(--border); }
-.prob-card:hover { padding-left: 6px; }
-.prob-n { font-family: var(--eng); font-size: 0.6rem; letter-spacing: 0.1em; color: var(--or); margin-bottom: 0.4rem; }
-.prob-t { font-size: 0.95rem; font-weight: 500; color: var(--ink); line-height: 1.55; margin-bottom: 0.45rem; }
-.prob-b { font-size: 0.8rem; color: var(--ink-m); line-height: 2; }
-
-/* ── TEAM ── (全幅写真＋オーバーレイ) */
-#team { position: relative; overflow: hidden; border-top: 1px solid var(--border); }
-.team-inner { position: relative; min-height: 560px; display: flex; align-items: flex-end; }
-.team-photo-side { position: absolute; inset: 0; }
-.team-photo-side img { width: 100%; height: 100%; object-fit: cover; object-position: 15% top; filter: brightness(0.55); }
-.team-photo-side::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(9,15,34,0.75) 0%, rgba(9,15,34,0.3) 55%, transparent 100%); }
-.team-text-side { position: relative; z-index: 2; padding: 5rem 6vw; max-width: 600px; }
-.team-quote {
-  font-size: clamp(1rem, 1.6vw, 1.4rem); font-weight: 400;
-  color: var(--cr); line-height: 1.65; margin-bottom: 1.6rem;
-  padding-left: 1.2rem; border-left: 3px solid var(--or);
-}
-.team-quote em { font-style: normal; color: var(--or); }
-.team-body { font-size: 0.83rem; color: rgba(245,240,232,0.75); line-height: 2.2; margin-bottom: 2rem; }
-.team-members { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.5rem; }
-.team-member-chip {
-  display: flex; align-items: center; gap: 0.5rem;
-  font-size: 0.75rem; color: rgba(245,240,232,0.8); padding: 0.35rem 0.8rem;
-  border: 1px solid rgba(245,240,232,0.25); border-radius: 20px;
-  background: rgba(255,255,255,0.08);
-}
-.team-member-chip::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--or); flex-shrink: 0; }
-
-/* ── SERVICES overview ── */
-#services { background: var(--nv2); border-top: 1px solid var(--bl); }
-#services .s-eye { color: var(--or); }
-#services .s-title { color: var(--tl); }
-.svc-cards {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem; margin-top: 2.8rem;
-}
-.svc-card {
-  display: flex; flex-direction: column;
-  text-decoration: none;
-  border: 1px solid var(--bl);
-  border-radius: 12px; overflow: hidden;
-  background: rgba(255,255,255,0.04);
-  transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease), background 0.28s;
-}
-.svc-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-  background: rgba(255,255,255,0.07);
-}
-.svc-card-img { aspect-ratio: 3/2; overflow: hidden; position: relative; background: var(--nv); }
-.svc-card-img img {
-  width: 100%; height: 100%; object-fit: cover; object-position: center;
-  transition: transform 0.6s var(--ease); filter: brightness(0.82);
-}
-.svc-card:hover .svc-card-img img { transform: scale(1.06); filter: brightness(1); }
-.svc-card-body { padding: 1.6rem 1.8rem; flex: 1; display: flex; flex-direction: column; }
-.svc-card-num {
-  font-family: var(--eng); font-size: 0.56rem; letter-spacing: 0.16em;
-  color: var(--or); margin-bottom: 0.6rem;
-}
-.svc-card-en {
-  font-family: var(--eng); font-size: 0.54rem; letter-spacing: 0.18em;
-  text-transform: uppercase; color: var(--ts); margin-bottom: 0.4rem;
-}
-.svc-card-t { font-size: 1.0rem; font-weight: 600; color: var(--tl); line-height: 1.45; margin-bottom: 0.55rem; }
-.svc-card-b { font-size: 0.8rem; color: var(--tm); line-height: 1.95; flex: 1; }
-.svc-card-foot {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--bl);
-}
-.svc-card-link {
-  font-family: var(--eng); font-size: 0.55rem; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--ts);
-}
-.svc-card-arrow { font-size: 1rem; color: var(--tm); transition: transform 0.2s, color 0.2s; }
-.svc-card:hover .svc-card-arrow { transform: translateX(5px); color: var(--or); }
-.svc-note {
-  margin-top: 2.2rem; padding: 1.4rem 1.8rem;
-  background: rgba(255,255,255,0.04); border-radius: 6px;
-  font-size: 0.84rem; color: var(--tm); line-height: 2;
-  border-left: 3px solid var(--or);
-}
-.svc-note strong { color: var(--tl); font-weight: 500; }
-@media (max-width: 880px) { .svc-cards { grid-template-columns: 1fr; } }
-
-/* ── CLIENTS ── */
-#clients { background: var(--cr2); border-top: 1px solid var(--border); }
-.cl-inner { padding: 3rem 0; }
-.cl-eye { font-family: var(--eng); font-size: 0.56rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--ink-s); text-align: center; margin-bottom: 1.4rem; }
+/* ── CLIENTS(ヒーロー直下に移動: 信頼の先出し) ── */
+#clients { background: var(--nv2); border-top: 1px solid var(--bl); }
+.cl-inner { padding: 2.2rem 0 2.6rem; }
+.cl-eye { font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--tm); text-align: center; margin-bottom: 1.3rem; }
 .cl-scroll { overflow: hidden; position: relative; }
 .cl-scroll::before, .cl-scroll::after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 1; pointer-events: none; }
-.cl-scroll::before { left: 0; background: linear-gradient(to right, var(--cr2), transparent); }
-.cl-scroll::after  { right: 0; background: linear-gradient(to left,  var(--cr2), transparent); }
+.cl-scroll::before { left: 0; background: linear-gradient(to right, var(--nv2), transparent); }
+.cl-scroll::after  { right: 0; background: linear-gradient(to left,  var(--nv2), transparent); }
 .cl-track { display: flex; animation: ticker 34s linear infinite; width: max-content; }
-.cl-pill { font-family: var(--sans); font-size: 0.75rem; font-weight: 300; color: var(--ink-m); padding: 0.42rem 1.1rem; border: 1px solid var(--border-m); border-radius: 4px; white-space: nowrap; margin: 0 0.35rem; flex-shrink: 0; transition: all 0.2s; background: var(--wh); }
+.cl-pill { font-family: var(--sans); font-size: 0.78rem; font-weight: 300; color: rgba(245,240,232,0.72); padding: 0.42rem 1.1rem; border: 1px solid var(--bm); border-radius: 4px; white-space: nowrap; margin: 0 0.35rem; flex-shrink: 0; background: rgba(255,255,255,0.04); }
+
+/* ── STANCE(旧: 課題3連+Who We Are を1セクションに統合) ── */
+#stance { position: relative; overflow: hidden; border-top: 1px solid var(--border); }
+.stance-inner { display: flex; align-items: stretch; min-height: 560px; }
+.stance-photo { position: relative; flex: 0 0 52%; overflow: hidden; }
+.stance-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 45% 20%; filter: brightness(0.94) saturate(0.98); }
+.stance-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(9,15,34,0.42), transparent 32%); pointer-events: none; }
+.stance-text { flex: 1; align-self: center; padding: 5.5rem 6vw 5.5rem 4rem; max-width: 640px; }
+@media (max-width: 900px) {
+  .stance-inner { flex-direction: column; min-height: 0; }
+  .stance-photo { flex: none; width: 100%; aspect-ratio: 4/3; }
+  .stance-text { padding: 3rem 5vw 3.5rem; }
+}
+.stance-h {
+  font-family: var(--dp); font-size: clamp(1.7rem, 3vw, 2.6rem); font-weight: 800;
+  color: var(--tl); line-height: 1.35; letter-spacing: -0.01em; margin-bottom: 1.4rem;
+}
+.stance-h .accent { color: var(--or); }
+.stance-body { font-size: 0.95rem; color: rgba(245,240,232,0.8); line-height: 2.2; margin-bottom: 2rem; max-width: 480px; }
+.stance-quote {
+  font-size: 0.95rem; color: var(--tl); line-height: 1.9;
+  padding-left: 1.1rem; border-left: 3px solid var(--or); margin-bottom: 2.2rem;
+}
+.stance-quote em { font-style: normal; color: var(--or); }
+
+/* ── SERVICES ── */
+#services { background: var(--wh); border-top: 1px solid var(--border); }
+.svc-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.8rem; }
+.svc-card {
+  display: flex; flex-direction: column; text-decoration: none;
+  border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--wh);
+  transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease);
+}
+.svc-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(0,0,0,0.09); }
+.svc-card-img { aspect-ratio: 3/2; overflow: hidden; position: relative; background: var(--cr2); }
+.svc-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.55s var(--ease); filter: brightness(0.9); }
+.svc-card:hover .svc-card-img img { transform: scale(1.05); filter: brightness(1); }
+.svc-card-body { padding: 1.5rem 1.6rem; flex: 1; display: flex; flex-direction: column; }
+.svc-card-en { font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--or); margin-bottom: 0.5rem; }
+.svc-card-t { font-size: 1.02rem; font-weight: 500; color: var(--ink); line-height: 1.45; margin-bottom: 0.5rem; }
+.svc-card-b { font-size: 0.85rem; color: var(--ink-m); line-height: 1.9; flex: 1; }
+.svc-card-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+.svc-card-link { font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-s); }
+.svc-card-arrow { font-size: 1rem; color: var(--ink-s); transition: transform 0.2s, color 0.2s; }
+.svc-card:hover .svc-card-arrow { transform: translateX(4px); color: var(--or); }
+.svc-note { margin-top: 2rem; padding: 1.3rem 1.8rem; background: var(--cr2); border-radius: 4px; font-size: 0.86rem; color: var(--ink-m); line-height: 2; border-left: 3px solid var(--or); }
+.svc-note strong { color: var(--ink); font-weight: 500; }
+@media (max-width: 880px) { .svc-cards { grid-template-columns: 1fr; } }
+
+/* ── DOORS(頼み方は2つ) ── */
+#doors { background: var(--cr); border-top: 1px solid var(--border); }
+.doors-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.8rem; }
+.door {
+  border-radius: 12px; padding: 2.8rem 2.6rem;
+  display: flex; flex-direction: column; position: relative; overflow: hidden;
+  transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease);
+}
+.door:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.12); }
+.door-light { background: var(--lite); border: 1px solid var(--border-on-lite); }
+.door-dark { background: var(--nv2); border: 1px solid var(--bl); }
+.door-eye {
+  font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--or); margin-bottom: 1rem;
+}
+.door-t {
+  font-family: var(--dp); font-size: clamp(1.3rem, 2vw, 1.7rem); font-weight: 800;
+  line-height: 1.35; letter-spacing: -0.01em; margin-bottom: 0.9rem;
+}
+.door-light .door-t { color: var(--ink-on-lite); }
+.door-dark .door-t { color: var(--tl); }
+.door-b { font-size: 0.88rem; line-height: 2; margin-bottom: 1.6rem; }
+.door-light .door-b { color: var(--ink-on-lite-m); }
+.door-dark .door-b { color: var(--tm); }
+.door-prices { display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 1.4rem; }
+.door-price {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+  padding-bottom: 0.55rem; border-bottom: 1px dashed rgba(17,24,39,0.25);
+  font-size: 0.82rem;
+}
+.door-dark .door-price { border-bottom-color: var(--bm); }
+.door-price span { color: var(--ink-on-lite-m); }
+.door-dark .door-price span { color: var(--tm); }
+.door-price b { font-family: var(--dp); font-weight: 700; font-size: 0.95rem; color: var(--ink-on-lite); white-space: nowrap; }
+.door-dark .door-price b { color: var(--tl); }
+.door-note { font-size: 0.76rem; line-height: 1.9; margin-bottom: 2rem; }
+.door-light .door-note { color: rgba(17,24,39,0.55); }
+.door-dark .door-note { color: var(--tm); opacity: 0.8; }
+.door .btn-p, .door .btn-nv { margin-top: auto; text-align: center; }
+@media (max-width: 880px) { .doors-grid { grid-template-columns: 1fr; } }
 
 /* ── CTA ── */
 #cta-main { background: var(--nv2); padding: 8rem 6vw; }
 .cta-main-inner { display: grid; grid-template-columns: 1fr auto; gap: 4rem; align-items: center; }
-.cta-label { font-family: var(--eng); font-size: 0.56rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--or); margin-bottom: 1rem; display: block; }
+.cta-label { font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--or); margin-bottom: 1rem; display: block; }
 .cta-t { font-size: clamp(1.4rem, 2.2vw, 2rem); font-weight: 400; color: var(--tl); line-height: 1.55; max-width: 440px; }
-.cta-b { font-size: 0.83rem; color: var(--tm); margin-top: 0.9rem; line-height: 2; }
+.cta-b { font-size: 0.88rem; color: var(--tm); margin-top: 0.9rem; line-height: 2; }
 .cta-acts { display: flex; flex-direction: column; gap: 0.8rem; min-width: 180px; }
 
 @media (max-width: 960px) {
-  .prob-layout { grid-template-columns: 1fr; gap: 3rem; }
-  .prob-sticky { position: static; }
-  .prob-photo { aspect-ratio: 16/9; }
-  .team-inner { min-height: 480px; }
-  .team-text-side { padding: 3.5rem 5vw; max-width: 100%; }
-  .svc-row { grid-template-columns: 40px 1fr auto; gap: 1rem; }
+  .stance-inner { min-height: 480px; }
+  .stance-text { padding: 4rem 5vw; max-width: 100%; }
   .cta-main-inner { grid-template-columns: 1fr; gap: 2.5rem; }
   .cta-acts { flex-direction: row; flex-wrap: wrap; }
 }
+
+
+.cta-sub { text-align: center; font-size: 0.8rem; color: var(--tm); margin-top: 2rem; padding: 0 6vw; }
+
+/* ── WORKS: ネイティブ動画カード ── */
+#works { background: #080D1C; border-top: 1px solid var(--border); }
+.works-head { max-width: 620px; }
+.works-grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 320px));
+  gap: 2rem; justify-content: center; margin-top: 3.5rem;
+}
+.work-card {
+  position: relative; aspect-ratio: 9/16; border-radius: 12px; overflow: hidden;
+  background: var(--nv3); box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+  transition: transform 0.4s var(--ease), box-shadow 0.4s;
+}
+.work-card:hover { transform: translateY(-4px); box-shadow: 0 24px 64px rgba(0,0,0,0.5); }
+.work-video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.work-badge {
+  position: absolute; top: 0.9rem; left: 0.9rem; z-index: 3;
+  font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: #fff; background: var(--or); padding: 0.35rem 0.7rem; border-radius: 3px;
+  box-shadow: 0 4px 14px rgba(244,121,32,0.45);
+}
+.work-sound {
+  position: absolute; right: 0.8rem; bottom: 3.4rem; z-index: 3;
+  width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.5);
+  background: rgba(9,15,34,0.55) center/16px no-repeat; backdrop-filter: blur(6px); cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M11 5L6 9H2v6h4l5 4V5z'/%3E%3Cline x1='23' y1='9' x2='17' y2='15'/%3E%3Cline x1='17' y1='9' x2='23' y2='15'/%3E%3C/svg%3E");
+}
+.work-sound[data-muted="false"] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M11 5L6 9H2v6h4l5 4V5z'/%3E%3Cpath d='M15.5 8.5a5 5 0 0 1 0 7'/%3E%3Cpath d='M19 5a9 9 0 0 1 0 14'/%3E%3C/svg%3E");
+}
+.work-cap {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+  padding: 2.2rem 1rem 0.9rem;
+  background: linear-gradient(to top, rgba(6,12,28,0.85), transparent);
+  display: flex; flex-direction: column; gap: 0.15rem;
+}
+.work-cap-en { font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(245,240,232,0.75); }
+.work-cap-jp { font-size: 0.78rem; font-weight: 500; color: var(--tl); }
+
+
+.work-cap-dur { font-variant-numeric: tabular-nums; opacity: 0.7; letter-spacing: 0.06em; }
+.work-seek {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 18px; z-index: 4;
+  cursor: pointer; display: flex; align-items: flex-end;
+  touch-action: pan-y;
+}
+.ws-track {
+  position: relative; width: 100%; height: 3px;
+  background: rgba(255,255,255,0.22);
+  transition: height 0.18s var(--ease);
+}
+.work-seek:hover .ws-track, .work-seek.dragging .ws-track { height: 6px; }
+.ws-fill {
+  position: absolute; left: 0; top: 0; bottom: 0; width: 0%;
+  background: var(--or);
+}
+.ws-knob {
+  position: absolute; top: 50%; left: 0%;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--or); box-shadow: 0 0 0 3px rgba(9,15,34,0.5);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.18s var(--ease);
+}
+.work-seek:hover .ws-knob, .work-seek.dragging .ws-knob { transform: translate(-50%, -50%) scale(1); }
+.work-cap { padding-bottom: 1.25rem; }
+.works-more { text-align: center; margin-top: 2.8rem; }
+.work-featured {
+  aspect-ratio: 16/9; max-width: 900px; margin: 3.5rem auto 0;
+}
+.work-wide {
+  aspect-ratio: 16/9; max-width: 640px; margin: 2rem auto 0;
+}
+.work-badge--line {
+  background: rgba(9,15,34,0.55); color: var(--or);
+  border: 1px solid var(--or); box-shadow: none; backdrop-filter: blur(4px);
+}
+@media (max-width: 700px) {
+  .work-featured, .work-wide { max-width: 100%; }
+}
+
+@media (max-width: 1080px) { .works-grid { grid-template-columns: repeat(2, minmax(0, 320px)); } }
+@media (max-width: 700px) {
+  .works-grid {
+    display: flex; grid-template-columns: none;
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory; scrollbar-width: none;
+    gap: 0.9rem; margin-left: -5vw; margin-right: -5vw;
+    padding: 0.2rem 5vw 0.6rem;
+    mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+  }
+  .works-grid::-webkit-scrollbar { display: none; }
+  .works-grid .work-card { flex: 0 0 74vw; scroll-snap-align: center; }
+}
+
+
+a.stance-photo { display: block; cursor: pointer; text-decoration: none; }
+.stance-photo img { transition: transform 0.6s var(--ease), filter 0.4s; }
+.stance-photo:hover img { transform: scale(1.03); filter: brightness(1) saturate(1); }
+.stance-photo-hint {
+  position: absolute; left: 1.2rem; bottom: 1.2rem; z-index: 2;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.78rem; font-weight: 500; color: #fff;
+  background: rgba(9,15,34,0.6); backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 0.55rem 1rem; border-radius: 99px;
+  transition: background 0.3s, border-color 0.3s;
+}
+.stance-photo:hover .stance-photo-hint { background: var(--or); border-color: var(--or); }
+.stance-photo-hint .sp-arrow { transition: transform 0.3s; display: inline-block; }
+.stance-photo:hover .sp-arrow { transform: translateX(3px); }
+
+.hero-award {
+  font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.24em;
+  text-transform: uppercase; color: rgba(245,240,232,0.55);
+  margin: 0.6rem 0 0; padding-left: 2.2rem;
+  animation: fup 0.8s var(--ease) 0.35s both;
+}
+
+.stance-sign {
+  font-size: 0.74rem; color: var(--tm); margin-top: 1.4rem;
+  padding-left: 1.05rem; letter-spacing: 0.05em;
+}
+.cta-acts a { min-width: 200px; text-align: center; }
+
+/* シアター・ディミング */
+#dim-layer {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(4, 8, 18, 0.62);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.5s var(--ease);
+}
+body.theater #dim-layer { opacity: 1; }
+.work-card.playing { z-index: 601; }
 </style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Organization",
+ "name": "株式会社M2Log",
+ "url": "https://m2log-v2.vercel.app/",
+ "logo": "https://m2log-v2.vercel.app/assets/logo_full.png",
+ "foundingDate": "2024-10",
+ "founder": {
+  "@type": "Person",
+  "name": "中村陵介"
+ },
+ "address": {
+  "@type": "PostalAddress",
+  "addressLocality": "江東区",
+  "addressRegion": "東京都",
+  "addressCountry": "JP"
+ },
+ "sameAs": [
+  "https://www.instagram.com/m2log_1003/"
+ ],
+ "description": "映像制作・SNSアカウント運用代行・映像マーケティング支援。TikTok・Instagram・YouTube・Web広告に対応。"
+}
+</script>
 </head>
 <body>
+<div id="dim-layer" aria-hidden="true"></div>
 
 <nav class="nav dark-nav" id="nav">
   <div class="nav-in">
     <a href="index.html" class="nav-logo" title="ホームへ戻る">M2<span class="logo-accent">Log</span></a>
     <ul class="nav-links">
       <li><a href="pages/services.html">Services</a></li>
-      <li><a href="pages/plans.html">Plans</a></li>
       <li><a href="pages/about.html">About</a></li>
+      <li><a href="pages/plans.html">Plans</a></li>
       <li><a href="pages/contact.html">Contact</a></li>
     </ul>
     <div class="nav-hamburger" id="navHam"><span></span><span></span><span></span></div>
@@ -227,8 +380,8 @@
   </div>
   <nav class="nav-mobile" id="navMobile">
     <a href="pages/services.html">Services</a>
-    <a href="pages/plans.html">Plans</a>
     <a href="pages/about.html">About</a>
+    <a href="pages/plans.html">Plans</a>
     <a href="pages/contact.html">Contact</a>
   </nav>
 </nav>
@@ -238,18 +391,22 @@
   <div class="hero-slide" style="background-image:url('assets/img/hero_bg.jpg');filter:brightness(0.32) saturate(0.8)"></div>
   <div class="hero-slide" style="background-image:url('assets/img/svc01.jpg');filter:brightness(0.28) saturate(0.85)"></div>
   <div class="hero-slide" style="background-image:url('assets/img/studio1.jpg');filter:brightness(0.28) saturate(0.85)"></div>
+  <video class="hero-video" muted loop playsinline autoplay preload="none" aria-hidden="true">
+    <source src="assets/video/hero_loop.mp4" type="video/mp4">
+  </video>
   <div class="hero-ov"></div>
   <div class="hero-c">
     <p class="hero-label">Video Marketing Partner</p>
-    <div class="hero-h">
+    <p class="hero-award">BOVA 13th — Sponsor Award Winner</p>
+    <h1 class="hero-h">
       <span class="l1">Create.</span>
       <span class="l2">Deliver.</span>
-    </div>
-    <p class="hero-mission">つくる、その先へ。</p>
+      <span class="visually-hidden">映像をつくる前に、チームに入る。M2Log — 映像マーケティングパートナー</span>
+    </h1>
+    <p class="hero-mission">映像をつくる前に、チームに入る。</p>
     <p class="hero-body">
-      採用、ブランディング、WebCM、ショートドラマ、SNS運用まで。<br>
-      映像をただつくるだけでなく、誰にどう届き、<br>
-      どう広がるかまで設計する映像マーケティングパートナーです。
+      つくるだけでなく、誰にどう届くかまで設計する。<br>
+      チームの一員として伴走する、<br>映像マーケティングパートナーです。
     </p>
     <div class="hero-acts">
       <a href="pages/contact.html" class="btn-p">無料相談する</a>
@@ -259,68 +416,14 @@
   <span class="hero-scroll">scroll</span>
 </section>
 
-<!-- PROBLEMS -->
-<section id="problems">
-  <div class="s-in">
-    <div class="prob-layout">
-      <div class="prob-sticky reveal">
-        <div class="prob-photo">
-          <img src="assets/img/prob.jpg" alt="M2Log制作現場">
-        </div>
-      </div>
-      <div>
-        <span class="s-eye reveal">こんな課題、ありませんか</span>
-        <h2 class="s-title reveal"><span class="accent">「つくって終わり」</span>に、なっていませんか。</h2>
-        <p class="s-lead reveal">外注は納品したら終わり。でも映像もSNSも、つくった後が本番です。</p>
-        <div class="prob-cards">
-          <div class="prob-card reveal reveal-d1">
-            <p class="prob-n">01</p>
-            <h3 class="prob-t">映像をつくったが、<span class="accent">誰にも届かなかった</span></h3>
-            <p class="prob-b">コストをかけてつくったのに再生されない。届けるところまで、一緒に考える人がいませんでした。</p>
-          </div>
-          <div class="prob-card reveal reveal-d2">
-            <p class="prob-n">02</p>
-            <h3 class="prob-t">SNS・広報担当が<span class="accent">疲弊している</span></h3>
-            <p class="prob-b">ネタ出し、撮影、編集、分析——本業と兼務では回らない。体制がないまま続けても、消耗するだけです。</p>
-          </div>
-          <div class="prob-card reveal reveal-d3">
-            <p class="prob-n">03</p>
-            <h3 class="prob-t">頼んだら<span class="accent">「なんか違う」</span>ができた</h3>
-            <p class="prob-b">意図が伝わっていなかった。つくる前の設計を一緒にやる人がいなかったことが原因です。</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TEAM -->
-<section id="team">
-  <div class="team-inner">
-    <div class="team-photo-side reveal">
-      <picture>
-        <source media="(max-width: 640px)" srcset="assets/img/team_sp.jpg">
-        <img src="assets/img/team_pc.jpg" alt="M2Logチーム" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
-      </picture>
-    </div>
-    <div class="team-text-side reveal reveal-d2">
-      <span class="s-eye" style="color:var(--or)">Who We Are</span>
-      <blockquote class="team-quote">
-        「チームが増えたみたい」と<br>言ってもらえることが、<em>一番うれしい。</em>
-      </blockquote>
-      <p class="team-body">
-        担当者として会議に出て、向こうの担当者の代わりに考える。発注先ではなく、チームの一員として関わることをすべてのクライアントで大切にしています。<br><br>
-        マーケ視点を持った企画立案、クライアントのリソースを補う動き方、制作クオリティ——その全部が、M2Logが選ばれる理由です。
-      </p>
-      <div class="team-members">
-        <span class="team-member-chip">ディレクター</span>
-        <span class="team-member-chip">カメラマン</span>
-        <span class="team-member-chip">エディター</span>
-        <span class="team-member-chip">マーケター</span>
-        <span class="team-member-chip">プランナー</span>
-      </div>
-      <div style="margin-top:2rem">
-        <a href="pages/about.html#members" class="btn-nv">チームを見る</a>
+<!-- CLIENTS: 信頼の先出し -->
+<section id="clients">
+  <div class="cl-inner">
+    <p class="cl-eye">Works With</p>
+    <div class="cl-scroll">
+      <div class="cl-track">
+        <span class="cl-pill">セガサミーホールディングス</span><span class="cl-pill">PHONE APPLI</span><span class="cl-pill">日テレジータス</span><span class="cl-pill">西武プリンスホテル</span><span class="cl-pill">トイザらス</span><span class="cl-pill">ドン・キホーテ</span><span class="cl-pill">テレビ愛知</span><span class="cl-pill">RINX</span><span class="cl-pill">サミー</span><span class="cl-pill">セガフェイブ</span><span class="cl-pill">福島鰹</span><span class="cl-pill">奥ジャパン</span><span class="cl-pill">WAKAMATSU</span>
+        <span class="cl-pill" aria-hidden="true">セガサミーホールディングス</span><span class="cl-pill" aria-hidden="true">PHONE APPLI</span><span class="cl-pill" aria-hidden="true">日テレジータス</span><span class="cl-pill" aria-hidden="true">西武プリンスホテル</span><span class="cl-pill" aria-hidden="true">トイザらス</span><span class="cl-pill" aria-hidden="true">ドン・キホーテ</span><span class="cl-pill" aria-hidden="true">テレビ愛知</span><span class="cl-pill" aria-hidden="true">RINX</span><span class="cl-pill" aria-hidden="true">サミー</span><span class="cl-pill" aria-hidden="true">セガフェイブ</span><span class="cl-pill" aria-hidden="true">福島鰹</span><span class="cl-pill" aria-hidden="true">奥ジャパン</span><span class="cl-pill" aria-hidden="true">WAKAMATSU</span>
       </div>
     </div>
   </div>
@@ -334,15 +437,14 @@
 
     <div class="svc-cards">
 
-      <a href="pages/services.html#sns" class="svc-card reveal">
+      <a href="pages/services.html#sns" class="svc-card">
         <div class="svc-card-img">
-          <img src="assets/img/img_scene3.jpg" alt="SNS運用代行 - TikTok撮影現場">
+          <img loading="lazy" decoding="async" src="assets/img/svc02.jpg" alt="SNS運用代行 - TikTok撮影現場">
         </div>
         <div class="svc-card-body">
-          <p class="svc-card-num">01</p>
-          <p class="svc-card-en">SNS Management</p>
+          <p class="svc-card-en">01 — SNS Management</p>
           <p class="svc-card-t">TikTokアカウント運用代行</p>
-          <p class="svc-card-b">目的に向けて届けることを重視しながら、担当者として伴走します。</p>
+          <p class="svc-card-b">担当者としてチームに入り、企画・撮影から月次の数字改善まで回します。</p>
           <div class="svc-card-foot">
             <span class="svc-card-link">View Details</span>
             <span class="svc-card-arrow">→</span>
@@ -350,15 +452,14 @@
         </div>
       </a>
 
-      <a href="pages/services.html#drama" class="svc-card reveal reveal-d1">
+      <a href="pages/services.html#video" class="svc-card">
         <div class="svc-card-img">
-          <img src="assets/img/IMG_3228.JPG" alt="ショートドラマ制作現場">
+          <img loading="lazy" decoding="async" src="assets/img/svc01.jpg" alt="ショートドラマ制作現場">
         </div>
         <div class="svc-card-body">
-          <p class="svc-card-num">02</p>
-          <p class="svc-card-en">Short Video / Drama</p>
+          <p class="svc-card-en">02 — Short Video / Drama</p>
           <p class="svc-card-t">ショート動画・ショートドラマ制作</p>
-          <p class="svc-card-b">最後まで見てしまうコンテンツを、視聴導線から設計します。</p>
+          <p class="svc-card-b">冒頭2秒のフックから、最後まで見てしまう構成を設計します。</p>
           <div class="svc-card-foot">
             <span class="svc-card-link">View Details</span>
             <span class="svc-card-arrow">→</span>
@@ -366,15 +467,14 @@
         </div>
       </a>
 
-      <a href="pages/services.html#video" class="svc-card reveal reveal-d2">
+      <a href="pages/services.html#marketing" class="svc-card">
         <div class="svc-card-img">
-          <img src="assets/img/IMG_1950.JPG" alt="映像マーケティング支援">
+          <img loading="lazy" decoding="async" src="assets/img/svc03_new.jpg" alt="映像マーケティング支援">
         </div>
         <div class="svc-card-body">
-          <p class="svc-card-num">03</p>
-          <p class="svc-card-en">Video Marketing</p>
+          <p class="svc-card-en">03 — Video Marketing</p>
           <p class="svc-card-t">映像マーケティング支援</p>
-          <p class="svc-card-b">SNS・Web広告・採用・ブランディングまで、使い方から設計します。</p>
+          <p class="svc-card-b">広告・採用・ブランディング。映像を「どう使うか」から設計します。</p>
           <div class="svc-card-foot">
             <span class="svc-card-link">View Details</span>
             <span class="svc-card-arrow">→</span>
@@ -385,23 +485,162 @@
     </div>
 
     <p class="svc-note reveal">
-      すべて<strong>内製（企画・脚本・撮影・編集）</strong>で対応。外部委託を挟まないから、意図がズレず、修正も速い。
+      すべて<strong>内製（企画・脚本・撮影・編集）</strong>。外部委託を挟まないから、意図がズレず、修正も速い。
     </p>
   </div>
 </section>
 
-<!-- CLIENTS -->
-<section id="clients">
-  <div class="cl-inner">
-    <p class="cl-eye">制作実績・お取引先</p>
-    <div class="cl-scroll">
-      <div class="cl-track">
-        <span class="cl-pill">セガサミーホールディングス</span><span class="cl-pill">PHONE APPLI</span><span class="cl-pill">日テレジータス</span><span class="cl-pill">西武プリンスホテル</span><span class="cl-pill">トイザらス</span><span class="cl-pill">ドン・キホーテ</span><span class="cl-pill">テレビ愛知</span><span class="cl-pill">RINX</span><span class="cl-pill">サミー</span><span class="cl-pill">セガフェイブ</span><span class="cl-pill">福島鰹</span><span class="cl-pill">奥ジャパン</span><span class="cl-pill">WAKAMATSU</span>
-        <span class="cl-pill">セガサミーホールディングス</span><span class="cl-pill">PHONE APPLI</span><span class="cl-pill">日テレジータス</span><span class="cl-pill">西武プリンスホテル</span><span class="cl-pill">トイザらス</span><span class="cl-pill">ドン・キホーテ</span><span class="cl-pill">テレビ愛知</span><span class="cl-pill">RINX</span><span class="cl-pill">サミー</span><span class="cl-pill">セガフェイブ</span><span class="cl-pill">福島鰹</span><span class="cl-pill">奥ジャパン</span><span class="cl-pill">WAKAMATSU</span>
+<!-- WORKS: 5本構成(受賞作フィーチャー + 縦3 + ワイド1) -->
+<section id="works">
+  <div class="s-in">
+    <div class="works-head">
+      <span class="s-eye reveal">Works</span>
+      <h2 class="s-title reveal">つくってきた<span class="accent">もの。</span></h2>
+      <p class="s-lead reveal reveal-d1">受賞作から、日々の現場まで。<br>許諾をいただけたものから、順次掲載しています。</p>
+    </div>
+
+    <!-- 受賞作フィーチャー -->
+    <figure class="work-card work-featured reveal reveal-d1">
+      <span class="work-badge">BOVA 協賛企業賞 受賞</span>
+      <video class="work-video" muted playsinline loop preload="metadata" poster="assets/img/works_award_poster.jpg">
+        <source src="assets/video/works_award.mp4" type="video/mp4">
+      </video>
+      <button class="work-sound" aria-label="音声を切り替え" data-muted="true"></button>
+      <div class="work-seek" aria-label="シークバー">
+        <div class="ws-track"><div class="ws-fill"></div><div class="ws-knob"></div></div>
       </div>
+      <figcaption class="work-cap">
+        <span class="work-cap-en">BOVA 13th Online Video — Sponsor Award<span class="work-cap-dur"> · 00:59</span></span>
+        <span class="work-cap-jp">「水の通知 OFF」（富士山GXホールディングス「エブリィフレシャス」課題）</span>
+      </figcaption>
+    </figure>
+
+    <!-- 縦型3本 -->
+    <div class="works-grid reveal reveal-d2">
+      <figure class="work-card">
+        <span class="work-badge work-badge--line">BOVA Finalist</span>
+      <video class="work-video" muted playsinline loop preload="metadata" poster="assets/img/works_sbi_poster.jpg">
+          <source src="assets/video/works_sbi.mp4" type="video/mp4">
+        </video>
+        <button class="work-sound" aria-label="音声を切り替え" data-muted="true"></button>
+        <div class="work-seek" aria-label="シークバー">
+        <div class="ws-track"><div class="ws-fill"></div><div class="ws-knob"></div></div>
+      </div>
+      <figcaption class="work-cap">
+          <span class="work-cap-en">BOVA 13th Vertical Video<span class="work-cap-dur"> · 01:00</span></span>
+          <span class="work-cap-jp">「青春を、僕らは愛してる」（SBI証券 課題）</span>
+        </figcaption>
+      </figure>
+      <figure class="work-card">
+      <video class="work-video" muted playsinline loop preload="metadata" poster="assets/img/works_fujisan_poster.jpg">
+          <source src="assets/video/works_fujisan.mp4" type="video/mp4">
+        </video>
+        <button class="work-sound" aria-label="音声を切り替え" data-muted="true"></button>
+        <div class="work-seek" aria-label="シークバー">
+        <div class="ws-track"><div class="ws-fill"></div><div class="ws-knob"></div></div>
+      </div>
+      <figcaption class="work-cap">
+          <span class="work-cap-en">Client Work — Sports Event<span class="work-cap-dur"> · 01:13</span></span>
+          <span class="work-cap-jp">富士山マラソン（アールビーズ）</span>
+        </figcaption>
+      </figure>
+      <figure class="work-card">
+      <video class="work-video" muted playsinline loop preload="metadata" poster="assets/img/works_kyoto_poster.jpg">
+          <source src="assets/video/works_kyoto.mp4" type="video/mp4">
+        </video>
+        <button class="work-sound" aria-label="音声を切り替え" data-muted="true"></button>
+        <div class="work-seek" aria-label="シークバー">
+        <div class="ws-track"><div class="ws-fill"></div><div class="ws-knob"></div></div>
+      </div>
+      <figcaption class="work-cap">
+          <span class="work-cap-en">M2VLog — Original<span class="work-cap-dur"> · 01:48</span></span>
+          <span class="work-cap-jp">KYOTO 撮影の裏側</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <!-- ワイド(webCM) -->
+    <figure class="work-card work-wide reveal">
+      <video class="work-video" muted playsinline loop preload="metadata" poster="assets/img/works_rinx_poster.jpg">
+        <source src="assets/video/works_rinx.mp4" type="video/mp4">
+      </video>
+      <button class="work-sound" aria-label="音声を切り替え" data-muted="true"></button>
+      <div class="work-seek" aria-label="シークバー">
+        <div class="ws-track"><div class="ws-fill"></div><div class="ws-knob"></div></div>
+      </div>
+      <figcaption class="work-cap">
+        <span class="work-cap-en">Client Work — Web CM<span class="work-cap-dur"> · 01:00</span></span>
+        <span class="work-cap-jp">「毎日の余白編」（RINX webCM）</span>
+      </figcaption>
+    </figure>
+
+    <div class="works-more reveal">
+      <a href="https://www.instagram.com/m2log_1003/" target="_blank" rel="noopener" class="btn-g">もっと見る（Instagram）</a>
     </div>
   </div>
 </section>
+
+
+<!-- STANCE: 課題提起とWho We Areを統合 -->
+<section id="stance">
+  <div class="stance-inner">
+    <a class="stance-photo" href="pages/about.html" aria-label="チームの詳細（About）を見る">
+      <picture>
+        <source media="(max-width: 640px)" srcset="assets/img/team_sp.jpg">
+        <img loading="lazy" decoding="async" src="assets/img/team_pc.jpg" alt="M2Logチーム">
+      </picture>
+      <span class="stance-photo-hint">メンバーを見る <span class="sp-arrow">→</span></span>
+    </a>
+    <div class="stance-text reveal">
+      <span class="s-eye" style="color:var(--or)">Who We Are</span>
+      <h2 class="stance-h">発注先ではなく、<br><span class="accent">担当者。</span></h2>
+      <p class="stance-body">
+        外注は納品したら終わり。でも、映像もSNSもつくった後が本番です。だからM2Logは担当者として会議に出て、一緒に考え、届けるところまで動きます。
+      </p>
+      <p class="stance-quote">「チームが増えたみたい」と<br>言ってもらえることが、<em>一番うれしい。</em></p>
+      <p class="stance-sign">代表取締役　中村陵介</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- DOORS: 頼み方は2つ -->
+<section id="doors">
+  <div class="s-in">
+    <span class="s-eye reveal">How to Start</span>
+    <h2 class="s-title reveal">頼み方は、<span class="accent">2つ。</span></h2>
+    <p class="s-lead reveal">1本だけでも、まるごとでも。どちらの入口からでも、同じチームが動きます。</p>
+
+    <div class="doors-grid">
+
+      <div class="door door-dark reveal">
+        <p class="door-eye">Production — 1本からOK</p>
+        <h3 class="door-t">映像を、<br>1本からつくりたい</h3>
+        <p class="door-b">WebCM、ブランドムービー、採用動画、ショート動画。単発のご依頼も、企画から入って納品まで運びます。</p>
+        <div class="door-prices">
+          <div class="door-price"><span>ショート動画（縦型）</span><b>1本 10万円〜</b></div>
+          <div class="door-price"><span>WebCM・採用・ブランドムービー</span><b>30万円〜</b></div>
+        </div>
+        <p class="door-note">企画・撮影・編集込み。見積りは無償。実績は1本10万円のシンプル制作から、数百万円規模の広告クリエイティブ開発まで。</p>
+        <a href="pages/plans.html#production" class="btn-p" style="display:block;text-align:center">制作について見る</a>
+      </div>
+
+      <div class="door door-dark reveal reveal-d1">
+        <p class="door-eye">Partnership — 継続</p>
+        <h3 class="door-t">SNSと映像を、<br>まるごと任せたい</h3>
+        <p class="door-b">担当者としてチームに入り、企画・撮影・編集・投稿・分析まで。月5本〜のコンテンツで、アカウントを育てます。</p>
+        <div class="door-prices">
+          <div class="door-price"><span>伴走型SNS運用</span><b>月額 30.5万円〜</b></div>
+          <div class="door-price"><span>フル運用代行</span><b>月額 61.5万円〜</b></div>
+        </div>
+        <p class="door-note">内製化を目指す12ヶ月プランもあります。</p>
+        <a href="pages/plans.html" class="btn-p">プランを見る</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
 <!-- CTA -->
 <section id="cta-main">
@@ -409,7 +648,7 @@
     <div class="reveal">
       <span class="cta-label">Next Step</span>
       <p class="cta-t">まず話すだけで、<br>整理できることがある。</p>
-      <p class="cta-b">何から手をつければいいかわからない状態でも大丈夫です。<br>課題の整理からでも、歓迎します。</p>
+      <p class="cta-b">何から手をつければいいかわからなくても、歓迎します。</p>
     </div>
     <div class="cta-acts reveal reveal-d2">
       <a href="pages/contact.html" class="btn-p">無料相談する</a>
@@ -418,22 +657,29 @@
   </div>
 </section>
 
-<nav class="page-nav-strip">
-  <a href="pages/services.html">Services</a>
-  <a href="pages/plans.html">Plans</a>
-  <a href="pages/about.html">About</a>
-  <a href="pages/contact.html">Contact</a>
-</nav>
-
 <footer>
-  <a href="index.html" class="f-logo f-logo-text">M2<span class="logo-accent">Log</span></a>
-  <ul class="f-nav">
-    <li><a href="pages/services.html">Services</a></li>
-    <li><a href="pages/plans.html">Plans</a></li>
-    <li><a href="pages/about.html">About</a></li>
-    <li><a href="pages/contact.html">Contact</a></li>
-  </ul>
-  <p class="f-copy">© 2025 M2Log Inc. All rights reserved.</p>
+  <div class="f-top">
+    <div class="f-brand">
+      <a href="index.html" class="f-logo f-logo-text">M2<span class="logo-accent">Log</span></a>
+      <p class="f-tag">映像をつくる前に、チームに入る。</p>
+      <p class="f-award">BOVA 13th Online Video — Sponsor Award Winner</p>
+    </div>
+    <div class="f-cols">
+      <ul class="f-nav">
+        <li><a href="pages/services.html">Services</a></li>
+        <li><a href="pages/about.html">About</a></li>
+        <li><a href="pages/plans.html">Plans</a></li>
+        <li><a href="pages/contact.html">Contact</a></li>
+        <li><a href="pages/privacy.html">Privacy Policy</a></li>
+      </ul>
+      <div class="f-info">
+        <p>株式会社M2Log</p>
+        <p>東京都江東区</p>
+        <a href="https://www.instagram.com/m2log_1003/" target="_blank" rel="noopener" aria-label="Instagram" class="f-sns">Instagram</a>
+      </div>
+    </div>
+  </div>
+  <p class="f-copy">© 2026 M2Log Inc. All rights reserved.</p>
 </footer>
 
 <script src="assets/js/main.js"></script>
@@ -442,6 +688,94 @@
   var nav = document.getElementById('nav');
   window.addEventListener('scroll', function(){
     nav.classList.toggle('dark-nav', window.scrollY < window.innerHeight * 0.85);
+  });
+  // ヒーロー動画: ファイルがあれば静止画スライドの上にフェードイン
+  var v = document.querySelector('.hero-video');
+  if(v){
+    v.addEventListener('canplay', function(){ v.classList.add('on'); });
+    v.addEventListener('error', function(){ v.remove(); }, true);
+  }
+})();
+
+// シアター・ディミング
+(function(){
+  var vids = document.querySelectorAll('.work-video');
+  if(!vids.length) return;
+  function update(){
+    var any = [...vids].some(function(v){ return !v.paused && !v.ended; });
+    document.body.classList.toggle('theater', any);
+    vids.forEach(function(v){ v.closest('.work-card').classList.toggle('playing', !v.paused && !v.ended); });
+  }
+  vids.forEach(function(v){
+    ['play','pause','ended'].forEach(function(ev){ v.addEventListener(ev, update); });
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var sec = document.getElementById('works');
+  if(!sec || sec.hasAttribute('data-pending')) return;
+  var cards = sec.querySelectorAll('.work-card');
+  var isTouch = window.matchMedia('(pointer: coarse)').matches;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  cards.forEach(function(card){
+    var v = card.querySelector('.work-video');
+    var btn = card.querySelector('.work-sound');
+    if(btn){
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        v.muted = !v.muted;
+        btn.setAttribute('data-muted', v.muted ? 'true' : 'false');
+        if(!v.paused) return; v.play().catch(function(){});
+      });
+    }
+    // シークバー
+    var seek = card.querySelector('.work-seek');
+    if(seek){
+      var fill = seek.querySelector('.ws-fill');
+      var knob = seek.querySelector('.ws-knob');
+      v.addEventListener('timeupdate', function(){
+        if(!v.duration) return;
+        var p = (v.currentTime / v.duration) * 100;
+        fill.style.width = p + '%';
+        knob.style.left = p + '%';
+      });
+      var seekTo = function(clientX){
+        var r = seek.getBoundingClientRect();
+        var ratio = Math.min(1, Math.max(0, (clientX - r.left) / r.width));
+        if(v.duration) v.currentTime = ratio * v.duration;
+        fill.style.width = (ratio*100) + '%';
+        knob.style.left = (ratio*100) + '%';
+      };
+      seek.addEventListener('pointerdown', function(e){
+        e.stopPropagation(); e.preventDefault();
+        seek.classList.add('dragging');
+        seek.setPointerCapture(e.pointerId);
+        seekTo(e.clientX);
+        if(v.paused) v.play().catch(function(){});
+      });
+      seek.addEventListener('pointermove', function(e){
+        if(seek.classList.contains('dragging')) seekTo(e.clientX);
+      });
+      seek.addEventListener('pointerup', function(e){
+        seek.classList.remove('dragging');
+      });
+      seek.addEventListener('pointercancel', function(){ seek.classList.remove('dragging'); });
+    }
+    if(reduced) return;
+    if(isTouch){
+      var io = new IntersectionObserver(function(es){
+        es.forEach(function(en){
+          if(en.intersectionRatio > 0.6){ v.play().catch(function(){}); }
+          else { v.pause(); }
+        });
+      }, { threshold: [0, 0.6] });
+      io.observe(card);
+    } else {
+      card.addEventListener('mouseenter', function(){ v.play().catch(function(){}); });
+      card.addEventListener('mouseleave', function(){ v.pause(); });
+    }
   });
 })();
 </script>

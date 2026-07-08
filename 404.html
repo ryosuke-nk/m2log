@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — M2Log</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/base.css">
+<style>
+#nf {
+  min-height: 100svh; display: flex; flex-direction: column;
+  justify-content: center; align-items: flex-start;
+  padding: 0 6vw; background: var(--nv2); position: relative; overflow: hidden;
+}
+.nf-code {
+  font-family: var(--eng); font-weight: 800;
+  font-size: clamp(6rem, 18vw, 14rem); line-height: 1;
+  color: transparent; -webkit-text-stroke: 1.5px rgba(245,240,232,0.22);
+  letter-spacing: -0.03em; user-select: none;
+}
+.nf-eye {
+  font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--or);
+  display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;
+}
+.nf-eye::before { content: ''; width: 1.2rem; height: 1px; background: var(--or); }
+.nf-t { font-size: clamp(1.3rem, 2.6vw, 1.9rem); font-weight: 500; color: var(--tl); line-height: 1.5; margin: 1.2rem 0 0.6rem; }
+.nf-b { font-size: 0.88rem; color: var(--tm); line-height: 2.1; margin-bottom: 2.2rem; }
+.nf-acts { display: flex; gap: 1rem; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+<main id="nf">
+  <p class="nf-eye">Page Not Found</p>
+  <p class="nf-code" aria-hidden="true">404</p>
+  <h1 class="nf-t">このページは、見つかりませんでした。</h1>
+  <p class="nf-b">URLが変更されたか、削除された可能性があります。<br>トップページから、目的のページをお探しください。</p>
+  <div class="nf-acts">
+    <a href="/" class="btn-p">トップに戻る</a>
+    <a href="/pages/contact.html" class="btn-g-dark">問い合わせる</a>
+  </div>
+</main>
+</body>
+</html>

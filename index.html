@@ -337,6 +337,50 @@ a.stance-photo { display: block; cursor: pointer; text-decoration: none; }
 }
 body.theater #dim-layer { opacity: 1; }
 .work-card.playing { z-index: 601; }
+
+/* ── BELIEF: 公開してからが本番(v3追加) ── */
+#belief { background: var(--nv2); border-top: 1px solid var(--bl); }
+#belief .s-in { padding-top: 6.5rem; padding-bottom: 6.5rem; text-align: center; }
+.belief-h { font-family: var(--dp); font-size: clamp(1.6rem, 3.4vw, 2.7rem); font-weight: 800; color: var(--tl); letter-spacing: -0.01em; line-height: 1.4; margin-bottom: 1.6rem; }
+.belief-h .accent { color: var(--or); }
+.belief-b { font-size: 0.95rem; color: rgba(245,240,232,0.8); line-height: 2.3; max-width: 640px; margin: 0 auto; }
+
+/* ── PROOF: 数字で見る実績(v3追加) ── */
+#proof { background: var(--cr); border-top: 1px solid var(--border); }
+.proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 2.8rem; }
+.proof-card { background: var(--wh); border: 1px solid var(--border); border-radius: 8px; padding: 1.8rem 1.7rem; display: flex; flex-direction: column; gap: 0.45rem; }
+.proof-num { font-family: var(--dp); font-size: clamp(1.4rem, 2.4vw, 1.9rem); font-weight: 800; color: var(--ink); letter-spacing: -0.02em; line-height: 1.2; }
+.proof-num em { font-style: normal; color: var(--or); }
+.proof-label { font-size: 0.86rem; font-weight: 500; color: var(--ink); }
+.proof-detail { font-size: 0.76rem; color: var(--ink-m); line-height: 1.9; }
+.proof-note { font-size: 0.72rem; color: var(--ink-s); margin-top: 1.4rem; }
+@media (max-width: 960px) { .proof-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .proof-grid { grid-template-columns: 1fr; } }
+
+/* ── JOURNEY: 最初の30日(v3追加) ── */
+#journey { background: var(--wh); border-top: 1px solid var(--border); }
+.jr-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; margin-top: 2.8rem; }
+.jr-step { border: 1px solid var(--border); border-radius: 8px; padding: 1.7rem 1.5rem; background: var(--cr); }
+.jr-no { font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--or); margin-bottom: 0.4rem; }
+.jr-t { font-size: 0.95rem; font-weight: 500; color: var(--ink); margin-bottom: 0.25rem; }
+.jr-w { font-family: var(--eng); font-size: 0.66rem; letter-spacing: 0.08em; color: var(--ink-s); margin-bottom: 0.8rem; }
+.jr-b { font-size: 0.8rem; color: var(--ink-m); line-height: 1.95; }
+.jr-b strong { color: var(--ink); font-weight: 500; }
+.jr-after { margin-top: 2rem; padding: 1.3rem 1.8rem; background: var(--cr2); border-left: 3px solid var(--or); border-radius: 4px; font-size: 0.86rem; color: var(--ink-m); line-height: 2; }
+.jr-after strong { color: var(--ink); font-weight: 500; }
+@media (max-width: 1000px) { .jr-steps { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .jr-steps { grid-template-columns: 1fr; } }
+
+/* ── FAQ(トップ用・v3追加) ── */
+#faq-home { background: var(--wh); border-top: 1px solid var(--border); }
+.fh-list { margin-top: 2.4rem; max-width: 780px; }
+.fh-item { border-bottom: 1px solid var(--border); }
+.fh-item:first-child { border-top: 1px solid var(--border); }
+.fh-item summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; padding: 1.15rem 0; font-size: 0.9rem; color: var(--ink); }
+.fh-item summary::-webkit-details-marker { display: none; }
+.fh-item summary::after { content: '＋'; color: var(--or); flex-shrink: 0; }
+.fh-item[open] summary::after { content: '－'; }
+.fh-a { padding: 0 0 1.4rem; font-size: 0.86rem; color: var(--ink-m); line-height: 2.1; }
 </style>
 <script type="application/ld+json">
 {
@@ -429,6 +473,18 @@ body.theater #dim-layer { opacity: 1; }
   </div>
 </section>
 
+<!-- BELIEF: 公開してからが本番 -->
+<section id="belief">
+  <div class="s-in">
+    <h2 class="belief-h reveal">映像は、<span class="accent">公開してからが本番。</span></h2>
+    <p class="belief-b reveal reveal-d1">
+      いい動画をつくる。そこまでは、私たちの当たり前です。<br>
+      本番は公開したあと——再生されるか、届くか、動いてもらえるか。<br>
+      だから、つくる前の設計から届いたあとの改善まで、担当者として関わります。
+    </p>
+  </div>
+</section>
+
 <!-- SERVICES -->
 <section id="services">
   <div class="s-in">
@@ -487,6 +543,49 @@ body.theater #dim-layer { opacity: 1; }
     <p class="svc-note reveal">
       すべて<strong>内製（企画・脚本・撮影・編集）</strong>。外部委託を挟まないから、意図がズレず、修正も速い。
     </p>
+  </div>
+</section>
+
+<!-- PROOF: 数字で見る実績 -->
+<section id="proof">
+  <div class="s-in">
+    <span class="s-eye reveal">Numbers</span>
+    <h2 class="s-title reveal">数字で見る<span class="accent">実績。</span></h2>
+
+    <div class="proof-grid">
+      <div class="proof-card reveal">
+        <p class="proof-num">0→<em>100万人</em></p>
+        <p class="proof-label">YouTube登録者（2年）</p>
+        <p class="proof-detail">大手玩具メーカー。Shorts主体の認知設計で、2年で登録者100万人へ。</p>
+      </div>
+      <div class="proof-card reveal reveal-d1">
+        <p class="proof-num">CPC <em>11円</em>・CTR 4.19%</p>
+        <p class="proof-label">TikTok広告</p>
+        <p class="proof-detail">放送局系スポーツメディア。業界目安はCPC 80〜150円・CTR 0.7〜0.9%。</p>
+      </div>
+      <div class="proof-card reveal reveal-d2">
+        <p class="proof-num"><em>40件</em>／半年</p>
+        <p class="proof-label">採用の一次問い合わせ</p>
+        <p class="proof-detail">インフラ関連企業の採用TikTok。半年間の運用で。</p>
+      </div>
+      <div class="proof-card reveal">
+        <p class="proof-num">週<em>5〜10件</em></p>
+        <p class="proof-label">広告動画1本で問い合わせ</p>
+        <p class="proof-detail">大阪の理容室。配信後、問い合わせが2〜3週間続きました。</p>
+      </div>
+      <div class="proof-card reveal reveal-d1">
+        <p class="proof-num"><em>31円</em>〜</p>
+        <p class="proof-label">フォロワー獲得単価</p>
+        <p class="proof-detail">上場IT企業の採用TikTok。情報系コンテンツの企画設計で。</p>
+      </div>
+      <div class="proof-card reveal reveal-d2">
+        <p class="proof-num">保存<em>2,000件</em>超</p>
+        <p class="proof-label">自然再生25万回（1本）</p>
+        <p class="proof-detail">広告なし。企画の力だけで届いた、企業アカウントの投稿。</p>
+      </div>
+    </div>
+
+    <p class="proof-note reveal">※数値は運用実績の一例です。投稿後1週間時点の計測を含みます。</p>
   </div>
 </section>
 
@@ -604,6 +703,44 @@ body.theater #dim-layer { opacity: 1; }
 </section>
 
 
+<!-- JOURNEY: 最初の30日 -->
+<section id="journey">
+  <div class="s-in">
+    <span class="s-eye reveal">First 30 Days</span>
+    <h2 class="s-title reveal">相談から、最初の動画が<span class="accent">世に出るまで。</span></h2>
+
+    <div class="jr-steps">
+      <div class="jr-step reveal">
+        <p class="jr-no">Step 0</p>
+        <p class="jr-t">無料相談</p>
+        <p class="jr-w">契約前</p>
+        <p class="jr-b">まず話して、課題を整理します。ご依頼の方向が見えてきたら、ご提案の際にコンセプトとKPIの考え方までお持ちします。<strong>設計は、契約の前から始まっています。</strong></p>
+      </div>
+      <div class="jr-step reveal reveal-d1">
+        <p class="jr-no">Step 1</p>
+        <p class="jr-t">キックオフ & インプット</p>
+        <p class="jr-w">Week 1〜2</p>
+        <p class="jr-b">契約後すぐに始動。会社を知るところから。資料をもらい、話を聞き、現場にも足を運びます。<strong>企画の精度は、ここで決まります。</strong></p>
+      </div>
+      <div class="jr-step reveal reveal-d2">
+        <p class="jr-no">Step 2</p>
+        <p class="jr-t">企画 & 撮影</p>
+        <p class="jr-w">Week 2〜3</p>
+        <p class="jr-b">設計に沿って企画を固め、撮影へ。企画・脚本・撮影・編集まで、同じチームが担当します。</p>
+      </div>
+      <div class="jr-step reveal reveal-d2">
+        <p class="jr-no">Step 3</p>
+        <p class="jr-t">初稿 → 公開</p>
+        <p class="jr-w">Week 4〜</p>
+        <p class="jr-b">撮影から約10日で初稿をお送りします。チェックを経て、<strong>契約から1ヶ月前後で最初の動画が世に出ます。</strong></p>
+      </div>
+    </div>
+
+    <p class="jr-after reveal">公開後は、月1回〜の定例に<strong>代表が直接参加</strong>。月次レポートと改善提案を重ね、翌月の企画に反映します。</p>
+  </div>
+</section>
+
+
 <!-- DOORS: 頼み方は2つ -->
 <section id="doors">
   <div class="s-in">
@@ -630,13 +767,36 @@ body.theater #dim-layer { opacity: 1; }
         <h3 class="door-t">SNSと映像を、<br>まるごと任せたい</h3>
         <p class="door-b">担当者としてチームに入り、企画・撮影・編集・投稿・分析まで。月5本〜のコンテンツで、アカウントを育てます。</p>
         <div class="door-prices">
-          <div class="door-price"><span>伴走型SNS運用</span><b>月額 30.5万円〜</b></div>
-          <div class="door-price"><span>フル運用代行</span><b>月額 61.5万円〜</b></div>
+          <div class="door-price"><span>SNS運用（伴走型）</span><b>月額 30万円台〜</b></div>
         </div>
-        <p class="door-note">内製化を目指す12ヶ月プランもあります。</p>
+        <p class="door-note">内容・本数・体制によって形が変わるため、詳細はご相談時に「この予算で何ができるか」を率直にお伝えします。内製化を目指す12ヶ月プランもあります。お見積りは無償です。</p>
         <a href="pages/plans.html" class="btn-p">プランを見る</a>
       </div>
 
+    </div>
+  </div>
+</section>
+
+
+<!-- FAQ -->
+<section id="faq-home">
+  <div class="s-in">
+    <span class="s-eye reveal">FAQ</span>
+    <h2 class="s-title reveal">よくある<span class="accent">質問。</span></h2>
+
+    <div class="fh-list reveal">
+      <details class="fh-item">
+        <summary>金額感が分かりません。</summary>
+        <p class="fh-a">目安として、単発のショート動画は1本10万円〜、継続のSNS運用は月30万円台〜です。内容・本数で変わるため、ご相談時に「この予算で何ができるか」を率直にお伝えします。お見積りは無償です。</p>
+      </details>
+      <details class="fh-item">
+        <summary>具体的な案がなくても相談できますか？</summary>
+        <p class="fh-a">可能です。実際、ほとんどのご相談がその状態から始まります。ご依頼の方向が見えてきたら、ご提案の際にコンセプトとKPIの考え方までお持ちするので、比較検討の材料としてもお使いいただけます。</p>
+      </details>
+      <details class="fh-item">
+        <summary>他の映像制作会社・SNS運用会社との違いは？</summary>
+        <p class="fh-a">「映像制作」と「SNS運用」を同じチームで内製していること。そして、担当者として会議に出て、届くまで動き続けることです。定例には代表が直接参加します。</p>
+      </details>
     </div>
   </div>
 </section>

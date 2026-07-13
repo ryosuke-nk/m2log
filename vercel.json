@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/assets/video/:file", "destination": "/video/:file" }
+  ]
+}

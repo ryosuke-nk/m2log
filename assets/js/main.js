@@ -79,3 +79,53 @@
   }
 
 })();
+
+
+// ── 計測: 主要アクションのGA4イベント ──
+(function(){
+  function track(name, params){
+    if (typeof gtag === 'function') gtag('event', name, params || {});
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a, button');
+    if(!a) return;
+    var txt = (a.textContent || '').trim().slice(0, 30);
+    if (a.classList.contains('btn-p') || a.classList.contains('nav-cta')) {
+      track('cta_click', { cta_text: txt, page: location.pathname });
+    } else if (a.classList.contains('next-rail')) {
+      track('next_rail_click', { to: a.getAttribute('href') });
+    } else if (a.closest('.page-anchor')) {
+      track('plans_anchor_click', { label: txt });
+    } else if (a.classList.contains('stance-photo')) {
+      track('about_photo_click', {});
+    } else if ((a.getAttribute('href') || '').indexOf('mailto:') === 0) {
+      track('email_click', {});
+    } else if ((a.getAttribute('href') || '').indexOf('instagram.com') !== -1) {
+      track('instagram_click', { page: location.pathname });
+    }
+  }, { passive: true });
+
+  // Works動画: 初回再生・シーク・音声ON + 排他再生
+  var vids = document.querySelectorAll('.work-video');
+  vids.forEach(function(v){
+    var card = v.closest('.work-card');
+    var title = card ? (card.querySelector('.work-cap-jp') || {}).textContent : '';
+    var played = false;
+    v.addEventListener('play', function(){
+      if(!played){ played = true; track('works_play', { title: title }); }
+      vids.forEach(function(o){ if(o !== v && !o.paused) o.pause(); });
+    });
+    var seeked = false;
+    var seek = card && card.querySelector('.work-seek');
+    if(seek) seek.addEventListener('pointerdown', function(){
+      if(!seeked){ seeked = true; track('works_seek', { title: title }); }
+    });
+    var unmuted = false;
+    var btn = card && card.querySelector('.work-sound');
+    if(btn) btn.addEventListener('click', function(){
+      setTimeout(function(){
+        if(!unmuted && v.muted === false){ unmuted = true; track('works_unmute', { title: title }); }
+      }, 0);
+    });
+  });
+})();

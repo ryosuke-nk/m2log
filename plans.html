@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plans — M2Log</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="M2LogのPlans — 料金と始め方">
+<meta property="og:description" content="映像制作は1本10万円〜、SNS運用は月30万円台〜。1本だけの制作から、まるごと任せる運用まで。状況に合った始め方を選べます。">
+<meta property="og:image" content="https://m2log-v2.vercel.app/assets/ogp.jpg">
+<meta property="og:url" content="https://m2log-v2.vercel.app/pages/plans.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://m2log-v2.vercel.app/pages/plans.html">
+<meta name="description" content="映像制作は1本10万円〜、SNS運用は月30万円台〜。1本だけの制作から、まるごと任せる運用まで。状況に合った始め方を選べます。">
+<link rel="icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XVNJRPJJVC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XVNJRPJJVC');</script>
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/base.css">
+<style>
+
+/* ── 単発制作(Production) ── */
+#production { background: var(--wh); border-top: 1px solid var(--border); scroll-margin-top: 80px; position: relative; overflow: hidden; }
+#production .s-in { position: relative; z-index: 2; }
+.prod-bgv {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; opacity: 0; pointer-events: none; z-index: 1;
+  transition: opacity 1.2s ease;
+}
+.prod-bgv.on { opacity: 0.07; }
+@media (prefers-reduced-motion: reduce) { .prod-bgv { display: none; } }
+.prod-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; margin-top: 2.5rem; }
+.prod-desc { font-size: 0.9rem; color: var(--ink); opacity: 0.72; line-height: 2.2; margin-bottom: 1.8rem; }
+.prod-types { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.8rem; }
+.prod-type { font-size: 0.78rem; color: var(--ink-m); padding: 0.3rem 0.8rem; border: 1px solid var(--border-m); border-radius: 3px; background: var(--cr); }
+.price-table { width: 100%; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; border-collapse: collapse; }
+.price-table caption {
+  text-align: left; font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--or); padding-bottom: 0.9rem;
+}
+.price-table tr { border-bottom: 1px solid var(--border); }
+.price-table tr:last-child { border-bottom: none; }
+.price-table tr:nth-child(odd) { background: var(--cr); }
+.price-table tr:nth-child(even) { background: var(--wh); }
+.price-table th {
+  text-align: left; font-weight: 400; font-size: 0.84rem; color: var(--ink);
+  padding: 1.1rem 1.4rem; vertical-align: middle;
+}
+.price-table th small { display: block; font-size: 0.72rem; color: var(--ink-s); margin-top: 0.15rem; }
+.price-table td {
+  text-align: right; font-family: var(--dp); font-weight: 700; font-size: 1.02rem;
+  color: var(--ink); padding: 1.1rem 1.4rem; white-space: nowrap; vertical-align: middle;
+}
+.price-table td em { font-style: normal; color: var(--or); }
+.price-notes { font-size: 0.76rem; color: var(--ink-s); line-height: 2; margin-top: 1.1rem; }
+/* 規模スペクトラム */
+.scale-wrap { margin-top: 2rem; }
+.scale-label { font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--or); display: block; margin-bottom: 0.5rem; }
+.scale-intro { font-size: 0.84rem; color: var(--ink-m); line-height: 2; margin-bottom: 1.2rem; }
+.scale-cases { display: flex; flex-direction: column; gap: 0.5rem; }
+.scale-case {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+  padding: 0.7rem 1rem; background: var(--cr); border-radius: 4px;
+  font-size: 0.8rem; color: var(--ink-m); line-height: 1.7;
+}
+.scale-case b { font-family: var(--dp); font-weight: 700; font-size: 0.92rem; color: var(--ink); white-space: nowrap; }
+.prod-acts { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-top: 2rem; }
+@media (max-width: 960px) { .prod-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+/* ── A/B 比較セクション ── */
+#plan-ab { background: var(--cr); }
+.ab-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  background: var(--border); border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden; margin-top: 3rem;
+  box-shadow: 0 8px 48px rgba(0,0,0,0.10);
+}
+.ab-col { display: flex; flex-direction: column; }
+.ab-col-a { background: var(--nv2); border-top: 4px solid var(--or); position: relative; overflow: hidden; }
+.ab-col-b { background: var(--nv2); border-top: 4px solid var(--or); position: relative; overflow: hidden; }
+.ab-col-b::before {
+  content: 'B'; position: absolute; right: -0.5rem; top: -1rem;
+  font-family: var(--dp); font-size: 9rem; font-weight: 900;
+  color: rgba(255,255,255,0.035); line-height: 1; pointer-events: none;
+  letter-spacing: -0.04em;
+}
+.ab-col-a::before {
+  content: 'A'; position: absolute; right: -0.5rem; top: -1rem;
+  font-family: var(--dp); font-size: 9rem; font-weight: 900;
+  color: rgba(255,255,255,0.035); line-height: 1; pointer-events: none;
+  letter-spacing: -0.04em;
+}
+.ab-col { position: relative; }
+
+.ab-head { padding: 2.5rem 2.8rem 2rem; border-bottom: 1px solid var(--border); }
+.ab-col-b .ab-head { border-bottom-color: var(--bl); }
+.ab-badge {
+  display: inline-block; font-family: var(--eng); font-size: 0.62rem;
+  letter-spacing: 0.18em; text-transform: uppercase; background: var(--or);
+  color: #fff; padding: 0.25rem 0.8rem; border-radius: 3px; margin-bottom: 1.2rem;
+  font-weight: 500;
+}
+.ab-title {
+  font-family: var(--dp); font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  font-weight: 800; color: var(--ink); line-height: 1.25;
+  letter-spacing: -0.02em; margin-bottom: 0.6rem;
+}
+.ab-col-b .ab-title { color: var(--tl); }
+.ab-sub { font-size: 0.75rem; color: var(--ink-m); font-family: var(--eng); letter-spacing: 0.04em; }
+.ab-col-b .ab-sub { color: var(--tm); }
+
+.ab-body { padding: 2.2rem 2.8rem; flex: 1; }
+.ab-desc { font-size: 0.88rem; color: var(--ink); opacity: 0.72; line-height: 2.2; margin-bottom: 2rem; }
+.ab-col-b .ab-desc { color: var(--tl); opacity: 0.7; }
+
+.ab-items-label {
+  font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--or); margin-bottom: 1rem; display: block;
+}
+.ab-col-b .ab-items-label { color: var(--or); }
+.ab-items { display: flex; flex-direction: column; gap: 0.7rem; }
+.ab-item {
+  display: flex; align-items: flex-start; gap: 0.8rem;
+  font-size: 0.86rem; color: var(--ink); opacity: 0.75; line-height: 1.7;
+}
+.ab-col-b .ab-item { color: var(--tl); opacity: 0.85; }
+.ab-item::before {
+  content: ''; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--or); flex-shrink: 0; margin-top: 0.6em;
+}
+
+.ab-foot { padding: 2rem 2.8rem; border-top: 1px solid var(--border); }
+.ab-col-b .ab-foot { border-top-color: var(--bl); }
+
+/* ── 違いを一目で ── */
+#diff { background: var(--cr2); border-top: 1px solid var(--border); }
+.diff-table { width: 100%; border-collapse: collapse; margin-top: 2.5rem; }
+.diff-table th, .diff-table td { padding: 1rem 1.4rem; text-align: left; font-size: 0.82rem; border-bottom: 1px solid var(--border); vertical-align: middle; }
+.diff-table thead tr { background: var(--nv2); }
+.diff-table thead th { font-family: var(--eng); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--tl); font-weight: 500; }
+.diff-table thead th:first-child { color: var(--tm); }
+.diff-table tbody tr:hover { background: rgba(26,47,110,0.03); }
+.diff-table tbody td:first-child { font-size: 0.78rem; color: var(--ink-s); }
+.diff-table tbody td:not(:first-child) { color: var(--ink); font-weight: 400; }
+.check { color: var(--or); font-size: 1rem; }
+.dash { color: var(--ink-s); opacity: 0.3; }
+
+
+
+.phase-list { display: flex; flex-direction: column; gap: 1px; background: var(--bl); border: 1px solid var(--bl); border-radius: 8px; overflow: hidden; margin-top: 2.5rem; }
+.phase-item { background: rgba(255,255,255,0.03); display: grid; grid-template-columns: 90px 1fr; transition: background 0.2s; }
+.phase-item:hover { background: rgba(255,255,255,0.06); }
+.phase-left { background: rgba(26,47,110,0.5); border-right: 1px solid var(--bl); padding: 1.8rem 1.2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.phase-n { font-family: var(--dp); font-size: 1.8rem; font-weight: 900; color: var(--tl); line-height: 1; }
+.phase-tag { font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--or); margin-top: 0.3rem; }
+.phase-right { padding: 1.8rem 2rem; }
+.phase-period { font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.1em; color: var(--tm); opacity: 0.7; margin-bottom: 0.3rem; }
+.phase-title { font-size: 0.95rem; font-weight: 500; color: var(--tl); margin-bottom: 0.45rem; }
+.phase-body { font-size: 0.84rem; color: var(--tl); opacity: 0.62; line-height: 2; }
+
+/* ── Plan C ── */
+#plan-c { background: var(--cr2); border-top: 1px solid var(--border); }
+#plan-c .s-in { padding: 5rem 6vw; }
+.plan-c-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-top: 2rem; }
+.plan-c-card { background: var(--wh); padding: 1.8rem 2rem; display: flex; flex-direction: column; }
+.plan-c-card .btn-nv { margin-top: auto; align-self: flex-start; padding: 0.7rem 1.6rem; }
+.plan-c-badge {
+  display: inline-block; align-self: flex-start; width: fit-content; font-family: var(--eng); font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--or);
+  border: 1px solid var(--or); border-radius: 99px; padding: 0.3rem 0.85rem; margin-bottom: 1rem;
+}
+.plan-c-t { font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.7rem; line-height: 1.5; }
+.plan-c-b { font-size: 0.86rem; color: var(--ink); opacity: 0.68; line-height: 2.1; }
+
+/* ── FAQ ── */
+#faq { background: var(--wh); border-top: 1px solid var(--border); }
+.faq-list { margin-top: 2rem; }
+@media (min-width: 900px) {
+  .faq-list { display: grid; grid-template-columns: 1fr 1fr; column-gap: 3.5rem; align-items: start; }
+}
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-item:first-child { border-top: 1px solid var(--border); }
+.faq-q { width: 100%; background: none; border: none; padding: 1rem 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; gap: 1.5rem; transition: padding-left 0.2s; }
+.faq-q:hover { padding-left: 4px; }
+.faq-q-text { font-size: 0.84rem; font-weight: 400; color: var(--ink); line-height: 1.65; font-family: var(--sans); }
+.faq-icon { font-size: 1rem; color: var(--or); flex-shrink: 0; transition: transform 0.3s; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-a { overflow: hidden; max-height: 0; transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1); }
+.faq-a-inner { padding: 0 0 1.4rem; font-size: 0.86rem; color: var(--ink); opacity: 0.68; line-height: 2.2; }
+.faq-item.open .faq-a { max-height: 300px; }
+
+/* ── CTA ── */
+#plans-cta { background: var(--nv2); padding: 7rem 6vw; text-align: center; }
+.plans-cta-t { font-size: clamp(1.5rem, 2.8vw, 2.2rem); color: var(--tl); font-weight: 400; margin-bottom: 0.8rem; line-height: 1.45; }
+.plans-cta-b { font-size: 0.84rem; color: var(--tm); margin-bottom: 2.2rem; }
+.plans-cta-acts { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* ── ターゲット（向いている人） ── */
+.ab-persona {
+  margin-bottom: 1.8rem; padding: 1.1rem 1.3rem;
+  background: var(--cr2); border-radius: 6px;
+  border-left: 2px solid var(--or);
+}
+.ab-persona-dark {
+  background: rgba(255,255,255,0.05);
+}
+.ab-persona-label {
+  font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--or); margin-bottom: 0.7rem; display: block;
+}
+.ab-persona-list {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 0.45rem;
+}
+.ab-persona-list li {
+  font-size: 0.8rem; color: var(--ink); opacity: 0.72; line-height: 1.6;
+  padding-left: 1rem; position: relative;
+}
+.ab-persona-list li::before {
+  content: '✓'; position: absolute; left: 0;
+  color: var(--or); font-size: 0.7rem;
+}
+.ab-col-b .ab-persona-list li { color: var(--tl); opacity: 0.8; }
+
+@media (max-width: 960px) {
+  .ab-grid { grid-template-columns: 1fr; }
+  .diff-table { font-size: 0.76rem; }
+  .diff-table th, .diff-table td { padding: 0.8rem 1rem; }
+  .phase-item { grid-template-columns: 72px 1fr; }
+  .plan-c-inner { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .diff-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .diff-table { min-width: 560px; font-size: 0.72rem; }
+  .diff-table th, .diff-table td { padding: 0.7rem 0.8rem; }
+}
+
+.page-anchor {
+  display: flex; gap: 0.8rem; padding: 1.1rem 6vw;
+  background: var(--nv2); border-bottom: 1px solid var(--bl);
+  overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.page-anchor::-webkit-scrollbar { display: none; }
+.page-anchor a {
+  flex-shrink: 0; font-size: 0.72rem; font-weight: 500; color: var(--tm);
+  text-decoration: none; padding: 0.5rem 1.1rem;
+  border: 1px solid var(--bl); border-radius: 99px;
+  transition: color 0.25s, border-color 0.25s, background 0.25s;
+}
+.page-anchor a:hover { color: var(--tl); border-color: var(--or); background: rgba(244,121,32,0.08); }
+
+.ab-price { font-size: 1.05rem; font-weight: 600; color: var(--tl); margin: 0.9rem 0 0.4rem; }
+.ab-price em { font-style: normal; font-family: var(--eng); font-size: 1.9rem; font-weight: 800; color: var(--or); letter-spacing: -0.01em; }
+.ab-price .ab-price-jp { font-family: var(--dp); font-size: 1.5rem; font-weight: 800; color: var(--or); letter-spacing: -0.01em; font-style: normal; }
+.plan-c-price { font-family: var(--eng); color: var(--or); font-weight: 800; margin-left: 0.4rem; }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-in">
+    <a href="../index.html" class="nav-logo subpage">
+      M2<span class="logo-accent">Log</span>
+      <span class="nav-home-hint">← Home</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="plans.html" class="active">Plans</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-hamburger" id="navHam"><span></span><span></span><span></span></div>
+    <a href="contact.html" class="nav-cta">無料相談</a>
+  </div>
+  <nav class="nav-mobile" id="navMobile">
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="plans.html">Plans</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</nav>
+
+<div class="breadcrumb">
+  <a href="../index.html">Home</a>
+  <span class="breadcrumb-sep">›</span>
+  <span class="breadcrumb-current">Plans</span>
+</div>
+
+<div class="page-hero">
+  <p class="page-eyebrow">How to Start</p>
+  <h1 class="page-h">Plans</h1>
+  <p class="page-lead">1本だけの制作から、まるごと任せる運用まで。状況に合った始め方を選べます。</p>
+</div>
+<nav class="page-anchor" aria-label="ページ内リンク">
+  <a href="#production">映像制作</a>
+  <a href="#plan-ab">SNS運用プラン</a>
+  <a href="#faq">よくある質問</a>
+</nav>
+
+<!-- 単発制作 -->
+<section id="production">
+  <video class="prod-bgv" muted loop playsinline autoplay preload="none" aria-hidden="true">
+    <source src="../assets/video/ambient_loop.mp4" type="video/mp4">
+  </video>
+  <div class="s-in">
+    <span class="s-eye reveal">Production — 1本からの映像制作</span>
+    <h2 class="s-title reveal">1本から、<span class="accent">つくれます。</span></h2>
+    <div class="prod-grid">
+      <div class="reveal">
+        <p class="prod-desc">
+          単発のご依頼も歓迎です。ただし、つくり方は変わりません——目的とターゲットを整理し、「どこで・誰に見せる映像か」を決めてから企画に入ります。<br>
+          最初の1本から、長いお付き合いが始まることがほとんどです。
+        </p>
+        <div class="prod-types">
+          <span class="prod-type">WebCM</span>
+          <span class="prod-type">ブランドムービー</span>
+          <span class="prod-type">採用動画</span>
+          <span class="prod-type">縦型ショート動画</span>
+          <span class="prod-type">ショートドラマ</span>
+          <span class="prod-type">HP・LP掲載用動画</span>
+        </div>
+        <div class="scale-wrap">
+          <span class="scale-label">Project Scale</span>
+          <p class="scale-intro">同じ「1本」でも、設計の深さで規模は変わります。実際の案件例:</p>
+          <div class="scale-cases">
+            <div class="scale-case"><span>縦型ショート動画1本（シンプル制作）</span><b>10万円</b></div>
+            <div class="scale-case"><span>HP掲載用ブランドムービー（1本）</span><b>50万円</b></div>
+            <div class="scale-case"><span>WebCM（目的別・複数本納品）</span><b>180万円</b></div>
+            <div class="scale-case"><span>広告用ショートクリエイティブ開発（検証設計込み）</span><b>300万円</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-d1">
+        <table class="price-table">
+          <caption>料金の目安</caption>
+          <tr>
+            <th>ショート動画（縦型）<small>本数・企画規模により変動</small></th>
+            <td>1本 <em>10</em>万円〜</td>
+          </tr>
+          <tr>
+            <th>WebCM・ブランドムービー・採用動画</th>
+            <td><em>30</em>万円〜</td>
+          </tr>
+        </table>
+        <p class="price-notes">
+          ※いずれも企画・撮影・編集込み。キャスティング・スタジオ等の実費は内容に応じて別途。<br>
+          ※広告用クリエイティブ開発・複数本パッケージは規模に応じて個別見積り。お見積りは無償です。
+        </p>
+        <div class="prod-acts">
+          <a href="contact.html" class="btn-p">無料相談する</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- A/B 比較 -->
+<section id="plan-ab">
+  <div class="s-in">
+    <span class="s-eye reveal">Partnership — 継続プラン</span>
+    <h2 class="s-title reveal">「任せる」か、<br><span class="accent">「自走できる体制をつくる」</span>か。</h2>
+    <p class="s-lead reveal">どちらも担当者として入り、継続的に動きます。違いは、ゴールの設定。</p>
+
+    <div class="ab-grid">
+
+      <!-- Plan A -->
+      <div class="ab-col ab-col-a reveal">
+        <div class="ab-head">
+          <span class="ab-badge">Plan A — フル運用代行</span>
+          <h2 class="ab-title">映像・SNS運用を、<br>まるごと任せたい</h2>
+          <p class="ab-sub">6ヶ月〜 / 月5本〜のコンテンツ制作 / 料金は内容・本数に応じてお見積り（無償）</p>
+        </div>
+        <div class="ab-body">
+          <div class="ab-persona">
+            <p class="ab-persona-label">こんな企業・担当者に</p>
+            <ul class="ab-persona-list">
+              <li>社内に映像・SNS専任がいない</li>
+              <li>まずは外部に任せてスピーディに始めたい</li>
+              <li>TikTok・Instagram運用を本格化したい</li>
+              <li>採用・認知・売上など明確な目標がある</li>
+            </ul>
+          </div>
+          <p class="ab-desc">
+            社内にリソースがなくても、すぐにスタートできます。企画・撮影・編集・投稿・分析まで、M2Logが担当者として一貫して動きます。<br><br>
+            毎月の投稿本数・予算に合わせてカスタマイズ可能。継続することで、アカウントの土台が育っていきます。
+          </p>
+          <span class="ab-items-label">含まれるもの</span>
+          <div class="ab-items">
+            <div class="ab-item">コンセプト・KPI設計</div>
+            <div class="ab-item">月5本〜のコンテンツ制作</div>
+            <div class="ab-item">企画・撮影・編集・投稿</div>
+            <div class="ab-item">コメント運用サポート</div>
+            <div class="ab-item">月次レポート・改善提案</div>
+            <div class="ab-item">担当者として会議に参加</div>
+            <div class="ab-item">広告運用支援（オプション）</div>
+          </div>
+        </div>
+        <div class="ab-foot">
+          <a href="contact.html" class="btn-p" style="display:block;text-align:center">無料相談する</a>
+        </div>
+      </div>
+
+      <!-- Plan B -->
+      <div class="ab-col ab-col-b reveal reveal-d2">
+        <div class="ab-head">
+          <span class="ab-badge">Plan B — 伴走型SNS運用</span>
+          <h2 class="ab-title">1年かけて、<br>自走できる体制をつくりたい</h2>
+          <p class="ab-price">月額 <span class="ab-price-jp">30万円台</span>〜</p>
+          <p class="ab-sub">12ヶ月 / 月4本のコンテンツ制作</p>
+        </div>
+        <div class="ab-body">
+          <div class="ab-persona ab-persona-dark">
+            <p class="ab-persona-label">こんな企業・担当者に</p>
+            <ul class="ab-persona-list">
+              <li>長期的に内製化してコストを下げたい</li>
+              <li>社内にSNS・映像のノウハウを蓄積したい</li>
+              <li>外注依存から脱却して自走できるチームをつくりたい</li>
+              <li>1年後に自分たちで回せる状態を目指している</li>
+            </ul>
+          </div>
+          <p class="ab-desc">
+            最初はM2Logがフル担当。徐々に社内チームへノウハウを移転し、最終的に外注なしで自走できる体制を構築します。<br><br>
+            月額が段階的に下がる逓減型設計。長期的なコスト削減と、社内のSNS・映像力向上を同時に実現します。内製化を目指さず、そのまま伴走を続ける形（通常伴走型）も選べます。
+          </p>
+          <span class="ab-items-label">含まれるもの</span>
+          <div class="ab-items">
+            <div class="ab-item">Aのすべて（フル運用フェーズ）</div>
+            <div class="ab-item">4フェーズの段階的移行設計</div>
+            <div class="ab-item">社内チームへのノウハウ移転</div>
+            <div class="ab-item">実践の場での撮影・編集指導</div>
+            <div class="ab-item">月額が段階的に下がる設計</div>
+            <div class="ab-item">最終的に内製化で自走</div>
+            <div class="ab-item">広告運用支援（オプション）</div>
+          </div>
+        </div>
+        <div class="ab-foot" style="border-top-color:var(--bl)">
+          <a href="contact.html" class="btn-p" style="display:block;text-align:center">無料相談する</a>
+          <button onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none';this.textContent=this.nextElementSibling.style.display==='none'?'フェーズ詳細を見る ＋':'フェーズ詳細を閉じる －'" style="margin-top:0.9rem;width:100%;background:none;border:1px solid rgba(245,240,232,0.2);color:rgba(245,240,232,0.7);font-family:var(--eng);font-size:0.62rem;letter-spacing:0.1em;padding:0.65rem 1rem;border-radius:4px;cursor:pointer">フェーズ詳細を見る ＋</button>
+          <div style="display:none;padding-top:1.2rem">
+            <div style="display:flex;flex-direction:column;gap:0.8rem">
+              <div style="padding:1rem 1.2rem;background:rgba(255,255,255,0.05);border-radius:6px;border-left:2px solid var(--or)">
+                <p style="font-family:var(--eng);font-size: 0.62rem;letter-spacing:0.1em;color:var(--or);margin-bottom:0.3rem">PHASE 1 / Month 1〜3</p>
+                <p style="font-size:0.85rem;font-weight:500;color:var(--tl);margin-bottom:0.3rem">戦略設計 × フル運用</p>
+                <p style="font-size:0.76rem;color:rgba(245,240,232,0.6);line-height:1.8">M2Logが制作・運用をすべて担当し、アカウントの土台をつくります。</p>
+              </div>
+              <div style="padding:1rem 1.2rem;background:rgba(255,255,255,0.05);border-radius:6px;border-left:2px solid var(--or)">
+                <p style="font-family:var(--eng);font-size: 0.62rem;letter-spacing:0.1em;color:var(--or);margin-bottom:0.3rem">PHASE 2 / Month 4〜6</p>
+                <p style="font-size:0.85rem;font-weight:500;color:var(--tl);margin-bottom:0.3rem">並走 × ノウハウ移転</p>
+                <p style="font-size:0.76rem;color:rgba(245,240,232,0.6);line-height:1.8">社内担当者と一緒に制作・運用。企画・撮影の考え方を実践の中で伝えます。</p>
+              </div>
+              <div style="padding:1rem 1.2rem;background:rgba(255,255,255,0.05);border-radius:6px;border-left:2px solid var(--or)">
+                <p style="font-family:var(--eng);font-size: 0.62rem;letter-spacing:0.1em;color:var(--or);margin-bottom:0.3rem">PHASE 3 / Month 7〜9</p>
+                <p style="font-size:0.85rem;font-weight:500;color:var(--tl);margin-bottom:0.3rem">社内主導 × サポート</p>
+                <p style="font-size:0.76rem;color:rgba(245,240,232,0.6);line-height:1.8">社内チームが主体となり、M2Logがレビュー・改善提案で補佐します。</p>
+              </div>
+              <div style="padding:1rem 1.2rem;background:rgba(255,255,255,0.05);border-radius:6px;border-left:2px solid var(--or)">
+                <p style="font-family:var(--eng);font-size: 0.62rem;letter-spacing:0.1em;color:var(--or);margin-bottom:0.3rem">PHASE 4 / Month 10〜12</p>
+                <p style="font-size:0.85rem;font-weight:500;color:var(--tl);margin-bottom:0.3rem">完全内製化 × 引き継ぎ</p>
+                <p style="font-size:0.76rem;color:rgba(245,240,232,0.6);line-height:1.8">社内で完結できる体制が整った状態で、最後の引き継ぎを行います。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- A vs B 比較表 -->
+<section id="diff">
+  <div class="s-in">
+    <span class="s-eye reveal">A と B の違い</span>
+    <h2 class="s-title reveal">迷ったら、<span class="accent">ここを見る。</span></h2>
+    <div class="diff-scroll">
+    <div class="table-scroll reveal"><table class="diff-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>A — フル運用代行</th>
+          <th>B — 伴走型SNS運用</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>支援の形</td><td>M2Logが担当者として継続的に動く</td><td>段階的に社内チームへ移行する</td></tr>
+        <tr><td>期間</td><td>6ヶ月〜（継続）</td><td>12ヶ月（固定）</td></tr>
+        <tr><td>月のコンテンツ数</td><td>月5本〜</td><td>月4本（移行しながら）</td></tr>
+        <tr><td>社内の関与</td><td>専門知識・社内情報を共有し企画に反映</td><td>後半から本格的に移行</td></tr>
+        <tr><td>ノウハウ移転</td><td>運用を通じて知識も共有</td><td>移転がゴール</td></tr>
+        <tr><td>月額の変化</td><td>固定</td><td>段階的に下がる</td></tr>
+        <tr><td>会議・MTG参加</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>広告運用支援</td><td><span class="check">✓</span>（オプション）</td><td><span class="check">✓</span>（オプション）</td></tr>
+      </tbody>
+    </table></div>
+    <p class="table-scroll-hint">横にスクロールできます</p>
+    </div>
+  </div>
+</section>
+
+<!-- Plan C -->
+<section id="plan-c">
+  <div class="s-in">
+    <span class="s-eye reveal">まずは相談から</span>
+    <h2 class="s-title reveal" style="font-size:clamp(1.4rem,2.2vw,1.9rem)">迷っているなら、<span class="accent">話すのが早い。</span></h2>
+    <div class="plan-c-inner">
+      <div class="plan-c-card reveal">
+        <span class="plan-c-badge">Free</span>
+        <h3 class="plan-c-t">無料相談</h3>
+        <p class="plan-c-b" style="margin-bottom:1.4rem">現状の課題を整理する相談。提案・営業はしません。Zoom・対面どちらでも。</p>
+        <a href="contact.html" class="btn-p">申し込む</a>
+      </div>
+      <div class="plan-c-card reveal reveal-d1" style="background:var(--cr2)">
+        <span class="plan-c-badge">Paid</span>
+        <h3 class="plan-c-t">スポット支援 <span class="plan-c-price">5万円〜</span></h3>
+        <p class="plan-c-b" style="margin-bottom:1.4rem">SNS発信診断・戦略ワークショップ。半日〜1日でコンセプト・KPI・投稿方針まで具体化します。継続契約は不要です。</p>
+        <a href="contact.html" class="btn-p">申し込む</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="s-in">
+    <span class="s-eye reveal">FAQ</span>
+    <h2 class="s-title reveal">よくある<span class="accent">質問</span></h2>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">映像1本だけの依頼でもできますか？</span>
+          <span class="faq-icon">＋</span>
+        </button>
+        <div class="faq-a"><p class="faq-a-inner">可能です。1本のご依頼でも、目的とターゲットの整理から入り、届く形で納品します。実際、最初の1本をきっかけに運用や継続のお付き合いへ広がるケースがほとんどです。</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">具体的な案が何もないのですが、ゼロから相談できますか？</span>
+          <span class="faq-icon">＋</span>
+        </button>
+        <div class="faq-a"><p class="faq-a-inner">可能です。まずは「何を達成したいか（採用・認知・売上など）」と「今ある素材・体制」を伺い、企画の方向性から一緒に整理します。ラフなメモ1枚でも、想いだけでも大丈夫です。</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">代理店経由での発注や、パートナーとしても依頼できますか？</span>
+          <span class="faq-icon">＋</span>
+        </button>
+        <div class="faq-a"><p class="faq-a-inner">可能です。代理店さまの進行フローに合わせ、窓口一本で対応します。守秘・体制面（資料整備、提案同席など）もご相談ください。</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">他の映像制作会社・SNS運用会社との違いは？</span>
+          <span class="faq-icon">＋</span>
+        </button>
+        <div class="faq-a"><p class="faq-a-inner">違いは3つあります。①つくる前から設計すること——目的・ターゲット・届け方を決めてから企画に入ります。②つくった後まで動くこと——納品で終わらず、投稿・配信・改善まで担当者として伴走します。③手法に縛られないこと——SNS運用・広告・単発制作を横断して、目的から最適な形を選びます。</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">実績をもっと見せてもらえますか？</span>
+          <span class="faq-icon">＋</span>
+        </button>
+        <div class="faq-a"><p class="faq-a-inner">公開できるものは一部のため、目的・業種・表現トーンが近い事例を中心にご案内します。お問い合わせ時に「作りたい方向性」を添えていただけるとスムーズです。</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">金額感が分かりません。どれくらいの予算で依頼できますか？</span>
+          <span class="faq-icon">＋</span>
+        </button>
+        <div class="faq-a"><p class="faq-a-inner">目安として、ショート動画は1本10万円〜、WebCM・ブランドムービー・採用動画は30万円〜、継続のSNS運用は月30万円台〜です（いずれも企画・撮影・編集込み、実費別途）。内容・本数・体制によって形が変わるため、ご相談時に「この予算で何ができるか」を率直にお伝えします。広告用クリエイティブ開発など規模の大きな案件は個別にお見積りします。お見積りは無償です。</p></div>
+      </div>
+<div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">社員の出演は必要ですか？</span>
+          <span class="faq-icon">＋</span>
+        </button>
+        <div class="faq-a"><p class="faq-a-inner">必須ではありません。出演者なしで成立する企画も設計できますし、外部キャストを立てての制作も可能です。逆に「社内の人が出るからこそ効く」企画もあるため、目的と社内の事情に合わせて最適な形をご提案します。</p></div>
+      </div>
+<div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">炎上などのリスクが心配です。</span>
+          <span class="faq-icon">＋</span>
+        </button>
+        <div class="faq-a"><p class="faq-a-inner">企画の段階で「誰かを傷つけないか・誤解を招く表現はないか」を確認してから制作に進みます。攻めた企画をご提案することもありますが、無理に通すことはしません——狙いとリスクをご説明した上で、必ず合意を得てから進めます。それでも想定外の反応が起きた場合は、担当者として状況の整理から対応まで一緒に動きます。</p></div>
+      </div>
+<div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">対応エリアを教えてください。</span>
+          <span class="faq-icon">＋</span>
+        </button>
+        <div class="faq-a"><p class="faq-a-inner">撮影・打ち合わせは、全国に伺えます。出張費は東京23区内が1回15,000円。それ以外の地域は、レンタカー・駐車場・交通費・宿泊などの実費を、お見積もりの段階で明示してご提案します（お見積もりは無料です）。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="plans-cta">
+  <p class="plans-cta-t reveal">どこから始めればいいか、<br>一緒に整理します。</p>
+  <p class="plans-cta-b reveal">まず話すだけでいい。どんな状態からでも構いません。</p>
+  <div class="plans-cta-acts reveal">
+    <a href="contact.html" class="btn-p">無料相談する</a>
+  </div>
+</section>
+
+<footer>
+  <div class="f-top">
+    <div class="f-brand">
+      <a href="../index.html" class="f-logo f-logo-text">M2<span class="logo-accent">Log</span></a>
+      <p class="f-tag">映像をつくる前に、チームに入る。</p>
+      <p class="f-award">BOVA 13th Online Video — Sponsor Award Winner</p>
+    </div>
+    <div class="f-cols">
+      <ul class="f-nav">
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="plans.html">Plans</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+      </ul>
+      <div class="f-info">
+        <p>株式会社M2Log</p>
+        <p>東京都江東区</p>
+        <a href="https://www.instagram.com/m2log_1003/" target="_blank" rel="noopener" aria-label="Instagram" class="f-sns">Instagram</a>
+      </div>
+    </div>
+  </div>
+  <p class="f-copy">© 2026 M2Log Inc. All rights reserved.</p>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script>
+// 背景動画: ファイルが存在すれば薄く再生、無ければ何も起きない
+(function(){
+  var v = document.querySelector('.prod-bgv');
+  if(!v) return;
+  v.addEventListener('canplay', function(){ v.classList.add('on'); });
+  v.addEventListener('error', function(){ v.remove(); }, true);
+})();
+function toggleFaq(btn){
+  var item = btn.parentElement;
+  var icon = btn.querySelector('.faq-icon');
+  item.classList.toggle('open');
+  icon.textContent = item.classList.contains('open') ? '－' : '＋';
+}
+</script>
+</body>
+</html>

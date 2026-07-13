@@ -345,6 +345,12 @@ body.theater #dim-layer { opacity: 1; }
 .belief-h { font-family: var(--dp); font-size: clamp(1.6rem, 3.4vw, 2.7rem); font-weight: 800; color: var(--tl); letter-spacing: -0.01em; line-height: 1.4; margin-bottom: 1.6rem; }
 .belief-h .accent { color: var(--or); }
 .belief-b { font-size: 0.95rem; color: rgba(245,240,232,0.8); line-height: 2.3; max-width: 640px; margin: 0 auto; }
+@media (max-width: 640px) {
+  #belief .s-in { text-align: left; }
+  #belief .s-eye { margin-bottom: 1rem; }
+  .belief-b br { display: none; }
+}
+#belief, #proof, #journey, #faq-home { scroll-margin-top: 80px; }
 
 /* ── PROOF: 数字で見る実績(v3追加) ── */
 #proof { background: var(--cr); border-top: 1px solid var(--border); }
@@ -370,7 +376,7 @@ body.theater #dim-layer { opacity: 1; }
 .proof-label { font-size: 0.9rem; font-weight: 500; color: var(--ink); }
 .proof-detail { font-size: 0.78rem; color: var(--ink-m); line-height: 1.95; }
 .proof-note { font-size: 0.72rem; color: var(--ink-s); margin-top: 1.4rem; }
-@media (max-width: 640px) { .proof-grid { grid-template-columns: 1fr; } .proof-card { padding: 1.7rem 1.6rem; } }
+@media (max-width: 640px) { .proof-grid { grid-template-columns: 1fr; } .proof-card { padding: 1.7rem 1.6rem; } .proof-bg { font-size: 4.5rem; top: -0.5rem; } }
 
 /* ── JOURNEY: 最初の30日(v3追加) ── */
 #journey { background: var(--wh); border-top: 1px solid var(--border); }
@@ -639,9 +645,9 @@ body.theater .sticky-cta { transform: translateY(105%); }
       <div class="proof-card reveal reveal-d1">
         <span class="proof-bg" aria-hidden="true">02</span>
         <p class="proof-eye">広告</p>
-        <p class="proof-num">業界目安の<em>約1/10</em></p>
+        <p class="proof-num">最良で<em>約1/10</em></p>
         <p class="proof-label">TikTok広告のクリック単価</p>
-        <p class="proof-detail">1クリック11円（業界目安は80〜150円）。放送局系スポーツメディアの広告運用で。</p>
+        <p class="proof-detail">最も効率が出た回で1クリック11円（業界目安は80〜150円）。継続運用でも20〜40円台を多数記録。放送局系スポーツメディアで。</p>
       </div>
       <div class="proof-card reveal">
         <span class="proof-bg" aria-hidden="true">03</span>
@@ -839,8 +845,8 @@ body.theater .sticky-cta { transform: translateY(105%); }
 
       <div class="door door-dark reveal reveal-d1">
         <p class="door-eye">Partnership — 継続</p>
-        <h3 class="door-t">SNSと映像を、<br>まるごと任せたい</h3>
-        <p class="door-b">担当者としてチームに入り、企画・撮影・編集・投稿・分析まで。月5本〜のコンテンツで、アカウントを育てます。</p>
+        <h3 class="door-t">SNSを、<br>まるごと任せたい</h3>
+        <p class="door-b">担当者としてチームに入り、企画・撮影・編集・投稿・分析まで一貫して。映像制作も内製のチームだから、「つくる」と「届ける」を分けずに任せられます。</p>
         <div class="door-prices">
           <div class="door-price"><span>SNS運用（伴走型）</span><b>月額 30万円台〜</b></div>
         </div>
@@ -883,7 +889,7 @@ body.theater .sticky-cta { transform: translateY(105%); }
     <div class="reveal">
       <span class="cta-label">Next Step</span>
       <p class="cta-t">まず話すだけで、<br>整理できることがある。</p>
-      <p class="cta-b">何から手をつければいいかわからなくても、歓迎します。</p>
+      <p class="cta-b">何から手をつければいいかわからなくても、歓迎します。<br>無理な提案・営業はしません。</p>
     </div>
     <div class="cta-acts reveal reveal-d2">
       <a href="pages/contact.html" class="btn-p">無料相談する</a>

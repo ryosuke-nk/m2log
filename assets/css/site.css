@@ -419,3 +419,4 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .r-m { background: var(--navy); color: var(--white); font-weight: 700; }
 .r-t { background: var(--sky); color: var(--white); font-weight: 700; }
 .r-c { background: #FBE6D6; color: #8A4314; font-weight: 700; }
+.m-price small { font-family: var(--f-body); font-size: 12.5px; font-weight: 700; color: var(--sub); }

@@ -393,3 +393,18 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .month li { counter-increment: m; display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 2px 10px; font-size: 14px; line-height: 1.7; color: var(--sub); }
 .month li::before { content: counter(m); grid-row: span 2; width: 22px; height: 22px; margin-top: 2px; border-radius: 50%; border: 1.5px solid var(--sky); color: var(--sky); font-size: 11px; font-weight: 700; display: grid; place-items: center; }
 .month li b { color: var(--ink); }
+
+/* plan B: roles moving from M2Log to the client, one square per video */
+.handover { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
+.handover li { display: grid; gap: 8px; padding-bottom: 16px; border-bottom: 1px dashed var(--line); }
+.handover li:last-child { border-bottom: 0; padding-bottom: 0; }
+.ho-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; font-size: 14.5px; }
+.ho-head span { font-weight: 700; color: var(--navy); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.ho-bar { display: flex; gap: 4px; }
+.ho-bar i, .ho-legend i { display: block; width: 100%; height: 10px; border-radius: 3px; }
+.handover p { font-size: 14px !important; }
+.m { background: var(--navy); }
+.c { background: var(--orange); }
+.ho-legend { display: flex; gap: 18px; font-size: 13px; color: var(--sub); }
+.ho-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.ho-legend i { width: 18px; }

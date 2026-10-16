@@ -341,3 +341,36 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .next span { font-size: 13px; font-weight: 700; color: var(--sub); }
 .next b { display: block; font-family: var(--f-disp); font-weight: 400; font-size: clamp(22px, 2.6vw, 30px); color: var(--navy); }
 .next:hover b { text-decoration: underline; text-underline-offset: 6px; }
+
+/* ---------- price menu (plans) ---------- */
+.menu { border-top: 2px solid var(--ink); }
+.menu li { border-bottom: 1px solid var(--line); }
+.menu a { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr); gap: 6px 28px; align-items: baseline; padding: 22px 4px; text-decoration: none; transition: background .2s; }
+.menu a:hover { background: var(--white); }
+.m-when { font-size: 14px; font-weight: 700; color: var(--orange); }
+.m-name { font-size: 17px; font-weight: 900; }
+.m-price { font-size: 14px; font-weight: 700; color: var(--navy); line-height: 1.7; }
+.m-price b { font-family: var(--f-disp); font-weight: 400; font-size: 26px; font-variant-numeric: tabular-nums; }
+.m-note { font-size: 14px; color: var(--sub); line-height: 1.7; }
+@media (max-width: 860px) { .menu a { grid-template-columns: 1fr; gap: 4px; padding: 20px 4px; } .m-name { font-size: 18px; } }
+
+/* to-scale bars for project size */
+.scale div { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 16px; }
+.scale i { grid-column: 1 / -1; display: block; height: 6px; border-radius: 3px; background: linear-gradient(var(--sky), var(--sky)) 0 0 / var(--w) 100% no-repeat, var(--cream-2); }
+
+/* wide (16:9) service imagery: never crop */
+.svc-media--wide { height: auto; }
+.svc-media--wide img { width: 100%; height: auto; aspect-ratio: 1280 / 548; }
+.sd-media--wide { height: auto; display: grid; gap: 12px; }
+.sd-media--wide img { width: 100%; height: auto; aspect-ratio: 16 / 9; }
+
+/* letterboxed clip */
+.clip--239 .clip-media { aspect-ratio: 1280 / 548; }
+
+/* plans: swipe between A and B on phones */
+.swipe-hint { display: none; font-size: 13px; color: var(--sub); margin: -12px 0 14px; }
+@media (max-width: 860px) {
+  .swipe-hint { display: block; }
+  .plan-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; margin-inline: calc(-1 * var(--gut)) calc(-1 * var(--gut-r)); padding-inline: var(--gut) var(--gut-r); padding-bottom: 10px; scrollbar-width: thin; }
+  .plan { flex: 0 0 86%; scroll-snap-align: start; scroll-margin-left: var(--gut); }
+}

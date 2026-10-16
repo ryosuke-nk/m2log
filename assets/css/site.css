@@ -408,3 +408,14 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .ho-legend { display: flex; gap: 18px; font-size: 13px; color: var(--sub); }
 .ho-legend span { display: inline-flex; align-items: center; gap: 6px; }
 .ho-legend i { width: 18px; }
+
+/* plan B: who leads each part, month by month */
+.roles { width: 100%; min-width: 420px; border-collapse: separate; border-spacing: 4px; font-size: 13.5px; line-height: 1.5; margin-inline: -4px; }
+.roles th, .roles td { text-align: left; vertical-align: top; padding: 9px 10px; border-radius: 8px; }
+.roles thead th { font-weight: 700; color: var(--ink); padding-inline: 10px; background: none; }
+.roles thead small { font-weight: 500; color: var(--sub); font-size: 12px; }
+.roles tbody th { font-weight: 700; white-space: nowrap; padding-left: 0; }
+.roles td small { display: block; font-size: 11.5px; opacity: .85; }
+.r-m { background: var(--navy); color: var(--white); font-weight: 700; }
+.r-t { background: var(--sky); color: var(--white); font-weight: 700; }
+.r-c { background: #FBE6D6; color: #8A4314; font-weight: 700; }

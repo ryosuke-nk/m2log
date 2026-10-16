@@ -420,3 +420,33 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .r-t { background: var(--sky); color: var(--white); font-weight: 700; }
 .r-c { background: #FBE6D6; color: #8A4314; font-weight: 700; }
 .m-price small { font-family: var(--f-body); font-size: 12.5px; font-weight: 700; color: var(--sub); }
+
+/* ---------- review fixes ---------- */
+html { scroll-padding-top: calc(88px + env(safe-area-inset-top, 0px)); }
+.clip-ratio { font-size: 12px; }
+.roles td small { font-size: 12px; }
+.hd-logo { padding-block: 7px; }
+.crumb a { padding-block: 6px; }
+
+/* mobile: a consult button that stays in reach */
+.mcta { display: none; }
+@media (max-width: 860px) {
+  .mcta { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; gap: 10px; align-items: center; justify-content: space-between;
+    padding: 10px var(--gut-r) calc(10px + env(safe-area-inset-bottom, 0px)) var(--gut);
+    background: rgba(255,254,250,.96); border-top: 1px solid var(--line); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    transform: translateY(110%); transition: transform .25s; }
+  .mcta.is-on { transform: none; }
+  .mcta p { font-size: 13px; line-height: 1.5; color: var(--sub); margin: 0; }
+  .mcta p b { color: var(--ink); display: block; font-size: 14px; }
+  .mcta .btn { padding: 12px 18px; font-size: 14px; white-space: nowrap; }
+  body.has-mcta .ft { padding-bottom: calc(32px + 76px + env(safe-area-inset-bottom, 0px)); }
+}
+
+/* plans: A/B switcher above the swipeable cards */
+.plan-switch { display: none; }
+@media (max-width: 860px) {
+  .plan-switch { display: flex; gap: 6px; background: var(--white); border: 1px solid var(--line); border-radius: 999px; padding: 4px; margin-bottom: 14px; position: sticky; top: calc(80px + env(safe-area-inset-top, 0px)); z-index: 5; }
+  .plan-switch button { flex: 1; font: inherit; font-size: 14px; font-weight: 700; border: 0; border-radius: 999px; padding: 10px 8px; background: transparent; color: var(--sub); cursor: pointer; }
+  .plan-switch button[aria-pressed="true"] { background: var(--navy); color: var(--white); }
+  .swipe-hint { display: none !important; }
+}

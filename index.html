@@ -2,1053 +2,243 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>M2Log — 映像をつくる前に、チームに入る。</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>M2Log｜届けるまでが、つくること。</title>
+<meta name="description" content="SNSで届く企画と、映像をつくる力。TikTok運用、ショート動画・ショートドラマ、WebCM・ブランドムービーまで、企画・撮影・編集を内製するチームが御社の担当者として伴走する、株式会社M2Logです。">
 <meta property="og:type" content="website">
-<meta property="og:title" content="M2Log — 映像をつくる前に、チームに入る。">
-<meta property="og:description" content="映像をつくる前に、チームに入る。SNS運用・ショート動画・映像制作を担当者として伴走する映像マーケティングパートナー、株式会社M2Log。第13回BOVA協賛企業賞受賞。">
+<meta property="og:site_name" content="M2Log">
+<meta property="og:title" content="M2Log｜届けるまでが、つくること。">
+<meta property="og:description" content="SNSで届く企画と、映像をつくる力。TikTok運用、ショート動画・ショートドラマ、WebCM・ブランドムービーまで、企画・撮影・編集を内製するチームが御社の担当者として伴走する、株式会社M2Logです。">
 <meta property="og:image" content="https://m2log-v2.vercel.app/assets/ogp.jpg">
-<meta property="og:url" content="https://m2log-v2.vercel.app">
+<meta property="og:url" content="https://m2log-v2.vercel.app/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://m2log-v2.vercel.app/">
 <link rel="icon" href="assets/favicon.ico">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#FFFEFA">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVNJRPJJVC"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XVNJRPJJVC');</script>
-<meta name="description" content="映像をつくる前に、チームに入る。SNS運用・ショート動画・映像制作を担当者として伴走する映像マーケティングパートナー、株式会社M2Log。第13回BOVA協賛企業賞受賞。">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/img/hero_bg.jpg" fetchpriority="high">
-<link rel="stylesheet" href="assets/css/base.css">
-<style>
-
-/* ══ v2 情報ダイエット版 ══
-   方針: 1セクション1メッセージ / 読ませない・見せる / 本文は短く大きく */
-
-/* ── HERO ── */
-#hero {
-  position: relative; height: 100svh; min-height: 640px;
-  display: flex; flex-direction: column; justify-content: flex-end;
-  overflow: hidden; background: var(--nv2);
-}
-.hero-ov {
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, var(--nv2) 0%, rgba(9,15,34,0.15) 60%, transparent 100%);
-}
-.hero-video {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; opacity: 0; transition: opacity 1.4s ease;
-  filter: brightness(0.4) saturate(0.85);
-}
-.hero-video.on { opacity: 1; }
-@media (prefers-reduced-motion: reduce) { .hero-video { display: none; } }
-.hero-c { position: relative; z-index: 2; padding: 0 6vw 10vh; }
-.hero-label {
-  font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.32em;
-  text-transform: uppercase; color: var(--or);
-  display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.8rem;
-  opacity: 0; animation: fup 0.9s var(--ease) 0.2s forwards;
-}
-.hero-label::before { content: ''; width: 1.4rem; height: 1px; background: var(--or); display: block; }
-.hero-h { margin-bottom: 1.4rem; }
-.hero-h .l1, .hero-h .l2 {
-  display: block;
-  font-family: var(--dp); font-weight: 800; letter-spacing: -0.03em; line-height: 1.0;
-  font-size: clamp(2.8rem, 7vw, 6.5rem);
-}
-.hero-h .l1 { color: var(--tl); opacity: 0; animation: fup 1s var(--ease) 0.35s forwards; }
-.hero-h .l2 { color: var(--or); opacity: 0; animation: fup 1s var(--ease) 0.5s forwards; }
-.hero-mission {
-  font-size: clamp(1.05rem, 1.8vw, 1.4rem);
-  font-weight: 300; letter-spacing: 0.1em;
-  color: rgba(245,240,232,0.85); margin-bottom: 1.1rem;
-  opacity: 0; animation: fup 1s var(--ease) 0.62s forwards;
-}
-.hero-body {
-  font-size: 0.95rem; color: rgba(245,240,232,0.78); line-height: 2; max-width: 500px;
-  margin-bottom: 2.2rem;
-  opacity: 0; animation: fup 1s var(--ease) 0.68s forwards;
-}
-.hero-acts {
-  display: flex; gap: 0.9rem; flex-wrap: wrap;
-  opacity: 0; animation: fup 1s var(--ease) 0.8s forwards;
-}
-.hero-scroll {
-  position: absolute; right: 5vw; bottom: 2.5rem; z-index: 3;
-  font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.24em;
-  text-transform: uppercase; color: var(--tm);
-  writing-mode: vertical-rl; display: flex; align-items: center; gap: 0.8rem;
-  opacity: 0; animation: fin 1s 1.1s forwards;
-}
-.hero-scroll::after { content: ''; width: 1px; height: 3rem; background: var(--tm); }
-@keyframes fup { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
-@keyframes fin  { to{opacity:1} }
-
-/* ── CLIENTS(ヒーロー直下に移動: 信頼の先出し) ── */
-#clients { background: var(--nv2); border-top: 1px solid var(--bl); }
-.cl-inner { padding: 2.2rem 0 2.6rem; }
-.cl-eye { font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--tm); text-align: center; margin-bottom: 1.3rem; }
-.cl-scroll { overflow: hidden; position: relative; }
-.cl-scroll::before, .cl-scroll::after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 1; pointer-events: none; }
-.cl-scroll::before { left: 0; background: linear-gradient(to right, var(--nv2), transparent); }
-.cl-scroll::after  { right: 0; background: linear-gradient(to left,  var(--nv2), transparent); }
-.cl-track { display: flex; animation: ticker 34s linear infinite; width: max-content; }
-.cl-pill { font-family: var(--sans); font-size: 0.78rem; font-weight: 300; color: rgba(245,240,232,0.72); padding: 0.42rem 1.1rem; border: 1px solid var(--bm); border-radius: 4px; white-space: nowrap; margin: 0 0.35rem; flex-shrink: 0; background: rgba(255,255,255,0.04); }
-
-/* ── STANCE(旧: 課題3連+Who We Are を1セクションに統合) ── */
-#stance { position: relative; overflow: hidden; border-top: 1px solid var(--border); }
-.stance-inner { display: flex; align-items: stretch; min-height: 560px; }
-.stance-photo { position: relative; flex: 0 0 52%; overflow: hidden; }
-.stance-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 45% 20%; filter: brightness(0.94) saturate(0.98); }
-.stance-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(9,15,34,0.42), transparent 32%); pointer-events: none; }
-.stance-text { flex: 1; align-self: center; padding: 5.5rem 6vw 5.5rem 4rem; max-width: 640px; }
-@media (max-width: 900px) {
-  .stance-inner { flex-direction: column; min-height: 0; }
-  .stance-photo { flex: none; width: 100%; aspect-ratio: 4/3; }
-  .stance-text { padding: 3rem 5vw 3.5rem; }
-}
-.stance-h {
-  font-family: var(--dp); font-size: clamp(1.7rem, 3vw, 2.6rem); font-weight: 800;
-  color: var(--tl); line-height: 1.35; letter-spacing: -0.01em; margin-bottom: 1.4rem;
-}
-.stance-h .accent { color: var(--or); }
-.stance-body { font-size: 0.95rem; color: rgba(245,240,232,0.8); line-height: 2.2; margin-bottom: 2rem; max-width: 480px; }
-.stance-quote {
-  font-size: 0.95rem; color: var(--tl); line-height: 1.9;
-  padding-left: 1.1rem; border-left: 3px solid var(--or); margin-bottom: 2.2rem;
-}
-.stance-quote em { font-style: normal; color: var(--or); }
-
-/* ── SERVICES ── */
-#services { background: var(--wh); border-top: 1px solid var(--border); }
-.svc-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.8rem; }
-.svc-card {
-  display: flex; flex-direction: column; text-decoration: none;
-  border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--wh);
-  transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease);
-}
-.svc-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(0,0,0,0.09); }
-.svc-card-img { aspect-ratio: 3/2; overflow: hidden; position: relative; background: var(--cr2); }
-.svc-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.55s var(--ease); filter: brightness(0.9); }
-.svc-card:hover .svc-card-img img { transform: scale(1.05); filter: brightness(1); }
-.svc-card-body { padding: 1.5rem 1.6rem; flex: 1; display: flex; flex-direction: column; }
-.svc-card-en { font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--or); margin-bottom: 0.5rem; }
-.svc-card-t { font-size: 1.02rem; font-weight: 500; color: var(--ink); line-height: 1.45; margin-bottom: 0.5rem; }
-.svc-card-b { font-size: 0.85rem; color: var(--ink-m); line-height: 1.9; flex: 1; }
-.svc-card-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--border); }
-.svc-card-link { font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-s); }
-.svc-card-arrow { font-size: 1rem; color: var(--ink-s); transition: transform 0.2s, color 0.2s; }
-.svc-card:hover .svc-card-arrow { transform: translateX(4px); color: var(--or); }
-.svc-note { margin-top: 2rem; padding: 1.3rem 1.8rem; background: var(--cr2); border-radius: 4px; font-size: 0.86rem; color: var(--ink-m); line-height: 2; border-left: 3px solid var(--or); }
-.svc-note strong { color: var(--ink); font-weight: 500; }
-@media (max-width: 880px) { .svc-cards { grid-template-columns: 1fr; } }
-
-/* ── DOORS(頼み方は2つ) ── */
-#doors { background: var(--cr); border-top: 1px solid var(--border); }
-.doors-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.8rem; }
-.door {
-  border-radius: 12px; padding: 2.8rem 2.6rem;
-  display: flex; flex-direction: column; position: relative; overflow: hidden;
-  transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease);
-}
-.door:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.12); }
-.door-light { background: var(--lite); border: 1px solid var(--border-on-lite); }
-.door-dark { background: var(--nv2); border: 1px solid var(--bl); }
-.door-eye {
-  font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.2em;
-  text-transform: uppercase; color: var(--or); margin-bottom: 1rem;
-}
-.door-t {
-  font-family: var(--dp); font-size: clamp(1.3rem, 2vw, 1.7rem); font-weight: 800;
-  line-height: 1.35; letter-spacing: -0.01em; margin-bottom: 0.9rem;
-}
-.door-light .door-t { color: var(--ink-on-lite); }
-.door-dark .door-t { color: var(--tl); }
-.door-b { font-size: 0.88rem; line-height: 2; margin-bottom: 1.6rem; }
-.door-light .door-b { color: var(--ink-on-lite-m); }
-.door-dark .door-b { color: var(--tm); }
-.door-prices { display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 1.4rem; }
-.door-price {
-  display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
-  padding-bottom: 0.55rem; border-bottom: 1px dashed rgba(17,24,39,0.25);
-  font-size: 0.82rem;
-}
-.door-dark .door-price { border-bottom-color: var(--bm); }
-.door-price span { color: var(--ink-on-lite-m); }
-.door-dark .door-price span { color: var(--tm); }
-.door-price b { font-family: var(--dp); font-weight: 700; font-size: 0.95rem; color: var(--ink-on-lite); white-space: nowrap; }
-.door-dark .door-price b { color: var(--tl); }
-.door-note { font-size: 0.76rem; line-height: 1.9; margin-bottom: 2rem; }
-.door-light .door-note { color: rgba(17,24,39,0.55); }
-.door-dark .door-note { color: var(--tm); opacity: 0.8; }
-.door .btn-p, .door .btn-nv { margin-top: auto; text-align: center; }
-@media (max-width: 880px) { .doors-grid { grid-template-columns: 1fr; } }
-
-/* ── CTA ── */
-#cta-main { background: var(--nv2); padding: 8rem 6vw; }
-.cta-main-inner { display: grid; grid-template-columns: 1fr auto; gap: 4rem; align-items: center; }
-.cta-label { font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--or); margin-bottom: 1rem; display: block; }
-.cta-t { font-size: clamp(1.4rem, 2.2vw, 2rem); font-weight: 400; color: var(--tl); line-height: 1.55; max-width: 440px; }
-.cta-b { font-size: 0.88rem; color: var(--tm); margin-top: 0.9rem; line-height: 2; }
-.cta-acts { display: flex; flex-direction: column; gap: 0.8rem; min-width: 180px; }
-
-@media (max-width: 960px) {
-  .stance-inner { min-height: 480px; }
-  .stance-text { padding: 4rem 5vw; max-width: 100%; }
-  .cta-main-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-  .cta-acts { flex-direction: row; flex-wrap: wrap; }
-}
-
-
-.cta-sub { text-align: center; font-size: 0.8rem; color: var(--tm); margin-top: 2rem; padding: 0 6vw; }
-
-/* ── WORKS: ネイティブ動画カード ── */
-#works { background: #080D1C; border-top: 1px solid var(--border); }
-.works-head { max-width: 620px; }
-.works-grid {
-  display: grid; grid-template-columns: repeat(3, minmax(0, 320px));
-  gap: 2rem; justify-content: center; margin-top: 3.5rem;
-}
-.work-card {
-  position: relative; aspect-ratio: 9/16; border-radius: 12px; overflow: hidden;
-  background: var(--nv3); box-shadow: 0 16px 48px rgba(0,0,0,0.4);
-  transition: transform 0.4s var(--ease), box-shadow 0.4s;
-}
-.work-card:hover { transform: translateY(-4px); box-shadow: 0 24px 64px rgba(0,0,0,0.5); }
-.work-video { width: 100%; height: 100%; object-fit: cover; display: block; }
-.work-badge {
-  position: absolute; top: 0.9rem; left: 0.9rem; z-index: 3;
-  font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
-  color: #fff; background: var(--or); padding: 0.35rem 0.7rem; border-radius: 3px;
-  box-shadow: 0 4px 14px rgba(244,121,32,0.45);
-}
-.work-sound {
-  position: absolute; right: 0.8rem; bottom: 3.4rem; z-index: 3;
-  width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.5);
-  background: rgba(9,15,34,0.55) center/16px no-repeat; backdrop-filter: blur(6px); cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M11 5L6 9H2v6h4l5 4V5z'/%3E%3Cline x1='23' y1='9' x2='17' y2='15'/%3E%3Cline x1='17' y1='9' x2='23' y2='15'/%3E%3C/svg%3E");
-}
-.work-sound[data-muted="false"] {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M11 5L6 9H2v6h4l5 4V5z'/%3E%3Cpath d='M15.5 8.5a5 5 0 0 1 0 7'/%3E%3Cpath d='M19 5a9 9 0 0 1 0 14'/%3E%3C/svg%3E");
-}
-.work-cap {
-  position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
-  padding: 2.2rem 1rem 0.9rem;
-  background: linear-gradient(to top, rgba(6,12,28,0.85), transparent);
-  display: flex; flex-direction: column; gap: 0.15rem;
-}
-.work-cap-en { font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(245,240,232,0.75); }
-.work-cap-jp { font-size: 0.78rem; font-weight: 500; color: var(--tl); }
-
-
-.work-cap-dur { font-variant-numeric: tabular-nums; opacity: 0.7; letter-spacing: 0.06em; }
-.work-seek {
-  position: absolute; left: 0; right: 0; bottom: 0; height: 18px; z-index: 4;
-  cursor: pointer; display: flex; align-items: flex-end;
-  touch-action: pan-y;
-}
-.ws-track {
-  position: relative; width: 100%; height: 3px;
-  background: rgba(255,255,255,0.22);
-  transition: height 0.18s var(--ease);
-}
-.work-seek:hover .ws-track, .work-seek.dragging .ws-track { height: 6px; }
-.ws-fill {
-  position: absolute; left: 0; top: 0; bottom: 0; width: 0%;
-  background: var(--or);
-}
-.ws-knob {
-  position: absolute; top: 50%; left: 0%;
-  width: 12px; height: 12px; border-radius: 50%;
-  background: var(--or); box-shadow: 0 0 0 3px rgba(9,15,34,0.5);
-  transform: translate(-50%, -50%) scale(0);
-  transition: transform 0.18s var(--ease);
-}
-.work-seek:hover .ws-knob, .work-seek.dragging .ws-knob { transform: translate(-50%, -50%) scale(1); }
-.work-cap { padding-bottom: 1.25rem; }
-.works-more { text-align: center; margin-top: 2.8rem; }
-.work-featured {
-  aspect-ratio: 16/9; max-width: 900px; margin: 3.5rem auto 0;
-}
-.work-wide {
-  aspect-ratio: 16/9; max-width: 640px; margin: 2rem auto 0;
-}
-.work-badge--line {
-  background: rgba(9,15,34,0.55); color: var(--or);
-  border: 1px solid var(--or); box-shadow: none; backdrop-filter: blur(4px);
-}
-@media (max-width: 700px) {
-  .work-featured, .work-wide { max-width: 100%; }
-}
-
-@media (max-width: 1080px) { .works-grid { grid-template-columns: repeat(2, minmax(0, 320px)); } }
-@media (max-width: 700px) {
-  .works-grid {
-    display: flex; grid-template-columns: none;
-    overflow-x: auto; -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory; scrollbar-width: none;
-    gap: 0.9rem; margin-left: -5vw; margin-right: -5vw;
-    padding: 0.2rem 5vw 0.6rem;
-    mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
-  }
-  .works-grid::-webkit-scrollbar { display: none; }
-  .works-grid .work-card { flex: 0 0 74vw; scroll-snap-align: center; }
-}
-
-
-a.stance-photo { display: block; cursor: pointer; text-decoration: none; }
-.stance-photo img { transition: transform 0.6s var(--ease), filter 0.4s; }
-.stance-photo:hover img { transform: scale(1.03); filter: brightness(1) saturate(1); }
-.stance-photo-hint {
-  position: absolute; left: 1.2rem; bottom: 1.2rem; z-index: 2;
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  font-size: 0.78rem; font-weight: 500; color: #fff;
-  background: rgba(9,15,34,0.6); backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.25);
-  padding: 0.55rem 1rem; border-radius: 99px;
-  transition: background 0.3s, border-color 0.3s;
-}
-.stance-photo:hover .stance-photo-hint { background: var(--or); border-color: var(--or); }
-.stance-photo-hint .sp-arrow { transition: transform 0.3s; display: inline-block; }
-.stance-photo:hover .sp-arrow { transform: translateX(3px); }
-
-.hero-award {
-  font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.24em;
-  text-transform: uppercase; color: rgba(245,240,232,0.55);
-  margin: 0.6rem 0 0; padding-left: 2.2rem;
-  animation: fup 0.8s var(--ease) 0.35s both;
-}
-
-.stance-sign {
-  font-size: 0.74rem; color: var(--tm); margin-top: 1.4rem;
-  padding-left: 1.05rem; letter-spacing: 0.05em;
-}
-.cta-acts a { min-width: 200px; text-align: center; }
-
-/* シアター・ディミング */
-#dim-layer {
-  position: fixed; inset: 0; z-index: 500;
-  background: rgba(4, 8, 18, 0.62);
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.5s var(--ease);
-}
-body.theater #dim-layer { opacity: 1; }
-.work-card.playing { z-index: 601; }
-
-/* ── BELIEF: 公開してからが本番(v3追加) ── */
-#belief { background: var(--nv2); border-top: 1px solid var(--bl); }
-#belief .s-in { padding-top: 6.5rem; padding-bottom: 6.5rem; text-align: center; }
-#belief .s-eye { display: block; margin-bottom: 1.2rem; }
-.belief-h { font-family: var(--dp); font-size: clamp(1.6rem, 3.4vw, 2.7rem); font-weight: 800; color: var(--tl); letter-spacing: -0.01em; line-height: 1.4; margin-bottom: 1.6rem; }
-.belief-h .accent { color: var(--or); }
-.belief-b { font-size: 0.95rem; color: rgba(245,240,232,0.8); line-height: 2.3; max-width: 640px; margin: 0 auto; }
-@media (max-width: 640px) {
-  #belief .s-in { text-align: left; }
-  #belief .s-eye { margin-bottom: 1rem; }
-  .belief-b br { display: none; }
-}
-#belief, #proof, #journey, #faq-home { scroll-margin-top: 80px; }
-
-/* ── PROOF: 数字で見る実績(v3追加) ── */
-#proof { background: var(--cr); border-top: 1px solid var(--border); }
-.proof-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem; margin-top: 2.8rem; }
-.proof-card {
-  background: var(--wh); border: 1px solid var(--border); border-radius: 10px;
-  padding: 2.1rem 2.2rem; display: flex; flex-direction: column; gap: 0.5rem;
-  position: relative; overflow: hidden;
-  transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease);
-}
-.proof-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--or); opacity: 0; transition: opacity 0.28s; }
-.proof-card:hover { transform: translateY(-4px); box-shadow: 0 14px 40px rgba(0,0,0,0.08); }
-.proof-card:hover::before { opacity: 1; }
-.proof-eye { font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--or); margin-bottom: 0.3rem; position: relative; z-index: 1; }
-.proof-bg {
-  position: absolute; right: 0.6rem; top: -0.8rem;
-  font-family: var(--dp); font-size: 6rem; font-weight: 900;
-  color: rgba(17,24,39,0.04); line-height: 1; pointer-events: none;
-  letter-spacing: -0.04em; user-select: none;
-}
-.proof-num { font-family: var(--dp); font-size: clamp(1.6rem, 2.8vw, 2.3rem); font-weight: 800; color: var(--ink); letter-spacing: -0.02em; line-height: 1.2; }
-.proof-num em { font-style: normal; color: var(--or); }
-.proof-label { font-size: 0.9rem; font-weight: 500; color: var(--ink); }
-.proof-detail { font-size: 0.78rem; color: var(--ink-m); line-height: 1.95; }
-.proof-note { font-size: 0.72rem; color: var(--ink-s); margin-top: 1.4rem; }
-@media (max-width: 640px) { .proof-grid { grid-template-columns: 1fr; } .proof-card { padding: 1.7rem 1.6rem; } .proof-bg { font-size: 4.5rem; top: -0.5rem; } }
-
-/* ── JOURNEY: 最初の30日(v3追加) ── */
-#journey { background: var(--wh); border-top: 1px solid var(--border); }
-.jr-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4rem; margin-top: 2.8rem; }
-.jr-step { border: 1px solid var(--border); border-radius: 8px; padding: 1.7rem 1.5rem; background: var(--cr); position: relative; }
-.jr-step:not(:last-child)::after {
-  content: '›'; position: absolute; right: -1.15rem; top: 50%;
-  transform: translateY(-50%); color: var(--or); font-size: 1.2rem;
-  font-family: var(--eng); pointer-events: none;
-}
-.jr-step--free { border: 1px dashed var(--or); background: var(--wh); }
-.jr-free {
-  position: absolute; top: 1.4rem; right: 1.3rem;
-  font-family: var(--eng); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.16em;
-  text-transform: uppercase; color: var(--or);
-  border: 1px solid var(--or); border-radius: 99px; padding: 0.22rem 0.7rem;
-}
-.jr-no { font-family: var(--eng); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--or); margin-bottom: 0.4rem; }
-.jr-t { font-size: 0.95rem; font-weight: 500; color: var(--ink); margin-bottom: 0.25rem; }
-.jr-w { font-family: var(--eng); font-size: 0.66rem; letter-spacing: 0.08em; color: var(--ink-s); margin-bottom: 0.8rem; }
-.jr-b { font-size: 0.8rem; color: var(--ink-m); line-height: 1.95; }
-.jr-b strong { color: var(--ink); font-weight: 500; }
-.jr-after { margin-top: 2rem; padding: 1.3rem 1.8rem; background: var(--cr2); border-left: 3px solid var(--or); border-radius: 4px; font-size: 0.86rem; color: var(--ink-m); line-height: 2; }
-.jr-after strong { color: var(--ink); font-weight: 500; }
-@media (max-width: 1000px) { .jr-steps { grid-template-columns: repeat(2, 1fr); } .jr-step:not(:last-child)::after { display: none; } }
-@media (max-width: 600px) { .jr-steps { grid-template-columns: 1fr; } }
-
-/* ── FAQ(トップ用・v3追加) ── */
-#faq-home { background: var(--cr2); border-top: 1px solid var(--border); }
-.fh-list { margin-top: 2.4rem; max-width: 780px; }
-.fh-item { border-bottom: 1px solid var(--border); }
-.fh-item:first-child { border-top: 1px solid var(--border); }
-.fh-item summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; padding: 1.15rem 0; font-size: 0.9rem; color: var(--ink); transition: padding-left 0.2s; }
-.fh-item summary:hover { padding-left: 4px; }
-.fh-item summary::-webkit-details-marker { display: none; }
-.fh-item summary::after { content: '＋'; color: var(--or); flex-shrink: 0; }
-.fh-item[open] summary::after { content: '－'; }
-.fh-a { padding: 0 0 1.4rem; font-size: 0.86rem; color: var(--ink-m); line-height: 2.1; }
-
-/* ── モバイル固定CTA(v3追加) ── */
-.sticky-cta {
-  position: fixed; left: 0; right: 0; bottom: 0; z-index: 400;
-  display: none;
-  padding: 0.7rem 5vw calc(0.7rem + env(safe-area-inset-bottom));
-  background: rgba(9,15,34,0.92); backdrop-filter: blur(10px);
-  border-top: 1px solid var(--bl);
-  transform: translateY(105%); transition: transform 0.35s var(--ease);
-}
-.sticky-cta.show { transform: none; }
-body.theater .sticky-cta { transform: translateY(105%); }
-.sticky-cta .btn-p { display: block; text-align: center; width: 100%; }
-@media (max-width: 700px) { .sticky-cta { display: block; } }
-</style>
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@type": "Organization",
- "name": "株式会社M2Log",
- "url": "https://m2log-v2.vercel.app/",
- "logo": "https://m2log-v2.vercel.app/assets/logo_full.png",
- "foundingDate": "2024-10",
- "founder": {
-  "@type": "Person",
-  "name": "中村陵介"
- },
- "address": {
-  "@type": "PostalAddress",
-  "addressLocality": "江東区",
-  "addressRegion": "東京都",
-  "addressCountry": "JP"
- },
- "sameAs": [
-  "https://www.instagram.com/m2log_1003/"
- ],
- "description": "映像制作・SNSアカウント運用代行・映像マーケティング支援。TikTok・Instagram・YouTube・Web広告に対応。"
-}
-</script>
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@type": "FAQPage",
- "mainEntity": [
-  {
-   "@type": "Question",
-   "name": "金額感が分かりません。",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "目安として、単発のショート動画は1本10万円〜、継続のSNS運用は月30万円台〜です。内容・本数で変わるため、ご相談時に「この予算で何ができるか」を率直にお伝えします。お見積りは無償です。"
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "具体的な案がなくても相談できますか？",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "可能です。実際、ほとんどのご相談がその状態から始まります。ご依頼の方向が見えてきたら、ご提案の際にコンセプトとKPIの考え方までお持ちするので、比較検討の材料としてもお使いいただけます。"
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "東京以外でも対応できますか？",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "撮影・打ち合わせとも、全国に伺えます。出張にかかる費用は、お見積りの段階で明示してご提案します。オンラインでの定例・相談にも対応しています。"
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "他の映像制作会社・SNS運用会社との違いは？",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "「映像制作」と「SNS運用」を同じチームで内製していること。そして、担当者として会議に出て、届くまで動き続けることです。定例には代表が直接参加します。"
-   }
-  }
- ]
-}
-</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
-<div id="dim-layer" aria-hidden="true"></div>
-
-<nav class="nav dark-nav" id="nav">
-  <div class="nav-in">
-    <a href="index.html" class="nav-logo" title="ホームへ戻る">M2<span class="logo-accent">Log</span></a>
-    <ul class="nav-links">
-      <li><a href="pages/services.html">Services</a></li>
-      <li><a href="pages/about.html">About</a></li>
-      <li><a href="pages/plans.html">Plans</a></li>
-      <li><a href="pages/contact.html">Contact</a></li>
-    </ul>
-    <div class="nav-hamburger" id="navHam"><span></span><span></span><span></span></div>
-    <a href="pages/contact.html" class="nav-cta">無料相談</a>
+<header class="hd">
+  <div class="wrap">
+    <a class="hd-logo" href="index.html"><img src="assets/img/logo/m2log_logo_navy.svg" alt="M2Log" width="122" height="30"></a>
+    <button class="hd-menu" type="button" aria-expanded="false" aria-controls="hd-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+    <nav class="hd-nav" id="hd-nav" aria-label="メインメニュー">
+      <a href="pages/services.html">Services</a><a href="pages/about.html">About</a><a href="pages/plans.html">Plans</a><a href="pages/contact.html">Contact</a>
+      <a class="btn" href="pages/contact.html">無料で相談する</a>
+    </nav>
   </div>
-  <nav class="nav-mobile" id="navMobile">
-    <a href="pages/services.html">Services</a>
-    <a href="pages/about.html">About</a>
-    <a href="pages/plans.html">Plans</a>
-    <a href="pages/contact.html">Contact</a>
-  </nav>
-</nav>
-
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-slide" style="background-image:url('assets/img/hero_bg.jpg');filter:brightness(0.32) saturate(0.8)"></div>
-  <div class="hero-slide" style="background-image:url('assets/img/svc01.jpg');filter:brightness(0.28) saturate(0.85)"></div>
-  <div class="hero-slide" style="background-image:url('assets/img/studio1.jpg');filter:brightness(0.28) saturate(0.85)"></div>
-  <video class="hero-video" muted loop playsinline autoplay preload="none" aria-hidden="true">
-    <source src="assets/video/hero_loop.mp4" type="video/mp4">
-  </video>
-  <div class="hero-ov"></div>
-  <div class="hero-c">
-    <p class="hero-label">Video Marketing Partner</p>
-    <p class="hero-award">BOVA 13th — Sponsor Award Winner</p>
-    <h1 class="hero-h">
-      <span class="l1">Create.</span>
-      <span class="l2">Deliver.</span>
-      <span class="visually-hidden">映像をつくる前に、チームに入る。M2Log — 映像マーケティングパートナー</span>
-    </h1>
-    <p class="hero-mission">映像をつくる前に、チームに入る。</p>
-    <p class="hero-body">
-      つくるだけでなく、誰にどう届くかまで設計する。<br>
-      チームの一員として伴走する、<br>映像マーケティングパートナーです。
-    </p>
-    <div class="hero-acts">
-      <a href="pages/contact.html" class="btn-p">無料相談する</a>
-      <a href="pages/services.html" class="btn-g-dark">支援内容を見る</a>
+</header>
+<main>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <h1 class="disp h-hero">届けるまでが、<br>つくること。</h1>
+    <div class="hero-side">
+      <p class="lead">SNSで届く企画と、映像をつくる力。その両方を持つチームが、御社の担当者として隣で走り続けます。一本で終わらない関係を、つくりたいと思っています。</p>
+      <div class="btns"><a class="btn" href="pages/contact.html">無料で相談する<small>30分・オンライン</small></a><a class="btn btn--ghost" href="#works">作品を見る</a></div>
     </div>
   </div>
-  <span class="hero-scroll">scroll</span>
-</section>
-
-<!-- CLIENTS: 信頼の先出し -->
-<section id="clients">
-  <div class="cl-inner">
-    <p class="cl-eye">Works With</p>
-    <div class="cl-scroll">
-      <div class="cl-track">
-        <span class="cl-pill">セガサミーホールディングス</span><span class="cl-pill">PHONE APPLI</span><span class="cl-pill">日テレジータス</span><span class="cl-pill">西武プリンスホテル</span><span class="cl-pill">トイザらス</span><span class="cl-pill">ドン・キホーテ</span><span class="cl-pill">テレビ愛知</span><span class="cl-pill">RINX</span><span class="cl-pill">サミー</span><span class="cl-pill">セガフェイブ</span><span class="cl-pill">福島鰹</span><span class="cl-pill">奥ジャパン</span><span class="cl-pill">WAKAMATSU</span>
-        <span class="cl-pill" aria-hidden="true">セガサミーホールディングス</span><span class="cl-pill" aria-hidden="true">PHONE APPLI</span><span class="cl-pill" aria-hidden="true">日テレジータス</span><span class="cl-pill" aria-hidden="true">西武プリンスホテル</span><span class="cl-pill" aria-hidden="true">トイザらス</span><span class="cl-pill" aria-hidden="true">ドン・キホーテ</span><span class="cl-pill" aria-hidden="true">テレビ愛知</span><span class="cl-pill" aria-hidden="true">RINX</span><span class="cl-pill" aria-hidden="true">サミー</span><span class="cl-pill" aria-hidden="true">セガフェイブ</span><span class="cl-pill" aria-hidden="true">福島鰹</span><span class="cl-pill" aria-hidden="true">奥ジャパン</span><span class="cl-pill" aria-hidden="true">WAKAMATSU</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BELIEF: 公開してからが本番 -->
-<section id="belief">
-  <div class="s-in">
-    <span class="s-eye reveal" style="color:var(--or)">Our Standard</span>
-    <h2 class="belief-h reveal">映像は、<span class="accent">公開してからが本番。</span></h2>
-    <p class="belief-b reveal reveal-d1">
-      いい動画をつくる。そこまでは、私たちの当たり前です。<br>
-      本番は公開したあと——再生されるか、届くか、動いてもらえるか。<br>
-      そこまで設計して、はじめて「つくった」と言えると考えています。
-    </p>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section id="services">
-  <div class="s-in">
-    <span class="s-eye reveal">What We Do</span>
-    <h2 class="s-title reveal">できること、<span class="accent">3つ。</span></h2>
-
-    <div class="svc-cards">
-
-      <a href="pages/services.html#sns" class="svc-card">
-        <div class="svc-card-img">
-          <img loading="lazy" decoding="async" src="assets/img/svc02.jpg" alt="SNS運用代行 - TikTok撮影現場">
+  <div class="strip-wrap" id="works" tabindex="0" aria-label="作品（横にスクロールできます）">
+    <div class="strip">
+      <figure class="clip clip--169">
+        <div class="clip-media">
+          <video preload="none" playsinline poster="assets/img/works_award_poster.jpg" aria-label="水の通知 OFF（富士山GXホールディングス「エブリィフレシャス」課題）の動画"><source src="assets/video/works_award.mp4" type="video/mp4"></video>
+          <span class="clip-ratio">16:9 横型</span>
+          <button class="clip-play" type="button" aria-label="水の通知 OFFを再生"><span></span></button>
         </div>
-        <div class="svc-card-body">
-          <p class="svc-card-en">01 — SNS Management</p>
-          <p class="svc-card-t">TikTokアカウント運用代行</p>
-          <p class="svc-card-b">担当者としてチームに入り、企画・撮影から月次の数字改善まで回します。</p>
-          <div class="svc-card-foot">
-            <span class="svc-card-link">View Details</span>
-            <span class="svc-card-arrow">→</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="pages/services.html#video" class="svc-card">
-        <div class="svc-card-img">
-          <img loading="lazy" decoding="async" src="assets/img/svc01.jpg" alt="ショートドラマ制作現場">
-        </div>
-        <div class="svc-card-body">
-          <p class="svc-card-en">02 — Short Video / Drama</p>
-          <p class="svc-card-t">ショート動画・ショートドラマ制作</p>
-          <p class="svc-card-b">冒頭2秒のフックから、最後まで見てしまう構成を設計します。</p>
-          <div class="svc-card-foot">
-            <span class="svc-card-link">View Details</span>
-            <span class="svc-card-arrow">→</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="pages/services.html#marketing" class="svc-card">
-        <div class="svc-card-img">
-          <img loading="lazy" decoding="async" src="assets/img/svc03_new.jpg" alt="映像マーケティング支援">
-        </div>
-        <div class="svc-card-body">
-          <p class="svc-card-en">03 — Video Marketing</p>
-          <p class="svc-card-t">映像マーケティング支援</p>
-          <p class="svc-card-b">広告・採用・ブランディング。映像を「どう使うか」から設計します。</p>
-          <div class="svc-card-foot">
-            <span class="svc-card-link">View Details</span>
-            <span class="svc-card-arrow">→</span>
-          </div>
-        </div>
-      </a>
-
-    </div>
-
-    <p class="svc-note reveal">
-      すべて<strong>内製（企画・脚本・撮影・編集）</strong>。外部委託を挟まないから、意図がズレず、修正も速い。
-    </p>
-  </div>
-</section>
-
-<!-- PROOF: 数字で見る実績 -->
-<section id="proof">
-  <div class="s-in">
-    <span class="s-eye reveal">Numbers</span>
-    <h2 class="s-title reveal">数字で見る<span class="accent">実績。</span></h2>
-    <p class="s-lead reveal reveal-d1">大手からローカルまで。認知・広告・採用・売上の4方向で。</p>
-
-    <div class="proof-grid">
-      <div class="proof-card reveal">
-        <span class="proof-bg" aria-hidden="true">01</span>
-        <p class="proof-eye">認知</p>
-        <p class="proof-num">0→<em>100万人</em></p>
-        <p class="proof-label">YouTube登録者（2年）</p>
-        <p class="proof-detail">大手玩具メーカーのYouTube。Shorts主体の認知設計で、2年で登録者100万人へ。</p>
-      </div>
-      <div class="proof-card reveal reveal-d1">
-        <span class="proof-bg" aria-hidden="true">02</span>
-        <p class="proof-eye">広告</p>
-        <p class="proof-num">最良で<em>約1/10</em></p>
-        <p class="proof-label">TikTok広告のクリック単価</p>
-        <p class="proof-detail">最も効率が出た回で1クリック11円（業界目安は80〜150円）。継続運用でも20〜40円台を多数記録。放送局系スポーツメディアで。</p>
-      </div>
-      <div class="proof-card reveal">
-        <span class="proof-bg" aria-hidden="true">03</span>
-        <p class="proof-eye">採用</p>
-        <p class="proof-num">半年で<em>40件</em></p>
-        <p class="proof-label">採用の一次問い合わせ</p>
-        <p class="proof-detail">インフラ関連企業の採用TikTok。応募につながる最初の接点を、半年で40件。</p>
-      </div>
-      <div class="proof-card reveal reveal-d1">
-        <span class="proof-bg" aria-hidden="true">04</span>
-        <p class="proof-eye">売上</p>
-        <p class="proof-num">週<em>5〜10件</em></p>
-        <p class="proof-label">広告動画1本で問い合わせ</p>
-        <p class="proof-detail">大阪の理容室。1本の広告動画から、問い合わせが2〜3週間続きました。</p>
-      </div>
-    </div>
-
-    <p class="proof-note reveal">※数値は運用実績の一例です。投稿後1週間時点の計測を含みます。</p>
-  </div>
-</section>
-
-<!-- WORKS: 5本構成(受賞作フィーチャー + 縦3 + ワイド1) -->
-<section id="works">
-  <div class="s-in">
-    <div class="works-head">
-      <span class="s-eye reveal">Works</span>
-      <h2 class="s-title reveal">つくってきた<span class="accent">もの。</span></h2>
-      <p class="s-lead reveal reveal-d1">受賞作から、日々の現場まで。<br>許諾をいただけたものから、順次掲載しています。</p>
-    </div>
-
-    <!-- 受賞作フィーチャー -->
-    <figure class="work-card work-featured reveal reveal-d1">
-      <span class="work-badge">BOVA 協賛企業賞 受賞</span>
-      <video class="work-video" muted playsinline loop preload="metadata" poster="assets/img/works_award_poster.jpg" aria-label="BOVA協賛企業賞受賞作「水の通知 OFF」（エブリィフレシャス課題）の動画">
-        <source src="assets/video/works_award.mp4" type="video/mp4">
-      </video>
-      <button class="work-sound" aria-label="音声を切り替え" data-muted="true"></button>
-      <div class="work-seek" aria-label="シークバー">
-        <div class="ws-track"><div class="ws-fill"></div><div class="ws-knob"></div></div>
-      </div>
-      <figcaption class="work-cap">
-        <span class="work-cap-en">BOVA 13th Online Video — Sponsor Award<span class="work-cap-dur"> · 00:59</span></span>
-        <span class="work-cap-jp">「水の通知 OFF」（富士山GXホールディングス「エブリィフレシャス」課題）</span>
-      </figcaption>
-    </figure>
-
-    <!-- 縦型3本 -->
-    <div class="works-grid reveal reveal-d2">
-      <figure class="work-card">
-        <span class="work-badge work-badge--line">BOVA Finalist</span>
-      <video class="work-video" muted playsinline loop preload="metadata" poster="assets/img/works_sbi_poster.jpg" aria-label="BOVAファイナリスト作品「青春を、僕らは愛してる」（SBI証券課題）の縦型動画">
-          <source src="assets/video/works_sbi.mp4" type="video/mp4">
-        </video>
-        <button class="work-sound" aria-label="音声を切り替え" data-muted="true"></button>
-        <div class="work-seek" aria-label="シークバー">
-        <div class="ws-track"><div class="ws-fill"></div><div class="ws-knob"></div></div>
-      </div>
-      <figcaption class="work-cap">
-          <span class="work-cap-en">BOVA 13th Vertical Video<span class="work-cap-dur"> · 01:00</span></span>
-          <span class="work-cap-jp">「青春を、僕らは愛してる」（SBI証券 課題）</span>
-        </figcaption>
+        <figcaption><b>「水の通知 OFF」</b>富士山GXホールディングス「エブリィフレシャス」課題<br><span class="badge">BOVA 協賛企業賞</span></figcaption>
       </figure>
-      <figure class="work-card">
-      <video class="work-video" muted playsinline loop preload="metadata" poster="assets/img/works_fujisan_poster.jpg" aria-label="富士山マラソン（アールビーズ）のイベント映像">
-          <source src="assets/video/works_fujisan.mp4" type="video/mp4">
-        </video>
-        <button class="work-sound" aria-label="音声を切り替え" data-muted="true"></button>
-        <div class="work-seek" aria-label="シークバー">
-        <div class="ws-track"><div class="ws-fill"></div><div class="ws-knob"></div></div>
-      </div>
-      <figcaption class="work-cap">
-          <span class="work-cap-en">Client Work — Sports Event<span class="work-cap-dur"> · 01:13</span></span>
-          <span class="work-cap-jp">富士山マラソン（アールビーズ）</span>
-        </figcaption>
+      <figure class="clip clip--916">
+        <div class="clip-media">
+          <video preload="none" playsinline poster="assets/img/works_sbi_poster.jpg" aria-label="青春を、僕らは愛してる（SBI証券 課題）の動画"><source src="assets/video/works_sbi.mp4" type="video/mp4"></video>
+          <span class="clip-ratio">9:16 縦型</span>
+          <button class="clip-play" type="button" aria-label="青春を、僕らは愛してるを再生"><span></span></button>
+        </div>
+        <figcaption><b>「青春を、僕らは愛してる」</b>SBI証券 課題<br><span class="badge">BOVA Finalist</span></figcaption>
       </figure>
-      <figure class="work-card">
-      <video class="work-video" muted playsinline loop preload="metadata" poster="assets/img/works_kyoto_poster.jpg" aria-label="自社オリジナル「KYOTO 撮影の裏側」の動画">
-          <source src="assets/video/works_kyoto.mp4" type="video/mp4">
-        </video>
-        <button class="work-sound" aria-label="音声を切り替え" data-muted="true"></button>
-        <div class="work-seek" aria-label="シークバー">
-        <div class="ws-track"><div class="ws-fill"></div><div class="ws-knob"></div></div>
-      </div>
-      <figcaption class="work-cap">
-          <span class="work-cap-en">M2VLog — Original<span class="work-cap-dur"> · 01:48</span></span>
-          <span class="work-cap-jp">KYOTO 撮影の裏側</span>
-        </figcaption>
+      <figure class="clip clip--169">
+        <div class="clip-media">
+          <video preload="none" playsinline poster="assets/img/works_akita_poster.jpg" aria-label="あなたの秋田推し度を診断します（「推して、秋田」映像コンテスト2026）の動画"><source src="assets/video/works_akita.mp4" type="video/mp4"></video>
+          <span class="clip-ratio">16:9 横型</span>
+          <button class="clip-play" type="button" aria-label="あなたの秋田推し度を診断しますを再生"><span></span></button>
+        </div>
+        <figcaption><b>「あなたの秋田推し度を診断します」</b>「推して、秋田」映像コンテスト2026<br><span class="badge">準グランプリ</span></figcaption>
+      </figure>
+      <figure class="clip clip--169">
+        <div class="clip-media">
+          <video preload="none" playsinline poster="assets/img/works_rinx_poster.jpg" aria-label="毎日の余白編（RINX webCM）の動画"><source src="assets/video/works_rinx.mp4" type="video/mp4"></video>
+          <span class="clip-ratio">16:9 横型</span>
+          <button class="clip-play" type="button" aria-label="毎日の余白編を再生"><span></span></button>
+        </div>
+        <figcaption><b>「毎日の余白編」</b>RINX webCM</figcaption>
+      </figure>
+      <figure class="clip clip--916">
+        <div class="clip-media">
+          <video preload="none" playsinline poster="assets/img/works_fujisan_poster.jpg" aria-label="富士山マラソン（アールビーズ）の動画"><source src="assets/video/works_fujisan.mp4" type="video/mp4"></video>
+          <span class="clip-ratio">9:16 縦型</span>
+          <button class="clip-play" type="button" aria-label="富士山マラソンを再生"><span></span></button>
+        </div>
+        <figcaption><b>富士山マラソン</b>アールビーズ</figcaption>
+      </figure>
+      <figure class="clip clip--916">
+        <div class="clip-media">
+          <video preload="none" playsinline poster="assets/img/works_kyoto_poster.jpg" aria-label="KYOTO 撮影の裏側（M2VLog オリジナル）の動画"><source src="assets/video/works_kyoto.mp4" type="video/mp4"></video>
+          <span class="clip-ratio">9:16 縦型</span>
+          <button class="clip-play" type="button" aria-label="KYOTO 撮影の裏側を再生"><span></span></button>
+        </div>
+        <figcaption><b>KYOTO 撮影の裏側</b>M2VLog オリジナル</figcaption>
       </figure>
     </div>
+  </div>
+  <div class="wrap">
+    <p class="strip-hint">横にスワイプすると、ほかの作品も見られます。</p>
+    <ul class="proof" aria-label="受賞歴"><li>BOVA 第13回 協賛企業賞</li><li>BOVA Finalist</li><li>「推して、秋田」映像コンテスト2026 準グランプリ</li></ul>
+    <p class="clients">取引実績：セガサミーホールディングス／サミー／セガフェイブ／PHONE APPLI／日テレジータス／西武プリンスホテル／トイザらス／ドン・キホーテ／テレビ愛知／RINX／福島鰹／奥ジャパン／WAKAMATSU ほか</p>
+  </div>
+</section>
 
-    <!-- ワイド(webCM) -->
-    <figure class="work-card work-wide reveal">
-      <video class="work-video" muted playsinline loop preload="metadata" poster="assets/img/works_rinx_poster.jpg" aria-label="RINX webCM「毎日の余白編」の動画">
-        <source src="assets/video/works_rinx.mp4" type="video/mp4">
-      </video>
-      <button class="work-sound" aria-label="音声を切り替え" data-muted="true"></button>
-      <div class="work-seek" aria-label="シークバー">
-        <div class="ws-track"><div class="ws-fill"></div><div class="ws-knob"></div></div>
-      </div>
-      <figcaption class="work-cap">
-        <span class="work-cap-en">Client Work — Web CM<span class="work-cap-dur"> · 01:00</span></span>
-        <span class="work-cap-jp">「毎日の余白編」（RINX webCM）</span>
-      </figcaption>
-    </figure>
-
-    <div class="works-more reveal">
-      <a href="https://www.instagram.com/m2log_1003/" target="_blank" rel="noopener" class="btn-g">もっと見る（Instagram）</a>
+<section class="sec" aria-labelledby="st-h">
+  <div class="wrap statement">
+    <h2 class="disp h-sec" id="st-h">映像は、<br>公開してからが本番。</h2>
+    <div>
+      <p>いい映像をつくる。そこまでは、私たちにとって当たり前のことです。</p>
+      <p>本当の勝負は公開したあと。最後まで見られるか、届いてほしい人に届くか、見た人が動いてくれるか。そこまで考えて企画し、数字を見ながら次の一本に活かす。私たちは、それを「つくる」と呼んでいます。</p>
     </div>
   </div>
 </section>
 
+<section class="sec sec--tint" aria-labelledby="svc-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 class="disp h-sec" id="svc-h">できること</h2><p class="lead">縦型のSNS動画も、横型のCMも。目的に合わせて、つくり方と届け方を選びます。</p></div>
+    <div class="svc-grid">
+      <a class="svc" href="pages/services.html#sns">
+        <div class="svc-media"><img src="assets/img/img_scene3.jpg" alt="" loading="lazy"><img src="assets/img/works_sbi_poster.jpg" alt="" loading="lazy"><img src="assets/img/works_kyoto_poster.jpg" alt="" loading="lazy"></div>
+        <div><span class="label">縦型・SNS</span><h3>TikTokアカウント運用代行</h3></div>
+        <p>担当者としてチームに入り、企画・撮影から投稿、月次の改善まで回します。</p>
+        <span class="more">詳しく見る</span>
+      </a>
+      <a class="svc" href="pages/services.html#drama">
+        <div class="svc-media"><img src="assets/img/IMG_3228.JPG" alt="" loading="lazy"><img src="assets/img/works_fujisan_poster.jpg" alt="" loading="lazy"><img src="assets/img/studio2.jpg" alt="" loading="lazy"></div>
+        <div><span class="label">縦型・ショートドラマ</span><h3>ショート動画・ショートドラマ制作</h3></div>
+        <p>冒頭2秒のフックから、最後まで見てしまう構成を設計します。</p>
+        <span class="more">詳しく見る</span>
+      </a>
+      <a class="svc" href="pages/services.html#video">
+        <div class="svc-media"><img src="assets/img/works_rinx_poster.jpg" alt="" loading="lazy"></div>
+        <div><span class="label">横型・CM／ブランド</span><h3>映像制作・映像マーケティング支援</h3></div>
+        <p>WebCM、ブランドムービー、採用・広告。映像をどう使うかから設計します。</p>
+        <span class="more">詳しく見る</span>
+      </a>
+    </div>
+    <p class="note-inhouse"><b>企画・脚本・撮影・編集は、すべて内製。</b>外部委託を挟まないから、意図がずれず、修正も速い。</p>
+  </div>
+</section>
 
-<!-- STANCE: 課題提起とWho We Areを統合 -->
-<section id="stance">
-  <div class="stance-inner">
-    <a class="stance-photo" href="pages/about.html" aria-label="チームの詳細（About）を見る">
-      <picture>
-        <source media="(max-width: 640px)" srcset="assets/img/team_sp.jpg">
-        <img loading="lazy" decoding="async" src="assets/img/team_pc.jpg" alt="M2Logチーム">
-      </picture>
-      <span class="stance-photo-hint">メンバーを見る <span class="sp-arrow">→</span></span>
-    </a>
-    <div class="stance-text reveal">
-      <span class="s-eye" style="color:var(--or)">Who We Are</span>
-      <h2 class="stance-h">発注先ではなく、<br><span class="accent">担当者。</span></h2>
-      <p class="stance-body">
-        外注は納品したら終わり。でも、映像もSNSもつくった後が本番です。だからM2Logは担当者として会議に出て、一緒に考え、届けるところまで動きます。
-      </p>
-      <p class="stance-quote">「チームが増えたみたい」と<br>言ってもらえることが、<em>一番うれしい。</em></p>
-      <p class="stance-sign">代表取締役　中村陵介</p>
+<section class="sec" aria-labelledby="num-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 class="disp h-sec" id="num-h">これまでの成果</h2><p class="lead">大手からローカルまで。認知・広告・採用・集客の4つの目的で。</p></div>
+    <div class="nums">
+      <div class="num"><span class="num-k">認知</span><span class="num-v">100<small>万人</small></span><span class="num-l">YouTube登録者（0から2年）</span><p>大手玩具メーカーのYouTube。Shorts主体の認知設計で、2年で登録者100万人へ。</p></div>
+      <div class="num"><span class="num-k">広告</span><span class="num-v">11<small>円</small></span><span class="num-l">TikTok広告のクリック単価（最良回）</span><p>放送局系スポーツメディアで。継続運用でも20〜40円台を多数記録しています。</p></div>
+      <div class="num"><span class="num-k">採用</span><span class="num-v">40<small>件</small></span><span class="num-l">採用の一次問い合わせ（半年）</span><p>インフラ関連企業の採用TikTok。応募につながる最初の接点を、半年で40件。</p></div>
+      <div class="num"><span class="num-k">集客</span><span class="num-v">5〜10<small>件／週</small></span><span class="num-l">広告動画1本からの問い合わせ</span><p>大阪の理容室。1本の広告動画から、問い合わせが2〜3週間続きました。</p></div>
+    </div>
+    <p class="fine">※数値は運用実績の一例です。投稿後1週間時点の計測を含みます。</p>
+  </div>
+</section>
+
+<section class="sec sec--tint" aria-labelledby="team-h">
+  <div class="wrap team">
+    <figure class="team-photo"><img src="assets/img/team_pc.jpg" alt="M2Logのメンバー5人" loading="lazy"></figure>
+    <div class="team-body">
+      <h2 class="disp h-sec" id="team-h">映像をつくる前に、<br>チームに入る。</h2>
+      <p>外注は、納品したら終わり。でも映像もSNSも、つくったあとが本番です。だからM2Logは担当者として会議に出て、一緒に考え、届くところまで動きます。</p>
+      <blockquote class="quote">「チームが増えたみたい」と言ってもらえることが、一番うれしい。<cite>代表取締役　中村陵介</cite></blockquote>
+      <a class="textlink" href="pages/about.html">メンバーを見る</a>
     </div>
   </div>
 </section>
 
-
-<!-- JOURNEY: 最初の30日 -->
-<section id="journey">
-  <div class="s-in">
-    <span class="s-eye reveal">First 30 Days</span>
-    <h2 class="s-title reveal">相談から、最初の動画が<span class="accent">世に出るまで。</span></h2>
-
-    <div class="jr-steps">
-      <div class="jr-step jr-step--free reveal">
-        <span class="jr-free" aria-hidden="true">Free</span>
-        <p class="jr-no">Step 0</p>
-        <p class="jr-t">無料相談</p>
-        <p class="jr-w">契約前</p>
-        <p class="jr-b">まず話して、課題を整理します。ご依頼の方向が見えてきたら、ご提案の際にコンセプトとKPIの考え方までお持ちします。<strong>設計は、契約の前から始まっています。</strong></p>
-      </div>
-      <div class="jr-step reveal reveal-d1">
-        <p class="jr-no">Step 1</p>
-        <p class="jr-t">キックオフ & インプット</p>
-        <p class="jr-w">Week 1–2</p>
-        <p class="jr-b">契約後すぐに始動。会社を知るところから。資料をもらい、話を聞き、現場にも足を運びます。<strong>企画の精度は、ここで決まります。</strong></p>
-      </div>
-      <div class="jr-step reveal reveal-d2">
-        <p class="jr-no">Step 2</p>
-        <p class="jr-t">企画 & 撮影</p>
-        <p class="jr-w">Week 2–3</p>
-        <p class="jr-b">設計に沿って企画を固め、撮影へ。企画・脚本・撮影・編集まで、同じチームが担当します。</p>
-      </div>
-      <div class="jr-step reveal reveal-d2">
-        <p class="jr-no">Step 3</p>
-        <p class="jr-t">初稿 → 公開</p>
-        <p class="jr-w">Week 4–</p>
-        <p class="jr-b">撮影から約10日で初稿をお送りします。チェックを経て、<strong>契約から1ヶ月前後で最初の動画が世に出ます。</strong></p>
-      </div>
-    </div>
-
-    <p class="jr-after reveal">公開後は、月1回〜の定例に<strong>代表が直接参加</strong>。月次レポートと改善提案を重ね、翌月の企画に反映します。——映像は、公開してからが本番だからです。</p>
+<section class="sec" aria-labelledby="flow-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 class="disp h-sec" id="flow-h">相談から、最初の一本が<br>世に出るまで。</h2><p class="lead">ご契約から1か月前後で、最初の動画を公開します。</p></div>
+    <ol class="steps" style="list-style:none;padding:0;margin:0">
+      <li class="step"><span class="step-n">0</span><span class="step-when">契約前・無料</span><h3>無料相談</h3><p>まず話して、課題を整理します。方向が見えてきたら、ご提案の際にコンセプトとKPIの考え方までお持ちします。</p></li>
+      <li class="step"><span class="step-n">1</span><span class="step-when">1〜2週目</span><h3>キックオフ・インプット</h3><p>資料をいただき、話を聞き、現場にも足を運びます。企画の精度は、ここで決まります。</p></li>
+      <li class="step"><span class="step-n">2</span><span class="step-when">2〜3週目</span><h3>企画・撮影</h3><p>設計に沿って企画を固め、撮影へ。企画から編集まで、同じチームが担当します。</p></li>
+      <li class="step"><span class="step-n">3</span><span class="step-when">4週目〜</span><h3>初稿・公開</h3><p>撮影から約10日で初稿をお送りします。チェックを経て、最初の動画が世に出ます。</p></li>
+    </ol>
+    <p class="after">公開後は、月1回以上の定例に<b>代表が直接参加</b>します。月次レポートと改善提案を重ね、翌月の企画に反映していきます。</p>
   </div>
 </section>
 
-
-<!-- DOORS: 頼み方は2つ -->
-<section id="doors">
-  <div class="s-in">
-    <span class="s-eye reveal">How to Start</span>
-    <h2 class="s-title reveal">頼み方は、<span class="accent">2つ。</span></h2>
-    <p class="s-lead reveal">1本だけでも、まるごとでも。どちらの入口からでも、同じチームが動きます。</p>
-
-    <div class="doors-grid">
-
-      <div class="door door-dark reveal">
-        <p class="door-eye">Production — 1本からOK</p>
-        <h3 class="door-t">映像を、<br>1本からつくりたい</h3>
-        <p class="door-b">WebCM、ブランドムービー、採用動画、ショート動画。単発のご依頼も、企画から入って納品まで運びます。</p>
-        <div class="door-prices">
-          <div class="door-price"><span>ショート動画（縦型）</span><b>1本 10万円〜</b></div>
-          <div class="door-price"><span>WebCM・採用・ブランドムービー</span><b>30万円〜</b></div>
-        </div>
-        <p class="door-note">企画・撮影・編集込み。見積りは無償。実績は1本10万円のシンプル制作から、数百万円規模の広告クリエイティブ開発まで。</p>
-        <a href="pages/plans.html#production" class="btn-p" style="display:block;text-align:center">制作について見る</a>
+<section class="sec sec--tint" aria-labelledby="ways-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 class="disp h-sec" id="ways-h">頼み方は、2つ。</h2><p class="lead">1本だけでも、まるごとでも。どちらの入口からでも、同じチームが動きます。</p></div>
+    <div class="ways">
+      <div class="way">
+        <span class="label">1本からの映像制作</span>
+        <h3>映像を、1本からつくりたい</h3>
+        <p>WebCM、ブランドムービー、採用動画、ショート動画。単発のご依頼も、企画から入って納品まで運びます。</p>
+        <dl class="prices"><div><dt>ショート動画（縦型）</dt><dd>1本 <b>10</b>万円〜</dd></div><div><dt>WebCM・採用・ブランドムービー</dt><dd><b>30</b>万円〜</dd></div></dl>
+        <p>企画・撮影・編集込み。お見積りは無償です。</p>
+        <a class="btn btn--ghost" href="pages/plans.html#production">制作について見る</a>
       </div>
-
-      <div class="door door-dark reveal reveal-d1">
-        <p class="door-eye">Partnership — 継続</p>
-        <h3 class="door-t">SNSを、<br>まるごと任せたい</h3>
-        <p class="door-b">担当者としてチームに入り、企画・撮影・編集・投稿・分析まで一貫して。映像制作も内製のチームだから、「つくる」と「届ける」を分けずに任せられます。</p>
-        <div class="door-prices">
-          <div class="door-price"><span>SNS運用（伴走型）</span><b>月額 30万円台〜</b></div>
-        </div>
-        <p class="door-note">内容・本数・体制によって形が変わるため、詳細はご相談時に「この予算で何ができるか」を率直にお伝えします。内製化を目指す12ヶ月プランもあります。お見積りは無償です。</p>
-        <a href="pages/plans.html" class="btn-p">プランを見る</a>
+      <div class="way">
+        <span class="label">継続のSNS運用</span>
+        <h3>SNSを、まるごと任せたい</h3>
+        <p>担当者としてチームに入り、企画・撮影・編集・投稿・分析まで一貫して。制作も内製だから、「つくる」と「届ける」を分けずに任せられます。</p>
+        <dl class="prices"><div><dt>SNS運用（伴走型）</dt><dd>月額 <b>30</b>万円台〜</dd></div></dl>
+        <p>内容・本数・体制によって形が変わるため、ご相談時に「この予算で何ができるか」を率直にお伝えします。内製化を目指す12か月プランもあります。</p>
+        <a class="btn btn--ghost" href="pages/plans.html#partnership">プランを見る</a>
       </div>
-
     </div>
   </div>
 </section>
 
-
-<!-- FAQ -->
-<section id="faq-home">
-  <div class="s-in">
-    <span class="s-eye reveal">FAQ</span>
-    <h2 class="s-title reveal">よくある<span class="accent">質問。</span></h2>
-
-    <div class="fh-list reveal">
-      <details class="fh-item">
-        <summary>金額感が分かりません。</summary>
-        <p class="fh-a">目安として、単発のショート動画は1本10万円〜、継続のSNS運用は月30万円台〜です。内容・本数で変わるため、ご相談時に「この予算で何ができるか」を率直にお伝えします。お見積りは無償です。</p>
-      </details>
-      <details class="fh-item">
-        <summary>具体的な案がなくても相談できますか？</summary>
-        <p class="fh-a">可能です。実際、ほとんどのご相談がその状態から始まります。ご依頼の方向が見えてきたら、ご提案の際にコンセプトとKPIの考え方までお持ちするので、比較検討の材料としてもお使いいただけます。</p>
-      </details>
-      <details class="fh-item">
-        <summary>東京以外でも対応できますか？</summary>
-        <p class="fh-a">撮影・打ち合わせとも、全国に伺えます。出張にかかる費用は、お見積りの段階で明示してご提案します。オンラインでの定例・相談にも対応しています。</p>
-      </details>
-      <details class="fh-item">
-        <summary>他の映像制作会社・SNS運用会社との違いは？</summary>
-        <p class="fh-a">「映像制作」と「SNS運用」を同じチームで内製していること。そして、担当者として会議に出て、届くまで動き続けることです。定例には代表が直接参加します。</p>
-      </details>
+<section class="sec" aria-labelledby="faq-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 class="disp h-sec" id="faq-h">よくある質問</h2></div>
+    <div class="faq">
+      <details><summary>金額感が分かりません。</summary><p class="a">目安として、単発のショート動画は1本10万円〜、継続のSNS運用は月30万円台〜です。内容・本数で変わるため、ご相談時に「この予算で何ができるか」を率直にお伝えします。お見積りは無償です。</p></details>
+      <details><summary>具体的な案がなくても相談できますか？</summary><p class="a">できます。実際、ほとんどのご相談がその状態から始まります。方向が見えてきたら、ご提案の際にコンセプトとKPIの考え方までお持ちするので、比較検討の材料としてもお使いいただけます。</p></details>
+      <details><summary>東京以外でも対応できますか？</summary><p class="a">撮影・打ち合わせとも、全国に伺えます。出張にかかる費用は、お見積りの段階で明示してご提案します。オンラインでの定例・相談にも対応しています。</p></details>
+      <details><summary>ほかの映像制作会社・SNS運用会社との違いは？</summary><p class="a">「映像制作」と「SNS運用」を同じチームで内製していること。そして、担当者として会議に出て、届くまで動き続けることです。定例には代表が直接参加します。</p></details>
+    </div>
+    <p style="margin-top:24px"><a class="textlink" href="pages/plans.html#faq">ほかの質問を見る</a></p>
+  </div>
+</section>
+</main>
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap">
+    <h2 id="cta-h">まず30分、<br>話してみませんか。</h2>
+    <div>
+      <p>何から手をつければいいか分からない状態でも大丈夫です。オンラインで30分、今の状況を伺い、その場で方向性と予算感までお伝えします。無理な提案・営業はしません。</p>
+      <div class="btns"><a class="btn btn--light" href="pages/contact.html">無料で相談する<small>30分・オンライン</small></a><a class="btn btn--ghost" href="pages/plans.html">料金を見る</a></div>
     </div>
   </div>
 </section>
-
-
-<!-- CTA -->
-<section id="cta-main">
-  <div class="cta-main-inner">
-    <div class="reveal">
-      <span class="cta-label">Next Step</span>
-      <p class="cta-t">まず話すだけで、<br>整理できることがある。</p>
-      <p class="cta-b">何から手をつければいいかわからなくても、歓迎します。<br>無理な提案・営業はしません。</p>
-    </div>
-    <div class="cta-acts reveal reveal-d2">
-      <a href="pages/contact.html" class="btn-p">無料相談する</a>
-      <a href="pages/plans.html" class="btn-g-dark">プランを見る</a>
-    </div>
-  </div>
-</section>
-
-<div class="sticky-cta" id="stickyCta">
-  <a href="pages/contact.html" class="btn-p">無料相談する</a>
-</div>
-
-<footer>
-  <div class="f-top">
-    <div class="f-brand">
-      <a href="index.html" class="f-logo f-logo-text">M2<span class="logo-accent">Log</span></a>
-      <p class="f-tag">映像をつくる前に、チームに入る。</p>
-      <p class="f-award">BOVA 13th Online Video — Sponsor Award Winner</p>
-    </div>
-    <div class="f-cols">
-      <ul class="f-nav">
-        <li><a href="pages/services.html">Services</a></li>
-        <li><a href="pages/about.html">About</a></li>
-        <li><a href="pages/plans.html">Plans</a></li>
-        <li><a href="pages/contact.html">Contact</a></li>
-        <li><a href="pages/privacy.html">Privacy Policy</a></li>
-      </ul>
-      <div class="f-info">
-        <p>株式会社M2Log</p>
-        <p>東京都江東区</p>
-        <a href="https://www.instagram.com/m2log_1003/" target="_blank" rel="noopener" aria-label="Instagram" class="f-sns">Instagram</a>
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft-top">
+      <div>
+        <a class="ft-logo" href="index.html"><img src="assets/img/logo/m2log_logo_white.svg" alt="M2Log" width="138" height="34"></a>
+        <p class="ft-tag">届けるまでが、つくること。</p>
+      </div>
+      <div class="ft-cols">
+        <ul class="ft-nav"><li><a href="pages/services.html">Services</a></li><li><a href="pages/about.html">About</a></li><li><a href="pages/plans.html">Plans</a></li><li><a href="pages/contact.html">Contact</a></li><li><a href="pages/privacy.html">プライバシーポリシー</a></li></ul>
+        <div class="ft-info"><span>株式会社M2Log</span><span>東京都江東区</span><a href="https://www.instagram.com/m2log_1003/" target="_blank" rel="noopener">Instagram</a></div>
       </div>
     </div>
+    <p class="ft-copy">© 2026 M2Log Inc. All rights reserved.</p>
   </div>
-  <p class="f-copy">© 2026 M2Log Inc. All rights reserved.</p>
 </footer>
-
-<script src="assets/js/main.js"></script>
-<script>
-(function(){
-  var nav = document.getElementById('nav');
-  window.addEventListener('scroll', function(){
-    nav.classList.toggle('dark-nav', window.scrollY < window.innerHeight * 0.85);
-  });
-  // ヒーロー動画: ファイルがあれば静止画スライドの上にフェードイン
-  var v = document.querySelector('.hero-video');
-  if(v){
-    v.addEventListener('canplay', function(){ v.classList.add('on'); });
-    v.addEventListener('error', function(){ v.remove(); }, true);
-  }
-})();
-
-// モバイル固定CTA: ヒーローを過ぎたら表示、フッター付近で退避
-(function(){
-  var bar = document.getElementById('stickyCta');
-  if(!bar) return;
-  var footer = document.querySelector('footer');
-  function update(){
-    var past = window.scrollY > window.innerHeight * 0.9;
-    var nearEnd = footer && footer.getBoundingClientRect().top < window.innerHeight;
-    bar.classList.toggle('show', past && !nearEnd);
-  }
-  window.addEventListener('scroll', update, { passive: true });
-  update();
-})();
-
-// シアター・ディミング
-(function(){
-  var vids = document.querySelectorAll('.work-video');
-  if(!vids.length) return;
-  function update(){
-    var any = [...vids].some(function(v){ return !v.paused && !v.ended; });
-    document.body.classList.toggle('theater', any);
-    vids.forEach(function(v){ v.closest('.work-card').classList.toggle('playing', !v.paused && !v.ended); });
-  }
-  vids.forEach(function(v){
-    ['play','pause','ended'].forEach(function(ev){ v.addEventListener(ev, update); });
-  });
-})();
-</script>
-
-<script>
-(function(){
-  var sec = document.getElementById('works');
-  if(!sec || sec.hasAttribute('data-pending')) return;
-  var cards = sec.querySelectorAll('.work-card');
-  var isTouch = window.matchMedia('(pointer: coarse)').matches;
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  cards.forEach(function(card){
-    var v = card.querySelector('.work-video');
-    var btn = card.querySelector('.work-sound');
-    if(btn){
-      btn.addEventListener('click', function(e){
-        e.stopPropagation();
-        v.muted = !v.muted;
-        btn.setAttribute('data-muted', v.muted ? 'true' : 'false');
-        if(!v.paused) return; v.play().catch(function(){});
-      });
-    }
-    // シークバー
-    var seek = card.querySelector('.work-seek');
-    if(seek){
-      var fill = seek.querySelector('.ws-fill');
-      var knob = seek.querySelector('.ws-knob');
-      v.addEventListener('timeupdate', function(){
-        if(!v.duration) return;
-        var p = (v.currentTime / v.duration) * 100;
-        fill.style.width = p + '%';
-        knob.style.left = p + '%';
-      });
-      var seekTo = function(clientX){
-        var r = seek.getBoundingClientRect();
-        var ratio = Math.min(1, Math.max(0, (clientX - r.left) / r.width));
-        if(v.duration) v.currentTime = ratio * v.duration;
-        fill.style.width = (ratio*100) + '%';
-        knob.style.left = (ratio*100) + '%';
-      };
-      seek.addEventListener('pointerdown', function(e){
-        e.stopPropagation(); e.preventDefault();
-        seek.classList.add('dragging');
-        seek.setPointerCapture(e.pointerId);
-        seekTo(e.clientX);
-        if(v.paused) v.play().catch(function(){});
-      });
-      seek.addEventListener('pointermove', function(e){
-        if(seek.classList.contains('dragging')) seekTo(e.clientX);
-      });
-      seek.addEventListener('pointerup', function(e){
-        seek.classList.remove('dragging');
-      });
-      seek.addEventListener('pointercancel', function(){ seek.classList.remove('dragging'); });
-    }
-    if(reduced) return;
-    if(isTouch){
-      var io = new IntersectionObserver(function(es){
-        es.forEach(function(en){
-          if(en.intersectionRatio > 0.6){ v.play().catch(function(){}); }
-          else { v.pause(); }
-        });
-      }, { threshold: [0, 0.6] });
-      io.observe(card);
-    } else {
-      card.addEventListener('mouseenter', function(){ v.play().catch(function(){}); });
-      card.addEventListener('mouseleave', function(){ v.pause(); });
-    }
-  });
-})();
-</script>
+<script src="assets/js/site.js" defer></script>
 </body>
 </html>

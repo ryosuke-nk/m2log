@@ -1,5 +1,9 @@
 {
+  "cleanUrls": false,
   "rewrites": [
     { "source": "/assets/video/:file", "destination": "/video/:file" }
+  ],
+  "redirects": [
+    { "source": "/plans.html", "destination": "/pages/plans.html", "permanent": true }
   ]
 }

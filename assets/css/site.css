@@ -450,3 +450,20 @@ html { scroll-padding-top: calc(88px + env(safe-area-inset-top, 0px)); }
   .plan-switch button[aria-pressed="true"] { background: var(--navy); color: var(--white); }
   .swipe-hint { display: none !important; }
 }
+
+/* works split into vertical and horizontal rows */
+.works { margin-top: clamp(44px, 6vw, 72px); display: grid; gap: 10px; }
+.works .strip-wrap { margin-top: 0; }
+.works-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; }
+.works-head + .strip-wrap { margin-bottom: 26px; }
+.works-h { font-family: var(--f-disp); font-size: clamp(22px, 2.4vw, 28px); color: var(--navy); }
+.works-head p { font-size: 14px; font-weight: 700; color: var(--sub); }
+.works-head .textlink { margin-left: auto; font-size: 13.5px; }
+.strip--v .clip { --h: clamp(300px, 30vw, 380px); }
+.strip--h .clip { --h: clamp(190px, 17vw, 236px); }
+.works .clip-ratio { display: none; }
+@media (max-width: 560px) { .works-head .textlink { margin-left: 0; width: 100%; } }
+.works > .wrap { width: 100%; }
+.clip figcaption { width: 0; min-width: 100%; max-width: none; }
+.clip--916 figcaption { max-width: none; }
+.badge { white-space: normal; }

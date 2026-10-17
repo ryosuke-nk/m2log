@@ -82,3 +82,40 @@
     }, { passive: true });
   }
 })();
+
+// contact form: validate on the page, then post to the Google Form in the background
+(function () {
+  var f = document.getElementById('cform');
+  if (!f) return;
+  var err = document.getElementById('f-err'), done = document.getElementById('f-done'), btn = f.querySelector('.f-submit');
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var problems = [];
+    [].slice.call(f.querySelectorAll('input[required]')).forEach(function (el) {
+      var bad = !el.value.trim() || (el.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim()));
+      el.setAttribute('aria-invalid', bad ? 'true' : 'false');
+      if (bad) problems.push(el.labels && el.labels[0] ? el.labels[0].firstChild.textContent.trim() : el.name);
+    });
+    if (!f.querySelector('#f-topics input:checked')) problems.push('ご相談の内容');
+    if (problems.length) {
+      err.textContent = problems.join('・') + 'を入力してください。';
+      err.hidden = false;
+      var first = f.querySelector('[aria-invalid="true"]') || f.querySelector('#f-topics input');
+      if (first) first.focus();
+      return;
+    }
+    err.hidden = true;
+    btn.disabled = true; btn.textContent = '送信しています…';
+    fetch(f.action, { method: 'POST', mode: 'no-cors', body: new FormData(f) })
+      .then(function () {
+        f.querySelectorAll('.f-row, .f-submit').forEach(function (el) { el.hidden = true; });
+        done.hidden = false; done.focus && done.setAttribute('tabindex', '-1'); done.focus();
+        if (window.gtag) gtag('event', 'generate_lead', { method: 'contact_form' });
+      })
+      .catch(function () {
+        btn.disabled = false; btn.textContent = '送信する';
+        err.textContent = '送信できませんでした。通信状況を確認して、もう一度お試しください。うまくいかない場合は n.ryosuke@m2log.jp までご連絡ください。';
+        err.hidden = false;
+      });
+  });
+})();

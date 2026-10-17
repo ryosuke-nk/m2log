@@ -594,6 +594,33 @@ def plans():
     return h + body + cta(p, 'どこから始めればいいか、<br>一緒に整理します。', 'まず話すだけで大丈夫です。どんな状態からでも構いません。') + footer(p)
 
 
+GFORM = 'https://docs.google.com/forms/d/e/1FAIpQLSecYJPiVju50KcnKzE18h6DgFp_D4D4tMyjU6SfXABlWqlfCg'
+# Fill these from the Google Form's "事前入力したURL" (entry.XXXXXXX). While any is None, the page keeps the embedded Google Form.
+FORM_IDS = {'name': None, 'company': None, 'email': None, 'topics': None, 'budget': None, 'detail': None}
+TOPICS = ['SNS運用を任せたい', '映像・動画を制作したい', 'ショートドラマ・ショート動画を作りたい', '採用動画・採用SNSを強化したい',
+          '内製化の支援をしてほしい', '代理店・パートナーとして連携したい', 'まず話を聞いてほしい（何から始めればいいかわからない）', 'その他']
+BUDGETS = ['30万円未満', '30〜60万円', '60〜100万円', '100万円以上', 'まだ決まっていない']
+
+
+def contact_form():
+    if any(v is None for v in FORM_IDS.values()):
+        return f'<div class="form-box"><iframe src="{GFORM}/viewform?embedded=true" title="お問い合わせフォーム" loading="lazy">読み込んでいます…</iframe></div>'
+    i = FORM_IDS
+    tops = ''.join(f'<label class="chk"><input type="checkbox" name="{i["topics"]}" value="{t}"><span>{t}</span></label>' for t in TOPICS)
+    buds = ''.join(f'<label class="chk chk--r"><input type="radio" name="{i["budget"]}" value="{b}"><span>{b}</span></label>' for b in BUDGETS)
+    return f'''<form class="cform" id="cform" action="{GFORM}/formResponse" method="post" novalidate>
+        <div class="f-row"><label for="f-name">お名前（フルネーム）<em>必須</em></label><input id="f-name" name="{i['name']}" type="text" autocomplete="name" required></div>
+        <div class="f-row"><label for="f-company">会社名<em>必須</em></label><input id="f-company" name="{i['company']}" type="text" autocomplete="organization" required></div>
+        <div class="f-row"><label for="f-email">メールアドレス<em>必須</em></label><input id="f-email" name="{i['email']}" type="email" autocomplete="email" inputmode="email" required></div>
+        <fieldset class="f-row" id="f-topics"><legend>ご相談の内容<em>必須</em><small>あてはまるものをすべて選んでください</small></legend><div class="chks">{tops}</div></fieldset>
+        <fieldset class="f-row"><legend>ご予算感<small>任意。決まっていなくても大丈夫です</small></legend><div class="chks chks--r">{buds}</div></fieldset>
+        <div class="f-row"><label for="f-detail">詳しい内容<small>任意</small></label><textarea id="f-detail" name="{i['detail']}" rows="6" placeholder="例：採用向けのTikTokを始めたい。社内に担当者はいるが、撮影や編集の経験がない。"></textarea></div>
+        <p class="f-err" id="f-err" role="alert" hidden></p>
+        <button class="btn f-submit" type="submit">送信する</button>
+        <p class="f-done" id="f-done" role="status" hidden><b>送信しました。</b>2〜3営業日以内に、担当の中村からご返信します。</p>
+      </form>'''
+
+
 def contact():
     p = '/'
     desc = 'TikTok運用・ショート動画・WebCM制作のご相談はこちら。オンライン30分の無料相談で、方向性と予算感までお伝えします。通常2〜3営業日以内にご返信します。'
@@ -619,9 +646,7 @@ def contact():
       <p style="font-size:14.5px;color:var(--sub)">代理店さまからのご相談も承っています。</p>
     </div>
     <div>
-      <div class="form-box">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSecYJPiVju50KcnKzE18h6DgFp_D4D4tMyjU6SfXABlWqlfCg/viewform?embedded=true" title="お問い合わせフォーム" loading="lazy">読み込んでいます…</iframe>
-      </div>
+      {contact_form()}
       <p class="form-note">送信いただいた個人情報は、<a class="textlink" href="/privacy">プライバシーポリシー</a>に基づいて取り扱います。通常2〜3営業日以内にご返信します。</p>
     </div>
   </div>

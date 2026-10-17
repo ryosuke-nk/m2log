@@ -511,3 +511,25 @@ html { scroll-padding-top: calc(88px + env(safe-area-inset-top, 0px)); }
 .wk-cap small { display: block; font-size: 12.5px; }
 @media (max-width: 960px) { .wk-others { grid-template-columns: repeat(3, minmax(0, 1fr)); } .wk-list--v { grid-template-columns: repeat(2, minmax(0, 1fr)); } .wk-list--h { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 760px) { .wk-grid, .wk-grid.wk-916, .wk-body { grid-template-columns: 1fr; } .wk-916 .work-clip .clip-media { max-width: 320px; margin-inline: auto; } .wk-others { grid-template-columns: repeat(2, minmax(0, 1fr)); } .wk-list--h { grid-template-columns: 1fr; } }
+
+/* ---------- contact form ---------- */
+.cform { background: var(--white); border: 1px solid var(--line); border-radius: 18px; padding: clamp(22px, 3vw, 36px); display: grid; gap: 24px; }
+.f-row { display: grid; gap: 8px; border: 0; margin: 0; padding: 0; min-width: 0; }
+.f-row > label, .f-row > legend { font-size: 15px; font-weight: 700; padding: 0; }
+.f-row em { font-style: normal; font-size: 11.5px; font-weight: 700; color: var(--white); background: var(--orange-ink); border-radius: 4px; padding: 1px 6px; margin-left: 8px; vertical-align: 2px; }
+.f-row small { display: block; font-size: 13px; font-weight: 500; color: var(--sub); margin-top: 2px; }
+.f-row legend small { margin-bottom: 8px; }
+.f-row input[type=text], .f-row input[type=email], .f-row textarea { font: inherit; font-size: 16px; color: var(--ink); background: var(--cream); border: 1.5px solid var(--line); border-radius: 10px; padding: 12px 14px; width: 100%; }
+.f-row input:focus, .f-row textarea:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px rgba(17,50,127,.15); }
+.f-row [aria-invalid="true"] { border-color: #B3261E; }
+.chks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.chk { display: flex; gap: 10px; align-items: flex-start; font-size: 14.5px; line-height: 1.55; font-weight: 500 !important; border: 1.5px solid var(--line); border-radius: 10px; padding: 11px 12px; cursor: pointer; background: var(--cream); }
+.chk input { margin: 3px 0 0; width: 17px; height: 17px; accent-color: var(--navy); flex: 0 0 auto; }
+.chk:has(input:checked) { border-color: var(--navy); background: var(--white); }
+.chks--r { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.f-err { color: #B3261E; font-size: 14px; font-weight: 700; }
+.f-submit { justify-self: start; min-width: 200px; }
+.f-submit[disabled] { opacity: .6; cursor: wait; }
+.f-done { background: var(--cream-2); border-radius: 12px; padding: 16px 18px; font-size: 15px; line-height: 1.8; }
+.f-done b { display: block; color: var(--navy); font-size: 17px; }
+@media (max-width: 620px) { .chks, .chks--r { grid-template-columns: 1fr; } .f-submit { justify-self: stretch; } }

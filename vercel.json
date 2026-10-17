@@ -1,9 +1,12 @@
 {
-  "cleanUrls": false,
+  "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
     { "source": "/assets/video/:file", "destination": "/video/:file" }
   ],
   "redirects": [
-    { "source": "/plans.html", "destination": "/pages/plans.html", "permanent": true }
+    { "source": "/index", "destination": "/", "permanent": true },
+    { "source": "/pages/:slug.html", "destination": "/:slug", "permanent": true },
+    { "source": "/pages/:slug", "destination": "/:slug", "permanent": true }
   ]
 }

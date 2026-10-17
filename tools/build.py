@@ -9,17 +9,16 @@ GA = 'G-XVNJRPJJVC'
 CTA_LABEL = '無料で相談する'
 TAG = '届けるまでが、つくること。'
 
-NAV = [('Services', 'services'), ('About', 'about'), ('Plans', 'plans'), ('Contact', 'contact')]
+NAV = [('サービス', 'services'), ('私たちについて', 'about'), ('料金・プラン', 'plans'), ('お問い合わせ', 'contact')]
+HEADER_NAV = NAV[:3]  # お問い合わせ is the button
 
 
 def href(p, page):
-    if page == 'home':
-        return f'{p}index.html'
-    return f'{p}pages/{page}.html' if p == '' else f'{page}.html'
+    return '/' if page == 'home' else f'/{page}'
 
 
-CRUMBS = {'/pages/services.html': 'サービス', '/pages/about.html': '私たちについて', '/pages/plans.html': '料金・プラン',
-          '/pages/contact.html': 'お問い合わせ', '/pages/privacy.html': 'プライバシーポリシー'}
+CRUMBS = {'/services': 'サービス', '/about': '私たちについて', '/plans': '料金・プラン',
+          '/contact': 'お問い合わせ', '/privacy': 'プライバシーポリシー'}
 
 
 def jsonld(path):
@@ -83,7 +82,7 @@ def head(title, desc, path, p):
 def header(p, current):
     items = ''.join(
         f'<a href="{href(p, key)}"{" aria-current=\"page\"" if key == current else ""}>{label}</a>'
-        for label, key in NAV)
+        for label, key in HEADER_NAV)
     return f'''<header class="hd">
   <div class="wrap">
     <a class="hd-logo" href="{href(p, 'home')}"><img src="{p}assets/img/logo/m2log_logo_navy.svg" alt="M2Log" width="122" height="30"></a>
@@ -138,7 +137,7 @@ def footer(p):
 def page_hd(p, crumb, en, h1, lead, extra=''):
     return f'''<div class="page-hd">
   <div class="wrap">
-    <nav class="crumb" aria-label="パンくず"><a href="{href(p, 'home')}">Home</a><span aria-hidden="true">/</span><span>{crumb}</span></nav>
+    <nav class="crumb" aria-label="パンくず"><a href="{href(p, 'home')}">ホーム</a><span aria-hidden="true">/</span><span>{crumb}</span></nav>
     <h1><span class="h1-kw">{en}</span>{h1}</h1>
     <p class="lead">{lead}</p>
     {extra}
@@ -180,7 +179,7 @@ def strip(p, works=None):
 
 # ----------------------------------------------------------------- pages
 def index():
-    p = ''
+    p = '/'
     desc = 'TikTok運用代行、ショート動画広告・ショートドラマ制作、WebCM・ブランドムービー制作の株式会社M2Log。企画・撮影・編集・広告運用まで内製のチームが、担当者として成果まで伴走します。東京・江東区から全国対応。'
     h = head(f'TikTok運用代行・ショート動画制作のM2Log｜{TAG}', desc, '/', p) + header(p, 'home')
     body = f'''<main>
@@ -189,17 +188,17 @@ def index():
     <h1 class="disp h-hero"><span class="h1-kw">TikTok運用代行・ショート動画広告・WebCM制作のM2Log</span>届けるまでが、<br>つくること。</h1>
     <div class="hero-side">
       <p class="lead">SNSで届く企画と、映像をつくる力。その両方を持つチームが、御社の担当者として隣で走り続けます。一本で終わらない関係を、つくりたいと思っています。</p>
-      <div class="btns"><a class="btn" href="pages/contact.html">{CTA_LABEL}<small>30分・オンライン</small></a><a class="btn btn--ghost" href="#works">作品を見る</a></div>
+      <div class="btns"><a class="btn" href="/contact">{CTA_LABEL}<small>30分・オンライン</small></a><a class="btn btn--ghost" href="#works">作品を見る</a></div>
     </div>
   </div>
   <div id="works" class="works">
-    <div class="wrap works-head"><h2 class="works-h">縦型</h2><p>TikTok運用・ショート動画広告・ショートドラマ</p><a class="textlink" href="pages/services.html#sns">縦型のサービス</a></div>
+    <div class="wrap works-head"><h2 class="works-h">縦型</h2><p>TikTok運用・ショート動画広告・ショートドラマ</p><a class="textlink" href="/services#sns">縦型のサービス</a></div>
     <div class="strip-wrap" tabindex="0" aria-label="縦型の作品（横にスクロールできます）">
       <div class="strip strip--v">
 {strip(p, [w for w in WORKS if w[0] == '916'])}
       </div>
     </div>
-    <div class="wrap works-head"><h2 class="works-h">横型</h2><p>WebCM・ブランドムービー</p><a class="textlink" href="pages/services.html#video">横型のサービス</a></div>
+    <div class="wrap works-head"><h2 class="works-h">横型</h2><p>WebCM・ブランドムービー</p><a class="textlink" href="/services#video">横型のサービス</a></div>
     <div class="strip-wrap" tabindex="0" aria-label="横型の作品（横にスクロールできます）">
       <div class="strip strip--h">
 {strip(p, [w for w in WORKS if w[0] != '916'])}
@@ -227,19 +226,19 @@ def index():
   <div class="wrap">
     <div class="sec-head"><h2 class="disp h-sec" id="svc-h">できること</h2><p class="lead">縦型のSNS動画も、横型のCMも。どれも「誰に届けて、どう動いてもらうか」というマーケティングの視点から設計します。</p></div>
     <div class="svc-grid">
-      <a class="svc" href="pages/services.html#sns">
+      <a class="svc" href="/services#sns">
         <div class="svc-media"><img src="assets/img/img_scene3.jpg" alt="" loading="lazy"><img src="assets/img/works_sbi_poster.jpg" alt="" loading="lazy"><img src="assets/img/works_kyoto_poster.jpg" alt="" loading="lazy"></div>
         <div><span class="label">縦型・SNS</span><h3>TikTokアカウント運用代行</h3></div>
         <p>担当者としてチームに入り、企画・撮影から投稿、月次の改善まで回します。</p>
         <span class="more">詳しく見る</span>
       </a>
-      <a class="svc" href="pages/services.html#drama">
+      <a class="svc" href="/services#drama">
         <div class="svc-media"><img src="assets/img/IMG_3228.JPG" alt="" loading="lazy"><img src="assets/img/works_fujisan_poster.jpg" alt="" loading="lazy"><img src="assets/img/studio2.jpg" alt="" loading="lazy"></div>
         <div><span class="label">縦型・広告／ドラマ</span><h3>ショート動画広告・ショートドラマ制作</h3></div>
         <p>広告として成果を出すショート動画と、続きが気になるショートドラマ。テレビやCMの現場出身のメンバーがつくります。</p>
         <span class="more">詳しく見る</span>
       </a>
-      <a class="svc" href="pages/services.html#video">
+      <a class="svc" href="/services#video">
         <div class="svc-media svc-media--wide"><img src="assets/img/works_rinx_card.jpg" alt="" loading="lazy"></div>
         <div><span class="label">横型・CM／ブランド</span><h3>WebCM・ブランドムービー制作</h3></div>
         <p>WebCM、ブランドムービー、採用・広告。映像をどう使うかから設計します。</p>
@@ -257,7 +256,7 @@ def index():
       <h2 class="disp h-sec" id="team-h">映像をつくる前に、<br>チームに入る。</h2>
       <p>外注は、納品したら終わり。でも映像もSNSも、つくったあとが本番です。だからM2Logは担当者として会議に出て、一緒に考え、届くところまで動きます。</p>
       <blockquote class="quote">「チームが増えたみたい」と言ってもらえることが、一番うれしい。<cite>代表取締役　中村陵介</cite></blockquote>
-      <a class="textlink" href="pages/about.html">メンバーを見る</a>
+      <a class="textlink" href="/about">メンバーを見る</a>
     </div>
   </div>
 </section>
@@ -285,7 +284,7 @@ def index():
         <p>WebCM、ブランドムービー、採用動画、ショート動画。単発のご依頼も、企画から入って納品まで運びます。</p>
         <dl class="prices"><div><dt>ショート動画（縦型）</dt><dd>1本 <b>15</b>万円〜</dd></div><div><dt>WebCM・採用・ブランドムービー</dt><dd><b>30</b>万円〜</dd></div></dl>
         <p>企画・撮影・編集込み。お見積りは無償です。</p>
-        <a class="btn btn--ghost" href="pages/plans.html#production">制作について見る</a>
+        <a class="btn btn--ghost" href="/plans#production">制作について見る</a>
       </div>
       <div class="way">
         <span class="label">継続のSNS運用</span>
@@ -293,7 +292,7 @@ def index():
         <p>担当者としてチームに入り、企画・撮影・編集・投稿・分析まで一貫して。制作も内製だから、「つくる」と「届ける」を分けずに任せられます。</p>
         <dl class="prices"><div><dt>フル運用代行</dt><dd>月額 <b>60</b>万円〜</dd></div><div><dt>伴走型（3か月のトライアル）</dt><dd>月額 <b>29</b>万円〜</dd></div></dl>
         <p>どちらも広告費を含んだ金額で、まず3か月から始められます。別途かかるのは交通費・諸経費のみです。内容・本数・体制によって形が変わるため、ご相談時に「この予算で何ができるか」を率直にお伝えします。</p>
-        <a class="btn btn--ghost" href="pages/plans.html#partnership">プランを見る</a>
+        <a class="btn btn--ghost" href="/plans#partnership">プランを見る</a>
       </div>
     </div>
   </div>
@@ -308,7 +307,7 @@ def index():
       <details><summary>東京以外でも対応できますか？</summary><p class="a">撮影・打ち合わせとも、全国に伺えます。出張にかかる費用は、お見積りの段階で明示してご提案します。オンラインでの定例・相談にも対応しています。</p></details>
       <details><summary>ほかの映像制作会社・SNS運用会社との違いは？</summary><p class="a">一番の違いは、映像をつくる力とSNSを運用する力を、同じチームで持っていることです。テレビ、CM、スポーツ撮影と、それぞれ別の現場で経験を積んだ5人がいるので、企画から撮影・編集まで社内で完結できます。そのうえで、つくったあとの投稿や振り返りまで、担当者として一緒に追いかけます。SNS運用・広告・単発制作のどれかに縛られず、目的に合う形を選べるのも、この体制だからです。一度話してもらえれば、チームの雰囲気もすぐに伝わると思います。</p></details>
     </div>
-    <p style="margin-top:24px"><a class="textlink" href="pages/plans.html#faq">ほかの質問を見る</a></p>
+    <p style="margin-top:24px"><a class="textlink" href="/plans#faq">ほかの質問を見る</a></p>
   </div>
 </section>
 </main>
@@ -317,9 +316,9 @@ def index():
 
 
 def services():
-    p = '../'
+    p = '/'
     desc = 'M2LogのTikTok運用代行、ショート動画広告・ショートドラマ制作、WebCM・ブランドムービー制作。企画から撮影・編集・投稿・広告運用・改善まで、ひとつのチームで一貫して担当します。'
-    h = head('サービス｜TikTok運用代行・ショート動画広告・WebCM制作｜M2Log', desc, '/pages/services.html', p) + header(p, 'services')
+    h = head('サービス｜TikTok運用代行・ショート動画広告・WebCM制作｜M2Log', desc, '/services', p) + header(p, 'services')
     extra = '<nav class="subnav" aria-label="ページ内"><a href="#sns">TikTok運用代行</a><a href="#drama">ショート動画広告・ドラマ</a><a href="#video">WebCM・ブランドムービー</a><a href="#how">進め方</a></nav>'
     body = page_hd(p, 'サービス', 'サービス｜TikTok運用代行・ショート動画広告・WebCM制作', 'つくって、届けて、<br>また一緒に考える。',
                    '外注ではなく、担当者として動く。だから意図がずれない。だから、届く。', extra) + f'''<main>
@@ -373,9 +372,9 @@ def services():
 
 
 def about():
-    p = '../'
+    p = '/'
     desc = 'テレビ、CM、スポーツ撮影の現場から集まった5人のチーム。株式会社M2Logの会社概要、メンバー紹介、受賞歴（BOVA協賛企業賞ほか）をご紹介します。'
-    h = head('私たちについて｜映像制作とSNS運用のチーム｜M2Log', desc, '/pages/about.html', p) + header(p, 'about')
+    h = head('私たちについて｜映像制作とSNS運用のチーム｜M2Log', desc, '/about', p) + header(p, 'about')
     members = [
         ('member_ceo', '中村陵介', 'CEO／Creative Director', '元ランニングインストラクター', 'エンタメとマーケティングの掛け算で、成果から逆算する。'),
         ('member_director', '佐藤峻', 'Creative Director', '元テレビディレクター', '編集まで見据えて撮る。ユーモアで、最後まで見せる。'),
@@ -424,9 +423,9 @@ def about():
 
 
 def plans():
-    p = '../'
+    p = '/'
     desc = 'M2Logの料金。ショート動画は1本15万円〜、TikTok運用代行は月額60万円〜（広告費含む）、まず小さく試せる3か月トライアルは月額29万円。プランの違いとよくある質問もまとめています。'
-    h = head('料金・プラン｜TikTok運用代行・ショート動画制作の費用｜M2Log', desc, '/pages/plans.html', p) + header(p, 'plans')
+    h = head('料金・プラン｜TikTok運用代行・ショート動画制作の費用｜M2Log', desc, '/plans', p) + header(p, 'plans')
     extra = '<nav class="subnav" aria-label="ページ内"><a href="#price">料金の早見表</a><a href="#production">1本からの映像制作</a><a href="#partnership">SNS運用プラン</a><a href="#start">まずは相談から</a><a href="#faq">よくある質問</a></nav>'
     faqs = [
         ('映像1本だけの依頼でもできますか？', 'できます。1本のご依頼でも、目的とターゲットの整理から入り、届く形で納品します。実際、最初の1本をきっかけに、運用や継続のお付き合いへ広がるケースがほとんどです。'),
@@ -473,7 +472,7 @@ def plans():
         <div style="--w:60%"><dt>WebCM（目的別・複数本納品）</dt><dd>180万円</dd><i aria-hidden="true"></i></div>
         <div style="--w:100%"><dt>広告用ショートクリエイティブ開発（検証設計込み）</dt><dd>300万円</dd><i aria-hidden="true"></i></div>
       </dl>
-      <a class="btn" href="contact.html">{CTA_LABEL}</a>
+      <a class="btn" href="/contact">{CTA_LABEL}</a>
     </div>
   </div>
 </section>
@@ -521,7 +520,7 @@ def plans():
         </ol>
         <h4>含まれるもの</h4>
         <ul class="checks"><li>コンセプト・KPI設計</li><li>月5本〜のコンテンツ制作（月1回のまとめ撮り）</li><li>企画・撮影・編集・投稿</li><li>コメント運用サポート</li><li>月次レポート・改善提案</li><li>担当者として会議に参加</li><li>広告の配信・運用（広告費を含む）</li></ul>
-        <a class="btn" href="contact.html">{CTA_LABEL}</a>
+        <a class="btn" href="/contact">{CTA_LABEL}</a>
       </div>
       <div class="plan">
         <span class="label">プランB　伴走型SNS運用</span>
@@ -542,7 +541,7 @@ def plans():
         </table></div>
         <h4>12か月後に残るもの</h4>
         <ul class="checks"><li>育ったアカウント（もともと御社のものです）</li><li>企画と撮影を社内で回せるチーム</li><li>御社用にまとめた運用の手引き</li><li>卒業後も、ワークショップを月1回3万円で受講できます（通常5〜10万円）</li><li>卒業後も、編集や広告の運用だけM2Logに任せることもできます</li></ul>
-        <a class="btn" href="contact.html">{CTA_LABEL}</a>
+        <a class="btn" href="/contact">{CTA_LABEL}</a>
       </div>
     </div>
 
@@ -570,8 +569,8 @@ def plans():
   <div class="wrap">
     <div class="sec-head"><h2 class="disp h-sec" id="sr-h">迷っているなら、<br>話すのが早い。</h2></div>
     <div class="starts">
-      <div class="start"><span class="label">無料</span><h3>無料相談</h3><p>今の課題を整理する相談です。提案・営業はしません。Zoom・対面のどちらでも。</p><a class="btn" href="contact.html">申し込む</a></div>
-      <div class="start"><span class="label">5万円〜</span><h3>スポット支援</h3><p>SNS発信の診断や戦略ワークショップ。半日〜1日で、コンセプト・KPI・投稿方針まで具体化します。継続契約は不要です。</p><a class="btn btn--ghost" href="contact.html">申し込む</a></div>
+      <div class="start"><span class="label">無料</span><h3>無料相談</h3><p>今の課題を整理する相談です。提案・営業はしません。Zoom・対面のどちらでも。</p><a class="btn" href="/contact">申し込む</a></div>
+      <div class="start"><span class="label">5万円〜</span><h3>スポット支援</h3><p>SNS発信の診断や戦略ワークショップ。半日〜1日で、コンセプト・KPI・投稿方針まで具体化します。継続契約は不要です。</p><a class="btn btn--ghost" href="/contact">申し込む</a></div>
     </div>
   </div>
 </section>
@@ -590,9 +589,9 @@ def plans():
 
 
 def contact():
-    p = '../'
+    p = '/'
     desc = 'TikTok運用・ショート動画・WebCM制作のご相談はこちら。オンライン30分の無料相談で、方向性と予算感までお伝えします。通常2〜3営業日以内にご返信します。'
-    h = head('お問い合わせ・無料相談｜M2Log', desc, '/pages/contact.html', p) + header(p, 'contact')
+    h = head('お問い合わせ・無料相談｜M2Log', desc, '/contact', p) + header(p, 'contact')
     body = page_hd(p, 'お問い合わせ', 'お問い合わせ・無料相談', 'まず、話すところから。',
                    '何から手をつければいいか分からなくても、歓迎します。オンラインで30分、今の状況を伺います。') + f'''<main>
 <section class="sec">
@@ -617,7 +616,7 @@ def contact():
       <div class="form-box">
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSecYJPiVju50KcnKzE18h6DgFp_D4D4tMyjU6SfXABlWqlfCg/viewform?embedded=true" title="お問い合わせフォーム" loading="lazy">読み込んでいます…</iframe>
       </div>
-      <p class="form-note">送信いただいた個人情報は、<a class="textlink" href="privacy.html">プライバシーポリシー</a>に基づいて取り扱います。通常2〜3営業日以内にご返信します。</p>
+      <p class="form-note">送信いただいた個人情報は、<a class="textlink" href="/privacy">プライバシーポリシー</a>に基づいて取り扱います。通常2〜3営業日以内にご返信します。</p>
     </div>
   </div>
 </section>
@@ -627,9 +626,9 @@ def contact():
 
 
 def privacy():
-    p = '../'
+    p = '/'
     desc = '株式会社M2Logにおける個人情報の取り扱いについて定めたプライバシーポリシーです。'
-    h = head('プライバシーポリシー｜M2Log', desc, '/pages/privacy.html', p) + header(p, 'privacy')
+    h = head('プライバシーポリシー｜M2Log', desc, '/privacy', p) + header(p, 'privacy')
     body = page_hd(p, 'プライバシーポリシー', '株式会社M2Log', 'プライバシーポリシー', '株式会社M2Logにおける個人情報の取り扱いについて') + '''<main>
 <section class="sec">
   <div class="wrap prose">
@@ -651,7 +650,7 @@ def privacy():
     <h2>7. 改定</h2>
     <p>本ポリシーの内容は、法令の改正や運用の変更に応じて、予告なく改定されることがあります。改定後の内容は当ページにて公表します。</p>
     <h2>8. お問い合わせ窓口</h2>
-    <p>個人情報の取り扱いに関するお問い合わせは、<a href="contact.html">お問い合わせフォーム</a>よりご連絡ください。<br>株式会社M2Log（東京都江東区）</p>
+    <p>個人情報の取り扱いに関するお問い合わせは、<a href="/contact">お問い合わせフォーム</a>よりご連絡ください。<br>株式会社M2Log（東京都江東区）</p>
     <p style="margin-top:32px;color:var(--sub)">制定日：2026年7月3日</p>
   </div>
 </section>
@@ -664,7 +663,7 @@ def notfound():
     p = '/'
     h = head('ページが見つかりません｜M2Log', 'お探しのページは見つかりませんでした。', '/404.html', p).replace('href="/assets', 'href="/assets')
     body = header(p.rstrip('/') + '/', '') if False else ''
-    hdr = f'''<header class="hd"><div class="wrap"><a class="hd-logo" href="/"><img src="/assets/img/logo/m2log_logo_navy.svg" alt="M2Log" width="122" height="30"></a><nav class="hd-nav" style="display:flex;position:static;flex-direction:row;padding:0;border:0;background:none"><a class="btn" href="/pages/contact.html">{CTA_LABEL}</a></nav></div></header>'''
+    hdr = f'''<header class="hd"><div class="wrap"><a class="hd-logo" href="/"><img src="/assets/img/logo/m2log_logo_navy.svg" alt="M2Log" width="122" height="30"></a><nav class="hd-nav" style="display:flex;position:static;flex-direction:row;padding:0;border:0;background:none"><a class="btn" href="/contact">{CTA_LABEL}</a></nav></div></header>'''
     main = '''<main><section class="sec"><div class="wrap" style="display:grid;gap:22px;justify-items:start">
 <p class="label">404</p><h1 class="disp h-sec">お探しのページが<br>見つかりませんでした。</h1>
 <p class="lead">URLが変わったか、ページが移動した可能性があります。トップページから探してみてください。</p>
@@ -675,8 +674,8 @@ def notfound():
 
 
 PAGES = {
-    'index.html': index, 'pages/services.html': services, 'pages/about.html': about,
-    'pages/plans.html': plans, 'pages/contact.html': contact, 'pages/privacy.html': privacy, '404.html': notfound,
+    'index.html': index, 'services.html': services, 'about.html': about,
+    'plans.html': plans, 'contact.html': contact, 'privacy.html': privacy, '404.html': notfound,
 }
 for path, fn in PAGES.items():
     with open(os.path.join(ROOT, path), 'w', encoding='utf-8') as f:

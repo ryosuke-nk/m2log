@@ -41,7 +41,7 @@
 
   // mobile: consult bar appears after the hero, steps aside near the closing CTA and on the contact page
   var bar = document.querySelector('.mcta');
-  if (bar && !/contact\.html$/.test(location.pathname)) {
+  if (bar && !/\/contact(\.html)?$/.test(location.pathname)) {
     document.body.classList.add('has-mcta');
     var ends = [].slice.call(document.querySelectorAll('.cta, .ft'));
     var seen = new Set();

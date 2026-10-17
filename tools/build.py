@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Generate the M2Log static pages from shared partials. Run from the repo root."""
 import sys, os
+from PIL import Image
 
 ROOT = sys.argv[1] if len(sys.argv) > 1 else '.'
 SITE = 'https://m2log-v2.vercel.app'
@@ -17,8 +18,32 @@ def href(p, page):
     return f'{p}pages/{page}.html' if p == '' else f'{page}.html'
 
 
+CRUMBS = {'/pages/services.html': 'サービス', '/pages/about.html': '私たちについて', '/pages/plans.html': '料金・プラン',
+          '/pages/contact.html': 'お問い合わせ', '/pages/privacy.html': 'プライバシーポリシー'}
+
+
+def jsonld(path):
+    import json
+    org = {
+        "@type": "Organization", "@id": SITE + "/#org", "name": "株式会社M2Log", "alternateName": "M2Log",
+        "url": SITE + "/", "logo": SITE + "/assets/img/logo/m2log_logo_navy.svg", "email": "n.ryosuke@m2log.jp",
+        "foundingDate": "2024-10", "founder": {"@type": "Person", "name": "中村陵介"},
+        "address": {"@type": "PostalAddress", "addressLocality": "江東区", "addressRegion": "東京都", "addressCountry": "JP"},
+        "areaServed": "JP", "sameAs": ["https://www.instagram.com/m2log_1003/"],
+        "award": ["第13回 BOVA オンライン動画部門 協賛企業賞", "第13回 BOVA 縦型動画部門 ファイナリスト作品", "「推して、秋田」映像コンテスト2026 準グランプリ"],
+        "knowsAbout": ["TikTok運用代行", "ショート動画広告", "ショートドラマ制作", "WebCM制作", "ブランドムービー制作", "SNS広告運用"],
+    }
+    graph = [org, {"@type": "WebSite", "@id": SITE + "/#website", "url": SITE + "/", "name": "M2Log", "inLanguage": "ja", "publisher": {"@id": SITE + "/#org"}}]
+    if path in CRUMBS:
+        graph.append({"@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "ホーム", "item": SITE + "/"},
+            {"@type": "ListItem", "position": 2, "name": CRUMBS[path], "item": SITE + path}]})
+    return '<script type="application/ld+json">' + json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False) + '</script>'
+
+
 def head(title, desc, path, p):
     url = SITE + path
+    fonts = 'https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap'
     return f'''<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -45,8 +70,11 @@ def head(title, desc, path, p):
 <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','{GA}');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<link rel="preload" as="style" href="{fonts}">
+<link rel="stylesheet" href="{fonts}" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="{fonts}"></noscript>
 <link rel="stylesheet" href="{p}assets/css/site.css">
+{jsonld(path)}
 </head>
 <body>
 '''
@@ -111,8 +139,7 @@ def page_hd(p, crumb, en, h1, lead, extra=''):
     return f'''<div class="page-hd">
   <div class="wrap">
     <nav class="crumb" aria-label="パンくず"><a href="{href(p, 'home')}">Home</a><span aria-hidden="true">/</span><span>{crumb}</span></nav>
-    <p class="en">{en}</p>
-    <h1>{h1}</h1>
+    <h1><span class="h1-kw">{en}</span>{h1}</h1>
     <p class="lead">{lead}</p>
     {extra}
   </div>
@@ -154,12 +181,12 @@ def strip(p, works=None):
 # ----------------------------------------------------------------- pages
 def index():
     p = ''
-    desc = 'SNSで届く企画と、映像をつくる力。TikTok運用、ショート動画・ショートドラマ、WebCM・ブランドムービーまで、企画・撮影・編集を内製するチームが御社の担当者として伴走する、株式会社M2Logです。'
-    h = head(f'M2Log｜{TAG}', desc, '/', p) + header(p, 'home')
+    desc = 'TikTok運用代行、ショート動画広告・ショートドラマ制作、WebCM・ブランドムービー制作の株式会社M2Log。企画・撮影・編集・広告運用まで内製のチームが、担当者として成果まで伴走します。東京・江東区から全国対応。'
+    h = head(f'TikTok運用代行・ショート動画制作のM2Log｜{TAG}', desc, '/', p) + header(p, 'home')
     body = f'''<main>
 <section class="hero">
   <div class="wrap hero-grid">
-    <h1 class="disp h-hero">届けるまでが、<br>つくること。</h1>
+    <h1 class="disp h-hero"><span class="h1-kw">TikTok運用代行・ショート動画広告・WebCM制作のM2Log</span>届けるまでが、<br>つくること。</h1>
     <div class="hero-side">
       <p class="lead">SNSで届く企画と、映像をつくる力。その両方を持つチームが、御社の担当者として隣で走り続けます。一本で終わらない関係を、つくりたいと思っています。</p>
       <div class="btns"><a class="btn" href="pages/contact.html">{CTA_LABEL}<small>30分・オンライン</small></a><a class="btn btn--ghost" href="#works">作品を見る</a></div>
@@ -291,10 +318,10 @@ def index():
 
 def services():
     p = '../'
-    desc = 'TikTokアカウント運用代行、ショート動画・ショートドラマ制作、WebCM・ブランドムービーなどの映像制作。企画から改善まで一貫して伴走する、M2Logのサービス紹介です。'
-    h = head('サービス｜M2Log', desc, '/pages/services.html', p) + header(p, 'services')
+    desc = 'M2LogのTikTok運用代行、ショート動画広告・ショートドラマ制作、WebCM・ブランドムービー制作。企画から撮影・編集・投稿・広告運用・改善まで、ひとつのチームで一貫して担当します。'
+    h = head('サービス｜TikTok運用代行・ショート動画広告・WebCM制作｜M2Log', desc, '/pages/services.html', p) + header(p, 'services')
     extra = '<nav class="subnav" aria-label="ページ内"><a href="#sns">TikTok運用代行</a><a href="#drama">ショート動画広告・ドラマ</a><a href="#video">WebCM・ブランドムービー</a><a href="#how">進め方</a></nav>'
-    body = page_hd(p, 'Services', 'Services', 'つくって、届けて、<br>また一緒に考える。',
+    body = page_hd(p, 'サービス', 'サービス｜TikTok運用代行・ショート動画広告・WebCM制作', 'つくって、届けて、<br>また一緒に考える。',
                    '外注ではなく、担当者として動く。だから意図がずれない。だから、届く。', extra) + f'''<main>
 <section class="sec">
   <div class="wrap">
@@ -347,8 +374,8 @@ def services():
 
 def about():
     p = '../'
-    desc = 'テレビ、CM、スポーツ撮影の現場から集まった5人のチーム。映像をつくる前にチームに入る、株式会社M2Logの会社概要とメンバー紹介です。'
-    h = head('私たちについて｜M2Log', desc, '/pages/about.html', p) + header(p, 'about')
+    desc = 'テレビ、CM、スポーツ撮影の現場から集まった5人のチーム。株式会社M2Logの会社概要、メンバー紹介、受賞歴（BOVA協賛企業賞ほか）をご紹介します。'
+    h = head('私たちについて｜映像制作とSNS運用のチーム｜M2Log', desc, '/pages/about.html', p) + header(p, 'about')
     members = [
         ('member_ceo', '中村陵介', 'CEO／Creative Director', '元ランニングインストラクター', 'エンタメとマーケティングの掛け算で、成果から逆算する。'),
         ('member_director', '佐藤峻', 'Creative Director', '元テレビディレクター', '編集まで見据えて撮る。ユーモアで、最後まで見せる。'),
@@ -356,12 +383,12 @@ def about():
         ('member_editor', '佐藤可弥', 'Editor／Art Director', '元テレビディレクター', 'アートと実用のあいだで、伝わる見せ方をつくる。'),
         ('member_producer', '冨田祐子', 'Producer', '元テレビ・CM制作', 'テレビとCMで培った段取りで、チームを支える。'),
     ]
-    mh = '\n'.join(f'''      <div class="member"><div class="member-photo"><img src="{p}assets/img/members/{k}.jpg" alt="{n}" loading="lazy"></div><div><span class="role">{r}</span><h3>{n}</h3><span class="from">{f}</span></div><p>{q}</p></div>''' for k, n, r, f, q in members)
+    mh = '\n'.join(f'''      <div class="member"><div class="member-photo"><img src="{p}assets/img/members/{k}.jpg" alt="{n}" width="600" height="600" decoding="async"></div><div><span class="role">{r}</span><h3>{n}</h3><span class="from">{f}</span></div><p>{q}</p></div>''' for k, n, r, f, q in members)
     scenes = [('scene9', '撮影現場で笑顔を見せるスタッフ'), ('scene3', 'スマートフォンで撮影する現場'), ('studio1', 'スタジオでモニターを確認する撮影'),
               ('scene_meeting', '打ち合わせの様子'), ('scene8', 'ショートドラマの撮影'), ('scene6', 'クライアント先での撮影'),
               ('scene7', '撮影の準備をするスタッフ'), ('prob', '制作の様子')]
-    sh = ''.join(f'<figure class="scene"><img src="{p}assets/img/{k}.jpg" alt="{a}" loading="lazy"></figure>' for k, a in scenes)
-    body = page_hd(p, 'About', 'About', '映像をつくる前に、<br>チームに入る。',
+    sh = ''.join(f'<figure class="scene"><img src="{p}assets/img/{k}.jpg" alt="{a}" loading="lazy" width="{Image.open("assets/img/"+k+".jpg").width}" height="{Image.open("assets/img/"+k+".jpg").height}"></figure>' for k, a in scenes)
+    body = page_hd(p, '私たちについて', '私たちについて｜会社概要・メンバー', '映像をつくる前に、<br>チームに入る。',
                    'チームの一員として、企画から届けるところまで一緒に動く。それがM2Logのやり方です。') + f'''<main>
 <section class="sec" aria-labelledby="mem-h">
   <div class="wrap">
@@ -398,8 +425,8 @@ def about():
 
 def plans():
     p = '../'
-    desc = '1本からの映像制作と、継続のSNS運用プラン。料金の目安、フル運用代行と内製化を目指す伴走型の違い、よくある質問をまとめています。'
-    h = head('料金・プラン｜M2Log', desc, '/pages/plans.html', p) + header(p, 'plans')
+    desc = 'M2Logの料金。ショート動画は1本15万円〜、TikTok運用代行は月額60万円〜（広告費含む）、まず小さく試せる3か月トライアルは月額29万円。プランの違いとよくある質問もまとめています。'
+    h = head('料金・プラン｜TikTok運用代行・ショート動画制作の費用｜M2Log', desc, '/pages/plans.html', p) + header(p, 'plans')
     extra = '<nav class="subnav" aria-label="ページ内"><a href="#price">料金の早見表</a><a href="#production">1本からの映像制作</a><a href="#partnership">SNS運用プラン</a><a href="#start">まずは相談から</a><a href="#faq">よくある質問</a></nav>'
     faqs = [
         ('映像1本だけの依頼でもできますか？', 'できます。1本のご依頼でも、目的とターゲットの整理から入り、届く形で納品します。実際、最初の1本をきっかけに、運用や継続のお付き合いへ広がるケースがほとんどです。'),
@@ -413,7 +440,7 @@ def plans():
         ('対応エリアを教えてください。', '撮影・打ち合わせは、全国に伺えます。出張費は東京23区内が1回15,000円。それ以外の地域は、レンタカー・駐車場・交通費・宿泊などの実費を、お見積りの段階で明示してご提案します（お見積りは無料です）。'),
     ]
     fh = '\n'.join(f'      <details><summary>{q}</summary><p class="a">{a}</p></details>' for q, a in faqs)
-    body = page_hd(p, 'Plans', 'Plans', '1本からでも、<br>まるごとでも。',
+    body = page_hd(p, '料金・プラン', '料金・プラン｜TikTok運用代行・動画制作の費用', '1本からでも、<br>まるごとでも。',
                    '1本だけの制作から、まるごと任せる運用まで。状況に合った始め方を選べます。', extra) + f'''<main>
 <section class="sec sec--tint" id="price" aria-labelledby="pc-h" style="scroll-margin-top:72px">
   <div class="wrap">
@@ -564,9 +591,9 @@ def plans():
 
 def contact():
     p = '../'
-    desc = '株式会社M2Logへのお問い合わせ・無料相談はこちら。何から手をつければいいか分からない状態でも歓迎します。通常2〜3営業日以内にご返信します。'
-    h = head('お問い合わせ｜M2Log', desc, '/pages/contact.html', p) + header(p, 'contact')
-    body = page_hd(p, 'Contact', 'Contact', 'まず、話すところから。',
+    desc = 'TikTok運用・ショート動画・WebCM制作のご相談はこちら。オンライン30分の無料相談で、方向性と予算感までお伝えします。通常2〜3営業日以内にご返信します。'
+    h = head('お問い合わせ・無料相談｜M2Log', desc, '/pages/contact.html', p) + header(p, 'contact')
+    body = page_hd(p, 'お問い合わせ', 'お問い合わせ・無料相談', 'まず、話すところから。',
                    '何から手をつければいいか分からなくても、歓迎します。オンラインで30分、今の状況を伺います。') + f'''<main>
 <section class="sec">
   <div class="wrap contact">
@@ -603,7 +630,7 @@ def privacy():
     p = '../'
     desc = '株式会社M2Logにおける個人情報の取り扱いについて定めたプライバシーポリシーです。'
     h = head('プライバシーポリシー｜M2Log', desc, '/pages/privacy.html', p) + header(p, 'privacy')
-    body = page_hd(p, 'Privacy Policy', 'Privacy Policy', 'プライバシーポリシー', '株式会社M2Logにおける個人情報の取り扱いについて') + '''<main>
+    body = page_hd(p, 'プライバシーポリシー', '株式会社M2Log', 'プライバシーポリシー', '株式会社M2Logにおける個人情報の取り扱いについて') + '''<main>
 <section class="sec">
   <div class="wrap prose">
     <p>株式会社M2Log（以下「当社」）は、当社が提供するサービスおよび当社ウェブサイトにおける個人情報の取り扱いについて、以下のとおりプライバシーポリシーを定めます。</p>

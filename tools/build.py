@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Generate the M2Log static pages from shared partials. Run from the repo root."""
 import sys, os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from works_data import WORK_PAGES, SERVICE_LINK
 from PIL import Image
 
 ROOT = sys.argv[1] if len(sys.argv) > 1 else '.'
@@ -9,15 +11,15 @@ GA = 'G-XVNJRPJJVC'
 CTA_LABEL = '無料で相談する'
 TAG = '届けるまでが、つくること。'
 
-NAV = [('サービス', 'services'), ('私たちについて', 'about'), ('料金・プラン', 'plans'), ('お問い合わせ', 'contact')]
-HEADER_NAV = NAV[:3]  # お問い合わせ is the button
+NAV = [('サービス', 'services'), ('作品', 'works'), ('私たちについて', 'about'), ('料金・プラン', 'plans'), ('お問い合わせ', 'contact')]
+HEADER_NAV = NAV[:4]  # お問い合わせ is the button
 
 
 def href(p, page):
     return '/' if page == 'home' else f'/{page}'
 
 
-CRUMBS = {'/services': 'サービス', '/about': '私たちについて', '/plans': '料金・プラン',
+CRUMBS = {'/works': '作品', '/services': 'サービス', '/about': '私たちについて', '/plans': '料金・プラン',
           '/contact': 'お問い合わせ', '/privacy': 'プライバシーポリシー'}
 
 
@@ -161,6 +163,9 @@ WORKS = [
 ]
 
 
+SLUG_OF = {w['key']: w['slug'] for w in WORK_PAGES}
+
+
 def strip(p, works=None):
     out = []
     for r, key, title, meta, badge in (works or WORKS):
@@ -172,7 +177,7 @@ def strip(p, works=None):
           <span class="clip-ratio">{ratio}</span>
           <button class="clip-play" type="button" aria-label="{title.strip('「」')}を再生"><span></span></button>
         </div>
-        <figcaption><b>{title}</b>{meta}{b}</figcaption>
+        <figcaption><a class="clip-link" href="/works/{SLUG_OF[key]}"><b>{title}</b></a>{meta}{b}</figcaption>
       </figure>''')
     return '\n'.join(out)
 
@@ -208,6 +213,7 @@ def index():
   <div class="wrap">
     <p class="strip-hint">横にスワイプすると、ほかの作品も見られます。</p>
     <ul class="proof" aria-label="受賞歴"><li>第13回 BOVA オンライン動画部門 協賛企業賞</li><li>第13回 BOVA 縦型動画部門 ファイナリスト作品</li><li>「推して、秋田」映像コンテスト2026 準グランプリ</li></ul>
+    <p style="margin-top:22px"><a class="textlink" href="/works">作品の紹介を見る（企画の狙い・見どころ）</a></p>
     <p class="clients">制作・運用実績（五十音順）：奥ジャパン株式会社／有限会社キコリ／株式会社CS日本／株式会社西武・プリンスホテルズワールドワイド／セガサミーホールディングス株式会社／株式会社セガ フェイブ／テレビ愛知株式会社／日本トイザらス株式会社／株式会社パン・パシフィック・インターナショナルホールディングス／株式会社PHONE APPLI／福島鰹株式会社／株式会社MIXI／株式会社リンクスホールディングス／株式会社WAKAMATSU ほか</p>
   </div>
 </section>
@@ -659,6 +665,94 @@ def privacy():
     return h + body + footer(p)
 
 
+def thumb(w):
+    return f"/assets/img/{'works_rinx_card' if w['key'] == 'works_rinx' else w['key'] + '_poster'}.jpg"
+
+
+def work_media(w):
+    r = {'169': 'clip--169', '239': 'clip--239', '916': 'clip--916'}[w['ratio']]
+    return f'''<figure class="clip work-clip {r}">
+        <div class="clip-media">
+          <video preload="metadata" playsinline poster="/assets/img/{w['key']}_poster.jpg" aria-label="{w['title'].strip('「」')}の動画"><source src="/assets/video/{w['key']}.mp4" type="video/mp4"></video>
+          <button class="clip-play" type="button" aria-label="{w['title'].strip('「」')}を再生"><span></span></button>
+        </div>
+      </figure>'''
+
+
+def work_page(w):
+    p = '/'
+    path = '/works/' + w['slug']
+    name = w['title'].strip('「」')
+    desc = (w['lead'] + ' ' + w['client'] + (('、' + w['award']) if w['award'] else '') + '。')[:118]
+    h = head(f"{name}｜作品紹介｜M2Log", desc, path, p) + header(p, 'works')
+    i = WORK_PAGES.index(w)
+    nxt = WORK_PAGES[(i + 1) % len(WORK_PAGES)]
+    others = ''.join(
+        f'<a class="wk-other" href="/works/{o["slug"]}"><img src="{thumb(o)}" alt="" loading="lazy"><span><b>{o["title"]}</b>{o["client"]}</span></a>'
+        for o in WORK_PAGES if o is not w)
+    svc_href, svc_name = SERVICE_LINK[w['service']]
+    award = f'<div><dt>受賞</dt><dd><span class="badge">{w["award"]}</span></dd></div>' if w['award'] else ''
+    aim = ''.join(f'<p>{t}</p>' for t in w['aim'])
+    pts = ''.join(f'<p>{t}</p>' for t in w['points'])
+    body = f'''<main>
+<div class="page-hd wk-hd">
+  <div class="wrap">
+    <nav class="crumb" aria-label="パンくず"><a href="/">ホーム</a><span aria-hidden="true">/</span><a href="/works">作品</a><span aria-hidden="true">/</span><span>{name}</span></nav>
+    <h1><span class="h1-kw">作品紹介｜{w['format'].split('／')[1]}</span>{w['title']}</h1>
+    <p class="lead">{w['lead']}</p>
+  </div>
+</div>
+<section class="sec wk">
+  <div class="wrap wk-grid wk-{w['ratio']}">
+    {work_media(w)}
+    <dl class="wk-meta">
+      <div><dt>クライアント・課題</dt><dd>{w['client']}</dd></div>
+      <div><dt>形式</dt><dd>{w['format']}</dd></div>
+      <div><dt>尺</dt><dd>{w['length']}</dd></div>
+      {award}
+      <div><dt>関連するサービス</dt><dd><a class="textlink" href="{svc_href}">{svc_name}</a></dd></div>
+    </dl>
+  </div>
+  <div class="wrap wk-body">
+    <section aria-labelledby="aim-h"><h2 class="disp h-sub" id="aim-h">企画の狙い</h2>{aim}</section>
+    <section aria-labelledby="pt-h"><h2 class="disp h-sub" id="pt-h">見どころ</h2>{pts}</section>
+  </div>
+</section>
+<section class="sec sec--tint" aria-labelledby="ot-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 class="disp h-sec" id="ot-h">ほかの作品</h2></div>
+    <div class="wk-others">{others}</div>
+  </div>
+</section>
+</main>
+''' + f'<div class="wrap"><a class="next" href="/works/{nxt["slug"]}"><div><span>次の作品</span><b>{nxt["title"]}</b></div><span aria-hidden="true" style="font-size:22px;color:var(--navy)">›</span></a></div>\n'
+    return h + body + cta(p, 'こんな映像を、<br>一緒につくりませんか。', '企画の方向性がまだ決まっていなくても大丈夫です。目的を伺い、どんな映像が合うかからご提案します。') + footer(p)
+
+
+def works_index():
+    p = '/'
+    desc = 'M2Logの作品一覧。BOVA協賛企業賞受賞作、BOVA縦型動画部門ファイナリスト作品、「推して、秋田」映像コンテスト準グランプリ作品のほか、WebCM・イベント映像・Vlogなどを紹介します。'
+    h = head('作品一覧｜縦型ショート動画・WebCM・ショートドラマ｜M2Log', desc, '/works', p) + header(p, 'works')
+    def card(w):
+        b = f'<span class="badge">{w["award"]}</span>' if w['award'] else ''
+        return f'<a class="wk-card wk-card--{w["ratio"]}" href="/works/{w["slug"]}"><span class="wk-thumb"><img src="{thumb(w)}" alt="" loading="lazy"></span><span class="wk-cap"><b>{w["title"]}</b>{w["client"]}<small>{w["format"]}・{w["length"]}</small>{b}</span></a>'
+    v = ''.join(card(w) for w in WORK_PAGES if w['ratio'] == '916')
+    hz = ''.join(card(w) for w in WORK_PAGES if w['ratio'] != '916')
+    body = page_hd(p, '作品', '作品一覧｜縦型ショート動画・WebCM・ショートドラマ', '受賞作から、<br>日々の現場まで。',
+                   '作品ごとに、企画の狙いと見どころをまとめています。許諾をいただけたものから、順次掲載しています。') + f'''<main>
+<section class="sec">
+  <div class="wrap">
+    <h2 class="works-h" style="margin-bottom:18px">縦型</h2>
+    <div class="wk-list wk-list--v">{v}</div>
+    <h2 class="works-h" style="margin:56px 0 18px">横型</h2>
+    <div class="wk-list wk-list--h">{hz}</div>
+  </div>
+</section>
+</main>
+'''
+    return h + body + cta(p) + footer(p)
+
+
 def notfound():
     p = '/'
     h = head('ページが見つかりません｜M2Log', 'お探しのページは見つかりませんでした。', '/404.html', p).replace('href="/assets', 'href="/assets')
@@ -674,10 +768,20 @@ def notfound():
 
 
 PAGES = {
+    'works.html': works_index,
+    **{f"works/{w['slug']}.html": (lambda w=w: work_page(w)) for w in WORK_PAGES},
     'index.html': index, 'services.html': services, 'about.html': about,
     'plans.html': plans, 'contact.html': contact, 'privacy.html': privacy, '404.html': notfound,
 }
+os.makedirs(os.path.join(ROOT, 'works'), exist_ok=True)
 for path, fn in PAGES.items():
     with open(os.path.join(ROOT, path), 'w', encoding='utf-8') as f:
         f.write(fn())
     print('wrote', path)
+
+# sitemap
+urls = ['/', '/services', '/works'] + [f"/works/{w['slug']}" for w in WORK_PAGES] + ['/plans', '/about', '/contact', '/privacy']
+with open(os.path.join(ROOT, 'sitemap.xml'), 'w', encoding='utf-8') as f:
+    f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+            + ''.join(f'  <url><loc>{SITE}{u}</loc></url>\n' for u in urls) + '</urlset>\n')
+print('wrote sitemap.xml')

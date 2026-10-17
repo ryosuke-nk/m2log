@@ -533,3 +533,4 @@ html { scroll-padding-top: calc(88px + env(safe-area-inset-top, 0px)); }
 .f-done { background: var(--cream-2); border-radius: 12px; padding: 16px 18px; font-size: 15px; line-height: 1.8; }
 .f-done b { display: block; color: var(--navy); font-size: 17px; }
 @media (max-width: 620px) { .chks, .chks--r { grid-template-columns: 1fr; } .f-submit { justify-self: stretch; } }
+.wk-body { grid-template-columns: minmax(0, 1fr); max-width: 760px; }

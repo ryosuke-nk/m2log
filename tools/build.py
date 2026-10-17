@@ -213,7 +213,7 @@ def index():
   <div class="wrap">
     <p class="strip-hint">横にスワイプすると、ほかの作品も見られます。</p>
     <ul class="proof" aria-label="受賞歴"><li>第13回 BOVA オンライン動画部門 協賛企業賞</li><li>第13回 BOVA 縦型動画部門 ファイナリスト作品</li><li>「推して、秋田」映像コンテスト2026 準グランプリ</li></ul>
-    <p style="margin-top:22px"><a class="textlink" href="/works">作品の紹介を見る（企画の狙い・見どころ）</a></p>
+    <p style="margin-top:22px"><a class="textlink" href="/works">作品の紹介を見る（企画の狙い）</a></p>
     <p class="clients">制作・運用実績（五十音順）：奥ジャパン株式会社／有限会社キコリ／株式会社CS日本／株式会社西武・プリンスホテルズワールドワイド／セガサミーホールディングス株式会社／株式会社セガ フェイブ／テレビ愛知株式会社／日本トイザらス株式会社／株式会社パン・パシフィック・インターナショナルホールディングス／株式会社PHONE APPLI／福島鰹株式会社／株式会社MIXI／株式会社リンクスホールディングス／株式会社WAKAMATSU ほか</p>
   </div>
 </section>
@@ -740,7 +740,6 @@ def work_page(w):
   </div>
   <div class="wrap wk-body">
     <section aria-labelledby="aim-h"><h2 class="disp h-sub" id="aim-h">企画の狙い</h2>{aim}</section>
-    <section aria-labelledby="pt-h"><h2 class="disp h-sub" id="pt-h">見どころ</h2>{pts}</section>
   </div>
 </section>
 <section class="sec sec--tint" aria-labelledby="ot-h">
@@ -764,7 +763,7 @@ def works_index():
     v = ''.join(card(w) for w in WORK_PAGES if w['ratio'] == '916')
     hz = ''.join(card(w) for w in WORK_PAGES if w['ratio'] != '916')
     body = page_hd(p, '作品', '作品一覧｜縦型ショート動画・WebCM・ショートドラマ', '受賞作から、<br>日々の現場まで。',
-                   '作品ごとに、企画の狙いと見どころをまとめています。許諾をいただけたものから、順次掲載しています。') + f'''<main>
+                   '作品ごとに、企画の狙いをまとめています。許諾をいただけたものから、順次掲載しています。') + f'''<main>
 <section class="sec">
   <div class="wrap">
     <h2 class="works-h" style="margin-bottom:18px">縦型</h2>

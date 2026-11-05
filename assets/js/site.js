@@ -84,3 +84,48 @@
     }, { passive: true });
   }
 })();
+
+// contact: site-native form that posts to the existing Google Form
+(function () {
+  var f = document.getElementById('cform');
+  if (!f) return;
+  var done = document.getElementById('cform-done');
+  var err = f.querySelector('.f-error');
+  var btn = f.querySelector('.f-submit');
+  var topic = document.getElementById('f-topic');
+  function check() {
+    var bad = [];
+    [].forEach.call(f.querySelectorAll('input[required]'), function (i) {
+      var ok = i.value.trim() !== '' && (i.type !== 'email' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(i.value.trim()));
+      i.setAttribute('aria-invalid', ok ? 'false' : 'true');
+      if (!ok) bad.push(i);
+    });
+    var picked = f.querySelectorAll('input[type=checkbox]:checked').length > 0;
+    topic.setAttribute('aria-invalid', picked ? 'false' : 'true');
+    if (!picked) bad.push(topic.querySelector('input'));
+    return bad;
+  }
+  f.addEventListener('input', function (e) { if (e.target.getAttribute('aria-invalid') === 'true' || topic.getAttribute('aria-invalid') === 'true') check(); });
+  f.addEventListener('change', function () { if (topic.getAttribute('aria-invalid') === 'true') check(); });
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var bad = check();
+    if (bad.length) {
+      err.textContent = '入力されていない項目があります。赤くなっている項目をご確認ください。';
+      err.hidden = false; bad[0].focus(); return;
+    }
+    err.hidden = true; btn.disabled = true; btn.textContent = '送信しています…';
+    var data = new URLSearchParams(new FormData(f));
+    fetch(f.action, { method: 'POST', mode: 'no-cors', body: data })
+      .then(function () {
+        f.hidden = true; done.hidden = false; done.focus();
+        done.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        if (window.gtag) gtag('event', 'generate_lead', { form: 'contact' });
+      })
+      .catch(function () {
+        btn.disabled = false; btn.textContent = '送信する';
+        err.textContent = '送信できませんでした。通信環境をご確認のうえ、もう一度お試しいただくか、n.ryosuke@m2log.jp まで直接ご連絡ください。';
+        err.hidden = false;
+      });
+  });
+})();

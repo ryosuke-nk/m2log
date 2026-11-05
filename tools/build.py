@@ -621,7 +621,7 @@ def contact():
       <div>
         <h2 class="c-flow-h">ご連絡後の流れ</h2>
         <ol class="c-flow" style="list-style:none;padding:0;margin:0">
-          <li>フォームまたはメールでご連絡ください（1分で終わります）。</li>
+          <li>フォームまたはメールでご連絡ください（1分ほどで終わります）。</li>
           <li>2〜3営業日以内に、担当の中村からご返信します。</li>
           <li>Zoomまたは対面でヒアリング。提案を急かすことはしません。</li>
         </ol>
@@ -629,10 +629,33 @@ def contact():
       <p style="font-size:14.5px;color:var(--sub)">代理店さまからのご相談も承っています。</p>
     </div>
     <div>
-      <div class="form-box">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSecYJPiVju50KcnKzE18h6DgFp_D4D4tMyjU6SfXABlWqlfCg/viewform?embedded=true" title="お問い合わせフォーム" loading="lazy">読み込んでいます…</iframe>
+      <form class="cform" id="cform" action="https://docs.google.com/forms/d/e/1FAIpQLSecYJPiVju50KcnKzE18h6DgFp_D4D4tMyjU6SfXABlWqlfCg/formResponse" method="post" novalidate>
+        <div class="f-row"><label for="f-name">お名前<em>必須</em></label><input id="f-name" name="entry.152322325" type="text" autocomplete="name" required placeholder="山田 太郎"></div>
+        <div class="f-row"><label for="f-company">会社名<em>必須</em></label><input id="f-company" name="entry.958165224" type="text" autocomplete="organization" required placeholder="株式会社〇〇"></div>
+        <div class="f-row"><label for="f-email">メールアドレス<em>必須</em></label><input id="f-email" name="entry.1799007039" type="email" autocomplete="email" inputmode="email" required placeholder="name@example.co.jp"></div>
+        <fieldset class="f-row" id="f-topic">
+          <legend>ご相談の内容<em>必須</em><small>当てはまるものをすべて選んでください</small></legend>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="entry.808958015" value="SNS運用を任せたい"><span>SNS運用を任せたい</span></label>
+            <label class="chip"><input type="checkbox" name="entry.808958015" value="映像・動画を制作したい"><span>映像・動画を制作したい</span></label>
+            <label class="chip"><input type="checkbox" name="entry.808958015" value="ショートドラマ・ショート動画を作りたい"><span>ショートドラマ・ショート動画を作りたい</span></label>
+            <label class="chip"><input type="checkbox" name="entry.808958015" value="採用動画・採用SNSを強化したい"><span>採用動画・採用SNSを強化したい</span></label>
+            <label class="chip"><input type="checkbox" name="entry.808958015" value="内製化の支援をしてほしい"><span>内製化の支援をしてほしい</span></label>
+            <label class="chip"><input type="checkbox" name="entry.808958015" value="代理店・パートナーとして連携したい"><span>代理店・パートナーとして連携したい</span></label>
+            <label class="chip"><input type="checkbox" name="entry.808958015" value="まず話を聞いてほしい（何から始めればいいかわからない）"><span>まず話を聞いてほしい（何から始めればいいかわからない）</span></label>
+            <label class="chip"><input type="checkbox" name="entry.808958015" value="その他"><span>その他</span></label>
+          </div>
+        </fieldset>
+        <div class="f-row"><label for="f-detail">詳しい内容<span class="opt">任意</span></label><textarea id="f-detail" name="entry.1997500161" rows="5" placeholder="今の状況や、気になっていることがあれば。ラフなメモで大丈夫です。"></textarea></div>
+        <p class="f-error" role="alert" hidden></p>
+        <button class="btn f-submit" type="submit">送信する</button>
+        <p class="form-note">送信いただいた個人情報は、<a class="textlink" href="/privacy">プライバシーポリシー</a>に基づいて取り扱います。通常2〜3営業日以内に、担当の中村からご返信します。</p>
+      </form>
+      <div class="cform-done" id="cform-done" hidden tabindex="-1">
+        <p class="label">送信しました</p>
+        <h2 class="c-flow-h" style="font-size:22px">お問い合わせ、ありがとうございます。</h2>
+        <p>内容を確認のうえ、2〜3営業日以内に担当の中村からご返信します。お急ぎの場合は、<a class="textlink" href="mailto:n.ryosuke@m2log.jp">n.ryosuke@m2log.jp</a> まで直接ご連絡ください。</p>
       </div>
-      <p class="form-note">送信いただいた個人情報は、<a class="textlink" href="/privacy">プライバシーポリシー</a>に基づいて取り扱います。通常2〜3営業日以内にご返信します。</p>
     </div>
   </div>
 </section>

@@ -727,7 +727,7 @@ def privacy():
 
 
 # 公開年月（YYYY-MM か YYYY-MM-DD）。入っている作品だけ、Googleの動画検索向けの情報（VideoObject）を出す
-PUBLISHED = {'works_award': None, 'works_sbi': None, 'works_akita': None, 'works_rinx': None, 'works_fujisan': None, 'works_kyoto': None}
+PUBLISHED = {'works_award': '2026', 'works_sbi': '2025', 'works_akita': '2026', 'works_rinx': '2026', 'works_fujisan': '2025', 'works_kyoto': '2025'}
 
 
 def video_ld(w, desc):
@@ -737,7 +737,7 @@ def video_ld(w, desc):
     import json
     m, s_ = LENGTH[w['key']].split(':')
     obj = {"@context": "https://schema.org", "@type": "VideoObject", "name": w['title'].strip('「」'), "description": desc,
-           "thumbnailUrl": SITE + f"/assets/img/{w['key']}_poster.jpg", "uploadDate": d if len(d) > 7 else d + '-01',
+           "thumbnailUrl": SITE + f"/assets/img/{w['key']}_poster.jpg", "uploadDate": d,
            "duration": f"PT{int(m)}M{int(s_)}S", "contentUrl": SITE + f"/assets/video/{w['key']}.mp4",
            "publisher": {"@id": SITE + "/#org"}}
     return '<script type="application/ld+json">' + json.dumps(obj, ensure_ascii=False) + '</script>'

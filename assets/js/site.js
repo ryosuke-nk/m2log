@@ -36,7 +36,7 @@
         if (v.dataset.mode === 'full') return;
         if (e.isIntersecting) startPreview(v); else if (!v.paused) v.pause();
       });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.35 });
     clips.forEach(function (c) { var v = c.querySelector('video'); if (v && v.dataset.preview) vio.observe(v); });
   }
   clips.forEach(function (clip) {

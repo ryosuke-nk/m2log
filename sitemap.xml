@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://m2log-v2.vercel.app/</loc><lastmod>2026-10-17</lastmod></url>
-  <url><loc>https://m2log-v2.vercel.app/services</loc><lastmod>2026-10-17</lastmod></url>
-  <url><loc>https://m2log-v2.vercel.app/plans</loc><lastmod>2026-10-17</lastmod></url>
-  <url><loc>https://m2log-v2.vercel.app/about</loc><lastmod>2026-10-17</lastmod></url>
-  <url><loc>https://m2log-v2.vercel.app/contact</loc><lastmod>2026-10-17</lastmod></url>
-  <url><loc>https://m2log-v2.vercel.app/privacy</loc><lastmod>2026-10-17</lastmod></url>
+  <url><loc>https://m2log-v2.vercel.app/</loc></url>
+  <url><loc>https://m2log-v2.vercel.app/services</loc></url>
+  <url><loc>https://m2log-v2.vercel.app/works</loc></url>
+  <url><loc>https://m2log-v2.vercel.app/works/water-off</loc></url>
+  <url><loc>https://m2log-v2.vercel.app/works/seishun</loc></url>
+  <url><loc>https://m2log-v2.vercel.app/works/akita</loc></url>
+  <url><loc>https://m2log-v2.vercel.app/works/rinx</loc></url>
+  <url><loc>https://m2log-v2.vercel.app/works/fujisan-marathon</loc></url>
+  <url><loc>https://m2log-v2.vercel.app/works/kyoto-vlog</loc></url>
+  <url><loc>https://m2log-v2.vercel.app/plans</loc></url>
+  <url><loc>https://m2log-v2.vercel.app/about</loc></url>
+  <url><loc>https://m2log-v2.vercel.app/contact</loc></url>
+  <url><loc>https://m2log-v2.vercel.app/privacy</loc></url>
 </urlset>

@@ -161,6 +161,17 @@ WORKS = [
 ]
 
 
+AIM = {
+    'works_award': '水そのものではなく、買う・運ぶ・捨てる“見えない手間”を、スマホの通知で見える化。',
+    'works_sbi': '舞台は2070年の恋愛リアリティ番組。遠い未来の資産形成を、見慣れた番組の形で自分ごとに。',
+    'works_akita': '5つの質問に答えるうちに、気づけば秋田を好きになっている。見る人が参加する観光PR。',
+    'works_rinx': 'メンズ脱毛を“見た目の変化”ではなく、パートナーが見た“毎日の余白”として描く。',
+    'works_fujisan': '大会が掲げる「世界の仲間とつくる、麓のドラマ」を、走る人と迎える人の1日で描く。',
+    'works_kyoto': 'どんなチームが現場に来るのか。2泊3日の京都ロケの素顔を、そのまま見せる自社Vlog。',
+}
+LENGTH = {'works_award': '0:59', 'works_sbi': '1:00', 'works_akita': '1:22', 'works_rinx': '1:00', 'works_fujisan': '1:14', 'works_kyoto': '1:48'}
+
+
 def strip(p, works=None):
     out = []
     for r, key, title, meta, badge in (works or WORKS):
@@ -168,11 +179,11 @@ def strip(p, works=None):
         b = f'<br><span class="badge">{badge}</span>' if badge else ''
         out.append(f'''      <figure class="clip clip--{r}">
         <div class="clip-media">
-          <video preload="none" playsinline poster="{p}assets/img/{key}_poster.jpg" aria-label="{title.strip('「」')}（{meta}）の動画"><source src="{p}assets/video/{key}.mp4" type="video/mp4"></video>
+          <video preload="none" muted playsinline loop poster="{p}assets/img/{key}_poster.jpg" data-preview="{p}assets/video/{key}_prev.mp4" data-full="{p}assets/video/{key}.mp4" aria-label="{title.strip('「」')}（{meta}）の動画"></video>
           <span class="clip-ratio">{ratio}</span>
-          <button class="clip-play" type="button" aria-label="{title.strip('「」')}を再生"><span></span></button>
+          <button class="clip-play" type="button" aria-label="{title.strip('「」')}を音つきで再生（{LENGTH[key]}）"><span class="clip-btn"></span><span class="clip-len">{LENGTH[key]}</span></button>
         </div>
-        <figcaption><b>{title}</b>{meta}{b}</figcaption>
+        <figcaption><b>{title}</b>{meta}{b}<span class="clip-aim"><i>狙い</i>{AIM[key]}</span></figcaption>
       </figure>''')
     return '\n'.join(out)
 
@@ -259,6 +270,12 @@ def index():
       <li><h3>言われたまま、<br>つくれない。</h3><p>だから、もっと届く方法があれば、遠慮なくご提案します。</p></li>
       <li><h3>外に、<br>丸投げできない。</h3><p>だから、企画・撮影・編集はすべて社内で。意図がずれず、直しも速い。</p></li>
     </ul>
+    <div class="bts" tabindex="0" aria-label="撮影現場の写真（横にスクロールできます）">
+      <figure><img src="assets/img/bts_monitor.jpg" alt="モニターで映りを確かめながら撮影するスタッフ" width="640" height="800" loading="lazy"></figure>
+      <figure><img src="assets/img/bts_overhead.jpg" alt="脚立に乗って真上からカメラを構えるスタッフと、笑顔で見守るメンバー" width="640" height="800" loading="lazy"></figure>
+      <figure><img src="assets/img/bts_smile.jpg" alt="撮影の合間に笑うメンバー" width="640" height="800" loading="lazy"></figure>
+      <figure><img src="assets/img/bts_location.jpg" alt="店舗でのロケ撮影。カメラのモニターに出演者が映っている" width="640" height="800" loading="lazy"></figure>
+    </div>
     <div class="team-foot"><blockquote class="quote">「チームが増えたみたい」と言ってもらえることが、一番うれしい。<cite>代表取締役　中村陵介</cite></blockquote><a class="textlink" href="/about">メンバーを見る</a></div>
   </div>
 </section>

@@ -116,10 +116,13 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .clip--916 .clip-media { aspect-ratio: 9 / 16; }
 .clip-media video, .clip-media img { width: 100%; height: 100%; object-fit: cover; }
 .clip-ratio { position: absolute; top: 12px; left: 12px; z-index: 2; font-size: 11.5px; font-weight: 700; line-height: 1; color: var(--white); background: rgba(17,50,127,.82); padding: 6px 10px; border-radius: 999px; pointer-events: none; }
-.clip-play { position: absolute; inset: 0; z-index: 1; display: grid; place-items: center; border: 0; padding: 0; background: linear-gradient(to top, rgba(0,0,0,.28), rgba(0,0,0,0) 45%); cursor: pointer; color: var(--white); }
-.clip-play span { width: 62px; height: 62px; border-radius: 50%; background: rgba(255,254,250,.94); display: grid; place-items: center; transition: transform .2s; }
-.clip-play span::before { content: ""; margin-left: 4px; border-style: solid; border-width: 10px 0 10px 16px; border-color: transparent transparent transparent var(--navy); }
-.clip-play:hover span { transform: scale(1.06); }
+.clip-play { position: absolute; inset: 0; z-index: 1; display: flex; align-items: flex-end; justify-content: flex-start; gap: 8px; padding: 12px; border: 0; margin: 0; background: linear-gradient(to top, rgba(0,0,0,.38), rgba(0,0,0,0) 38%); cursor: pointer; color: var(--white); font: inherit; }
+.clip-btn { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,254,250,.95); display: grid; place-items: center; box-shadow: 0 2px 10px rgba(0,0,0,.18); transition: transform .2s; }
+.clip-btn::before { content: ""; margin-left: 3px; border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent var(--navy); }
+.clip-len { font-size: 12.5px; font-weight: 700; line-height: 1; color: var(--white); background: rgba(17,50,127,.86); padding: 6px 9px; border-radius: 999px; font-variant-numeric: tabular-nums; letter-spacing: .02em; }
+.clip-play:hover .clip-btn { transform: scale(1.08); }
+.clip-play:focus-visible { outline: none; }
+.clip-play:focus-visible .clip-btn { outline: 3px solid var(--orange); outline-offset: 2px; }
 .clip.is-playing .clip-play, .clip.is-playing .clip-ratio { display: none; }
 .clip figcaption { font-size: 13.5px; line-height: 1.6; color: var(--sub); max-width: calc(var(--h) * 16 / 9); }
 .clip--916 figcaption { max-width: calc(var(--h) * 9 / 16 + 70px); }
@@ -559,3 +562,15 @@ html { scroll-padding-top: calc(88px + env(safe-area-inset-top, 0px)); }
 .cform-done p { font-size: 15px; line-height: 1.95; }
 @media (max-width: 560px) { .f-submit { width: 100%; justify-self: stretch; } }
 .cform[hidden], .cform-done[hidden], .f-error[hidden] { display: none !important; }
+.clip-aim { display: block; margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--line); font-size: 13px; line-height: 1.75; color: var(--ink); }
+.clip-aim i { font-style: normal; font-size: 11.5px; font-weight: 700; color: var(--orange-ink); margin-right: 6px; }
+
+/* ---------- top: on-set photos under できないこと ---------- */
+.bts { margin-top: 36px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.bts figure { border-radius: 16px; overflow: hidden; aspect-ratio: 4 / 5; background: var(--cream-2); }
+.bts img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+.bts figure:hover img { transform: scale(1.03); }
+@media (max-width: 760px) {
+  .bts { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; margin-inline: calc(-1 * var(--gut)) calc(-1 * var(--gut-r)); padding-inline: var(--gut) var(--gut-r); padding-bottom: 6px; scrollbar-width: none; }
+  .bts figure { flex: 0 0 62%; scroll-snap-align: start; }
+}

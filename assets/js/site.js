@@ -20,8 +20,25 @@
     }
   }
 
-  // works: tap to play with sound and controls; only one clip plays at a time
+  // works: silent preview loops while on screen; tap for the full film with sound
   var clips = [].slice.call(document.querySelectorAll('.clip'));
+  var calm = (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) ||
+             (navigator.connection && navigator.connection.saveData);
+  var startPreview = function (v) {
+    if (v.dataset.mode === 'full') return;
+    if (!v.dataset.mode) { v.src = v.dataset.preview; v.dataset.mode = 'preview'; }
+    var p = v.play(); if (p && p.catch) p.catch(function () {});
+  };
+  if (!calm && 'IntersectionObserver' in window) {
+    var vio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        var v = e.target;
+        if (v.dataset.mode === 'full') return;
+        if (e.isIntersecting) startPreview(v); else if (!v.paused) v.pause();
+      });
+    }, { threshold: 0.5 });
+    clips.forEach(function (c) { var v = c.querySelector('video'); if (v && v.dataset.preview) vio.observe(v); });
+  }
   clips.forEach(function (clip) {
     var v = clip.querySelector('video');
     var b = clip.querySelector('.clip-play');
@@ -29,8 +46,9 @@
     b.addEventListener('click', function () {
       clips.forEach(function (c) {
         var o = c.querySelector('video');
-        if (o && o !== v && !o.paused) o.pause();
+        if (o && o !== v && o.dataset.mode === 'full' && !o.paused) o.pause();
       });
+      if (v.dataset.full && v.dataset.mode !== 'full') { v.src = v.dataset.full; v.dataset.mode = 'full'; v.loop = false; }
       v.controls = true;
       v.muted = false;
       clip.classList.add('is-playing');

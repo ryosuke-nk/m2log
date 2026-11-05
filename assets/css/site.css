@@ -578,15 +578,6 @@ html { scroll-padding-top: calc(88px + env(safe-area-inset-top, 0px)); }
 .clip-aim { display: block; margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--line); font-size: 13px; line-height: 1.75; color: var(--ink); }
 .clip-aim i { font-style: normal; font-size: 11.5px; font-weight: 700; color: var(--orange-ink); margin-right: 6px; }
 
-/* ---------- top: on-set photos under できないこと ---------- */
-.bts { margin-top: 36px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
-.bts figure { border-radius: 16px; overflow: hidden; aspect-ratio: 4 / 5; background: var(--cream-2); }
-.bts img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
-.bts figure:hover img { transform: scale(1.03); }
-@media (max-width: 760px) {
-  .bts { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; margin-inline: calc(-1 * var(--gut)) calc(-1 * var(--gut-r)); padding-inline: var(--gut) var(--gut-r); padding-bottom: 6px; scrollbar-width: none; }
-  .bts figure { flex: 0 0 62%; scroll-snap-align: start; }
-}
 
 /* ---------- works ---------- */
 .clip-link { text-decoration: none; }

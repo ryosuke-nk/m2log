@@ -54,7 +54,9 @@
       ends.forEach(function (el) { io.observe(el); });
     }
     var update = function () {
-      var on = window.scrollY > 560 && !endVisible;
+      var works = document.getElementById('works');
+      var from = works ? works.offsetTop + works.offsetHeight - window.innerHeight * .6 : 560;
+      var on = window.scrollY > Math.max(560, from) && !endVisible;
       bar.classList.toggle('is-on', on);
       bar.setAttribute('aria-hidden', on ? 'false' : 'true');
       var a = bar.querySelector('a'); if (a) a.tabIndex = on ? 0 : -1;

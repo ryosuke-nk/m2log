@@ -511,3 +511,19 @@ html { scroll-padding-top: calc(88px + env(safe-area-inset-top, 0px)); }
 .scale--plain dd { color: var(--navy); }
 .m-price { font-size: 15px; }
 .team-foot { margin-top: 36px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 32px; }
+
+/* ---------- 2026-11 usability pass ---------- */
+.textlink { display: inline-block; padding-block: 8px; }
+.clients { max-width: 62em; }
+.loopnote { max-width: 40em; }
+.after-grid { margin-top: 36px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.after-grid .after { margin-top: 0; }
+.after b { display: block; margin-bottom: 4px; }
+@media (max-width: 860px) { .after-grid { grid-template-columns: 1fr; } }
+@media (max-width: 560px) {
+  .steps { gap: 24px; }
+  .step { grid-template-columns: auto 1fr; column-gap: 10px; padding-top: 18px; }
+  .step > :not(.step-n):not(.step-when) { grid-column: 1 / -1; }
+  .step-when { align-self: center; }
+  .ways-note { padding: 20px; }
+}

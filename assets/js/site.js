@@ -1,4 +1,6 @@
 (function () {
+  var track = window.m2track = function (name, params) { try { if (window.gtag) gtag('event', name, params || {}); } catch (e) {} };
+
   // header: border once scrolled, mobile menu
   var hd = document.querySelector('.hd');
   if (hd) {
@@ -49,6 +51,15 @@
         if (o && o !== v && o.dataset.mode === 'full' && !o.paused) o.pause();
       });
       if (v.dataset.full && v.dataset.mode !== 'full') { v.src = v.dataset.full; v.dataset.mode = 'full'; v.loop = false; }
+      if (!v.dataset.tracked) {
+        v.dataset.tracked = '1';
+        track('work_play', { work: v.dataset.work });
+        var half = false;
+        v.addEventListener('timeupdate', function () {
+          if (!half && v.dataset.mode === 'full' && v.duration && v.currentTime / v.duration >= .5) { half = true; track('work_watch_half', { work: v.dataset.work }); }
+        });
+        v.addEventListener('ended', function () { if (v.dataset.mode === 'full') track('work_complete', { work: v.dataset.work }); });
+      }
       v.controls = true;
       v.muted = false;
       clip.classList.add('is-playing');
@@ -146,4 +157,39 @@
         err.hidden = false;
       });
   });
+})();
+
+// measurement: where the consult button is pressed, which work pages are opened, where the form is started
+(function () {
+  var track = window.m2track || function () {};
+  var where = function (el) {
+    if (el.closest('.hd')) return 'header';
+    if (el.closest('.mcta')) return 'mobile_bar';
+    if (el.closest('.ft')) return 'footer';
+    if (el.closest('.works')) return 'works';
+    if (el.closest('.hero')) return 'hero';
+    if (el.closest('.cta')) return 'closing_cta';
+    if (el.closest('.page-hd')) return 'page_top';
+    var s = el.closest('section[aria-labelledby], section[id]');
+    return s ? (s.getAttribute('aria-labelledby') || s.id) : 'other';
+  };
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href]');
+    if (!a) return;
+    var h = a.getAttribute('href');
+    if (/^\/contact(\.html)?$/.test(h)) track('cta_click', { cta_location: where(a), cta_text: a.textContent.trim().slice(0, 40) });
+    else if (/^\/works\/./.test(h)) track('work_detail_open', { work_page: h, from: where(a) });
+    else if (/^\/plans/.test(h)) track('plans_open', { from: where(a) });
+  });
+  var f = document.getElementById('cform');
+  if (f) {
+    var started = false;
+    f.addEventListener('focusin', function () { if (!started) { started = true; track('form_start'); } });
+  }
+})();
+
+// plans: the A/B table starts open on wide screens, folded on phones (the cards above already compare them)
+(function () {
+  var d = document.querySelector('details[data-open-desktop]');
+  if (d && window.matchMedia && matchMedia('(min-width: 761px)').matches) d.open = true;
 })();

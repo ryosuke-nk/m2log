@@ -42,7 +42,7 @@ def jsonld(path):
     return '<script type="application/ld+json">' + json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False) + '</script>'
 
 
-def head(title, desc, path, p):
+def head(title, desc, path, p, image=None, extra_ld=''):
     url = SITE + path
     fonts = 'https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap'
     return f'''<!DOCTYPE html>
@@ -56,10 +56,10 @@ def head(title, desc, path, p):
 <meta property="og:site_name" content="M2Log">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
-<meta property="og:image" content="{SITE}/assets/ogp_2026.jpg">
+<meta property="og:image" content="{SITE}{image or '/assets/ogp_2026.jpg'}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="M2Log　届けるまでが、つくること。">
+<meta property="og:image:alt" content="{title if image else 'M2Log　届けるまでが、つくること。'}">
 <meta property="og:url" content="{url}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="{url}">
@@ -75,7 +75,7 @@ def head(title, desc, path, p):
 <link rel="stylesheet" href="{fonts}" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="{fonts}"></noscript>
 <link rel="stylesheet" href="{p}assets/css/site.css">
-{jsonld(path)}
+{jsonld(path)}{extra_ld}
 </head>
 <body>
 '''
@@ -178,7 +178,7 @@ SLUG_OF = {w['key']: w['slug'] for w in WORK_PAGES}
 
 
 def video_media(p, key, title, label):
-    return f'''<video preload="none" muted playsinline loop poster="{p}assets/img/{key}_poster.jpg" data-preview="{p}assets/video/{key}_prev.mp4" data-full="{p}assets/video/{key}.mp4" aria-label="{label}"></video>
+    return f'''<video preload="none" muted playsinline loop poster="{p}assets/img/{key}_poster.jpg" data-preview="{p}assets/video/{key}_prev.mp4" data-full="{p}assets/video/{key}.mp4" data-work="{key}" aria-label="{label}"></video>
           <button class="clip-play" type="button" aria-label="{title}を音つきで再生（{LENGTH[key]}）"><span class="clip-btn"></span><span class="clip-len">{LENGTH[key]}</span></button>'''
 
 
@@ -189,7 +189,7 @@ def strip(p, works=None):
         b = f'<br><span class="badge">{badge}</span>' if badge else ''
         out.append(f'''      <figure class="clip clip--{r}">
         <div class="clip-media">
-          <video preload="none" muted playsinline loop poster="{p}assets/img/{key}_poster.jpg" data-preview="{p}assets/video/{key}_prev.mp4" data-full="{p}assets/video/{key}.mp4" aria-label="{title.strip('「」')}（{meta}）の動画"></video>
+          <video preload="none" muted playsinline loop poster="{p}assets/img/{key}_poster.jpg" data-preview="{p}assets/video/{key}_prev.mp4" data-full="{p}assets/video/{key}.mp4" data-work="{key}" aria-label="{title.strip('「」')}（{meta}）の動画"></video>
           <span class="clip-ratio">{ratio}</span>
           <button class="clip-play" type="button" aria-label="{title.strip('「」')}を音つきで再生（{LENGTH[key]}）"><span class="clip-btn"></span><span class="clip-len">{LENGTH[key]}</span></button>
         </div>
@@ -295,6 +295,7 @@ def index():
   <div class="wrap">
     <div class="sec-head"><h2 class="disp h-sec" id="case-h">目的に合わせて、<br>追う数字を変える。</h2><p class="lead">同じショート動画でも、ゴールが違えば、つくり方も変わります。</p></div>
     <ul class="cases" tabindex="0" aria-label="目的別の事例（スマホでは横にスクロールできます）">
+      <li class="case case--ink"><span class="case-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h3l7 4V6L7 10z"/><path d="M17.5 9.5a3.5 3.5 0 0 1 0 5M7 14l1 5h2.5l-1-4.5"/></svg></span><span class="case-k">認知</span><p class="case-h">1年で、フォロワー1.5万人。</p><p class="case-t">TikTokの企業アカウントを、約1年運用した結果です。</p><span class="case-who">TikTokの企業アカウント</span></li>
       <li class="case case--navy"><span class="case-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v9h16v-9M3 6l2-3h14l2 3v1.5a2.5 2.5 0 0 1-5 0 2.5 2.5 0 0 1-5 0 2.5 2.5 0 0 1-5 0A2.5 2.5 0 0 1 3 7.5zM10 19v-5h4v5"/></svg></span><span class="case-k">来店</span><p class="case-h">「動画を見て来た」が、毎週10人ほど。</p><p class="case-t">ショート広告動画の公開から2週間で、そんなお声をいただきました。</p><span class="case-who">美容院</span></li>
       <li class="case case--orange"><span class="case-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2.5l2.2 10.5h10.6L20.5 7H7"/><circle cx="9.5" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></svg></span><span class="case-k">販売</span><p class="case-h">1本の動画をきっかけに、在庫が完売。</p><p class="case-t">TikTok運用を始めて1か月。Amazonで3か月分を見込んでいた在庫でした。</p><span class="case-who">食品を扱う企業</span></li>
       <li class="case case--sky"><span class="case-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/><path d="M17.5 4.5l1.5 1.5 3-3"/></svg></span><span class="case-k">採用</span><p class="case-h">半年で、40名のエントリー。</p><p class="case-t">採用を目的に、TikTok運用を続けた結果です。</p><span class="case-who">採用に取り組む企業</span></li>
@@ -557,6 +558,7 @@ def plans():
         <ul class="checks"><li>社内に映像・SNSの専任がいない</li><li>まずは任せて、スピーディに始めたい</li><li>SNSの運用を本格化したい</li><li>採用・認知・売上など、明確な目標がある</li></ul>
         <p>社内にリソースがなくても、すぐに始められます。企画・撮影・編集・投稿・分析まで、M2Logが担当者として一貫して動きます。投稿だけでなく広告もセットで回すので、良い反応が出た動画をすぐに広告で伸ばせます。続けるほど、アカウントの土台が育っていきます。</p>
         <h4>1か月のあいだに動くこと</h4>
+        <p class="plan-pre">はじめにコンセプトとKPIを一緒に設計し、そのうえで毎月この流れを回します。M2Logは担当者として、御社の会議にも参加します。</p>
         <ol class="month">
           <li><b>企画会議</b>前月の数字と反応を見て、今月の狙いと企画を決める</li>
           <li><b>台本・撮影準備</b>台本、出演者、ロケ地、小道具まで手配する</li>
@@ -565,8 +567,6 @@ def plans():
           <li><b>広告配信</b>反応の良い動画を広告で伸ばす</li>
           <li><b>振り返り・定例</b>月次レポートをもとに、代表が定例で次の打ち手を提案</li>
         </ol>
-        <h4>含まれるもの</h4>
-        <ul class="checks"><li>コンセプト・KPI設計</li><li>毎月決まった本数のコンテンツ制作（月1回のまとめ撮り）</li><li>企画・撮影・編集・投稿</li><li>コメント運用サポート</li><li>月次レポート・改善提案</li><li>担当者として会議に参加</li><li>広告の配信・運用</li></ul>
         <a class="btn" href="/contact">{CTA_LABEL}</a>
       </div>
       <div class="plan">
@@ -592,21 +592,20 @@ def plans():
       </div>
     </div>
 
-    <h3 class="disp h-sub" style="margin:64px 0 20px">AとBの違い</h3>
+    <details class="cmp-box" data-open-desktop>
+    <summary><span class="disp h-sub">AとBの違い</span><span class="cmp-toggle">表で比べる</span></summary>
     <div class="table-wrap" tabindex="0" aria-label="プラン比較表（横にスクロールできます）"><table class="table cmp">
       <thead><tr><th scope="col"><span class="sr">項目</span></th><th scope="col">A　フル運用代行</th><th scope="col">B　伴走型SNS運用</th></tr></thead>
       <tbody>
         <tr><th scope="row">ゴール</th><td>M2Logに任せて、成果を出し続ける</td><td>小さく試し、企画と撮影を社内でも回せるようになる</td></tr>
-        <tr><th scope="row">セットになるもの</th><td>広告の配信・運用</td><td>広告の運用、月1回のワークショップ</td></tr>
         <tr><th scope="row">期間</th><td>まず3か月。続ける場合は6か月ごとに更新</td><td>まず3か月。続ける場合は9か月を追加（計12か月）</td></tr>
         <tr><th scope="row">企画・撮影</th><td>ずっとM2Log</td><td>M2Logから御社へ、少しずつ移る（M2Logは12か月ずっと同席）</td></tr>
         <tr><th scope="row">投稿・コメント対応</th><td>M2Log</td><td>御社（投稿の考え方はワークショップで共有）</td></tr>
-        <tr><th scope="row">分析・改善提案</th><td>M2Logが毎月レポートし、代表が定例で提案</td><td>ワークショップで一緒に振り返る</td></tr>
-        <tr><th scope="row">編集・広告の運用</th><td>M2Log</td><td>12か月ずっとM2Log（卒業後も任せられます）</td></tr>
         <tr><th scope="row">御社の担当者</th><td>窓口になる方（確認や社内調整の担当）</td><td>窓口に加えて、企画・撮影を担当する方</td></tr>
         <tr><th scope="row">定例</th><td>月1回以上、代表が参加</td><td>月1回のワークショップと企画会議で実施</td></tr>
       </tbody>
     </table></div>
+    </details>
   </div>
 </section>
 
@@ -727,6 +726,23 @@ def privacy():
     return h + body + footer(p)
 
 
+# 公開年月（YYYY-MM か YYYY-MM-DD）。入っている作品だけ、Googleの動画検索向けの情報（VideoObject）を出す
+PUBLISHED = {'works_award': None, 'works_sbi': None, 'works_akita': None, 'works_rinx': None, 'works_fujisan': None, 'works_kyoto': None}
+
+
+def video_ld(w, desc):
+    d = PUBLISHED.get(w['key'])
+    if not d:
+        return ''
+    import json
+    m, s_ = LENGTH[w['key']].split(':')
+    obj = {"@context": "https://schema.org", "@type": "VideoObject", "name": w['title'].strip('「」'), "description": desc,
+           "thumbnailUrl": SITE + f"/assets/img/{w['key']}_poster.jpg", "uploadDate": d if len(d) > 7 else d + '-01',
+           "duration": f"PT{int(m)}M{int(s_)}S", "contentUrl": SITE + f"/assets/video/{w['key']}.mp4",
+           "publisher": {"@id": SITE + "/#org"}}
+    return '<script type="application/ld+json">' + json.dumps(obj, ensure_ascii=False) + '</script>'
+
+
 def thumb(w):
     return f"/assets/img/{'works_rinx_card' if w['key'] == 'works_rinx' else w['key'] + '_poster'}.jpg"
 
@@ -736,7 +752,7 @@ def work_page(w):
     path = '/works/' + w['slug']
     name = w['title'].strip('「」')
     desc = (w['lead'] + ' ' + w['client'] + (('、' + w['award']) if w['award'] else '') + '。')[:118]
-    h = head(f"{name}｜作品紹介｜M2Log", desc, path, p) + header(p, 'works')
+    h = head(f"{name}｜作品紹介｜M2Log", desc, path, p, image=f"/assets/img/og_{w['key']}.jpg", extra_ld=video_ld(w, desc)) + header(p, 'works')
     i = WORK_PAGES.index(w)
     nxt = WORK_PAGES[(i + 1) % len(WORK_PAGES)]
     others = ''.join(

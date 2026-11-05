@@ -527,3 +527,6 @@ html { scroll-padding-top: calc(88px + env(safe-area-inset-top, 0px)); }
   .step-when { align-self: center; }
   .ways-note { padding: 20px; }
 }
+/* the display face is for 24px and up; smaller headings use the body face at 900 so they stay crisp */
+.cannot h3 { font-family: var(--f-body); font-weight: 900; font-size: clamp(18px, 1.7vw, 20px); letter-spacing: .02em; }
+.c-flow-h { font-size: 19px; font-weight: 900; margin-bottom: 16px; }

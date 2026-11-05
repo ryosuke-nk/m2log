@@ -474,3 +474,40 @@ html { scroll-padding-top: calc(88px + env(safe-area-inset-top, 0px)); }
 /* keyword line inside each H1: tells search engines and first-time visitors what the page is about */
 .h1-kw { display: block; font-family: var(--f-body); font-size: 14px; font-weight: 700; line-height: 1.6; color: var(--orange-ink); letter-spacing: .02em; margin-bottom: 14px; }
 .hero .h1-kw { font-size: clamp(14px, 1.3vw, 16px); margin-bottom: 18px; }
+
+/* ---------- 2026-11: できないこと / 事例 / 費用の決まり方 ---------- */
+.team-body b { color: var(--navy); }
+.cannot { list-style: none; padding: 0; margin: 56px 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.cannot li { background: var(--white); border: 1px solid var(--line); border-radius: 18px; padding: 24px 22px 26px; display: grid; gap: 12px; align-content: start; }
+.cannot h3 { font-family: var(--f-disp); font-weight: 400; font-size: clamp(19px, 1.9vw, 22px); line-height: 1.45; color: var(--navy); }
+.cannot p { font-size: 14.5px; line-height: 1.85; color: var(--sub); }
+@media (max-width: 960px) { .cannot { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .cannot { grid-template-columns: 1fr; margin-top: 40px; } .cannot h3 br { display: none; } }
+
+.cases { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 2px solid var(--ink); }
+.cases li { padding: 26px 24px 8px 0; display: grid; gap: 12px; align-content: start; }
+.cases li + li { padding-left: 24px; border-left: 1px solid var(--line); }
+.case-k { font-size: 13px; font-weight: 700; color: var(--white); background: var(--orange-ink); border-radius: 999px; padding: 2px 12px; justify-self: start; line-height: 1.6; }
+.cases p { font-size: 15.5px; line-height: 1.95; }
+.case-who { font-size: 13.5px; font-weight: 700; color: var(--sub); }
+@media (max-width: 860px) { .cases { grid-template-columns: 1fr; } .cases li + li { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); } .cases li { padding-bottom: 22px; } }
+
+.case-note { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; font-size: 14.5px !important; line-height: 1.85 !important; }
+.case-note .case-k { display: inline-block; margin-right: 10px; }
+
+.ways-note { margin-top: 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 28px; background: var(--white); border: 1px solid var(--line); border-radius: 18px; padding: 22px 26px; }
+.ways-note p { font-size: 15px; line-height: 1.9; max-width: 44em; }
+.ways-note b { color: var(--navy); margin-right: .5em; }
+.after--small { margin-top: 14px; background: transparent; }
+
+.factors { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.factors li { border-top: 2px solid var(--navy); padding-top: 22px; display: grid; gap: 10px; align-content: start; }
+.f-n { font-family: var(--f-disp); font-size: 15px; color: var(--orange-ink); }
+.factors h3 { font-size: 21px; font-weight: 900; }
+.factors p { font-size: 14.5px; line-height: 1.85; color: var(--sub); }
+@media (max-width: 960px) { .factors { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 20px; } }
+@media (max-width: 560px) { .factors { grid-template-columns: 1fr; } }
+.scale--plain div { font-size: 15px; }
+.scale--plain dd { color: var(--navy); }
+.m-price { font-size: 15px; }
+.team-foot { margin-top: 36px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 32px; }

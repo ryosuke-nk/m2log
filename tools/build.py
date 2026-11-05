@@ -9,7 +9,7 @@ GA = 'G-XVNJRPJJVC'
 CTA_LABEL = '無料で相談する'
 TAG = '届けるまでが、つくること。'
 
-NAV = [('サービス', 'services'), ('私たちについて', 'about'), ('料金・プラン', 'plans'), ('お問い合わせ', 'contact')]
+NAV = [('サービス', 'services'), ('私たちについて', 'about'), ('ご依頼について', 'plans'), ('お問い合わせ', 'contact')]
 HEADER_NAV = NAV[:3]  # お問い合わせ is the button
 
 
@@ -17,7 +17,7 @@ def href(p, page):
     return '/' if page == 'home' else f'/{page}'
 
 
-CRUMBS = {'/services': 'サービス', '/about': '私たちについて', '/plans': '料金・プラン',
+CRUMBS = {'/services': 'サービス', '/about': '私たちについて', '/plans': 'ご依頼について',
           '/contact': 'お問い合わせ', '/privacy': 'プライバシーポリシー'}
 
 
@@ -103,7 +103,7 @@ def cta(p, title='まず30分、<br>話してみませんか。',
     <h2 id="cta-h">{title}</h2>
     <div>
       <p>{body}</p>
-      <div class="btns"><a class="btn btn--light" href="{href(p, 'contact')}">{CTA_LABEL}<small>30分・オンライン</small></a><a class="btn btn--ghost" href="{href(p, 'plans')}">料金を見る</a></div>
+      <div class="btns"><a class="btn btn--light" href="{href(p, 'contact')}">{CTA_LABEL}<small>30分・オンライン</small></a><a class="btn btn--ghost" href="{href(p, 'plans')}">頼み方を見る</a></div>
     </div>
   </div>
 </section>
@@ -177,6 +177,28 @@ def strip(p, works=None):
     return '\n'.join(out)
 
 
+# ----------------------------------------------------------------- faq
+FAQ = {
+    'cost': ('費用はどのくらいかかりますか？', '本数、撮影の回数、広告費、体制によって大きく変わるため、一律の料金表は設けていません。ご予算を伺えれば、その範囲で何ができるかを率直にお伝えします。小さく試してから広げる始め方もできます。お見積りは無償です。'),
+    'noidea': ('まだ具体的な案がなくても、相談できますか？', 'できます。ほとんどのご相談が、その状態から始まります。「何を達成したいか（採用・認知・売上など）」と「今ある素材・体制」を伺い、ご提案の際にコンセプトとKPIの考え方までお持ちします。ラフなメモ1枚でも大丈夫です。'),
+    'one': ('1本だけの依頼でも大丈夫ですか？', '大丈夫です。WebCMやショート動画など、1本からの制作もお受けしています。1本でも目的とターゲットの整理から入り、企画から納品まで同じチームが担当します。'),
+    'staff': ('社内に担当者や出演者がいなくても、お願いできますか？', 'ご連絡の窓口になる方がいれば、始められます。出演者がいなくても成立する企画を設計できますし、外部の演者を立てての制作もできます。逆に「社内の人が出るからこそ効く」企画もあるため、目的と社内の事情に合わせてご提案します。'),
+    'count': ('月に何本くらいつくりますか？', '目的とご予算に合わせて、ご契約のときに決めます。決まった本数は、毎月同じペースでお届けします。本数を増やすことより、1本ずつ振り返って次の企画に活かすことを大切にしています。追加の制作も、ご相談いただけます。'),
+    'term': ('契約期間の決まりはありますか？', 'SNS運用は、3か月からお受けしています。最初の動画が出てから振り返りと改善を一度は回し、成果を判断できる期間として設けています。1本からの制作には、期間の決まりはありません。'),
+    'sns': ('TikTok以外のSNSにも対応していますか？', 'TikTokを軸に制作し、InstagramのリールやYouTubeショートにも展開できます。'),
+    'agency': ('代理店経由での発注や、パートナーとしても依頼できますか？', 'できます。代理店さまの進行フローに合わせ、窓口一本で対応します。守秘・体制面（資料整備、提案同席など）もご相談ください。'),
+    'works': ('実績をもっと見せてもらえますか？', '公開できるものは一部のため、目的・業種・表現トーンが近い事例を中心にご案内します。お問い合わせ時に「つくりたい方向性」を添えていただけるとスムーズです。'),
+    'risk': ('炎上などのリスクが心配です。', '企画の段階で「誰かを傷つけないか・誤解を招く表現はないか」を確認してから制作に進みます。攻めた企画をご提案することもありますが、無理に通すことはしません。狙いとリスクをご説明したうえで、必ず合意を得てから進めます。それでも想定外の反応が起きた場合は、担当者として状況の整理から対応まで一緒に動きます。'),
+    'area': ('東京以外でも対応できますか？', '撮影・打ち合わせとも、全国に伺えます。出張にかかる費用は、お見積りの段階で明示してご提案します。オンラインでの定例・相談にも対応しています。'),
+}
+FAQ_TOP = ['cost', 'noidea', 'one', 'staff']
+FAQ_ALL = ['cost', 'noidea', 'one', 'staff', 'count', 'term', 'sns', 'agency', 'works', 'risk', 'area']
+
+
+def faq_html(keys):
+    return '\n'.join(f'      <details><summary>{FAQ[k][0]}</summary><p class="a">{FAQ[k][1]}</p></details>' for k in keys)
+
+
 # ----------------------------------------------------------------- pages
 def index():
     p = '/'
@@ -222,9 +244,39 @@ def index():
   </div>
 </section>
 
+<section class="sec sec--tint" aria-labelledby="team-h">
+  <div class="wrap team">
+    <figure class="team-photo"><img src="assets/img/team_pc.jpg" alt="M2Logのメンバー5人" loading="lazy"></figure>
+    <div class="team-body">
+      <h2 class="disp h-sec" id="team-h">映像をつくる前に、<br>チームに入る。</h2>
+      <p>外から映像を納めるのではなく、御社のチームの一員として動きたい。だからM2Logには、<b>できないこと</b>があります。</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <ul class="cannot" aria-label="M2Logが、できないこと">
+      <li><h3>納品して、<br>終われない。</h3><p>だから、担当者として会議に出て、公開したあとまで一緒に追いかけます。</p></li>
+      <li><h3>企画を、<br>使い回せない。</h3><p>だから、御社の商品とお客さんを知るところから、毎回一から考えます。</p></li>
+      <li><h3>言われたまま、<br>つくれない。</h3><p>だから、もっと届く方法があれば、遠慮なくご提案します。</p></li>
+      <li><h3>外に、<br>丸投げできない。</h3><p>だから、企画・撮影・編集はすべて社内で。意図がずれず、直しも速い。</p></li>
+    </ul>
+    <div class="team-foot"><blockquote class="quote">「チームが増えたみたい」と言ってもらえることが、一番うれしい。<cite>代表取締役　中村陵介</cite></blockquote><a class="textlink" href="/about">メンバーを見る</a></div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="case-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 class="disp h-sec" id="case-h">目的に合わせて、<br>追う数字を変える。</h2><p class="lead">同じショート動画でも、ゴールが違えば、つくり方も変わります。</p></div>
+    <ul class="cases">
+      <li><span class="case-k">来店</span><p>ショート広告動画の公開から2週間、毎週10人ほど「動画を見て来た」というお客さまが来店されているとのお声をいただきました。</p><span class="case-who">美容院</span></li>
+      <li><span class="case-k">販売</span><p>TikTok運用を始めて1か月。1本の動画をきっかけに、Amazonで3か月分を見込んでいた在庫が完売しました。</p><span class="case-who">食品を扱う企業</span></li>
+      <li><span class="case-k">採用</span><p>採用を目的にTikTok運用を半年続け、40名のエントリーにつながりました。</p><span class="case-who">採用に取り組む企業</span></li>
+    </ul>
+  </div>
+</section>
+
 <section class="sec sec--tint" aria-labelledby="svc-h">
   <div class="wrap">
-    <div class="sec-head"><h2 class="disp h-sec" id="svc-h">できること</h2><p class="lead">縦型のSNS動画も、横型のCMも。どれも「誰に届けて、どう動いてもらうか」というマーケティングの視点から設計します。</p></div>
+    <div class="sec-head"><h2 class="disp h-sec" id="svc-h">できること</h2><p class="lead">縦も、横も。続ける運用も、1本の制作も。</p></div>
     <div class="svc-grid">
       <a class="svc" href="/services#sns">
         <div class="svc-media"><img src="assets/img/img_scene3.jpg" alt="" loading="lazy"><img src="assets/img/works_sbi_poster.jpg" alt="" loading="lazy"><img src="assets/img/works_kyoto_poster.jpg" alt="" loading="lazy"></div>
@@ -245,19 +297,7 @@ def index():
         <span class="more">詳しく見る</span>
       </a>
     </div>
-    <p class="note-inhouse"><b>企画・脚本・撮影・編集は、すべて内製。</b>外部委託を挟まないから、意図がずれず、修正も改善も速い。</p>
-  </div>
-</section>
-
-<section class="sec sec--tint" aria-labelledby="team-h">
-  <div class="wrap team">
-    <figure class="team-photo"><img src="assets/img/team_pc.jpg" alt="M2Logのメンバー5人" loading="lazy"></figure>
-    <div class="team-body">
-      <h2 class="disp h-sec" id="team-h">映像をつくる前に、<br>チームに入る。</h2>
-      <p>外注は、納品したら終わり。でも映像もSNSも、つくったあとが本番です。だからM2Logは担当者として会議に出て、一緒に考え、届くところまで動きます。</p>
-      <blockquote class="quote">「チームが増えたみたい」と言ってもらえることが、一番うれしい。<cite>代表取締役　中村陵介</cite></blockquote>
-      <a class="textlink" href="/about">メンバーを見る</a>
-    </div>
+    <div class="ways-note"><p><b>1本からでも、まるごとでも。</b>入口が違っても、動くのは同じチームです。単発の制作から始めて、運用までお任せいただく形もあります。</p><a class="textlink" href="/plans">頼み方を見る</a></div>
   </div>
 </section>
 
@@ -271,41 +311,15 @@ def index():
       <li class="step"><span class="step-n">3</span><span class="step-when">4〜6週目</span><h3>初稿・公開</h3><p>撮影から約10日で初稿をお送りします。チェックを経て、最初の動画が世に出ます。</p></li>
     </ol>
     <p class="after">公開後は、月1回以上の定例に<b>代表が直接参加</b>します。月次レポートと改善提案を重ね、翌月の企画に反映していきます。</p>
+    <p class="after after--small"><b>まず、小さく試すこともできます。</b>いきなり大きく始めなくても大丈夫です。1本の制作や3か月のトライアルから始めて、手応えを見ながら広げていく形もご相談ください。</p>
   </div>
 </section>
 
-<section class="sec sec--tint" aria-labelledby="ways-h">
-  <div class="wrap">
-    <div class="sec-head"><h2 class="disp h-sec" id="ways-h">頼み方は、2つ。</h2><p class="lead">1本だけでも、まるごとでも。どちらの入口からでも、同じチームが動きます。</p></div>
-    <div class="ways">
-      <div class="way">
-        <span class="label">1本からの映像制作</span>
-        <h3>映像を、1本からつくりたい</h3>
-        <p>WebCM、ブランドムービー、採用動画、ショート動画。単発のご依頼も、企画から入って納品まで運びます。</p>
-        <dl class="prices"><div><dt>ショート動画（縦型）</dt><dd>1本 <b>15</b>万円〜</dd></div><div><dt>WebCM・採用・ブランドムービー</dt><dd><b>30</b>万円〜</dd></div></dl>
-        <p>企画・撮影・編集込み。お見積りは無償です。</p>
-        <a class="btn btn--ghost" href="/plans#production">制作について見る</a>
-      </div>
-      <div class="way">
-        <span class="label">継続のSNS運用</span>
-        <h3>SNSを、まるごと任せたい</h3>
-        <p>担当者としてチームに入り、企画・撮影・編集・投稿・分析まで一貫して。制作も内製だから、「つくる」と「届ける」を分けずに任せられます。</p>
-        <dl class="prices"><div><dt>フル運用代行</dt><dd>月額 <b>60</b>万円〜</dd></div><div><dt>伴走型（3か月のトライアル）</dt><dd>月額 <b>29</b>万円〜</dd></div></dl>
-        <p>どちらも広告費を含んだ金額で、まず3か月から始められます。別途かかるのは交通費・諸経費のみです。内容・本数・体制によって形が変わるため、ご相談時に「この予算で何ができるか」を率直にお伝えします。</p>
-        <a class="btn btn--ghost" href="/plans#partnership">プランを見る</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="sec" aria-labelledby="faq-h">
+<section class="sec sec--tint" aria-labelledby="faq-h">
   <div class="wrap">
     <div class="sec-head"><h2 class="disp h-sec" id="faq-h">よくある質問</h2></div>
     <div class="faq">
-      <details><summary>金額感が分かりません。</summary><p class="a">目安として、単発のショート動画は1本15万円〜、まるごと任せるフル運用代行は月5本で月額60万円〜（広告費含む）、まず小さく試せる伴走型は、3か月のトライアルが月額29万円（広告費含む）です。内容・本数で変わるため、ご相談時に「この予算で何ができるか」を率直にお伝えします。お見積りは無償です。</p></details>
-      <details><summary>具体的な案がなくても相談できますか？</summary><p class="a">できます。実際、ほとんどのご相談がその状態から始まります。方向が見えてきたら、ご提案の際にコンセプトとKPIの考え方までお持ちするので、比較検討の材料としてもお使いいただけます。</p></details>
-      <details><summary>東京以外でも対応できますか？</summary><p class="a">撮影・打ち合わせとも、全国に伺えます。出張にかかる費用は、お見積りの段階で明示してご提案します。オンラインでの定例・相談にも対応しています。</p></details>
-      <details><summary>ほかの映像制作会社・SNS運用会社との違いは？</summary><p class="a">一番の違いは、映像をつくる力とSNSを運用する力を、同じチームで持っていることです。テレビ、CM、スポーツ撮影と、それぞれ別の現場で経験を積んだ5人がいるので、企画から撮影・編集まで社内で完結できます。そのうえで、つくったあとの投稿や振り返りまで、担当者として一緒に追いかけます。SNS運用・広告・単発制作のどれかに縛られず、目的に合う形を選べるのも、この体制だからです。一度話してもらえれば、チームの雰囲気もすぐに伝わると思います。</p></details>
+{faq_html(FAQ_TOP)}
     </div>
     <p style="margin-top:24px"><a class="textlink" href="/plans#faq">ほかの質問を見る</a></p>
   </div>
@@ -330,7 +344,9 @@ def services():
         <span class="label">縦型・SNS</span>
         <h2>TikTokアカウント運用代行</h2>
         <p>バズを生むことも大切ですが、それがゴールではありません。投稿には一本ずつ狙いがあります。来てほしいコメントは来たか。最後まで見られたか。狙い通りに保存されたか。再生数だけでなく「狙った反応」との答え合わせを繰り返し、翌月の企画に反映します。SNS担当者として、継続的に伴走します。</p>
-        <ul class="tags"><li>コンセプト・KPI設計</li><li>企画・撮影・編集</li><li>投稿・コメント運用</li><li>月次レポート・改善</li><li>TikTok広告支援</li></ul>
+        <p>任せきりにするだけでなく、企画や撮影を少しずつ社内に移していく、一緒につくる形もあります。</p>
+        <p class="case-note"><span class="case-k">採用</span>採用を目的にTikTok運用を半年続け、40名のエントリーにつながりました。</p>
+        <ul class="tags"><li>コンセプト・KPI設計</li><li>企画・撮影・編集</li><li>投稿・コメント運用</li><li>月次レポート・改善</li><li>TikTok広告支援</li><li>内製化の支援</li><li>SNS戦略ワークショップ</li></ul>
       </div>
     </article>
     <article class="sd" id="drama">
@@ -340,6 +356,7 @@ def services():
         <h2>ショート動画広告・ショートドラマ制作</h2>
         <p>広告のショート動画は、1本つくって終わりではありません。配信して反応を見ながら、切り口を変えて次の1本をつくる。その繰り返しで、成果の出る形を探していきます。ショートドラマも同じで、視聴者の反応を見ながら次の話を考えます。</p>
         <p>テレビやCMの現場で経験を積んだメンバーが、企画・撮影・編集をすべて社内で回しているので、このスピードで動けます。</p>
+        <p class="case-note"><span class="case-k">来店</span>美容院のショート広告動画では、公開から2週間、毎週10人ほど「動画を見て来た」というお客さまが来店されているとのお声をいただきました。</p>
         <ul class="tags"><li>ショート動画広告</li><li>広告クリエイティブ開発（検証込み）</li><li>ショートドラマ</li><li>SNSキャンペーン動画</li><li>商品・サービス紹介</li><li>インタビュー動画</li><li>タレント・インフルエンサー起用</li></ul>
       </div>
     </article>
@@ -349,6 +366,7 @@ def services():
         <span class="label">横型・CM／ブランド</span>
         <h2>WebCM・ブランドムービー制作</h2>
         <p>SNSだけでなく、WebCM、ブランドムービー、採用、広告まで。「この映像をどこで、誰に、どう使うか」から一緒に考えます。目的に合わせた使い方まで設計し、つくって終わりにしない活用を提案します。</p>
+        <p class="case-note"><span class="case-k">受賞</span>「水の通知 OFF」で第13回 BOVA オンライン動画部門 協賛企業賞、「あなたの秋田推し度を診断します」で「推して、秋田」映像コンテスト2026 準グランプリをいただきました。</p>
         <ul class="tags"><li>WebCM・ブランドムービー</li><li>SNS・Web広告動画</li><li>採用動画・採用SNS</li><li>HP・LP掲載用動画</li><li>キャンペーン設計</li><li>キャスティング・PR</li></ul>
       </div>
     </article>
@@ -357,7 +375,7 @@ def services():
 
 <section class="sec sec--tint" id="how" aria-labelledby="how-h">
   <div class="wrap">
-    <div class="sec-head"><h2 class="disp h-sec" id="how-h">企画から改善まで、<br>ひとつのチームで。</h2><p class="lead">企画・脚本・撮影・編集はすべて内製です。外部委託を挟まないから、意図がずれず、修正も改善も速い。</p></div>
+    <div class="sec-head"><h2 class="disp h-sec" id="how-h">企画から改善まで、<br>ひとつのチームで。</h2><p class="lead">考える人、撮る人、仕上げる人が同じチームにいるから、狙いが最後までぶれません。</p></div>
     <ol class="cycle" style="list-style:none;padding:0;margin:0">
       <li class="step"><span class="step-n">1</span><h3>戦略・企画</h3><p>何を、誰に届けたいのか。整理するところから始めます。目的・ターゲット・媒体の特性を踏まえ、勝ち筋を設計します。</p></li>
       <li class="step"><span class="step-n">2</span><h3>制作・運用</h3><p>設計した方針をもとに、企画・撮影・編集・投稿まで一気通貫で。媒体ごとの見られ方も踏まえ、伝わる形に落とし込みます。</p></li>
@@ -418,43 +436,43 @@ def about():
   </div>
 </section>
 </main>
-''' + nextlink(p, 'plans', 'Plans', '頼み方と、料金のこと。')
+''' + nextlink(p, 'plans', 'Plans', '頼み方と、進め方。')
     return h + body + cta(p, 'チームの一員として、<br>入らせてください。', 'まず話すだけで大丈夫です。どんな状態からでも構いません。') + footer(p)
 
 
 def plans():
     p = '/'
-    desc = 'M2Logの料金。ショート動画は1本15万円〜、TikTok運用代行は月額60万円〜（広告費含む）、まず小さく試せる3か月トライアルは月額29万円。プランの違いとよくある質問もまとめています。'
-    h = head('料金・プラン｜TikTok運用代行・ショート動画制作の費用｜M2Log', desc, '/plans', p) + header(p, 'plans')
-    extra = '<nav class="subnav" aria-label="ページ内"><a href="#price">料金の早見表</a><a href="#production">1本からの映像制作</a><a href="#partnership">SNS運用プラン</a><a href="#start">まずは相談から</a><a href="#faq">よくある質問</a></nav>'
-    faqs = [
-        ('映像1本だけの依頼でもできますか？', 'できます。1本のご依頼でも、目的とターゲットの整理から入り、届く形で納品します。実際、最初の1本をきっかけに、運用や継続のお付き合いへ広がるケースがほとんどです。'),
-        ('具体的な案が何もないのですが、ゼロから相談できますか？', 'できます。まずは「何を達成したいか（採用・認知・売上など）」と「今ある素材・体制」を伺い、企画の方向性から一緒に整理します。ラフなメモ1枚でも、想いだけでも大丈夫です。'),
-        ('代理店経由での発注や、パートナーとしても依頼できますか？', 'できます。代理店さまの進行フローに合わせ、窓口一本で対応します。守秘・体制面（資料整備、提案同席など）もご相談ください。'),
-        ('ほかの映像制作会社・SNS運用会社との違いは？', '一番の違いは、映像をつくる力とSNSを運用する力を、同じチームで持っていることです。テレビ、CM、スポーツ撮影と、それぞれ別の現場で経験を積んだ5人がいるので、企画から撮影・編集まで社内で完結できます。そのうえで、つくったあとの投稿や振り返りまで、担当者として一緒に追いかけます。SNS運用・広告・単発制作のどれかに縛られず、目的に合う形を選べるのも、この体制だからです。一度話してもらえれば、チームの雰囲気もすぐに伝わると思います。'),
-        ('実績をもっと見せてもらえますか？', '公開できるものは一部のため、目的・業種・表現トーンが近い事例を中心にご案内します。お問い合わせ時に「つくりたい方向性」を添えていただけるとスムーズです。'),
-        ('金額感が分かりません。どれくらいの予算で依頼できますか？', '目安として、ショート動画は1本15万円〜、WebCM・ブランドムービー・採用動画は30万円〜、まるごと任せるフル運用代行は月5本で月額60万円〜（広告費含む）、まず小さく試せる伴走型は、3か月のトライアルが月額29万円（広告費含む）です（いずれも企画・撮影・編集込み、交通費などの実費は別途）。内容・本数・体制によって形が変わるため、ご相談時に「この予算で何ができるか」を率直にお伝えします。広告用クリエイティブ開発など規模の大きな案件は、個別にお見積りします。お見積りは無償です。'),
-        ('社員の出演は必要ですか？', '必須ではありません。出演者なしで成立する企画も設計できますし、外部キャストを立てての制作もできます。逆に「社内の人が出るからこそ効く」企画もあるため、目的と社内の事情に合わせて最適な形をご提案します。'),
-        ('炎上などのリスクが心配です。', '企画の段階で「誰かを傷つけないか・誤解を招く表現はないか」を確認してから制作に進みます。攻めた企画をご提案することもありますが、無理に通すことはしません。狙いとリスクをご説明したうえで、必ず合意を得てから進めます。それでも想定外の反応が起きた場合は、担当者として状況の整理から対応まで一緒に動きます。'),
-        ('対応エリアを教えてください。', '撮影・打ち合わせは、全国に伺えます。出張費は東京23区内が1回15,000円。それ以外の地域は、レンタカー・駐車場・交通費・宿泊などの実費を、お見積りの段階で明示してご提案します（お見積りは無料です）。'),
-    ]
-    fh = '\n'.join(f'      <details><summary>{q}</summary><p class="a">{a}</p></details>' for q, a in faqs)
-    body = page_hd(p, '料金・プラン', '料金・プラン｜TikTok運用代行・動画制作の費用', '1本からでも、<br>まるごとでも。',
-                   '1本だけの制作から、まるごと任せる運用まで。状況に合った始め方を選べます。', extra) + f'''<main>
+    desc = 'M2Logへのご依頼について。1本からの映像制作、まるごと任せるTikTok運用代行、一緒につくる伴走型、スポット支援。費用の決まり方、進め方、よくある質問をまとめています。'
+    h = head('ご依頼について｜TikTok運用代行・ショート動画制作の費用と進め方｜M2Log', desc, '/plans', p) + header(p, 'plans')
+    extra = '<nav class="subnav" aria-label="ページ内"><a href="#price">頼み方の早見表</a><a href="#cost">費用の決まり方</a><a href="#production">1本からの映像制作</a><a href="#partnership">SNS運用プラン</a><a href="#start">まずは相談から</a><a href="#faq">よくある質問</a></nav>'
+    body = page_hd(p, 'ご依頼について', 'ご依頼について｜TikTok運用代行・動画制作の費用と進め方', '1本からでも、<br>まるごとでも。',
+                   '1本だけの制作から、まるごと任せる運用まで。御社の目的とご予算に合わせて、いちばんいい形を一緒に考えます。', extra) + f'''<main>
 <section class="sec sec--tint" id="price" aria-labelledby="pc-h" style="scroll-margin-top:72px">
   <div class="wrap">
-    <div class="sec-head"><h2 class="disp h-sec" id="pc-h">料金の早見表</h2><p class="lead">やりたいことから選んでください。お見積りは、どれも無償です。</p></div>
+    <div class="sec-head"><h2 class="disp h-sec" id="pc-h">頼み方の早見表</h2><p class="lead">やりたいことから選んでください。お見積りは、どれも無償です。</p></div>
     <ul class="menu">
-      <li><a href="#start"><span class="m-when">まず話を聞いてほしい</span><span class="m-name">無料相談</span><span class="m-price"><b>0</b>円</span><span class="m-note">30分・オンライン。課題の整理から。</span></a></li>
-      <li><a href="#start"><span class="m-when">方針だけ一緒に決めたい</span><span class="m-name">スポット支援</span><span class="m-price"><b>5</b>万円〜</span><span class="m-note">半日〜1日。コンセプト・KPI・投稿方針まで。</span></a></li>
-      <li><a href="#production"><span class="m-when">映像を1本つくりたい</span><span class="m-name">1本からの映像制作</span><span class="m-price">ショート動画 <b>15</b>万円〜<br>WebCMなど <b>30</b>万円〜</span><span class="m-note">企画・撮影・編集込み。</span></a></li>
-      <li><a href="#partnership"><span class="m-when">SNSをまるごと任せたい</span><span class="m-name">プランA　フル運用代行</span><span class="m-price">月額 <b>60</b>万円〜<br><small>※広告費含む</small></span><span class="m-note">企画から投稿・広告・改善まで、チームでまるごと。まず3か月、その後は6か月ごとの更新。</span></a></li>
-      <li><a href="#partnership"><span class="m-when">まず小さく試したい</span><span class="m-name">プランB　伴走型SNS運用</span><span class="m-price">月額 <b>29</b>万円〜<br><small>※広告費含む</small></span><span class="m-note">3か月のトライアル（月3本）。続ける場合は月4本・月額35万円で9か月。交通費・諸経費は別途。</span></a></li>
+      <li><a href="#start"><span class="m-when">まず話を聞いてほしい</span><span class="m-name">無料相談</span><span class="m-price">30分・無料</span><span class="m-note">オンライン。課題の整理から。</span></a></li>
+      <li><a href="#start"><span class="m-when">方針だけ一緒に決めたい</span><span class="m-name">スポット支援</span><span class="m-price">半日〜1日</span><span class="m-note">コンセプト・KPI・投稿方針まで。継続契約は不要です。</span></a></li>
+      <li><a href="#production"><span class="m-when">映像を1本つくりたい</span><span class="m-name">1本からの映像制作</span><span class="m-price">期間の決まりなし</span><span class="m-note">ショート動画、WebCM、採用動画など。企画・撮影・編集込み。</span></a></li>
+      <li><a href="#partnership"><span class="m-when">SNSをまるごと任せたい</span><span class="m-name">プランA　フル運用代行</span><span class="m-price">3か月から</span><span class="m-note">企画から投稿・広告・改善まで、チームでまるごと。</span></a></li>
+      <li><a href="#partnership"><span class="m-when">まず小さく試したい</span><span class="m-name">プランB　伴走型SNS運用</span><span class="m-price">3か月のトライアルから</span><span class="m-note">一緒につくりながら、企画と撮影を少しずつ社内へ。</span></a></li>
     </ul>
   </div>
 </section>
 
-<section class="sec" id="production" aria-labelledby="pr-h" style="scroll-margin-top:72px">
+<section class="sec" id="cost" aria-labelledby="cs-h" style="scroll-margin-top:72px">
+  <div class="wrap">
+    <div class="sec-head"><h2 class="disp h-sec" id="cs-h">費用は、<br>この4つで決まります。</h2><p class="lead">一律の料金表は設けていません。ご予算を伺えれば、その範囲でいちばん成果につながる組み合わせをご提案します。お見積りは無償です。</p></div>
+    <ul class="factors">
+      <li><span class="f-n">01</span><h3>本数</h3><p>月に何本つくるか。決まった本数は、毎月同じペースでお届けします。</p></li>
+      <li><span class="f-n">02</span><h3>撮影</h3><p>撮影の回数と場所。まとめ撮りか、現場に何度も伺うか。</p></li>
+      <li><span class="f-n">03</span><h3>広告費</h3><p>どれくらい広告で届けるか。SNS運用のご提案は、広告費も含めた金額でお出しします。</p></li>
+      <li><span class="f-n">04</span><h3>体制</h3><p>出演者の手配や、関わるメンバーの数。キャスティングやスタジオなどの実費も含みます。</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec sec--tint" id="production" aria-labelledby="pr-h" style="scroll-margin-top:72px">
   <div class="wrap ways" style="align-items:start">
     <div class="sec-head" style="margin-bottom:0">
       <span class="label">1本からの映像制作</span>
@@ -463,21 +481,19 @@ def plans():
       <ul class="tags"><li>WebCM</li><li>ブランドムービー</li><li>採用動画</li><li>縦型ショート動画</li><li>ショートドラマ</li><li>HP・LP掲載用動画</li></ul>
     </div>
     <div class="way">
-      <h3 style="font-size:20px">料金の目安</h3>
-      <dl class="prices"><div><dt>ショート動画（縦型）</dt><dd>1本 <b>15</b>万円〜</dd></div><div><dt>WebCM・ブランドムービー・採用動画</dt><dd><b>30</b>万円〜</dd></div></dl>
-      <p>いずれも企画・撮影・編集込み。キャスティング・スタジオなどの実費は、内容に応じて別途。広告用クリエイティブ開発や複数本パッケージは、規模に応じて個別にお見積りします。お見積りは無償です。</p>
-      <h4 class="label" style="margin-top:6px">同じ「1本」でも、設計の深さで規模は変わります（実際の案件例）</h4>
-      <dl class="scale">
-        <div style="--w:16.67%"><dt>HP掲載用ブランドムービー（1本）</dt><dd>50万円</dd><i aria-hidden="true"></i></div>
-        <div style="--w:60%"><dt>WebCM（目的別・複数本納品）</dt><dd>180万円</dd><i aria-hidden="true"></i></div>
-        <div style="--w:100%"><dt>広告用ショートクリエイティブ開発（検証設計込み）</dt><dd>300万円</dd><i aria-hidden="true"></i></div>
+      <h3 style="font-size:20px">同じ「1本」でも、設計の深さで規模は変わります</h3>
+      <p>これまでにお受けした案件の例です。目的によって、必要な工程も本数も変わります。</p>
+      <dl class="scale scale--plain">
+        <div><dt>HP掲載用のブランドムービー</dt><dd>1本</dd></div>
+        <div><dt>目的別に打ち分けるWebCM</dt><dd>複数本</dd></div>
+        <div><dt>広告用ショートクリエイティブの開発</dt><dd>検証設計込み</dd></div>
       </dl>
       <a class="btn" href="/contact">{CTA_LABEL}</a>
     </div>
   </div>
 </section>
 
-<section class="sec" aria-labelledby="mk-h" style="padding-top:0">
+<section class="sec sec--tint" aria-labelledby="mk-h" style="padding-top:0">
   <div class="wrap">
     <div class="making">
       <h3 class="disp h-sub" id="mk-h">1本ができるまで</h3>
@@ -496,7 +512,7 @@ def plans():
   </div>
 </section>
 
-<section class="sec sec--tint" id="partnership" aria-labelledby="pt-h" style="scroll-margin-top:72px">
+<section class="sec" id="partnership" aria-labelledby="pt-h" style="scroll-margin-top:72px">
   <div class="wrap">
     <div class="sec-head"><span class="label">継続のSNS運用</span><h2 class="disp h-sec" id="pt-h">まるごと任せるか、<br>小さく試して育てるか。</h2><p class="lead">どちらも担当者として入り、広告もセットで動きます。迷ったら、まずBのトライアルで小さく試し、手応えを見てから本格化する進め方もおすすめです。</p></div>
     <p class="swipe-hint">横にスワイプすると、プランBも見られます。</p>
@@ -505,10 +521,10 @@ def plans():
       <div class="plan">
         <span class="label">プランA　フル運用代行</span>
         <h3>SNSを、<br>まるごと任せたい</h3>
-        <p class="plan-meta">月額 <b>60</b>万円〜 <small class="incl">※広告費含む</small>／月5本〜<br>まず3か月、その後は6か月ごとの更新<br><span style="font-weight:500;color:var(--sub)">広告費を含んだ金額です。本数の追加は1本8万円。交通費・諸経費は別途。</span></p>
+        <p class="plan-meta">まず3か月、その後は6か月ごとの更新<br><span style="font-weight:500;color:var(--sub)">広告の配信・運用もセットです。ご提案は、広告費も含めた金額でお出しします。</span></p>
         <h4>こんな企業・担当者に</h4>
         <ul class="checks"><li>社内に映像・SNSの専任がいない</li><li>まずは任せて、スピーディに始めたい</li><li>SNSの運用を本格化したい</li><li>採用・認知・売上など、明確な目標がある</li></ul>
-        <p>社内にリソースがなくても、すぐに始められます。企画・撮影・編集・投稿・分析まで、M2Logが担当者として一貫して動きます。投稿だけでなく広告もセットで回すので、良い反応が出た動画をすぐに広告で伸ばせます。毎月の投稿本数・予算に合わせてカスタマイズでき、続けるほどアカウントの土台が育っていきます。</p>
+        <p>社内にリソースがなくても、すぐに始められます。企画・撮影・編集・投稿・分析まで、M2Logが担当者として一貫して動きます。投稿だけでなく広告もセットで回すので、良い反応が出た動画をすぐに広告で伸ばせます。続けるほど、アカウントの土台が育っていきます。</p>
         <h4>1か月のあいだに動くこと</h4>
         <ol class="month">
           <li><b>企画会議</b>前月の数字と反応を見て、今月の狙いと企画を決める</li>
@@ -519,16 +535,16 @@ def plans():
           <li><b>振り返り・定例</b>月次レポートをもとに、代表が定例で次の打ち手を提案</li>
         </ol>
         <h4>含まれるもの</h4>
-        <ul class="checks"><li>コンセプト・KPI設計</li><li>月5本〜のコンテンツ制作（月1回のまとめ撮り）</li><li>企画・撮影・編集・投稿</li><li>コメント運用サポート</li><li>月次レポート・改善提案</li><li>担当者として会議に参加</li><li>広告の配信・運用（広告費を含む）</li></ul>
+        <ul class="checks"><li>コンセプト・KPI設計</li><li>毎月決まった本数のコンテンツ制作（月1回のまとめ撮り）</li><li>企画・撮影・編集・投稿</li><li>コメント運用サポート</li><li>月次レポート・改善提案</li><li>担当者として会議に参加</li><li>広告の配信・運用</li></ul>
         <a class="btn" href="/contact">{CTA_LABEL}</a>
       </div>
       <div class="plan">
         <span class="label">プランB　伴走型SNS運用</span>
         <h3>まず小さく試して、<br>自分たちでも回せるようにしたい</h3>
-        <p class="plan-meta">トライアル3か月：月額 <b>29</b>万円（月3本） <small class="incl">※広告費含む</small><br>続ける9か月：月額 <b>35</b>万円（月4本） <small class="incl">※広告費含む</small><br><span style="font-weight:500;color:var(--sub)">広告費と月1回のワークショップを含んだ金額です。別途かかるのは交通費・諸経費のみです。</span></p>
+        <p class="plan-meta">まず3か月のトライアル、続ける場合は9か月（計12か月）<br><span style="font-weight:500;color:var(--sub)">広告の運用と、月1回のワークショップがセットです。</span></p>
         <h4>こんな企業・担当者に</h4>
         <ul class="checks"><li>いきなり大きく始めるより、まず手応えを確かめたい</li><li>ゆくゆくは、企画や撮影を社内でも回したい</li><li>企画や撮影を担当する人を、社内で決められる</li></ul>
-        <p>最初の3か月はトライアルです。M2Logが主導して月3本をつくり、どんな切り口が伸びるのかを一緒に確かめます。手応えがあれば、残りの9か月をまとめてご契約いただき、本数を増やしながら企画と撮影を少しずつ御社に移していきます。編集と広告の運用は、12か月ずっとM2Logが担当します。</p>
+        <p>最初の3か月はトライアルです。M2Logが主導して動画をつくり、どんな切り口が伸びるのかを一緒に確かめます。手応えがあれば、残りの9か月をまとめてご契約いただき、企画と撮影を少しずつ御社に移していきます。編集と広告の運用は、12か月ずっとM2Logが担当します。</p>
         <h4>12か月の関わり方</h4>
         <div class="table-wrap" tabindex="0" aria-label="12か月の関わり方（横にスクロールできます）"><table class="roles">
           <thead><tr><th scope="col"><span class="sr">項目</span></th><th scope="col">1〜3か月目<br><small>トライアル</small></th><th scope="col">4〜6か月目<br><small>一緒に回す</small></th><th scope="col">7〜12か月目<br><small>御社が主導</small></th></tr></thead>
@@ -540,7 +556,7 @@ def plans():
           </tbody>
         </table></div>
         <h4>12か月後に残るもの</h4>
-        <ul class="checks"><li>育ったアカウント（もともと御社のものです）</li><li>企画と撮影を社内で回せるチーム</li><li>御社用にまとめた運用の手引き</li><li>卒業後も、ワークショップを月1回3万円で受講できます（通常5〜10万円）</li><li>卒業後も、編集や広告の運用だけM2Logに任せることもできます</li></ul>
+        <ul class="checks"><li>育ったアカウント（もともと御社のものです）</li><li>企画と撮影を社内で回せるチーム</li><li>御社用にまとめた運用の手引き</li><li>卒業後も、月1回のワークショップを続けて受講できます</li><li>卒業後も、編集や広告の運用だけM2Logに任せることもできます</li></ul>
         <a class="btn" href="/contact">{CTA_LABEL}</a>
       </div>
     </div>
@@ -550,9 +566,7 @@ def plans():
       <thead><tr><th scope="col"><span class="sr">項目</span></th><th scope="col">A　フル運用代行</th><th scope="col">B　伴走型SNS運用</th></tr></thead>
       <tbody>
         <tr><th scope="row">ゴール</th><td>M2Logに任せて、成果を出し続ける</td><td>小さく試し、企画と撮影を社内でも回せるようになる</td></tr>
-        <tr><th scope="row">月額</th><td>60万円〜（広告費含む）</td><td>トライアル29万円、続ける9か月は35万円（どちらも広告費含む）</td></tr>
-        <tr><th scope="row">月額に含まれるもの</th><td>広告費</td><td>広告費、月1回のワークショップ</td></tr>
-        <tr><th scope="row">本数</th><td>月5本〜（追加は1本8万円）</td><td>トライアル月3本、その後は月4本</td></tr>
+        <tr><th scope="row">セットになるもの</th><td>広告の配信・運用</td><td>広告の運用、月1回のワークショップ</td></tr>
         <tr><th scope="row">期間</th><td>まず3か月。続ける場合は6か月ごとに更新</td><td>まず3か月。続ける場合は9か月を追加（計12か月）</td></tr>
         <tr><th scope="row">企画・撮影</th><td>ずっとM2Log</td><td>M2Logから御社へ、少しずつ移る（M2Logは12か月ずっと同席）</td></tr>
         <tr><th scope="row">投稿・コメント対応</th><td>M2Log</td><td>御社（投稿の考え方はワークショップで共有）</td></tr>
@@ -565,27 +579,27 @@ def plans():
   </div>
 </section>
 
-<section class="sec" id="start" aria-labelledby="sr-h" style="scroll-margin-top:72px">
+<section class="sec sec--tint" id="start" aria-labelledby="sr-h" style="scroll-margin-top:72px">
   <div class="wrap">
     <div class="sec-head"><h2 class="disp h-sec" id="sr-h">迷っているなら、<br>話すのが早い。</h2></div>
     <div class="starts">
       <div class="start"><span class="label">無料</span><h3>無料相談</h3><p>今の課題を整理する相談です。提案・営業はしません。Zoom・対面のどちらでも。</p><a class="btn" href="/contact">申し込む</a></div>
-      <div class="start"><span class="label">5万円〜</span><h3>スポット支援</h3><p>SNS発信の診断や戦略ワークショップ。半日〜1日で、コンセプト・KPI・投稿方針まで具体化します。継続契約は不要です。</p><a class="btn btn--ghost" href="/contact">申し込む</a></div>
+      <div class="start"><span class="label">半日〜1日</span><h3>スポット支援</h3><p>SNS発信の診断や戦略ワークショップ。半日〜1日で、コンセプト・KPI・投稿方針まで具体化します。継続契約は不要です。</p><a class="btn btn--ghost" href="/contact">申し込む</a></div>
     </div>
   </div>
 </section>
 
-<section class="sec sec--tint" id="faq" aria-labelledby="fq-h" style="scroll-margin-top:72px">
+<section class="sec" id="faq" aria-labelledby="fq-h" style="scroll-margin-top:72px">
   <div class="wrap">
     <div class="sec-head"><h2 class="disp h-sec" id="fq-h">よくある質問</h2></div>
     <div class="faq">
-{fh}
+{faq_html(FAQ_ALL)}
     </div>
   </div>
 </section>
 </main>
 '''
-    return h + body + cta(p, 'どこから始めればいいか、<br>一緒に整理します。', 'まず話すだけで大丈夫です。どんな状態からでも構いません。') + footer(p)
+    return h + body + cta(p, 'どの形がいいか、<br>まず30分で一緒に考えましょう。', '頼み方が決まっていなくても大丈夫です。今の状況を伺い、その場で方向性をお伝えします。') + footer(p)
 
 
 def contact():
